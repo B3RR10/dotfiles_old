@@ -129,7 +129,7 @@ autocmd BufReadPost *
 " " "
 
 set background=dark
-colorscheme wombat256
+colorscheme wombat256i
 highlight Comment cterm=italic
 " }}}
 
@@ -387,9 +387,16 @@ set splitright
 " Airline {{{
 " " "
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#tab_min_count = 2
-let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_splits = 1
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#buffers_label = 'b'
+let g:airline#extensions#tabline#tabs_label = 't'
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree']
+let g:airline#extensions#tabline#buffer_nr_show = 0
+let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
 let g:airline_detect_modified=1
