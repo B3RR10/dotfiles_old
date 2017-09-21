@@ -19,6 +19,7 @@ Plug 'Lokaltog/powerline-fonts'				" Required by airline
 Plug 'flazz/vim-colorschemes'				" Colorschemes
 
 " Languages
+Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim',						{ 'for': [ 'html', 'xml', 'handlebars' ] }
 Plug 'othree/html5.vim',					{ 'for': 'html' }
 Plug 'gregsexton/MatchTag',					{ 'for': [ 'html', 'xml', 'handlebars' ] }
@@ -297,8 +298,8 @@ nno <Space>f za
 
 " Misc
 nno K i<CR><Esc>
-" inoremap <c-j> <Esc>/<+\w*+><CR><Esc>cf>
-" inoremap <c-k> <Esc>?<+\w*+><CR><Esc>cf>
+inoremap <C-j> <Esc>/<+\w*+><CR><Esc>cf>
+inoremap <C-k> <Esc>?<+\w*+><CR><Esc>cf>
 
 " }}}
 
@@ -446,7 +447,7 @@ if has('nvim')
 
 	" Rust
 	let g:deoplete#sources#rust#racer_binary='$HOME/.cargo/bin/racer'
-	let g:deoplete#sources#rust#rust_source_path='/home/mberrio/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+	let g:deoplete#sources#rust#rust_source_path='$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 	let g:deoplete#sources#rust#show_duplicates=1
 	let g:deoplete#sources#rust#disable_keymap=1
 	let g:deoplete#sources#rust#documentation_max_height=20
@@ -460,10 +461,10 @@ nmap <leader>gc :Gcommit<CR>
 " }}}
 
 " Gitgutter {{{
-nno ]h <Plug>GitGutterNextHunk
-nno [h <Plug>GitGutterPrevHunk
-nnoremap <Leader>hr <Plug>GitGutterUndoHunk
-nnoremap <Leader>ha <Plug>GitGutterStageHunk
+nno ]h :GitGutterNextHunk<CR>
+nno [h :GitGutterPrevHunk<CR>
+nnoremap <Leader>hr :GitGutterRevertHunk<CR>
+nnoremap <Leader>ha :GitGutterStageHunk<CR>
 " }}}
 
 " Latex-Suite {{{
@@ -512,7 +513,7 @@ let g:NERDTrimTrailingWhitespace = 1
 " " "
 
 " Open Nerdtree
-map <C-n> <silent> :NERDTreeToggle<CR>
+map <silent> <C-n> :NERDTreeToggle<CR>
 " Close nerdtree on file open
 let g:NERDTreeQuitOnOpen = 1
 
@@ -537,10 +538,11 @@ let g:SimpylFold_docstring_preview=1
 
 " Startify {{{
 let g:startify_bookmarks = [
-			\ { 'v': '~/.vimrc' },
-			\ { 'i': '~/.config/i3/config' },
-			\ { 'b': '~/.config/polybar/config' },
-			\ { 'z': '~/.zshrc' },
+			\ { 'b': '$HOME/.config/polybar/config' },
+			\ { 'i': '$HOME/.config/i3/config' },
+			\ { 't': '$HOME/.tmux.conf' },
+			\ { 'v': '$HOME/.vimrc' },
+			\ { 'z': '$HOME/.zshrc' },
 			\ ]
 
 hi StartifyHeader  ctermfg=114
