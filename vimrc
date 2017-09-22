@@ -17,6 +17,7 @@ Plug 'vim-airline/vim-airline'				" Statusline
 Plug 'vim-airline/vim-airline-themes'		" Statusline
 Plug 'Lokaltog/powerline-fonts'				" Required by airline
 Plug 'flazz/vim-colorschemes'				" Colorschemes
+Plug 'chrisbra/Colorizer'
 
 " Languages
 Plug 'sheerun/vim-polyglot'
