@@ -130,7 +130,7 @@
 
 	# https://help.github.com/articles/signing-commits-using-gpg/
 	gpgsign = false
-	# template = /home/dvogt/.gitcommittemplate
+	# template = $HOME/.gitcommittemplate
 
 [diff]
 
