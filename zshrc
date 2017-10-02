@@ -60,6 +60,9 @@ zle -N auto-ls
 zle -N accept-line auto-ls
 add-zsh-hook chpwd auto-ls
 
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+
 # --------------- Theme --------------- #
 
 source $HOME/.local/share/zpm/denysdovhan---spaceship-zsh-theme/spaceship.zsh-theme
