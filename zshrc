@@ -42,18 +42,19 @@ export LESSCHARSET=UTF-8
 screenfetch
 
 auto-ls () {
-  if [[ $#BUFFER -eq 0 ]]; then
-	zle && echo ""
-	l
-	echo ""
-	if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == true ]]; then
-	  gs --column=row --short
-	fi
+	if [[ -z $BUFFER ]]; then
+		zle && echo ""
+		l
+		echo ""
+		if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == true ]]; then
+			gs --column=row --short
+		fi
+		echo ""
 
-	zle && zle redisplay
-  else
-	zle .$WIDGET
-  fi
+		zle && zle redisplay
+	else
+		zle .$WIDGET
+	fi
 }
 
 zle -N auto-ls
