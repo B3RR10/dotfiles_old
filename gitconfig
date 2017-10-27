@@ -129,7 +129,7 @@
 [commit]
 
 	# https://help.github.com/articles/signing-commits-using-gpg/
-	gpgsign = false
+	gpgsign = true
 	# template = $HOME/.gitcommittemplate
 
 [diff]
@@ -161,8 +161,8 @@
 	# Make `git push` push relevant annotated tags when pushing branches out.
 	followTags = true
 [user]
-	; signingkey = DDFBD79E
+	signingkey = A9FDFA72
 	name = Miguel Berrio
 	email = miguelberrio91@gmail.com
-[credential]
-	helper = /usr/share/git/credential/gnome-keyring/git-credential-gnome-keyring
+; [credential]
+	; helper = /usr/share/git/credential/gnome-keyring/git-credential-gnome-keyring

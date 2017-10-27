@@ -1,0 +1,261 @@
+;=====================================================
+;
+;	To learn more about how to configure Polybar
+;	go to https://github.com/jaagr/polybar
+;
+;	The README contains alot of information
+;
+;=====================================================
+
+[colors]
+; Based on gruvbox colors
+background = #1d2021
+background-alt = #282828
+foreground = #a89984
+foreground-alt = #665c54
+primary = #458588
+secondary = #cc241d
+alert = #689d6a
+white = #ebdbb2
+
+[fonts]
+font0 = RobotoMono Nerd Font:pixelsize=8;1
+font1 = unifont:fontformat=truetype:size=8;0
+font2 = MaterialIcons;pixelsize=11
+font3 = FontAwesome;pixelsize=11
+
+[bar/top]
+width = 100%
+height = 18
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 2
+border-color = ${colors.background-alt}
+
+spacing = 1
+padding-left = 1
+padding-right = 1
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = ${fonts.font0}
+font-1 = ${fonts.font1}
+font-2 = ${fonts.font2}
+font-3 = ${fonts.font3}
+
+modules-left = i3
+modules-center = date
+modules-right = wlan eth memory cpu xbacklight volume xkeyboard battery
+
+tray-position = right
+tray-padding = 2
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+[module/pomodoro]
+type = custom/script
+; Use pomodoro glyphs in Nerd fonts
+exec = pymodoro --break-prefix " " --pomodoro-prefix " " --pomodoro  --empty  --break  --length 5
+; Use default symbols
+label = %output%
+tail = true
+interval = 0
+; Start or reset the timer
+click-left = if [ -e ~/.pomodoro_session ]; then rm ~/.pomodoro_session; else echo "25 5" > ~/.pomodoro_session; fi
+; Increase pomodoro time
+click-right = echo "$((`cut .pomodoro_session -d ' ' -f 1`+5)) 5" > .pomodoro_session
+; Reduce pomodoro time
+click-middle = echo "$((`cut .pomodoro_session -d ' ' -f 1`-5)) 5" > .pomodoro_session
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+
+format-prefix = "  "
+format-prefix-foreground = ${colors.foreground}
+
+label-layout = %layout%
+
+label-indicator-padding = 1
+label-indicator-margin = 1
+label-indicator-foreground = ${colors.white}
+label-indicator-background = ${colors.alert}
+
+[module/i3]
+
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode-padding = 1
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.background-alt}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-foreground = ${colors.white}
+label-focused-background = ${colors.primary}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-border-size = 2
+label-unfocused-border-color = ${colors.background}
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-foreground = ${colors.foreground}
+label-visible-background = ${colors.background-alt}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = - %index% -
+label-urgent-foreground = ${colors.white}
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+label = %percentage%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+; Available tags:
+;	<label> (default)
+;	<bar-used>
+;	<bar-free>
+format = <label>
+
+; Available tokens:
+;	%percentage_used% (default)
+;	%percentage_free%
+;	%gb_used%
+;	%gb_free%
+;	%gb_total%
+;	%mb_used%
+;	%mb_free%
+;	%mb_total%
+label = %gb_free%
+
+[module/wlan]
+type = internal/network
+interface = wlp1s0
+interval = 3.0
+
+format-connected-prefix = "  "
+format-connected = <label-connected>
+label-connected = [  %downspeed%  %upspeed% ]
+
+format-disconnected = <label-disconnected>
+label-disconnected =
+
+accumulate-stats = true
+
+[module/eth]
+type = internal/network
+interface = enp4s0f1
+interval = 3.0
+
+format-connected-prefix = 
+format-connected = <label-connected>
+label-connected = %local_ip%
+
+format-disconnected =
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%d.%m.%Y"
+date-alt = "KW-%V %d.%m.%Y"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix-foreground = ${colors.foreground-alt}
+format = <label>
+
+label = %{F#665c54}────[%{F-} %{F#83a598}%date%%{F-}%{F#b16286} %time%%{F-} %{F#665c54}]────%{F-}
+
+[module/volume]
+type = internal/volume
+
+format-volume = <ramp-volume><label-volume>
+
+label-volume = %percentage%%
+label-volume-foreground = ${colors.foreground}
+
+format-muted = <label-muted>
+label-muted = " "
+label-muted-foreground = ${colors.secondary}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format-prefix = " "
+format = <label>
+label =  %percentage%%
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 90
+
+format-charging = <animation-charging><label-charging>
+format-discharging = <ramp-capacity><label-discharging>
+
+ramp-capacity-0 = " "
+ramp-capacity-1 = " "
+ramp-capacity-2 = " "
+ramp-capacity-3 = " "
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = " "
+animation-charging-1 = " "
+animation-charging-2 = " "
+animation-charging-3 = " "
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
