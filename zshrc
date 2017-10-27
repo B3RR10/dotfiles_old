@@ -64,6 +64,12 @@ add-zsh-hook chpwd auto-ls
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 
+unalias md
+md () {
+	mkdir -p -- "$1" &&
+		cd -P -- "$1"
+}
+
 # --------------- Theme --------------- #
 
 source $HOME/.local/share/zpm/denysdovhan---spaceship-zsh-theme/spaceship.zsh-theme
