@@ -23,6 +23,7 @@ zpm load user-promt
 zpm load zsh-core
 zpm load djui/alias-tips
 zpm load denysdovhan/spaceship-zsh-theme
+zpm load s7anley/zsh-geeknote
 
 plugins=(git colored-man-pages)
 source $ZSH/oh-my-zsh.sh
@@ -61,6 +62,28 @@ zle -N auto-ls
 zle -N accept-line auto-ls
 add-zsh-hook chpwd auto-ls
 
+# -------------------- FZF FuzzyFinder -------------------- #
+
+export FZF_DEFAULT_COMMAND='fd -H "" ~'
+export FZF_TMUX=1
+# export FZF_TMUX_HEIGHT=30\%
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd -H -t d'
+export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+
+# pass completion suggested by @d4ndo (#362)
+_fzf_complete_pass() {
+  _fzf_complete '+m' "$@" < <(
+	pwdir=${PASSWORD_STORE_DIR-~/.password-store/}
+	stringsize="${#pwdir}"
+	find "$pwdir" -name "*.gpg" -print |
+		cut -c "$((stringsize + 1))"-  |
+		sed -e 's/\(.*\)\.gpg/\1/'
+  )
+}
+
+[ -n "$BASH" ] && complete -F _fzf_complete_pass -o default -o bashdefault pass
+
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 
@@ -70,7 +93,7 @@ md () {
 		cd -P -- "$1"
 }
 
-# --------------- Theme --------------- #
+# ------------------------- Theme ------------------------- #
 
 source $HOME/.local/share/zpm/denysdovhan---spaceship-zsh-theme/spaceship.zsh-theme
 
@@ -84,3 +107,5 @@ SPACESHIP_BATTERY_SHOW=false
 # EXIT CODE
 SPACESHIP_EXIT_CODE_SHOW=true
 SPACESHIP_EXIT_CODE_SYMBOl="✘ "
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

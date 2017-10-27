@@ -18,7 +18,13 @@ alias r='ranger'
 alias ranger='ranger --choosedir=$HOME/.rangerdir;cd $(cat $HOME/.rangerdir)'
 
 # Open file
-alias o='xdg-open '
+function o() {
+	for i in "$@"
+		do
+		echo "$i"
+		xdg-open "$i" &
+	done
+}
 
 alias less='vimpager -u /home/mberrio/.vimrc.more'
 alias zless='vimpager -u /home/mberrio/.vimrc.more'

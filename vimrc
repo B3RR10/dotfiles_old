@@ -13,77 +13,74 @@ call plug#begin('$HOME/.vim/plugged')
 
 " UI
 Plug 'mhinz/vim-startify'
-Plug 'vim-airline/vim-airline'				" Statusline
-Plug 'vim-airline/vim-airline-themes'		" Statusline
-Plug 'Lokaltog/powerline-fonts'				" Required by airline
-Plug 'flazz/vim-colorschemes'				" Colorschemes
+Plug 'vim-airline/vim-airline' " Statusline
+Plug 'vim-airline/vim-airline-themes' " Statusline
+Plug 'Lokaltog/powerline-fonts' " Required by airline
+Plug 'flazz/vim-colorschemes' " Colorschemes
 Plug 'chrisbra/Colorizer'
 
 " Languages
 Plug 'sheerun/vim-polyglot'
-Plug 'mattn/emmet-vim',						{ 'for': [ 'html', 'xml', 'handlebars' ] }
-Plug 'othree/html5.vim',					{ 'for': 'html' }
-Plug 'gregsexton/MatchTag',					{ 'for': [ 'html', 'xml', 'handlebars' ] }
-" Plug 'plasticboy/vimcmarkdown',			{ 'for': 'markdown' }
-" Plug 'suan/vim-instant-markdown',			{ 'for': 'markdown' }
-Plug 'tmhedberg/SimpylFold',				{ 'for': 'python' } " Fold code in Python
-Plug 'vim-scripts/indentpython.vim',		{ 'for': 'python' }
-Plug 'rust-lang/rust.vim',					{ 'for': 'rust' } " Rust filetype *** CHECK OPTIONS ***
-Plug 'racer-rust/vim-racer',				{ 'for': 'rust' }
-Plug 'timonv/vim-cargo',					{ 'for': 'rust' }
-Plug 'cespare/vim-toml',					{ 'for': 'toml' }
+Plug 'mattn/emmet-vim',				{ 'for': [ 'html', 'xml', 'handlebars' ] }
+Plug 'othree/html5.vim',			{ 'for': 'html' }
+Plug 'gregsexton/MatchTag',			{ 'for': [ 'html', 'xml', 'handlebars' ] }
+" Plug 'plasticboy/vimcmarkdown',	{ 'for': 'markdown' }
+" Plug 'suan/vim-instant-markdown',	{ 'for': 'markdown' }
+Plug 'tmhedberg/SimpylFold',		{ 'for': 'python' } " Fold code in Python
+Plug 'vim-scripts/indentpython.vim',{ 'for': 'python' }
+Plug 'rust-lang/rust.vim',			{ 'for': 'rust' } " Rust filetype *** CHECK OPTIONS ***
+Plug 'racer-rust/vim-racer',		{ 'for': 'rust' }
+Plug 'timonv/vim-cargo',			{ 'for': 'rust' }
+Plug 'cespare/vim-toml',			{ 'for': 'toml' }
+Plug 'fatih/vim-go',				{ 'for': 'go', 'do': ':GoInstallBinaries' }
+Plug 'scrooloose/nerdcommenter' " Commenting operations
+Plug 'jiangmiao/auto-pairs'		" Close quotes, parenthesis, brackets, etc automatic
+Plug 'majutsushi/tagbar'		" Browse tags of source files
+Plug 'tpope/vim-surround'		" Add, change and delete surroundings
 
-Plug 'scrooloose/nerdcommenter'				" Commenting operations
-Plug 'jiangmiao/auto-pairs'					" Close quotes, parenthesis, brackets, etc automatic
-Plug 'majutsushi/tagbar'					" Browse tags of source files
-Plug 'tpope/vim-surround'					" Add, change and delete surroundings
+if has('nvim')
+	Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+else
+	Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+endif
+
 if has('nvim')
 	Plug 'benekastah/neomake'
 else
-	Plug 'scrooloose/syntastic',				{ 'on': 'SyntasticCheck' }
+	Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
 endif
 
 " Tools
-Plug 'airblade/vim-gitgutter'				" Git integration (Show diff on files)
-Plug 'tpope/vim-fugitive',					{ 'as': 'fugitive.vim' } " Git commands
-Plug 'junegunn/gv.vim'						" Git commit browser
-Plug 'scrooloose/nerdtree',					{ 'on':	'NERDTreeToggle' }
+Plug 'airblade/vim-gitgutter'	" Git integration (Show diff on files)
+Plug 'tpope/vim-fugitive',		{ 'as': 'fugitive.vim' } " Git commands
+Plug 'junegunn/gv.vim'			" Git commit browser
+Plug 'scrooloose/nerdtree',		{ 'on':	'NERDTreeToggle' }
 Plug 'simnalamburt/vim-mundo'
 Plug 'ervandew/supertab'
+Plug 'junegunn/vim-easy-align'	" Alignment tool
+Plug 'godlygeek/tabular'		" Auto indent
+Plug 'tpope/vim-repeat'			" Repeat last command (Also when it's a plugin-map)
+Plug 'vim-scripts/Rename'		" Rename buffer and file on disk
+Plug 'suxpert/vimcaps'			" Turn off caps when change from insert to normal mode
+Plug 'easymotion/vim-easymotion' " Easy motions
+Plug 'junegunn/fzf',			{ 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'neilagabriel/vim-geeknote'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'SirVer/ultisnips'
 
-function! BuildYCM(info)
-  " info is a dictionary with 3 fields
-  " - name:   name of the plugin
-  " - status: 'installed', 'updated', or 'unchanged'
-  " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status == 'installed' || a:info.force
-	!./install.py --racer-completer
-  endif
-endfunction
 if has('nvim')
 	Plug ('Shougo/deoplete.nvim'),			{ 'do': ':UpdateRemotePlugins' } " Code completion
 	Plug 'sebastianmarkow/deoplete-rust',	{ 'for': 'rust' }
+	Plug 'zchee/deoplete-go', { 'do': 'make'}
 else
-	Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-	" Plug 'Valloric/YouCompleteMe',			{ 'do': './install.py --racer-completer' }
+	Plug 'Valloric/YouCompleteMe',			{ 'do': './install.py --racer-completer' }
 endif
 
-function! DoRemote(arg)
-	UpdateRemotePlugins
-endfunction
-Plug 'junegunn/vim-easy-align'				" Alignment tool
-Plug 'godlygeek/tabular'					" Auto indent
-Plug 'tpope/vim-repeat'						" Repeat last command (Also when it's a plugin-map)
-Plug 'vim-scripts/Rename'					" Rename buffer and file on disk
-Plug 'ctrlpvim/ctrlp.vim'					" Fuzzy finder
-Plug 'suxpert/vimcaps'						" Turn off caps when change from insert to normal mode
-Plug 'easymotion/vim-easymotion'			" Easy motions
-
-" Plug 'bling/vim-bufferline'				" Show buffers in statusbar or cmd line
-" Plug 'xolox/vim-misc'						"
-" Plug 'xolox/vim-notes'					" Manage notes
-" Plug 'vim-pandoc/vim-pandoc'				"
-" Plug 'vim-pandoc/vim-pandoc-syntax'		"
+" Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-notes'
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
 "--------------------------------------------------"
 call plug#end()
 " }}}
@@ -200,7 +197,7 @@ nmap <leader>pu :PlugUpdate<CR>
 
 " Precision editing
 nno <leader>rl :set rnu!<CR>
-nno <leader>c :set spell!<CR>
+nno <leader>s :set spell!<CR>
 "cul! cuc! rnu!
 nno <leader>de :set spelllang=de_de<CR>
 nno <leader>en :set spelllang=en_us<CR>
@@ -428,11 +425,11 @@ let g:airline_theme='wombat'
 
 " ctrlp.vim Fuzzy search {{{
 " " "
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'Cargo.toml']
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_cmd = 'CtrlP'
+" let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'Cargo.toml']
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 " }}}
 
 " DelimitMATE {{{
@@ -459,6 +456,56 @@ endif
 " Fugitive.vim - Git commands {{{
 nmap <leader>g :Gstatus<CR>
 nmap <leader>gc :Gcommit<CR>
+" }}}
+
+" FZF - Fuzzy finder {{{
+no <C-p> :FZF<CR>
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+
+" In Neovim, you can set up fzf window using a Vim command
+let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': '-tabnew' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':	   ['fg', 'Normal'],
+  \ 'bg':	   ['bg', 'Normal'],
+  \ 'hl':	   ['fg', 'Comment'],
+  \ 'fg+':	   ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':	   ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':	   ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+
+function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
 " }}}
 
 " Gitgutter {{{
@@ -526,9 +573,9 @@ let g:NERDTreeQuitOnOpen = 1
 
 " Notes Plug {{{
 " " "
-" let g:notes_directories = ['~/Notes']
-" let g:notes_sufix = '.md'
-" let g:notes_title_sync = 'change_title'
+let g:notes_directories = ['~/Notes']
+let g:notes_sufix = '.md'
+let g:notes_title_sync = 'change_title'
 " }}}
 
 " Python provider for neovim {{{
@@ -597,6 +644,74 @@ let g:tagbar_type_rust = {
 			\'i:impls,trait implementations',
 			\]
 			\}
+" }}}
+
+" Vim-geeknote {{{
+nmap <F9> :Geeknote<CR>
+autocmd FileType geeknote setlocal nonumber
+let g:GeeknoteScratchDirectory='/home/mberrio/Notes/'
+" }}}
+
+" Vim-go {{{
+autocmd BufNewFile,BufRead *.go
+			\ setlocal
+			\ noexpandtab
+			\ tabstop=4
+			\ shiftwidth=4
+
+" Alternate between file and file_test
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+
+" Mappings
+autocmd FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
+autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <leader>i <Plug>(go-info)
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+	call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+	call go#cmd#Build(0)
+  endif
+endfunction
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
+let g:go_list_type = "quickfix"
+
+" auto reformat code and add imports
+let g:go_fmt_command = "goimports"
+
+" Don't show window when errors occur
+let g:go_fmt_fail_silently = 1
+
+" Transform tags to camelcase
+" let g:go_addtags_transform = "camelcase"
+
+" Highlight code
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+" Go Metalinter for error checking
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['golint']
+let go_metalinter_deadline = "2s"
+
+" Show information of function
+let g:go_auto_type_info = 1
+
+" Highlight identifiers
+let g:go_auto_sameids = 1
 " }}}
 
 " Vim-mundo {{{
