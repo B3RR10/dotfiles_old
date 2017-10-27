@@ -16,7 +16,7 @@ foreground-alt = #665c54
 primary = #458588
 secondary = #cc241d
 alert = #689d6a
-white = #ebdbb2
+white = #f3f4f5
 
 [fonts]
 font0 = RobotoMono Nerd Font:pixelsize=8;1
@@ -26,7 +26,7 @@ font3 = FontAwesome;pixelsize=11
 
 [bar/top]
 width = 100%
-height = 18
+height = 16
 fixed-center = true
 
 background = ${colors.background}
@@ -104,13 +104,13 @@ wrapping-scroll = false
 ;pin-workspaces = true
 
 label-mode-padding = 1
-label-mode-foreground = ${colors.foreground}
-label-mode-background = ${colors.background-alt}
+label-mode-foreground = ${colors.white}
+label-mode-background = ${colors.alert}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused =  %index% 
 label-focused-foreground = ${colors.white}
-label-focused-background = ${colors.primary}
+label-focused-background = ${colors.background-alt}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
@@ -183,7 +183,7 @@ interval = 3.0
 
 format-connected-prefix = 
 format-connected = <label-connected>
-label-connected = %local_ip%
+label-connected = [  %downspeed%  %upspeed% ]
 
 format-disconnected =
 
@@ -195,7 +195,7 @@ date = "%d.%m.%Y"
 date-alt = "KW-%V %d.%m.%Y"
 
 time = %H:%M
-time-alt = %H:%M:%S
+time-alt = %H:%M
 
 format-prefix-foreground = ${colors.foreground-alt}
 format = <label>
