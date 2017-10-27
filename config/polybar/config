@@ -19,7 +19,7 @@ alert = #689d6a
 white = #f3f4f5
 
 [fonts]
-font0 = RobotoMono Nerd Font:pixelsize=8;1
+font0 = FuraMono Nerd Font:pixelsize=8;1
 font1 = unifont:fontformat=truetype:size=8;0
 font2 = MaterialIcons;pixelsize=11
 font3 = FontAwesome;pixelsize=11

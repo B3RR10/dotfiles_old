@@ -466,6 +466,10 @@ nno ]h :GitGutterNextHunk<CR>
 nno [h :GitGutterPrevHunk<CR>
 nnoremap <Leader>hr :GitGutterRevertHunk<CR>
 nnoremap <Leader>ha :GitGutterStageHunk<CR>
+let g:gitgutter_sign_added = '∙'
+let g:gitgutter_sign_modified = '∙'
+let g:gitgutter_sign_removed = '∙'
+let g:gitgutter_sign_modified_removed = '∙'
 " }}}
 
 " Latex-Suite {{{
