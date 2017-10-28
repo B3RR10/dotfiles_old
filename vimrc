@@ -296,8 +296,12 @@ nno <Space>f za
 
 " Misc
 nno K i<CR><Esc>
-inoremap <C-j> <Esc>/<+\w*+><CR><Esc>cf>
-inoremap <C-k> <Esc>?<+\w*+><CR><Esc>cf>
+autocmd FileType tex,latex
+			\inoremap <C-j> <Esc>/<+\w*+><CR><Esc>cf>
+			\inoremap <C-k> <Esc>?<+\w*+><CR><Esc>cf>
+
+ino <expr> <C-j> ("\<C-n>")
+ino <expr> <C-k> ("\<C-p>")
 
 " }}}
 
@@ -644,6 +648,13 @@ let g:tagbar_type_rust = {
 			\'i:impls,trait implementations',
 			\]
 			\}
+" }}}
+
+" UltiSnips {{{
+let g:UltiSnipsExpandTrigger = "<Tab>"
+let g:UltiSnipsListSnippets = "<c-q>"
+
+let g:UltiSnipsEditSplit="vertical"
 " }}}
 
 " Vim-geeknote {{{
