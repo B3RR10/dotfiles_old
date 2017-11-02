@@ -188,6 +188,15 @@ label-connected = [  %downspeed%  %upspeed% ]
 format-disconnected =
 
 [module/date]
+type = custom/script
+exec = LC_ALL=de_DE.utf8 date "+%V - %d.%m.%Y"
+interval = 1800
+label-foreground = #83a598
+
+click-left = gsimplecal &kill
+click-right = gsimplecal &kill
+
+[module/time]
 type = internal/date
 interval = 5
 
@@ -197,10 +206,12 @@ date-alt = "KW-%V %d.%m.%Y"
 time = %H:%M
 time-alt = %H:%M
 
-format-prefix-foreground = ${colors.foreground-alt}
-format = <label>
+label = %time%
+label-foreground = #b16286
+; format-prefix-foreground = ${colors.foreground-alt}
+; format = <label>
 
-label = %{F#665c54}────[%{F-} %{F#83a598}%date%%{F-}%{F#b16286} %time%%{F-} %{F#665c54}]────%{F-}
+; label = %{F#665c54}────[%{F-} %{F#83a598}%date%%{F-}%{F#b16286} %time%%{F-} %{F#665c54}]────%{F-}
 
 [module/volume]
 type = internal/volume
