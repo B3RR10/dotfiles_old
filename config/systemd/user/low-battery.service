@@ -1,0 +1,5 @@
+[Unit]
+Description=Low battery warning or suspension
+
+[Service]
+ExecStart=/home/mberrio/new-dotfiles/scripts/battery.sh
