@@ -51,7 +51,7 @@ font-3 = ${fonts.font3}
 
 modules-left = i3
 modules-center = left_brace date pomodoro right_brace
-modules-right = wlan eth memory cpu xbacklight volume xkeyboard battery
+modules-right = vpncheck wlan eth memory cpu xbacklight volume xkeyboard battery
 
 tray-position = right
 tray-padding = 2
@@ -172,6 +172,14 @@ label-connected = [  %downspeed%  %upspeed% ]
 
 format-disconnected =
 
+[module/vpncheck]
+type = custom/script
+exec = pgrep openvpn
+interval = 5
+label = vpn
+format-prefix = "  "
+format-foreground = ${colors.alert}
+
 [module/left_brace]
 type = custom/script
 tail = true
@@ -245,6 +253,7 @@ full-at = 90
 
 format-charging = <animation-charging><label-charging>
 format-discharging = <ramp-capacity><label-discharging>
+format-full =
 
 ramp-capacity-0 = " "
 ramp-capacity-1 = " "

@@ -296,12 +296,9 @@ nno <Space>f za
 
 " Misc
 nno K i<CR><Esc>
-autocmd FileType tex,latex
-			\inoremap <C-j> <Esc>/<+\w*+><CR><Esc>cf>
-			\inoremap <C-k> <Esc>?<+\w*+><CR><Esc>cf>
+inoremap <C-j> <Esc>/<+\w*+><CR><Esc>cf>
+inoremap <C-k> <Esc>?<+\w*+><CR><Esc>cf>
 
-ino <expr> <C-j> ("\<C-n>")
-ino <expr> <C-k> ("\<C-p>")
 
 " }}}
 
