@@ -38,18 +38,6 @@ Plug 'jiangmiao/auto-pairs'		" Close quotes, parenthesis, brackets, etc automati
 Plug 'majutsushi/tagbar'		" Browse tags of source files
 Plug 'tpope/vim-surround'		" Add, change and delete surroundings
 
-if has('nvim')
-	Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-else
-	Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-endif
-
-if has('nvim')
-	Plug 'benekastah/neomake'
-else
-	Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
-endif
-
 " Tools
 Plug 'airblade/vim-gitgutter'	" Git integration (Show diff on files)
 Plug 'tpope/vim-fugitive',		{ 'as': 'fugitive.vim' } " Git commands
@@ -70,11 +58,15 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
 
 if has('nvim')
+	Plug 'benekastah/neomake'
 	Plug ('Shougo/deoplete.nvim'),			{ 'do': ':UpdateRemotePlugins' } " Code completion
 	Plug 'sebastianmarkow/deoplete-rust',	{ 'for': 'rust' }
 	Plug 'zchee/deoplete-go', { 'do': 'make'}
+	Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 else
 	Plug 'Valloric/YouCompleteMe',			{ 'do': './install.py --racer-completer' }
+	Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
+	Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 endif
 
 " Plug 'xolox/vim-misc'
@@ -582,7 +574,11 @@ let g:notes_title_sync = 'change_title'
 " Python provider for neovim {{{
 " " "
 let g:python_host_prog	= '/usr/bin/python2'
-let g:python3_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
+" }}}
+
+" Rust {{{
+let g:rustfmt_autosave = 1
 " }}}
 
 " SimpylFold {{{
