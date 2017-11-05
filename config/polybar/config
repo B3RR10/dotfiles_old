@@ -9,8 +9,8 @@
 
 [colors]
 ; Based on gruvbox colors
-background = #1d2021
-background-alt = #282828
+background = #121212
+background-alt = #404040
 foreground = #a89984
 foreground-alt = #665c54
 primary = #458588
@@ -35,8 +35,8 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 2
-border-color = ${colors.background-alt}
+border-size = 1
+border-color = ${colors.background}
 
 spacing = 1
 padding-left = 1
