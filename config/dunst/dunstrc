@@ -176,15 +176,15 @@
 [urgency_low]
 	# IMPORTANT: colors have to be defined in quotation marks.
 	# Otherwise the "#" and following would be interpreted as a comment.
-	background = "#282828"
+	background = "#121212"
 	foreground = "#F3F4F5"
-	frame_color = "#282828"
+	frame_color = "#121212"
 	timeout = 60
 
 [urgency_normal]
-	background = "#282828"
+	background = "#121212"
 	foreground = "#F3F4F5"
-	frame_color = "#282828"
+	frame_color = "#121212"
 	timeout = 60
 
 [urgency_critical]
