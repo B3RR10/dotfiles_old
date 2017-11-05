@@ -50,7 +50,7 @@ font-2 = ${fonts.font2}
 font-3 = ${fonts.font3}
 
 modules-left = i3
-modules-center = left_brace date pomodoro right_brace
+modules-center = left_brace date time pomodoro right_brace
 modules-right = vpncheck wlan eth memory cpu xbacklight volume xkeyboard battery
 
 tray-position = right
@@ -193,6 +193,15 @@ exec = ""
 label = %{F#665c54}]────%{F-}
 
 [module/date]
+type = custom/script
+exec = LC_ALL=de_DE.utf8 date "+%V - %d.%m.%Y"
+interval = 1800
+label-foreground = #83a598
+
+click-left = gsimplecal &kill
+click-right = gsimplecal &kill
+
+[module/time]
 type = internal/date
 interval = 5
 
@@ -202,10 +211,8 @@ date-alt = "KW-%V %d.%m.%Y"
 time = %H:%M
 time-alt = %H:%M
 
-format-prefix-foreground = ${colors.foreground-alt}
-format = <label>
-
-label = %{F#83a598}%date%%{F-}%{F#b16286} %time%%{F-}
+label = %time%
+label-foreground = #b16286
 
 [module/pomodoro]
 type = custom/script

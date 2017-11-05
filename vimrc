@@ -447,8 +447,10 @@ endif
 " }}}
 
 " Fugitive.vim - Git commands {{{
-nmap <leader>g :Gstatus<CR>
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gd :Gdiff<CR>
 nmap <leader>gc :Gcommit<CR>
+nmap <leader>gb :Gblame<CR>
 " }}}
 
 " FZF - Fuzzy finder {{{
@@ -510,6 +512,7 @@ let g:gitgutter_sign_added = '∙'
 let g:gitgutter_sign_modified = '∙'
 let g:gitgutter_sign_removed = '∙'
 let g:gitgutter_sign_modified_removed = '∙'
+let g:gitgutter_grep_command = 'rg'
 " }}}
 
 " Latex-Suite {{{
