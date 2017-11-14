@@ -30,7 +30,7 @@ source $ZSH/oh-my-zsh.sh
 
 # --------------- Customize to your needs... --------------- #
 
-export ZSHRC=~/.dotfiles/zsh
+export ZSHRC=~/new-dotfiles/zsh
 for config ($ZSHRC/**/*.zsh) source $config
 
 export EDITOR=nvim
@@ -40,7 +40,7 @@ export PATH="$HOME/.scripts:/home/mberrio/.cargo/bin:$PATH"
 export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 export LESSCHARSET=UTF-8
 
-screenfetch
+# screenfetch
 
 auto-ls () {
 	if [[ -z $BUFFER ]]; then

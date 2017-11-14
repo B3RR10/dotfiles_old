@@ -178,13 +178,13 @@
 	# Otherwise the "#" and following would be interpreted as a comment.
 	background = "#121212"
 	foreground = "#F3F4F5"
-	frame_color = "#121212"
+	frame_color = "#900000"
 	timeout = 60
 
 [urgency_normal]
 	background = "#121212"
 	foreground = "#F3F4F5"
-	frame_color = "#121212"
+	frame_color = "#900000"
 	timeout = 60
 
 [urgency_critical]

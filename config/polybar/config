@@ -11,7 +11,7 @@
 ; Based on gruvbox colors
 background = #121212
 background-alt = #404040
-foreground = #a89984
+foreground = #f3f4f5
 foreground-alt = #665c54
 primary = #458588
 secondary = #cc241d
@@ -39,8 +39,8 @@ border-size = 1
 border-color = ${colors.background}
 
 spacing = 1
-padding-left = 1
-padding-right = 1
+padding-left = 2
+padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
 
@@ -93,26 +93,26 @@ label-mode-foreground = ${colors.white}
 label-mode-background = ${colors.alert}
 
 ; focused = Active workspace on focused monitor
-label-focused =  %index% 
+label-focused =  %name% 
 label-focused-foreground = ${colors.white}
 label-focused-background = ${colors.background-alt}
-label-focused-padding = 2
+label-focused-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %name%
 label-unfocused-foreground = ${colors.foreground}
-label-unfocused-border-size = 2
+label-unfocused-border-size = 1
 label-unfocused-border-color = ${colors.background}
-label-unfocused-padding = 2
+label-unfocused-padding = 1
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %name%
 label-visible-foreground = ${colors.foreground}
 label-visible-background = ${colors.background-alt}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = - %index% -
+label-urgent = - %name% -
 label-urgent-foreground = ${colors.white}
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
@@ -194,7 +194,7 @@ label = %{F#665c54}]────%{F-}
 
 [module/date]
 type = custom/script
-exec = LC_ALL=de_DE.utf8 date "+%V - %d.%m.%Y"
+exec = date "+%V - %d.%m.%Y"
 interval = 1800
 label-foreground = #83a598
 
@@ -217,7 +217,7 @@ label-foreground = #b16286
 [module/pomodoro]
 type = custom/script
 ; Use pomodoro glyphs in Nerd fonts
-exec = pymodoro --break-prefix " " --pomodoro-prefix " " --pomodoro  --empty  --break  --length 5
+exec = pymodoro --break-prefix " " --pomodoro-prefix " " --pomodoro  --empty  --break  --length 5
 ; Use default symbols
 label = %output%
 tail = true
@@ -266,13 +266,13 @@ ramp-capacity-0 = " "
 ramp-capacity-1 = " "
 ramp-capacity-2 = " "
 ramp-capacity-3 = " "
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-foreground = ${colors.foreground}
 
 animation-charging-0 = " "
 animation-charging-1 = " "
 animation-charging-2 = " "
 animation-charging-3 = " "
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-foreground = ${colors.foreground}
 animation-charging-framerate = 750
 
 [settings]

@@ -21,9 +21,9 @@ alias ranger='ranger --choosedir=$HOME/.rangerdir;cd $(cat $HOME/.rangerdir)'
 function o() {
 	for i in "$@"
 		do
-		echo "$i"
-		xdg-open "$i" &
+		xdg-open "$i" > /dev/null 2>&1 &
 	done
+	i3 scratchpad show > /dev/null 2>&1
 }
 
 alias less='vimpager -u /home/mberrio/.vimrc.more'
