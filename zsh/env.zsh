@@ -1,9 +1,20 @@
 # Local Env Var
 export EDITOR=nvim
-export BROWSER=/usr/bin/chromium
+export BROWSER=/usr/bin/firefox
 export GIT_EDITOR=nvim
 export VISUAL=nvim
-export PAGER=vimpager
-export PATH="/opt/idea-IC-171.4694.23/bin:$HOME/.scripts:$HOME/.cargo/bin:$PATH"
-export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+export LESSCHARSET=UTF-8
+# export PAGER=vimpager
 
+# Add Scripts to Path
+export PATH=$PATH:$HOME/.scripts
+# Add Screenlayouts to path
+export PATH=$PATH:$HOME/.screenlayout
+# Cargo env
+export PATH=$PATH:$HOME/.cargo/bin
+export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+# IntelliJ Idea env
+export PATH=$PATH:/opt/idea-IC-171.4694.23/bin
+# Go env
+export PATH=$PATH:$(go env GOPATH)/bin
+export GOPATH=$(go env GOPATH)

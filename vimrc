@@ -24,7 +24,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim',				{ 'for': [ 'html', 'xml', 'handlebars' ] }
 Plug 'othree/html5.vim',			{ 'for': 'html' }
 Plug 'gregsexton/MatchTag',			{ 'for': [ 'html', 'xml', 'handlebars' ] }
-" Plug 'plasticboy/vimcmarkdown',	{ 'for': 'markdown' }
+Plug 'plasticboy/vim-markdown',		{ 'for': 'markdown' }
 " Plug 'suan/vim-instant-markdown',	{ 'for': 'markdown' }
 Plug 'tmhedberg/SimpylFold',		{ 'for': 'python' } " Fold code in Python
 Plug 'vim-scripts/indentpython.vim',{ 'for': 'python' }
@@ -33,6 +33,7 @@ Plug 'racer-rust/vim-racer',		{ 'for': 'rust' }
 Plug 'timonv/vim-cargo',			{ 'for': 'rust' }
 Plug 'cespare/vim-toml',			{ 'for': 'toml' }
 Plug 'fatih/vim-go',				{ 'for': 'go', 'do': ':GoInstallBinaries' }
+Plug 'Rip-Rip/clang_complete',		{ 'do': 'make' }
 Plug 'scrooloose/nerdcommenter' " Commenting operations
 Plug 'jiangmiao/auto-pairs'		" Close quotes, parenthesis, brackets, etc automatic
 Plug 'majutsushi/tagbar'		" Browse tags of source files
@@ -56,17 +57,19 @@ Plug 'junegunn/fzf.vim'
 Plug 'neilagabriel/vim-geeknote'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 if has('nvim')
 	Plug 'benekastah/neomake'
 	Plug ('Shougo/deoplete.nvim'),			{ 'do': ':UpdateRemotePlugins' } " Code completion
-	Plug 'sebastianmarkow/deoplete-rust',	{ 'for': 'rust' }
+	" Plug 'zchee/deoplete-clang'
 	Plug 'zchee/deoplete-go', { 'do': 'make'}
-	Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-else
-	Plug 'Valloric/YouCompleteMe',			{ 'do': './install.py --racer-completer' }
-	Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
+	Plug 'sebastianmarkow/deoplete-rust',	{ 'for': 'rust' }
 	Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+else
+"	  Plug 'Valloric/YouCompleteMe',			{ 'do': './install.py --racer-completer' }
+"	  Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
+	Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 endif
 
 " Plug 'xolox/vim-misc'
@@ -80,11 +83,11 @@ call plug#end()
 " Abbreviations {{{
 " " "
 
-au FileType java,c,cpp abbrev if if() {<CR><++><CR>}<CR><++><esc>kkki
-au FileType java,c,cpp,perl abbrev while while() {<CR><++><CR>}<CR><++><esc>kkkwa
-au FileType java,c,cpp abbrev for for() {<CR><++><CR>}<CR><++><esc>kkka
-au FileType java,c,cpp abbrev /*<CR> /*<CR> *<CR> */<esc>kA
-au FileType vim abbrev =header= "<CR>" "<esc>kA
+" au FileType java,c,cpp abbrev if if() {<CR><++><CR>}<CR><++><esc>kkki
+" au FileType java,c,cpp,perl abbrev while while() {<CR><++><CR>}<CR><++><esc>kkkwa
+" au FileType java,c,cpp abbrev for for() {<CR><++><CR>}<CR><++><esc>kkka
+" au FileType java,c,cpp abbrev /*<CR> /*<CR> *<CR> */<esc>kA
+" au FileType vim abbrev =header= "<CR>" "<esc>kA
 " }}}
 
 " Autocommands {{{
@@ -199,12 +202,12 @@ nno <leader>es :set spelllang=es_mx<CR>
 nno <silent> ;j :bn<CR>
 nno <silent> ;k :bp<CR>
 nno <silent> ;q :bdelete<CR>
+nno <Tab> :bnext<CR>
+nno <S-Tab> :bprevious<CR>
 
 " Tabs
 nno <silent> ;h :tabp<CR>
 nno <silent> ;l :tabn<CR>
-nno <Tab> :tabn<CR>
-nno <S-Tab> :tabp<CR>
 
 nno <silent> <leader>1 1gt<cr>
 nno <silent> <leader>2 2gt<cr>
@@ -280,16 +283,16 @@ no <silent> <leader>/ :nohlsearch<CR>
 no <silent> <Space><Space> :nohlsearch<CR>
 
 " Edit .vimrc
-nmap <silent> <leader>ev :tabe $MYVIMRC<CR>
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Folding settings
 nno <Space>f za
 
 " Misc
-nno K i<CR><Esc>
-inoremap <C-j> <Esc>/<+\w*+><CR><Esc>cf>
-inoremap <C-k> <Esc>?<+\w*+><CR><Esc>cf>
+" nno K i<CR><Esc>
+" inoremap <C-j> <Esc>/<+\w*+><CR><Esc>cf>
+" inoremap <C-k> <Esc>?<+\w*+><CR><Esc>cf>
 
 
 " }}}
@@ -416,6 +419,11 @@ let g:airline_right_alt_sep = ''
 let g:airline_theme='wombat'
 " }}}
 
+" Autopairs {{{ "
+let g:AutoPairsMapCR = 0
+imap <silent><CR> <CR><Plug>AutoPairsReturn
+" }}} Autopairs "
+
 " ctrlp.vim Fuzzy search {{{
 " " "
 " let g:ctrlp_map = '<c-p>'
@@ -442,6 +450,11 @@ if has('nvim')
 	let g:deoplete#sources#rust#show_duplicates=1
 	let g:deoplete#sources#rust#disable_keymap=1
 	let g:deoplete#sources#rust#documentation_max_height=20
+
+	" Clang
+	" let g:deoplete#sources#clang#executable = '/usr/bin/clang'
+	" let g:deoplet#sources#clang#libclang_path = '/usr/lib/libclang.so'
+	" let g:deoplet#sources#clang#clang_header = '/usr/include/clang/'
 endif
 
 " }}}
@@ -527,7 +540,8 @@ autocmd FileType tex let g:Tex_CompileRule_dvi = 'make'
 
 if has('nvim')
 	let g:neomake_open_list = 2
-	autocmd! BufWritePost,BufEnter * Neomake
+	call neomake#configure#automake('rw', 1000)
+	" autocmd! BufWritePost,BufEnter * Neomake
 endif
 
 " }}}
@@ -611,18 +625,18 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 " Syntastic {{{
 " " "
 
-if !has('nvim')
-	set statusline+=%#warningmsg#
-	set statusline+=%{SyntasticStatuslineFlag()}
-	set statusline+=%*
-
-	let g:syntastic_always_populate_loc_list = 1
-	let g:syntastic_auto_loc_list = 1
-	let g:syntastic_check_on_open = 1
-	let g:syntastic_check_on_wq = 0
-	let g:syntastic_rust_checkers = ['cargo']
-	let g:syntastic_aggregate_errors = 1
-endif
+" if !has('nvim')
+"	  set statusline+=%#warningmsg#
+"	  set statusline+=%{SyntasticStatuslineFlag()}
+"	  set statusline+=%*
+"
+"	  let g:syntastic_always_populate_loc_list = 1
+"	  let g:syntastic_auto_loc_list = 1
+"	  let g:syntastic_check_on_open = 1
+"	  let g:syntastic_check_on_wq = 0
+"	  let g:syntastic_rust_checkers = ['cargo']
+"	  let g:syntastic_aggregate_errors = 1
+" endif
 
 " }}}
 
@@ -647,7 +661,9 @@ let g:tagbar_type_rust = {
 " }}}
 
 " UltiSnips {{{
-let g:UltiSnipsExpandTrigger = "<Tab>"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsListSnippets = "<c-q>"
 
 let g:UltiSnipsEditSplit="vertical"
@@ -721,6 +737,11 @@ let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
 " }}}
 
+" Vim-markdown {{{ "
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_toc_autofit = 1
+" }}} Vim-markdown "
+
 " Vim-mundo {{{
 nmap <F5> :MundoToggle<CR>
 " Enable persistent undo so that undo history persists across vim sessions
@@ -730,11 +751,11 @@ set undodir=~/.vim/undo
 
 " YouCompleteMe {{{
 " " "
-if !has('nvim')
-	  let g:ycm_python_binary_path = 'python'
-	  let g:ycm_server_python_interpreter = 'python'
-	  let g:ycm_rust_src_path = '/home/mberrio/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-endif
+" if !has('nvim')
+"		let g:ycm_python_binary_path = 'python'
+"		let g:ycm_server_python_interpreter = 'python'
+"		let g:ycm_rust_src_path = '/home/mberrio/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+" endif
 
 " }}}
 

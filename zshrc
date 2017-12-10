@@ -30,18 +30,15 @@ source $ZSH/oh-my-zsh.sh
 
 # --------------- Customize to your needs... --------------- #
 
+# Files to source
+# ~/new-dotfiles/zsh/alias.zsh
+# ~/new-dotfiles/zsh/env.zsh
+# ~/new-dotfiles/zsh/git.zsh
+# ~/new-dotfiles/zsh/tmux.zsh
 export ZSHRC=~/new-dotfiles/zsh
 for config ($ZSHRC/**/*.zsh) source $config
 
-export EDITOR=nvim
-export GIT_EDITOR=nvim
-export VISUAL=nvim
-export PATH="$HOME/.scripts:/home/mberrio/.cargo/bin:$PATH"
-export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
-export LESSCHARSET=UTF-8
-
-# screenfetch
-
+# -------------------- Auto-ls -------------------- #
 auto-ls () {
 	if [[ -z $BUFFER ]]; then
 		zle && echo ""
@@ -57,10 +54,12 @@ auto-ls () {
 		zle .$WIDGET
 	fi
 }
-
 zle -N auto-ls
 zle -N accept-line auto-ls
 add-zsh-hook chpwd auto-ls
+
+# -------------------- Autojump -------------------- #
+source /etc/profile.d/autojump.zsh
 
 # -------------------- FZF FuzzyFinder -------------------- #
 
