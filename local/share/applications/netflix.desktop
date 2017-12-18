@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Netflix
+GenericName=Netflix
+Exec=chromium --app=https://www.netflix.com
+Comment=Open Netflix on a window without bars
+Terminal=false

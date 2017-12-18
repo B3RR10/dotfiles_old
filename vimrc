@@ -368,7 +368,7 @@ set autoread
 set hidden
 set nu
 set rnu
-set scrolloff=15
+set scrolloff=10
 
 " windows
 set splitbelow
