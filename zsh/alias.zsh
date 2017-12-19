@@ -15,7 +15,7 @@ alias -g lh='ls -lh --color=auto --group-directories-first'
 
 # Ranger
 alias r='ranger'
-alias ranger='ranger --choosedir=$HOME/.rangerdir;cd $(cat $HOME/.rangerdir)'
+alias ranger='ranger --choosedir=$HOME/.config/ranger/rangedir;cd $(cat $HOME/.config/ranger/rangedir)'
 
 # Open file
 function o() {
