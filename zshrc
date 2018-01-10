@@ -1,13 +1,13 @@
 export ZSH=$HOME/.oh-my-zsh
 
 if [[ -f ~/.zpm/zpm.zsh ]]; then
-	source ~/.zpm/zpm.zsh
+    source ~/.zpm/zpm.zsh
 else
-	git clone --recursive https://github.com/horosgrisa/zpm ~/.zpm
-	source ~/.zpm/zpm.zsh
+    git clone --recursive https://github.com/horosgrisa/zpm ~/.zpm
+    source ~/.zpm/zpm.zsh
 fi
 if [[ ! -d $ZSH ]]; then
-	git clone git://github.com/robbyrussell/oh-my-zsh.git $ZSH
+    git clone git://github.com/robbyrussell/oh-my-zsh.git $ZSH
 fi
 
 autoload -Uz add-zsh-hook
@@ -40,19 +40,19 @@ for config ($ZSHRC/**/*.zsh) source $config
 
 # -------------------- Auto-ls -------------------- #
 auto-ls () {
-	if [[ -z $BUFFER ]]; then
-		zle && echo ""
-		l
-		echo ""
-		if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == true ]]; then
-			gs --column=row --short
-		fi
-		echo ""
+    if [[ -z $BUFFER ]]; then
+        zle && echo ""
+        l
+        echo ""
+        if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == true ]]; then
+            gst --column=row --short
+        fi
+        echo ""
 
-		zle && zle redisplay
-	else
-		zle .$WIDGET
-	fi
+        zle && zle redisplay
+    else
+        zle .$WIDGET
+    fi
 }
 zle -N auto-ls
 zle -N accept-line auto-ls
@@ -73,11 +73,11 @@ export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {
 # pass completion suggested by @d4ndo (#362)
 _fzf_complete_pass() {
   _fzf_complete '+m' "$@" < <(
-	pwdir=${PASSWORD_STORE_DIR-~/.password-store/}
-	stringsize="${#pwdir}"
-	find "$pwdir" -name "*.gpg" -print |
-		cut -c "$((stringsize + 1))"-  |
-		sed -e 's/\(.*\)\.gpg/\1/'
+    pwdir=${PASSWORD_STORE_DIR-~/.password-store/}
+    stringsize="${#pwdir}"
+    find "$pwdir" -name "*.gpg" -print |
+        cut -c "$((stringsize + 1))"-  |
+        sed -e 's/\(.*\)\.gpg/\1/'
   )
 }
 
@@ -88,8 +88,8 @@ source /usr/share/fzf/key-bindings.zsh
 
 unalias md
 md () {
-	mkdir -p -- "$1" &&
-		cd -P -- "$1"
+    mkdir -p -- "$1" &&
+        cd -P -- "$1"
 }
 
 # ------------------------- Theme ------------------------- #

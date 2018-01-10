@@ -19,56 +19,51 @@ alias ranger='ranger --choosedir=$HOME/.config/ranger/rangedir;cd $(cat $HOME/.c
 
 # Open file
 function o() {
-	for i in "$@"
-		do
-		xdg-open "$i" > /dev/null 2>&1 &
-	done
-	i3 scratchpad show > /dev/null 2>&1
+    for i in "$@"
+        do
+        xdg-open "$i" > /dev/null 2>&1 &
+    done
+    i3 scratchpad show > /dev/null 2>&1
 }
 
 # geeknote
 # new note
 actualNotebook=MaInf
 function nnote() {
-	echo Params: "$#"
-	for i in "$@"; do
-		echo $i
-	done
+    echo Params: "$#"
+    for i in "$@"; do
+        echo $i
+    done
 
-	if [[ "$#" -eq 0 ]]; then
-		echo first
-	fi
-	if [[ "$1" == "-h" ]]; then
-		echo second
-	fi
-	if [[ "$#" -ge 4 ]]; then
-		echo third
-	fi
+    if [[ "$#" -eq 0 ]]; then
+        echo first
+    fi
+    if [[ "$1" == "-h" ]]; then
+        echo second
+    fi
+    if [[ "$#" -ge 4 ]]; then
+        echo third
+    fi
 
-	if [[ "$#" -eq 0 || "$1" == '-h' || "$#" -ge 4 ]]; then
-		[[ "$#" -eq 0 ]]
-		[[ "$1" -eq '-h' ]]
-		[[ "$#" -ge 4 ]]
-		echo "Create new note with Geeknote\nUsage:"
-		echo "\tnnote [notebook] [tag] [title]"
-		echo "\tnnote [tag] [title] (notebook: $actualNotebook)"
-		echo "\tnnote [title] (notebook: $actualNotebook, tag: '')"
-	elif [[ "$#" -eq 1 ]]; then
-		geeknote create --notebook $actualNotebook --title "$1"
-	elif [[ "$#" -eq 2 ]]; then
-		geeknote create --notebook $actualNotebook --tag "$1" --title "$2"
-	elif [[ "$#" -eq 3 ]]; then
-		geeknote create --notebook "$1" --tag "$2" --title "$3"
-	fi
+    if [[ "$#" -eq 0 || "$1" == '-h' || "$#" -ge 4 ]]; then
+        [[ "$#" -eq 0 ]]
+        [[ "$1" -eq '-h' ]]
+        [[ "$#" -ge 4 ]]
+        echo "Create new note with Geeknote\nUsage:"
+        echo "\tnnote [notebook] [tag] [title]"
+        echo "\tnnote [tag] [title] (notebook: $actualNotebook)"
+        echo "\tnnote [title] (notebook: $actualNotebook, tag: '')"
+    elif [[ "$#" -eq 1 ]]; then
+        geeknote create --notebook $actualNotebook --title "$1"
+    elif [[ "$#" -eq 2 ]]; then
+        geeknote create --notebook $actualNotebook --tag "$1" --title "$2"
+    elif [[ "$#" -eq 3 ]]; then
+        geeknote create --notebook "$1" --tag "$2" --title "$3"
+    fi
 }
 alias note="geeknote edit --note ''"
 alias nsync="gnsync -p /home/mberrio/Notes -f markdown -a -l /home/mberrio/Notes -t"
 
 # vimpager
-# alias less=/usr/share/vim/vim80/macros/less.sh
 alias less=/usr/share/nvim/runtime/macros/less.sh
-# alias less='vimpager -u /home/mberrio/.vimrc.more'
-# alias zless='vimpager -u /home/mberrio/.vimrc.more'
 
-# alias less=$PAGER -u $HOME/.vimrc.more
-# alias zless=$PAGER -u $HOME/.vimrc.more

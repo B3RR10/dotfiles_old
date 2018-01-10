@@ -1,10 +1,11 @@
 # Local Env Var
 export EDITOR=nvim
-export BROWSER=/usr/bin/firefox
+export BROWSER=/usr/bin/chromium
 export GIT_EDITOR=nvim
 export VISUAL=nvim
 export LESSCHARSET=UTF-8
-# export PAGER=vimpager
+export TERM=tmux-256color
+# export PAGER='less'
 
 # Add Scripts to Path
 export PATH=$PATH:$HOME/.scripts
