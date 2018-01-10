@@ -1,5 +1,6 @@
 [Unit]
 Description=Low battery warning or suspension
+After=systemd-user-sessions.service
 
 [Service]
-ExecStart=/home/mberrio/new-dotfiles/scripts/battery.sh
+ExecStart=/home/mberrio/.scripts/battery.sh
