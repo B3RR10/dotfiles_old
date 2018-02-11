@@ -84,7 +84,7 @@ augroup reload_vimrc
     autocmd BufWritePost $MYVIMRC AirlineRefresh
 augroup END
 
-" Autoremove trailing white spaces spaces
+" Autoremove trailing white spaces spaces and convert tabs in spaces
 autocmd BufWritePre * silent! %s/\s\+$//ge
 autocmd BufWritePre * %retab!
 
@@ -92,10 +92,10 @@ au InsertEnter * set nornu
 au InsertLeave * set rnu
 
 " return to last edit position when opening files
-autocmd BufReadPost *
-            \ if line("'\"") > 0 && line("'\"") <= line("$") |
-            \   exe "normal! g`\"" |
-            \ endif
+" autocmd BufReadPost *
+"             \ if line("'\"") > 0 && line("'\"") <= line("$") |
+"             \   exe "normal! g`\"" |
+"             \ endif
 
 " }}}
 
@@ -112,11 +112,12 @@ colorscheme apprentice
 " Functions {{{
 " " "
 
+au FileType sh,bash,perl,python,ruby nno <leader>ex :! chmod +x %<CR>
+
 " Highlight all instances of word under cursor, when idle.
 " Useful when studying strange source code.
 " Type z/ to toggle highlighting on/off.
 nno z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
-au FileType sh,bash,perl,python,ruby nno <leader>ex :! chmod +x %<CR>
 function! AutoHighlightToggle()
     let @/ = ''
     if exists('#auto_highlight')
@@ -156,8 +157,6 @@ nno <leader>so :so %<cr>
 nmap <leader>pi :PlugInstall<CR>
 nmap <leader>pu :PlugUpdate<CR>
 
-" Precision editing
-"cul! cuc! rnu!
 " Spell
 nno <leader>ss :set spell!<CR>
 nno <leader>sde :set spelllang=de_de<CR>
@@ -165,11 +164,9 @@ nno <leader>sen :set spelllang=en_us<CR>
 nno <leader>ses :set spelllang=es_mx<CR>
 
 " Move through buffers
-nno <silent> <leader>j :bn<CR>
-nno <silent> <leader>k :bp<CR>
 nno <silent> <leader>q :bdelete<CR>
-nno <Tab> :bnext<CR>
-nno <S-Tab> :bprevious<CR>
+nno <silent> <Tab> :bnext<CR>
+nno <silent> <S-Tab> :bprevious<CR>
 
 " Tabs
 nno <silent> <leader>h :tabp<CR>
@@ -191,10 +188,6 @@ no <leader>vk :res -10<CR>
 nno L xp
 nno H Xph
 
-" Open new tab
-nno <leader>tn :tabnew<CR>
-nno <leader>Tn :tabnew
-
 " Move through wrapped lines
 imap <silent> <Down> <C-o>gj
 imap <silent> <Up> <C-o>gk
@@ -210,10 +203,10 @@ no <Space>j *
 no <Space>k #
 
 " Move faster through text
-nno <C-e> 5<C-e>
-nno <C-y> 5<C-y>
-vno <C-e> 5<C-e>
-vno <C-y> 5<C-y>
+" nno <C-e> 5<C-e>
+" nno <C-y> 5<C-y>
+" vno <C-e> 5<C-e>
+" vno <C-y> 5<C-y>
 
 " Select all text
 map <Space>a ggVG
@@ -254,6 +247,10 @@ set noswapfile
 " clipboard
 set clipboard+=unnamedplus
 
+" Precision editing
+set cursorcolumn
+set cursorline
+
 " encoding
 set encoding=utf-8
 
@@ -282,8 +279,8 @@ set ttyfast
 set magic
 
 " Required by Latex-Suite
-set grepprg=grep\ -nH\ $*       " Required by Latex-Suite
-set shellslash                  " Required by Latex-Suite
+" set grepprg=grep\ -nH\ $*       " Required by Latex-Suite
+" set shellslash                  " Required by Latex-Suite
 
 " searching
 set ignorecase
@@ -322,7 +319,9 @@ set splitbelow
 set splitright
 
 " Highlight ugly code
-match ErrorMsg '\%>120v.\+'
+highlight OverLength ctermbg=red ctermfg=white guibg=#870000
+" match ErrorMsg '\%81v'
+let w:m2=matchadd('OverLength', '\%81v', -1)
 match ErrorMsg '\s\+$'
 
 " }}}
@@ -537,6 +536,7 @@ let g:SimpylFold_docstring_preview=1
 let g:startify_bookmarks = [
             \ { 'b': '$HOME/.config/polybar/config' },
             \ { 'i': '$HOME/.config/i3/config' },
+            \ { 'm': '$HOME/.config/mutt/muttrc' },
             \ { 't': '$HOME/.tmux.conf' },
             \ { 'v': '$HOME/.config/nvim/init.vim' },
             \ { 'z': '$HOME/.zshrc' },
@@ -656,11 +656,12 @@ let g:hardtime_default_on = 1
 let g:hardtime_timeout = 2000
 let g:hardtime_showmsg = 0
 let g:hardtime_ignore_quickfix = 1
-let g:hardtime_ignore_buffer_patterns = [ "NERD.*", "Tagbar" ]
+let g:hardtime_ignore_buffer_patterns = [ "NERD.*", "Tagbar", "Help" ]
 let g:hardtime_maxcount = 1
 " }}} Vim-hardtime "
 
 " Vimtex {{{ "
+" let g:vimtex_latexmk_options = '-pdf -verbose -bibtex -file-line-error -synctex=1 --interaction=nonstopmode'
 let g:vimtex_compiler_latexmk = {
             \ 'build_dir' : 'build',
             \}

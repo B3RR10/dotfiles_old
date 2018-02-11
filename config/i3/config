@@ -79,6 +79,7 @@ bindsym Mod1+Shift+o exec --no-startup-id rofi-pass
 
 # Execute programs
 bindsym $mod+x exec chromium
+bindsym $mod+m exec termite -e neomutt
 
 # Take a screenshot of an area
 bindsym --release Print exec import $HOME/Pictures/screenshots/Screenshot_$(date +%F_%H%M%S_%N).png
@@ -311,23 +312,27 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# Lock screen
+bindsym Control+Mod1+Delete exec $i3exit lock
+bindsym Control+Mod1+Shift+Delete exec $i3exit suspend
 ####################
 # Execute on login #
 ####################
 exec --no-startup-id compton -f
 # Start programs with `systemctl --user`
-#   redshift
 #   dunst
-#
+
+exec --no-startup-id redshift
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id xautolock -detectsleep -time 60 -locker '$i3exit lock'
+exec_always --no-startup-id xss-lock -- $i3exit lock
 
 exec --no-startup-id nm-applet
-exec --no-startup-id dropbox
-exec --no-startup-id owncloud
-exec --no-startup-id megasync
-exec --no-startup-id thunderbird
+# exec --no-startup-id dropbox
+# exec --no-startup-id owncloud
+# exec --no-startup-id megasync
+# exec --no-startup-id thunderbird
 
 ####################
 #  Execute always  #
