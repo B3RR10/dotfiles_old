@@ -55,7 +55,7 @@ Plug 'suxpert/vimcaps'          " Turn off caps when change from insert to norma
 Plug 'easymotion/vim-easymotion' " Easy motions
 Plug 'junegunn/fzf',            { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'neilagabriel/vim-geeknote'
+" Plug 'neilagabriel/vim-geeknote'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -309,7 +309,7 @@ set autoread
 set hidden
 set nu
 set rnu
-set scrolloff=10
+set scrolloff=5
 
 " Updatetime
 set updatetime=500
@@ -321,7 +321,7 @@ set splitright
 " Highlight ugly code
 highlight OverLength ctermbg=red ctermfg=white guibg=#870000
 " match ErrorMsg '\%81v'
-let w:m2=matchadd('OverLength', '\%81v', -1)
+let w:m2=matchadd('OverLength', '\%121v', -1)
 match ErrorMsg '\s\+$'
 
 " }}}

@@ -4,7 +4,7 @@ export BROWSER=/usr/bin/chromium
 export GIT_EDITOR=nvim
 export VISUAL=nvim
 export LESSCHARSET=UTF-8
-export TERM=tmux-256color
+export TERM=screen-256color
 # export PAGER='less'
 
 # Add Scripts to Path

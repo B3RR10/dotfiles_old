@@ -63,11 +63,11 @@ source /etc/profile.d/autojump.zsh
 
 # -------------------- FZF FuzzyFinder -------------------- #
 
-export FZF_DEFAULT_COMMAND='fd -H "" ~'
+export FZF_DEFAULT_COMMAND='fd --hidden --follow --type file --exclude .git'
 export FZF_TMUX=1
 # export FZF_TMUX_HEIGHT=30\%
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND='fd -H -t d'
+export FZF_ALT_C_COMMAND='fd --hidden --follow --type directory --exclude .git'
 export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 
 # pass completion suggested by @d4ndo (#362)
