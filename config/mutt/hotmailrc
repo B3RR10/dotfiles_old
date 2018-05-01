@@ -1,0 +1,31 @@
+#Change these for your Gmail:
+
+set imap_user        = "miguelberrio@hotmail.com"
+set smtp_url         = "smtp://miguelberrio@hotmail.com@smtp.live.com:587/"
+set realname         = "Miguel Berrio"
+set from             = "Miguel Berrio <miguelberrio@hotmail.com>"
+
+#What's below will be pretty much the same for any Gmail account:
+
+set folder           = "imaps://imap-mail.outlook.com:993"
+set spoolfile        = "+INBOX"
+set imap_check_subscribed
+set hostname         = hotmail.com
+set record           = "+Sent"
+set postponed        = "+Drafts"
+set header_cache     = ~/.config/mutt/hotmail/cache/headers
+set message_cachedir = ~/.config/mutt/hotmail/cache/bodies
+set certificate_file = ~/.config/mutt/hotmail/certificates
+set ssl_starttls     = yes
+set ssl_force_tls    = yes
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index gs "<change-folder>=Sent<enter>" "Go to sent mail"
+macro index gt "<change-folder>=Trash<enter>" "Go to trash"
+macro index gd "<change-folder>=Drafts<enter>" "Go to drafts"
+macro index ga "<change-folder>=Archive<enter>" "Go to archive"
+macro index gj "<change-folder>=Correo no deseado<enter>" "Go to junk"
+macro index,pager A "<save-message>=Archive<enter>" "Archive Message"
+
+#For passwords, if you want login automatic:
+set smtp_pass        = $my_hotmail_pass
+set imap_pass        = $my_hotmail_pass

@@ -1,0 +1,58 @@
+set my_gmail_pass = `pass Mutt/Gmail_miguelberrio91`
+set my_hotmail_pass = `pass Mutt/Hotmail_miguelberrio`
+set my_fh_pass = `pass Mutt/FH_Muenster`
+bind index g noop
+source ~/.config/mutt/gmailrc
+source ~/.config/mutt/muttcol
+source ~/.config/mutt/aliases
+
+# set sort = 'reverse-date'
+set sort = 'threads'
+set sort_aux = 'reverse-last-date-received'
+set editor = nvim
+set timeout = "5"
+set mail_check = "10"
+set mailcap_path = ~/.config/mutt/mailcap
+set date_format="%d.%m.%Y %H:%M"
+set index_format="%2C %Z %d %-15.15F %s (%-4.4c)"
+
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
+mono bold bold
+mono underline underline
+mono indicator reverse
+color index yellow default '.*'
+color index_author red default '.*'
+color index_number blue default
+color index_subject cyan default '.s'
+color index_size green default
+color normal default default
+color body brightred default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+color body brightblue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+
+bind editor <space> noop
+bind index G last-entry
+bind index gg first-entry
+bind index d half-down
+bind index u half-up
+bind index D delete-message
+bind index U undelete-message
+bind index F search
+bind index R group-reply
+
+macro pager d '<exit><delete-message>'
+
+macro attach S <tag-prefix><save-entry><kill-line>~/Downloads/attachments/<enter>
+
+macro index <F2> '<sync-mailbox><enter-command>source ~/.config/mutt/gmailrc<enter><change-folder>!<enter>'
+macro index <F3> '<sync-mailbox><enter-command>source ~/.config/mutt/hotmailrc<enter><change-folder>!<enter>'
+macro index <F4> '<sync-mailbox><enter-command>source ~/.config/mutt/fhmuensterrc<enter><change-folder>!<enter>'
+
+source ~/.config/mutt/gpg.rc
+
+set pgp_use_gpg_agent = yes
+set pgp_sign_as = A9FDFA72
+set pgp_timeout = 3600
+set crypt_autosign = yes
+set crypt_replyencrypt = yes
