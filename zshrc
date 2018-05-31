@@ -22,20 +22,19 @@ zpm load title
 zpm load user-promt
 zpm load zsh-core
 zpm load djui/alias-tips
-zpm load denysdovhan/spaceship-zsh-theme
-zpm load s7anley/zsh-geeknote
+zpm load denysdovhan/spaceship-prompt
 
-plugins=(git colored-man-pages)
+plugins=(git colored-man-pages, cargo)
 source $ZSH/oh-my-zsh.sh
 
 # --------------- Customize to your needs... --------------- #
 
 # Files to source
-# ~/new-dotfiles/zsh/alias.zsh
-# ~/new-dotfiles/zsh/env.zsh
-# ~/new-dotfiles/zsh/git.zsh
-# ~/new-dotfiles/zsh/tmux.zsh
-export ZSHRC=~/new-dotfiles/zsh
+# ~/.dotfiles/zsh/alias.zsh
+# ~/.dotfiles/zsh/env.zsh
+# ~/.dotfiles/zsh/git.zsh
+# ~/.dotfiles/zsh/tmux.zsh
+export ZSHRC=~/.dotfiles/zsh
 for config ($ZSHRC/**/*.zsh) source $config
 
 # -------------------- Auto-ls -------------------- #
@@ -58,9 +57,6 @@ zle -N auto-ls
 zle -N accept-line auto-ls
 add-zsh-hook chpwd auto-ls
 
-# -------------------- Autojump -------------------- #
-source /etc/profile.d/autojump.zsh
-
 # -------------------- FZF FuzzyFinder -------------------- #
 
 export FZF_DEFAULT_COMMAND='fd --hidden --follow --type file --exclude .git'
@@ -71,17 +67,17 @@ export FZF_ALT_C_COMMAND='fd --hidden --follow --type directory --exclude .git'
 export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 
 # pass completion suggested by @d4ndo (#362)
-_fzf_complete_pass() {
-  _fzf_complete '+m' "$@" < <(
-    pwdir=${PASSWORD_STORE_DIR-~/.password-store/}
-    stringsize="${#pwdir}"
-    find "$pwdir" -name "*.gpg" -print |
-        cut -c "$((stringsize + 1))"-  |
-        sed -e 's/\(.*\)\.gpg/\1/'
-  )
-}
-
-[ -n "$BASH" ] && complete -F _fzf_complete_pass -o default -o bashdefault pass
+# _fzf_complete_pass() {
+#   _fzf_complete '+m' "$@" < <(
+#     pwdir=${PASSWORD_STORE_DIR-~/.password-store/}
+#     stringsize="${#pwdir}"
+#     find "$pwdir" -name "*.gpg" -print |
+#         cut -c "$((stringsize + 1))"-  |
+#         sed -e 's/\(.*\)\.gpg/\1/'
+#   )
+# }
+#
+# [ -n "$BASH" ] && complete -F _fzf_complete_pass -o default -o bashdefault pass
 
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
@@ -94,7 +90,13 @@ md () {
 
 # ------------------------- Theme ------------------------- #
 
-source $HOME/.local/share/zpm/denysdovhan---spaceship-zsh-theme/spaceship.zsh-theme
+# 1. Create directory $HOME/.local/share/zsh/functions/Prompts
+# 2. Make symlink for prompt: $HOME/.local/share/zsh/functions/Prompts
+#   ln -s $PWD/spaceship.zsh $HOME/.local/share/zsh/functions/Prompts/prompt_spaceship_setup
+fpath=( "$HOME/.local/share/zsh/functions/Prompts" "$HOME/.local/share/zsh/functions/Completion" $fpath )
+autoload -U promptinit; promptinit
+prompt spaceship
+# source $HOME/.local/share/zpm/denysdovhan---spaceship-zsh-theme/spaceship.zsh-theme
 
 # PROMPT
 SPACESHIP_PROMPT_ADD_NEWLINE=false
@@ -106,5 +108,3 @@ SPACESHIP_BATTERY_SHOW=false
 # EXIT CODE
 SPACESHIP_EXIT_CODE_SHOW=true
 SPACESHIP_EXIT_CODE_SYMBOl="✘ "
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

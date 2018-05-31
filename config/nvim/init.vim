@@ -8,7 +8,7 @@
 " Plugins {{{
 " " "
 
-call plug#begin('$HOME/.config/nvim/plugged')
+call plug#begin('$HOME/.local/share/nvim/plugged')
 "--------------------------------------------------"
 
 " UI
@@ -16,24 +16,24 @@ Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline' " Statusline
 Plug 'vim-airline/vim-airline-themes' " Statusline
 Plug 'Lokaltog/powerline-fonts' " Required by airline
-Plug 'flazz/vim-colorschemes' " Colorschemes
-Plug 'chrisbra/Colorizer'
+" Plug 'flazz/vim-colorschemes' " Colorschemes
+" Plug 'chrisbra/Colorizer'
 Plug 'romainl/Apprentice',          { 'branch': 'fancylines-and-neovim' }
 
 " Languages
 Plug 'sheerun/vim-polyglot'
-Plug 'mattn/emmet-vim',             { 'for': [ 'html', 'xml', 'handlebars' ] }
-Plug 'othree/html5.vim',            { 'for': 'html' }
-Plug 'gregsexton/MatchTag',         { 'for': [ 'html', 'xml', 'handlebars' ] }
-Plug 'plasticboy/vim-markdown',     { 'for': 'markdown' }
+" Plug 'mattn/emmet-vim',             { 'for': [ 'html', 'xml', 'handlebars' ] }
+" Plug 'othree/html5.vim',            { 'for': 'html' }
+" Plug 'gregsexton/MatchTag',         { 'for': [ 'html', 'xml', 'handlebars' ] }
+" Plug 'plasticboy/vim-markdown',     { 'for': 'markdown' }
 Plug 'tmhedberg/SimpylFold',        { 'for': 'python' } " Fold code in Python
 Plug 'vim-scripts/indentpython.vim',{ 'for': 'python' }
-Plug 'rust-lang/rust.vim',          { 'for': 'rust' } " Rust filetype *** CHECK OPTIONS ***
+Plug 'rust-lang/rust.vim',          { 'for': 'rust' } " Rust filetype *** TODO: CHECK OPTIONS ***
 Plug 'racer-rust/vim-racer',        { 'for': 'rust' }
 Plug 'timonv/vim-cargo',            { 'for': 'rust' }
 Plug 'cespare/vim-toml',            { 'for': 'toml' }
-Plug 'fatih/vim-go',                { 'for': 'go', 'do': ':GoInstallBinaries' }
-Plug 'Rip-Rip/clang_complete',      { 'do': 'make' }
+" Plug 'fatih/vim-go',                { 'for': 'go', 'do': ':GoInstallBinaries' }
+" Plug 'Rip-Rip/clang_complete',      { 'do': 'make' }
 Plug 'scrooloose/nerdcommenter' " Commenting operations
 Plug 'jiangmiao/auto-pairs'     " Close quotes, parenthesis, brackets, etc automatic
 Plug 'majutsushi/tagbar'        " Browse tags of source files
@@ -45,7 +45,7 @@ Plug 'airblade/vim-gitgutter'   " Git integration (Show diff on files)
 Plug 'tpope/vim-fugitive',      { 'as': 'fugitive.vim' } " Git commands
 Plug 'junegunn/gv.vim'          " Git commit browser
 Plug 'scrooloose/nerdtree',     { 'on': 'NERDTreeToggle' }
-Plug 'simnalamburt/vim-mundo'
+" Plug 'simnalamburt/vim-mundo'
 Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'  " Alignment tool
 Plug 'godlygeek/tabular'        " Auto indent
@@ -53,22 +53,22 @@ Plug 'tpope/vim-repeat'         " Repeat last command (Also when it's a plugin-m
 Plug 'vim-scripts/Rename'       " Rename buffer and file on disk
 Plug 'suxpert/vimcaps'          " Turn off caps when change from insert to normal mode
 Plug 'easymotion/vim-easymotion' " Easy motions
-Plug 'junegunn/fzf',            { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf'            "{ 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " Plug 'neilagabriel/vim-geeknote'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'takac/vim-hardtime'
+" Plug 'takac/vim-hardtime'
 
 if has('nvim')
     Plug 'benekastah/neomake'
     Plug ('Shougo/deoplete.nvim'),          { 'do': ':UpdateRemotePlugins' } " Code completion
-    Plug 'zchee/deoplete-go', { 'do': 'make'}
+    " Plug 'zchee/deoplete-go', { 'do': 'make'}
     Plug 'sebastianmarkow/deoplete-rust',   { 'for': 'rust' }
-    Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+    "Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 else
-    Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+    " Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 endif
 
 "--------------------------------------------------"
@@ -673,10 +673,10 @@ let g:vim_markdown_toc_autofit = 1
 " }}} Vim-markdown "
 
 " Vim-mundo {{{
-nmap <F5> :MundoToggle<CR>
+" nmap <F5> :MundoToggle<CR>
 " Enable persistent undo so that undo history persists across vim sessions
-set undofile
-set undodir=~/.vim/undo
+" set undofile
+" set undodir=~/.vim/undo
 " }}}
 
 " Vim-polyglot {{{ "

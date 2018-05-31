@@ -11,7 +11,7 @@ _rofi () {
 
 # If for some reason, you cannot do this, you can set the command here.
 # and set fix_layout to true
-fix_layout=false
+fix_layout=true
 
 layout_cmd () {
   setxkbmap us
@@ -34,7 +34,7 @@ BROWSER='chromium'
 
 ## Misc settings
 
-default_do='menu' # menu, autotype, copyPass, typeUser, typePass, copyUser, copyUrl, viewEntry, typeMenu, actionMenu, copyMenu, openUrl
+default_do='autotype' # menu, autotype, copyPass, typeUser, typePass, copyUser, copyUrl, viewEntry, typeMenu, actionMenu, copyMenu, openUrl
 auto_enter='false'
 notify='false'
 
@@ -47,14 +47,14 @@ help_color="#4872FF"
 clip=primary
 
 # Options for generating new password entries
-default_user=john_doe
-default_user2=mary_ann
+default_user=miguelberrio91
+default_user2=picasso91
 password_length=20
 
 # Custom Keybindings
 autotype="Alt+1"
 type_user="Alt+2"
-type_pass="Alt+3"
+type_pass="Shift+Return"
 open_url="Alt+4"
 copy_name="Alt+u"
 copy_url="Alt+l"

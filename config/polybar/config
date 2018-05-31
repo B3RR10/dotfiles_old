@@ -51,7 +51,7 @@ font-2 = ${fonts.font2}
 font-3 = ${fonts.font3}
 
 modules-left = i3
-modules-center = left_brace date time pomodoro right_brace
+modules-center = left_brace date time right_brace
 modules-right = vpncheck wlan eth memory cpu xbacklight volume xkeyboard battery
 
 tray-position = right
@@ -272,7 +272,7 @@ label-volume = %percentage%%
 label-volume-foreground = ${colors.foreground}
 
 format-muted = <label-muted>
-label-muted = " "
+label-muted = "🔇 Mute"
 label-muted-foreground = ${colors.secondary}
 
 ramp-volume-0 = 
