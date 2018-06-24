@@ -14,7 +14,7 @@ _rofi () {
 fix_layout=true
 
 layout_cmd () {
-  setxkbmap us
+  setxkbmap -model pc105 -layout us -variant altgr-intl
 }
 
 # fields to be used
