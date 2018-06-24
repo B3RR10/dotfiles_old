@@ -17,7 +17,7 @@ Plug 'vim-airline/vim-airline' " Statusline
 Plug 'vim-airline/vim-airline-themes' " Statusline
 Plug 'Lokaltog/powerline-fonts' " Required by airline
 " Plug 'flazz/vim-colorschemes' " Colorschemes
-" Plug 'chrisbra/Colorizer'
+Plug 'chrisbra/Colorizer'
 Plug 'romainl/Apprentice',          { 'branch': 'fancylines-and-neovim' }
 
 " Languages
@@ -580,6 +580,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsListSnippets = "<c-q>"
 
 let g:UltiSnipsEditSplit="vertical"
+
+set runtimepath+=~/.local/share/nvim
+let g:UltiSnipsSnippetDirectories = ['snippets/UltiSnips', 'UltiSnips']
 " }}}
 
 " Vim-geeknote {{{
