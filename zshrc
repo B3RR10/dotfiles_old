@@ -1,31 +1,35 @@
-export ZSH=$HOME/.oh-my-zsh
+export ZPLUG_HOME=~/.local/share/zplug
 
-if [[ -f ~/.zpm/zpm.zsh ]]; then
-    source ~/.zpm/zpm.zsh
+if [[ -d ~/.local/share/zplug ]]; then
+    source $ZPLUG_HOME/init.zsh
 else
-    git clone --recursive https://github.com/horosgrisa/zpm ~/.zpm
-    source ~/.zpm/zpm.zsh
-fi
-if [[ ! -d $ZSH ]]; then
-    git clone git://github.com/robbyrussell/oh-my-zsh.git $ZSH
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
 
-autoload -Uz add-zsh-hook
+# Auto manage zplug
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
-zpm load cd
-zpm load git
-zpm load ls
-zpm load noempty
-zpm load oh-my-zsh-wrapper
-zpm load path
-zpm load title
-zpm load user-promt
-zpm load zsh-core
-zpm load djui/alias-tips
-zpm load denysdovhan/spaceship-prompt
+# From oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/colored-man-pages", from:oh-my-zsh
+zplug "plugins/cargo", from:oh-my-zsh
 
-plugins=(git colored-man-pages, cargo)
-source $ZSH/oh-my-zsh.sh
+# From Github
+zplug "djui/alias-tips"
+# zplug "wfxr/forgit", defer:1
+zplug "zpm-zsh/zpm", use:"plugins/{cd,git,zsh-core}"
+zplug "zsh-users/zsh-completions"
+
+# Theme
+zplug "mafredri/zsh-async", from:github
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check; then
+    zplug install
+fi
+
+zplug load
 
 # --------------- Customize to your needs... --------------- #
 
@@ -33,6 +37,8 @@ source $ZSH/oh-my-zsh.sh
 # ~/.dotfiles/zsh/alias.zsh
 # ~/.dotfiles/zsh/env.zsh
 # ~/.dotfiles/zsh/git.zsh
+# ~/.dotfiles/zsh/history.zsh
+# ~/.dotfiles/zsh/key-bindings.zsh
 # ~/.dotfiles/zsh/tmux.zsh
 export ZSHRC=~/.dotfiles/zsh
 for config ($ZSHRC/**/*.zsh) source $config
@@ -59,52 +65,54 @@ add-zsh-hook chpwd auto-ls
 
 # -------------------- FZF FuzzyFinder -------------------- #
 
-export FZF_DEFAULT_COMMAND='fd --hidden --follow --type file --exclude .git'
+export FZF_DEFAULT_COMMAND='fd --hidden --follow --type file --exclude .git --exclude .wine'
 export FZF_TMUX=1
 # export FZF_TMUX_HEIGHT=30\%
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND='fd --hidden --follow --type directory --exclude .git'
 export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 
-# pass completion suggested by @d4ndo (#362)
-# _fzf_complete_pass() {
-#   _fzf_complete '+m' "$@" < <(
-#     pwdir=${PASSWORD_STORE_DIR-~/.password-store/}
-#     stringsize="${#pwdir}"
-#     find "$pwdir" -name "*.gpg" -print |
-#         cut -c "$((stringsize + 1))"-  |
-#         sed -e 's/\(.*\)\.gpg/\1/'
-#   )
-# }
-#
-# [ -n "$BASH" ] && complete -F _fzf_complete_pass -o default -o bashdefault pass
-
-source /usr/share/fzf/completion.zsh
-source /usr/share/fzf/key-bindings.zsh
-
-unalias md
+# unalias md
 md () {
     mkdir -p -- "$1" &&
         cd -P -- "$1"
 }
 
-# ------------------------- Theme ------------------------- #
+# ------------------------- Zsh fpath config ------------------------- #
 
-# 1. Create directory $HOME/.local/share/zsh/functions/Prompts
-# 2. Make symlink for prompt: $HOME/.local/share/zsh/functions/Prompts
-#   ln -s $PWD/spaceship.zsh $HOME/.local/share/zsh/functions/Prompts/prompt_spaceship_setup
-fpath=( "$HOME/.local/share/zsh/functions/Prompts" "$HOME/.local/share/zsh/functions/Completion" $fpath )
-autoload -U promptinit; promptinit
-prompt spaceship
-# source $HOME/.local/share/zpm/denysdovhan---spaceship-zsh-theme/spaceship.zsh-theme
+# Create directory $HOME/.local/share/zsh/functions/Completion
+if [[ ! -d $HOME/.local/share/zsh/functions/Completion ]]; then
+    mkdir -p $HOME/.local/share/zsh/functions/Completion
+fi
 
-# PROMPT
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_PROMPT_SEPARATE_LINE=true
+fpath=( "$HOME/.local/share/zsh/functions/Completion" $fpath )
 
-# BATTERY
-SPACESHIP_BATTERY_SHOW=false
+# ------------------------- Completion ------------------------- #
 
-# EXIT CODE
-SPACESHIP_EXIT_CODE_SHOW=true
-SPACESHIP_EXIT_CODE_SYMBOl="✘ "
+# Keybase Completion
+if (( $+commands[keybase] )); then
+    if [[ ! -a ~/.local/share/zsh/functions/Completion/_keybase ]]; then
+        curl -fLo /home/mberrio/.local/share/zsh/functions/Completion/_keybase https://raw.githubusercontent.com/fnoris/keybase-zsh-completion/master/_keybase
+    fi
+else
+    echo Please install keybase
+fi
+
+# Rustup completion
+if (( $+commands[rustup] )); then
+    if [[ ! -a $HOME/.local/share/zsh/functions/Completion/_rustup ]]; then
+        rustup completions zsh > $HOME/.local/share/zsh/functions/Completion/_rustup
+    fi
+else
+    echo Please install rustup
+fi
+
+# FZF completion
+if (( $+commands[fzf] )); then
+    source /usr/share/fzf/completion.zsh
+    source /usr/share/fzf/key-bindings.zsh
+else
+    echo Please install fzf
+fi
+
+compinit

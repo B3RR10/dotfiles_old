@@ -10,7 +10,7 @@ alias edit='nvim'
 alias -g ls='ls -A --color=auto --group-directories-first'
 alias -g ll='ls -l --color=auto --group-directories-first'
 alias -g la='ls -lA --color=auto --group-directories-first'
-alias -g l='ls -A --color=auto --group-directories-first'
+alias -g l='ls -Ax --color=auto --group-directories-first'
 alias -g lh='ls -lh --color=auto --group-directories-first'
 
 # Ranger
