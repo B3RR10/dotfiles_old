@@ -3,7 +3,7 @@
 
 # rofi command. Make sure to have "$@" as last argument
 _rofi () {
-    rofi -kb-accept-entry "!Return" "$@"
+    rofi -i -kb-accept-entry "!Return" "$@"
 }
 
 # xdotool needs the keyboard layout to be set using setxkbmap
@@ -49,7 +49,7 @@ clip=primary
 # Options for generating new password entries
 default_user=miguelberrio91
 default_user2=picasso91
-password_length=20
+password_length=25
 
 # Custom Keybindings
 autotype="Alt+1"
