@@ -53,7 +53,7 @@ for_window [class="^.*"] border pixel 3
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite -e 'tmux -2u'
+bindsym $mod+Return exec alacritty -e 'tmux'
 
 # Floating terminal
 bindsym $mod+t exec --no-startup-id $i3/floating.sh
