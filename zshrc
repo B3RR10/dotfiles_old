@@ -13,6 +13,8 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/cargo", from:oh-my-zsh
+zplug "lib/key-bindings", from:oh-my-zsh
+zplug "lib/completion", from:oh-my-zsh
 
 # From Github
 zplug "djui/alias-tips"
@@ -69,7 +71,7 @@ export FZF_DEFAULT_COMMAND='fd --hidden --follow --type file --exclude .git --ex
 export FZF_TMUX=1
 # export FZF_TMUX_HEIGHT=30\%
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND='fd --hidden --follow --type directory --exclude .git'
+export FZF_ALT_C_COMMAND='fd --hidden --follow --type directory --exclude .git --exclude .wine'
 export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 
 # unalias md

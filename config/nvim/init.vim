@@ -14,26 +14,33 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 " UI
 Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline' " Statusline
-Plug 'vim-airline/vim-airline-themes' " Statusline
 Plug 'Lokaltog/powerline-fonts' " Required by airline
-" Plug 'flazz/vim-colorschemes' " Colorschemes
 Plug 'chrisbra/Colorizer'
 Plug 'romainl/Apprentice',          { 'branch': 'fancylines-and-neovim' }
 
 " Languages
 Plug 'sheerun/vim-polyglot'
-" Plug 'mattn/emmet-vim',             { 'for': [ 'html', 'xml', 'handlebars' ] }
-" Plug 'othree/html5.vim',            { 'for': 'html' }
-" Plug 'gregsexton/MatchTag',         { 'for': [ 'html', 'xml', 'handlebars' ] }
-" Plug 'plasticboy/vim-markdown',     { 'for': 'markdown' }
+Plug 'mattn/emmet-vim',             { 'for': [ 'html', 'xml', 'handlebars' ] }
+Plug 'othree/html5.vim',            { 'for': 'html' }
+Plug 'gregsexton/MatchTag',         { 'for': [ 'html', 'xml', 'handlebars' ] }
+
+Plug 'plasticboy/vim-markdown',     { 'for': 'markdown' }
+
 Plug 'tmhedberg/SimpylFold',        { 'for': 'python' } " Fold code in Python
 Plug 'vim-scripts/indentpython.vim',{ 'for': 'python' }
+
 Plug 'rust-lang/rust.vim',          { 'for': 'rust' } " Rust filetype *** TODO: CHECK OPTIONS ***
 Plug 'racer-rust/vim-racer',        { 'for': 'rust' }
 Plug 'timonv/vim-cargo',            { 'for': 'rust' }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 Plug 'cespare/vim-toml',            { 'for': 'toml' }
+
 " Plug 'fatih/vim-go',                { 'for': 'go', 'do': ':GoInstallBinaries' }
-" Plug 'Rip-Rip/clang_complete',      { 'do': 'make' }
+"
 Plug 'scrooloose/nerdcommenter' " Commenting operations
 Plug 'jiangmiao/auto-pairs'     " Close quotes, parenthesis, brackets, etc automatic
 Plug 'majutsushi/tagbar'        " Browse tags of source files
@@ -55,21 +62,15 @@ Plug 'suxpert/vimcaps'          " Turn off caps when change from insert to norma
 Plug 'easymotion/vim-easymotion' " Easy motions
 " Plug 'junegunn/fzf'            "{ 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Plug 'neilagabriel/vim-geeknote'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-" Plug 'takac/vim-hardtime'
 
-if has('nvim')
-    Plug 'benekastah/neomake'
-    Plug ('Shougo/deoplete.nvim'),          { 'do': ':UpdateRemotePlugins' } " Code completion
-    " Plug 'zchee/deoplete-go', { 'do': 'make'}
-    Plug 'sebastianmarkow/deoplete-rust',   { 'for': 'rust' }
-    "Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-else
-    " Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-endif
+Plug 'benekastah/neomake'
+Plug ('Shougo/deoplete.nvim'),          { 'do': ':UpdateRemotePlugins' } " Code completion
+" Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'sebastianmarkow/deoplete-rust',   { 'for': 'rust' }
+"Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
 "--------------------------------------------------"
 call plug#end()
@@ -462,6 +463,25 @@ let g:gitgutter_sign_modified = '∙'
 let g:gitgutter_sign_removed = '∙'
 let g:gitgutter_sign_modified_removed = '∙'
 let g:gitgutter_grep_command = 'rg'
+" }}}
+
+" Language Client {{{
+set hidden
+
+let g:LanguageClient_autoStart = 1
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 " }}}
 
 " Latex-Suite {{{

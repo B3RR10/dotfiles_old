@@ -82,7 +82,7 @@ bindsym $mod+p exec --no-startup-id rofi-pass
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # Execute programs
-bindsym $mod+x exec chromium
+bindsym $mod+x exec env GTK_THEME=United-Arch-Light-Compact firefox
 bindsym $mod+m exec termite -e neomutt
 
 # Install imagemagik
