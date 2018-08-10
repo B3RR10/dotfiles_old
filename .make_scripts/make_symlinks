@@ -1,0 +1,57 @@
+#!/usr/bin/env sh
+# vim: ft=sh
+TARGETDIR="$HOME"
+DOTFILES="$HOME/.dotfiles"
+
+echo "Dotfiles directory: $DOTFILES"
+echo "Target directory: $TARGETDIR"
+
+function format_path()
+{
+    RET=$(echo $1 | sed -e 's/\//\\\//g')
+    echo "$RET\/"
+}
+
+cd $DOTFILES
+DIRS=( $( find . -type d -not -path '*/\.*' -not -name README.md -not -name make_dotfiles -regex '.*' ) )
+FILES=( $( find . -type f -not -path '*/\.*' -not -name README.md -not -name make_dotfiles -regex '.*' ) )
+
+echo
+echo "Creating directories..."
+echo
+
+CAPS="\./[A-Z]"
+
+for DIR in ${DIRS[@]} ; do
+
+    # Remove parent directory
+    [ $DIR = '.' ] && continue
+
+    # Upper case directories are not hidden
+    if [[ $DIR =~ $CAPS ]]; then
+        mkdir -p $(echo $DIR | sed -e "s/^.\//$(format_path $TARGETDIR)/g")
+        # echo $(echo $DIR | sed -e "s/^.\//$(format_path $TARGETDIR)/g")
+    else
+        mkdir -p $( echo $DIR | sed -e  "s/^.\//$(format_path $TARGETDIR)./g")
+        # echo $( echo $DIR | sed -e  "s/^.\//$(format_path $TARGETDIR)./g")
+    fi
+done
+
+echo "Done"
+echo
+echo "Creating symbolic links..."
+
+for FILE in ${FILES[@]} ; do
+
+    # Upper case directories are not hidden
+    if [[ $FILE =~ $CAPS ]]; then
+        ln -s $(echo $FILE | sed -e "s/^.\//$(format_path $DOTFILES)/g") $(echo $FILE | sed -e "s/^.\//$(format_path $TARGETDIR)/g")
+        # echo  "$(echo $FILE | sed -e "s/^.\//$(format_path $DOTFILES)/g") -> $(echo $FILE | sed -e "s/^.\//$(format_path $TARGETDIR)/g")"
+    else
+        ln -s $(echo $FILE | sed -e "s/^.\//$(format_path $DOTFILES)/g") $(echo $FILE | sed -e "s/^.\//$(format_path $TARGETDIR)./g")
+        # echo  "$(echo $FILE | sed -e "s/^.\//$(format_path $DOTFILES)/g") -> $(echo $FILE | sed -e "s/^.\//$(format_path $TARGETDIR)./g")"
+    fi
+done
+
+echo "Done"
+

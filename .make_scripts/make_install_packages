@@ -1,0 +1,97 @@
+#!/usr/bin/env sh
+# vim: ft=sh
+
+PACKAGES=(
+    "python2"
+    "python"
+    "rustup"
+    "keybase"
+    "keybase-gui"
+    "compton"
+    "feh"
+    "redshift"
+    "firefox"
+    "pulseaudio"
+    "alsa-tools"
+    "alsa-utils"
+    "pulseaudio-alsa"
+    "pavucontrol"
+    "qt4"
+    "vlc"
+    "mpv"
+    "zathura"
+    "zathura-pdf-poppler"
+    "gimp"
+    "imagemagick"
+    "ghostscript"
+    "scrot"
+    "pass"
+    "pass-otp"
+    "fzf"
+    "neovim"
+    "python2-neovim"
+    "python-neovim"
+    "tmux"
+    "dunst"
+    "texlive-most"
+    "p7zip"
+    "gtk2"
+    "gtk3"
+    "gsimplecal"
+    "diff-so-fancy"
+    "openssh"
+    "gnome-keyring"
+)
+AURPACKAGES=(
+    "nerd-fonts-complete"
+    "polybar"
+    "gitflow-avh"
+    "gitflow-zshcompletion-avh"
+    "rofi-pass"
+    "jdk"
+    "jabref"
+    "spotify"
+    "gtk-theme-united-gnome"
+)
+
+echo -e "\nInstalling packages from official repo..."
+for PACK in ${PACKAGES[@]} ; do
+    if pacman -Qs $PACK > /dev/null ; then
+        echo "Package already installed: '$PACK'"
+    else
+        echo "Installing package: '$PACK'..."
+        yes | sudo pacman -S $PACK
+        echo "Package successfully installed: '$PACK'"
+    fi
+done
+
+echo -e "\nInstalling packages from AUR"
+if pacman -Qs yay-bin > /dev/null ; then
+    echo "AUR Helper 'yay' already installed"
+else
+    echo "Installing AUR helper 'yay'..."
+    dir=$(pwd)
+    cd $(mktemp -d)
+    git clone https://aur.archlinux.org/yay-bin.git
+    cd yay-bin
+    makepkg -si
+    cd ..
+    rm -rf yay-bin
+    cd $dir
+    echo "AUR Helper 'yay' successfully installed"
+fi
+
+for PACK in ${AURPACKAGES[@]}; do
+    if pacman -Qs $PACK > /dev/null ; then
+        echo "Package already installed: '$PACK'"
+    else
+        echo "Installing package: '$PACK'..."
+        yes | yay -S $PACK
+        echo "Package successfully installed: '$PACK'"
+    fi
+done
+
+echo "Start keybase on login"
+systemctl --user enable keybase.service
+echo "Start dunst on login"
+systemctl --user enable dunst.service

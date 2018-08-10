@@ -1,6 +1,6 @@
 export ZPLUG_HOME=~/.local/share/zplug
 
-if [[ -d ~/.local/share/zplug ]]; then
+if [[ -d $ZPLUG_HOME ]]; then
     source $ZPLUG_HOME/init.zsh
 else
     curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
@@ -38,14 +38,14 @@ zplug load
 # --------------- Customize to your needs... --------------- #
 
 # Files to source
-# ~/.dotfiles/zsh/alias.zsh
-# ~/.dotfiles/zsh/env.zsh
-# ~/.dotfiles/zsh/git.zsh
-# ~/.dotfiles/zsh/history.zsh
-# ~/.dotfiles/zsh/key-bindings.zsh
-# ~/.dotfiles/zsh/tmux.zsh
-export ZSHRC=~/.dotfiles/zsh
-for config ($ZSHRC/**/*.zsh) source $config
+# ~/.dotfiles/config/zsh/alias.zsh
+# ~/.dotfiles/config/zsh/env.zsh
+# ~/.dotfiles/config/zsh/git.zsh
+# ~/.dotfiles/config/zsh/history.zsh
+# ~/.dotfiles/config/zsh/key-bindings.zsh
+# ~/.dotfiles/config/zsh/tmux.zsh
+export ZSH_CONF=~/.config/zsh
+for config ($ZSH_CONF/**/*.zsh) source $config
 
 # -------------------- Auto-ls -------------------- #
 auto-ls () {
