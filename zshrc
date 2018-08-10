@@ -4,6 +4,8 @@ if [[ -d ~/.local/share/zplug ]]; then
     source $ZPLUG_HOME/init.zsh
 else
     curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+    source $HOME/.zshrc
+    exit
 fi
 
 # Auto manage zplug
