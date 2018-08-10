@@ -264,7 +264,7 @@ click-right = echo "$((`cut .pomodoro_session -d ' ' -f 1`+5)) 5" > .pomodoro_se
 click-middle = echo "$((`cut .pomodoro_session -d ' ' -f 1`-5)) 5" > .pomodoro_session
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 
 format-volume = <ramp-volume><label-volume>
 
@@ -272,7 +272,7 @@ label-volume = %percentage%%
 label-volume-foreground = ${colors.foreground}
 
 format-muted = <label-muted>
-label-muted = "🔇 Mute"
+label-muted = "Mute"
 label-muted-foreground = ${colors.secondary}
 
 ramp-volume-0 = 
