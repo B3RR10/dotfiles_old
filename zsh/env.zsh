@@ -7,7 +7,7 @@ export LESSCHARSET=UTF-8
 export TERM=tmux-256color
 
 # Add Scripts to Path
-export PATH=$PATH:$HOME/.scripts
+export PATH=$PATH:$HOME/Scripts
 # Add Screenlayouts to path
 export PATH=$PATH:$HOME/.screenlayout
 # Cargo env
