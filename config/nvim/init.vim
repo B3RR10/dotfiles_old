@@ -72,6 +72,9 @@ Plug ('Shougo/deoplete.nvim'),          { 'do': ':UpdateRemotePlugins' } " Code 
 Plug 'sebastianmarkow/deoplete-rust',   { 'for': 'rust' }
 "Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
+" A better Vimdiff Git mergetool
+Plug 'whiteinge/diffconflicts'
+
 "--------------------------------------------------"
 call plug#end()
 " }}}
