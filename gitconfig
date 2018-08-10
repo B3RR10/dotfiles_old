@@ -1,25 +1,5 @@
 [alias]
 
-    # Switch to a branch, creating it if necessary
-    go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
-
-    # Show verbose output about tags, branches or remotes
-    tags = tag -l
-    branches = branch -a
-    remotes = remote -v
-
-    # Interactive rebase with the given number of latest commits
-    reb = "!r() { git rebase -i HEAD~$1; }; r"
-
-    # Remove the old tag with this name and tag the latest commit with it.
-    retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
-
-    # Find branches containing commit
-    fb = "!f() { git branch -a --contains $1; }; f"
-
-    # Find tags containing commit
-    ft = "!f() { git describe --always --contains $1; }; f"
-
     # Find commits by source code
     fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
 
@@ -61,15 +41,6 @@
     # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
     whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
-    # Make `git rebase` safer on OS X
-    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-    trustctime = false
-
-    # Prevent showing files whose names contain non-ASCII symbols as unversioned.
-    # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
-    precomposeunicode = false
-    autocrlf = input
-
     pager = diff-so-fancy | less --tabs=4 -RFX
 
 [color]
@@ -103,7 +74,6 @@
 
     # https://help.github.com/articles/signing-commits-using-gpg/
     gpgsign = true
-    # template = $HOME/.gitcommittemplate
 
 [diff]
 
@@ -133,17 +103,15 @@
 
     # Include summaries of merged commits in newly created merge commit messages
     log = true
+    tool = diffconflicts
 
 [push]
 
-    # Use the Git 1.x.x default to avoid errors on machines with old Git
-    # installations. To use `simple` instead, add this to your `~/.extra` file:
-    # `git config --global push.default simple`. See http://git.io/mMah-w.
-    default = matching
     # Make `git push` push relevant annotated tags when pushing branches out.
     followTags = true
 
 [user]
+
     signingkey = A9FDFA72
     name = Miguel Berrio
     email = miguelberrio91@gmail.com
@@ -151,7 +119,17 @@
     ; helper = /usr/share/git/credential/gnome-keyring/git-credential-gnome-keyring
 
 [color "diff-highlight"]
+
     oldNormal = red bold
     oldHighlight = red bold 52
     newNormal = green bold
     newHighlight = green bold 22
+
+[mergetool "diffconflicts"]
+
+    cmd = nvim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+    trustExitCode = true
+
+[mergetool]
+
+    keepBackup = false
