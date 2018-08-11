@@ -5,8 +5,7 @@ if [[ -d $ZPLUG_HOME ]]; then
     source $ZPLUG_HOME/init.zsh
 else
     curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-    source $HOME/.zshrc
-    exit
+    RELOAD=1 source $HOME/.zshrc
 fi
 
 # Auto manage zplug
@@ -43,10 +42,7 @@ zplug load
 # ~/.dotfiles/config/zsh/auto_ls.zsh
 # ~/.dotfiles/config/zsh/completions.zsh
 # ~/.dotfiles/config/zsh/env.zsh
-# ~/.dotfiles/config/zsh/git.zsh
 # ~/.dotfiles/config/zsh/history.zsh
-# ~/.dotfiles/config/zsh/key-bindings.zsh
-# ~/.dotfiles/config/zsh/tmux.zsh
 for config ($ZDOTDIR/**/*.zsh) source $config
 
 compinit
