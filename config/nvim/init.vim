@@ -39,19 +39,20 @@ Plug 'autozimu/LanguageClient-neovim', {
 
 Plug 'cespare/vim-toml',            { 'for': 'toml' }
 
+Plug 'lervag/vimtex'
+
 " Plug 'fatih/vim-go',                { 'for': 'go', 'do': ':GoInstallBinaries' }
 "
 Plug 'scrooloose/nerdcommenter' " Commenting operations
 Plug 'jiangmiao/auto-pairs'     " Close quotes, parenthesis, brackets, etc automatic
 Plug 'majutsushi/tagbar'        " Browse tags of source files
 Plug 'tpope/vim-surround'       " Add, change and delete surroundings
-Plug 'lervag/vimtex'
 
 " Tools
 Plug 'airblade/vim-gitgutter'   " Git integration (Show diff on files)
 Plug 'tpope/vim-fugitive',      { 'as': 'fugitive.vim' } " Git commands
 Plug 'junegunn/gv.vim'          " Git commit browser
-Plug 'scrooloose/nerdtree',     { 'on': 'NERDTreeToggle' }
+" Plug 'scrooloose/nerdtree',     { 'on': 'NERDTreeToggle' }
 " Plug 'simnalamburt/vim-mundo'
 Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'  " Alignment tool
@@ -379,16 +380,14 @@ imap <silent><CR> <CR><Plug>AutoPairsReturn
 " }}} Autopairs "
 
 " Deoplete - Completion framework {{{
-if has('nvim')
-    let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 
-    " Rust
-    let g:deoplete#sources#rust#racer_binary='$HOME/.cargo/bin/racer'
-    let g:deoplete#sources#rust#rust_source_path='$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-    let g:deoplete#sources#rust#show_duplicates=1
-    let g:deoplete#sources#rust#disable_keymap=1
-    let g:deoplete#sources#rust#documentation_max_height=20
-endif
+" Rust
+let g:deoplete#sources#rust#racer_binary='$HOME/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+let g:deoplete#sources#rust#show_duplicates=1
+let g:deoplete#sources#rust#disable_keymap=1
+let g:deoplete#sources#rust#documentation_max_height=20
 
 " }}}
 
@@ -537,7 +536,6 @@ let g:NERDTrimTrailingWhitespace = 1
 map <silent> <C-n> :NERDTreeToggle<CR>
 " Close nerdtree on file open
 let g:NERDTreeQuitOnOpen = 1
-
 " }}}
 
 " Python provider for neovim {{{
@@ -556,21 +554,55 @@ let g:SimpylFold_docstring_preview=1
 " }}}
 
 " Startify {{{
+
+autocmd User Startified setlocal cursorline
+autocmd TabNewEntered * Startify
+
+let g:startify_files_number = 8
+
+let g:startify_change_to_dir = 1
+let g:startify_change_to_vcs_root = 1
+let g:startify_relative_path = 1
+
+let g:ctrlp_reuse_window = 'startify'
+let g:startify_fortune_use_unicode = 1
+
+let g:startify_session_dir = '~/.local/share/nvim/sessions'
+let g:startify_session_persistence = 1
+let g:startify_session_delete_buffers = 1
+let g:startify_session_sort = 1
+
+let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
+
+let g:startify_lists = [
+            \ { 'type': 'sessions',  'header': ['   Sessions']       },
+            \ { 'type': 'files',     'header': ['   MRU']            },
+            \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+            \ { 'type': 'commands',  'header': ['   Commands']       },
+            \ ]
+
 let g:startify_bookmarks = [
-            \ { 'b': '$HOME/.config/polybar/config' },
-            \ { 'i': '$HOME/.config/i3/config' },
-            \ { 'm': '$HOME/.config/mutt/muttrc' },
+            \ '$HOME/.dotfiles/.make_scripts/make_install_packages',
+            \ { 'n': '$HOME/.config/nvim/init.vim' },
+            \ { 'p': '$HOME/.config/polybar/config' },
             \ { 't': '$HOME/.tmux.conf' },
-            \ { 'v': '$HOME/.config/nvim/init.vim' },
+            \ { 'x': '$HOME/.config/i3/config' },
             \ { 'z': '$HOME/.zshrc' },
+            \ ]
+
+let g:startify_skiplist = [
+            \ '^/tmp',
             \ ]
 
 hi StartifyHeader  ctermfg=114
 
-let g:startify_change_to_dir = 0
-let g:ctrlp_reuse_window = 'startify'
-
 " }}}
+
+" Sessions {{{ "
+function! Mks(name)
+    execute 'mksession! ~/.local/share/nvim/sessions/' . a:name . '-session.vim'
+endfunction
+" }}} Sessions "
 
 " supertab {{{
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -606,12 +638,6 @@ let g:UltiSnipsEditSplit="vertical"
 
 set runtimepath+=~/.local/share/nvim
 let g:UltiSnipsSnippetDirectories = ['snippets/UltiSnips', 'UltiSnips']
-" }}}
-
-" Vim-geeknote {{{
-nmap <F9> :Geeknote<CR>
-autocmd FileType geeknote setlocal nonumber
-let g:GeeknoteScratchDirectory='/home/mberrio/Notes/'
 " }}}
 
 " Vim-go {{{
@@ -686,11 +712,17 @@ let g:hardtime_ignore_buffer_patterns = [ "NERD.*", "Tagbar", "Help" ]
 let g:hardtime_maxcount = 1
 " }}} Vim-hardtime "
 
+" vim-plug {{{ "
+let g:plug_window = 'enew'
+" }}} vim-plug "
+
 " Vimtex {{{ "
 " let g:vimtex_latexmk_options = '-pdf -verbose -bibtex -file-line-error -synctex=1 --interaction=nonstopmode'
 let g:vimtex_compiler_latexmk = {
             \ 'build_dir' : 'build',
             \}
+
+let g:vimtex_view_method = 'zathura'
 
 if !exists('g:deoplete#omni#input_patterns')
     let g:deoplete#omni#input_patterns = {}
