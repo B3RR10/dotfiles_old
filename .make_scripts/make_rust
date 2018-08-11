@@ -20,9 +20,9 @@ if [[ ! -x $(command -v bat) ]]; then
 fi
 
 # Install cargo-update
-if [[ ! -x $(cargo-install-update) ]]; then
-    cargo install cargo-update
-fi
+# if [[ ! -x $(cargo-install-update) ]]; then
+#     cargo install cargo-update
+# fi
 
 # Install racer
 if [[ ! -x $(command -v cargo) ]]; then
