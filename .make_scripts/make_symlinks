@@ -13,8 +13,8 @@ function format_path()
 }
 
 cd $DOTFILES
-DIRS=( $( find . -type d -not -path '*/\.*' -not -name README.md -not -name make_dotfiles -regex '.*' ) )
-FILES=( $( find . -type f -not -path '*/\.*' -not -name README.md -not -name make_dotfiles -regex '.*' ) )
+DIRS=( $( find . -type d -not -path '*/\.*' -not -name README.md -not -name Makefile -regex '.*' ) )
+FILES=( $( find . -type f -not -path '*/\.*' -not -name README.md -not -name Makefile -regex '.*' ) )
 
 echo
 echo "Creating directories..."
