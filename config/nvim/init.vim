@@ -391,6 +391,14 @@ let g:deoplete#sources#rust#documentation_max_height=20
 
 " }}}
 
+" Easy align {{{ "
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+" }}} Easy align "
+
 " Easymotion {{{ "
 map <leader><leader> <Plug>(easymotion-prefix)
 nmap F <Plug>(easymotion-prefix)s
@@ -556,7 +564,6 @@ let g:SimpylFold_docstring_preview=1
 " Startify {{{
 
 autocmd User Startified setlocal cursorline
-autocmd TabNewEntered * Startify
 
 let g:startify_files_number = 8
 
