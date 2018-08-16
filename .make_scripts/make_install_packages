@@ -42,6 +42,7 @@ PACKAGES=(
     "python2-neovim"
     "qt4"
     "r"
+    "ranger"
     "redshift"
     "rustup"
     "scrot"
@@ -62,6 +63,7 @@ AURPACKAGES=(
     "polybar"
     "rofi-pass"
     "spotify"
+    "standardnotes-desktop"
     "teamviewer"
     "wpa-cute"
 )
@@ -98,7 +100,7 @@ for PACK in ${AURPACKAGES[@]}; do
         echo "Package already installed: '$PACK'"
     else
         echo "Installing package: '$PACK'..."
-        echo | yay -S $PACK --needed
+        yay -S $PACK --needed
         echo "Package successfully installed: '$PACK'"
     fi
 done
