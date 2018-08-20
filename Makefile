@@ -1,3 +1,5 @@
+.phony: all install links rust vim
+
 all: install links rust vim
 
 install:
