@@ -22,10 +22,11 @@ CHUP=/usr/bin/checkupdates+aur
 echo -e "Checking for updates...\n"
 $CHUP
 read -n 1 -p "Do you want to perform a system update [y/N]? " INPUT
-if [[ ! $INPUT =~ [yY] ]]; then
-    echo -e "\nExited"
+if [[ ! "$INPUT" =~ [yY] ]]; then
+    echo -e "\nProgram finished"
     exit 0
 fi
+echo -e "\n"
 
 # --------------------------- #
 #      Snapshot System        #
