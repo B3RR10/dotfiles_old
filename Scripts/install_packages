@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+# vim: ft=sh
+
+DOTFILES=$HOME/.dotfiles
+
+cd $DOTFILES
+make install
