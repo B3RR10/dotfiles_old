@@ -1,0 +1,35 @@
+#!/usr/bin/env sh
+# vim: ft=sh
+
+echo "Enabling services..."
+
+if ! systemctl --user is-enabled keybase.service > /dev/null ; then
+    echo "Enable keybase on login"
+    systemctl --user enable keybase.service
+fi
+
+if ! systemctl --user is-enabled dunst.service > /dev/null ; then
+    echo "Enable dunst on login"
+    systemctl --user enable dunst.service
+fi
+
+if ! systemctl --user is-enabled geoclue-agent.service > /dev/null ; then
+    systemctl --user enable geoclue-agent.service
+fi
+
+if ! systemctl --user is-enabled redshift.service > /dev/null ; then
+    echo "Enable Redshift"
+    systemctl --user enable redshift.service
+fi
+
+if ! systemctl --user is-enabled low-battery.timer > /dev/null ; then
+    echo "Enable low battery notification"
+    systemctl --user enable low-battery.timer
+fi
+
+if ! systemctl is-enabled acpid.service > /dev/null ; then
+    echo "Enable acpi"
+    sudo systemctl enable acpid.service
+fi
+
+echo "Done"

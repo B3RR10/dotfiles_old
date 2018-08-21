@@ -1,17 +1,26 @@
 #!/usr/bin/env sh
 # vim: ft=sh
 
+PACK_GROUPS=(
+    "base-devel"
+    "texlive-most"
+)
+
 PACKAGES=(
     "acpi"
     "alsa-tools"
     "alsa-utils"
     "arandr"
     "bind-tools"
+    "cmake"
     "compton"
     "diff-so-fancy"
     "dunst"
+    "fd"
     "feh"
     "firefox"
+    "fontconfig"
+    "freetype2"
     "fzf"
     "ghostscript"
     "gimp"
@@ -23,17 +32,20 @@ PACKAGES=(
     "imagemagick"
     "keybase"
     "keybase-gui"
+    "make"
     "mpv"
     "neomutt"
     "neovim"
     "ntfs-3g"
     "openssh"
+    "openssl"
     "p7zip"
     "pacman-contrib"
     "pass"
     "pass-otp"
     "pavucontrol"
     "perl-file-mimeinfo"
+    "pkg-config"
     "playerctl"
     "ponymix"
     "pulseaudio"
@@ -48,14 +60,16 @@ PACKAGES=(
     "ranger"
     "redshift"
     "reflector"
+    "ripgrep"
     "rustup"
     "scrot"
-    "texlive-most"
     "tmux"
     "vlc"
     "w3m"
+    "xclip"
     "zathura"
     "zathura-pdf-poppler"
+    "zlib"
 )
 
 AURPACKAGES=(
@@ -74,22 +88,31 @@ AURPACKAGES=(
     "wpa-cute"
 )
 
+echo -e "\nInstalling packages from groups..."
+for GROUP in ${PACK_GROUPS[@]} ; do
+    PACKS=$(pacman -Sg $GROUP | awk -F ' ' '{print $2}')
+    for PACK in ${PACKS[@]} ; do
+        if ! pacman -Q $PACK > /dev/null ; then
+            echo -e "\nInstalling package: '$PACK'..."
+            echo |  sudo pacman -S $PACK --needed
+            echo -e "Package successfully installed: '$PACK'\n"
+        fi
+    done
+done
+
+
 echo -e "\nInstalling packages from official repo..."
 for PACK in ${PACKAGES[@]} ; do
-    if pacman -Q $PACK > /dev/null ; then
-        echo "Package already installed: '$PACK'"
-    else
-        echo "Installing package: '$PACK'..."
+    if ! pacman -Q $PACK > /dev/null ; then
+        echo -e "\nInstalling package: '$PACK'..."
         echo |  sudo pacman -S $PACK --needed
-        echo "Package successfully installed: '$PACK'"
+        echo -e "Package successfully installed: '$PACK'\n"
     fi
 done
 
 echo -e "\nInstalling packages from AUR"
-if pacman -Q yay-bin > /dev/null ; then
-    echo "AUR Helper 'yay' already installed"
-else
-    echo "Installing AUR helper 'yay'..."
+if ! pacman -Q yay-bin > /dev/null ; then
+    echo -e "\nInstalling AUR helper 'yay'..."
     dir=$(pwd)
     cd $(mktemp -d)
     git clone https://aur.archlinux.org/yay-bin.git
@@ -98,22 +121,15 @@ else
     cd ..
     rm -rf yay-bin
     cd $dir
-    echo "AUR Helper 'yay' successfully installed"
+    echo -e "AUR Helper 'yay' successfully installed\n"
 fi
 
 for PACK in ${AURPACKAGES[@]}; do
-    if pacman -Qs $PACK > /dev/null ; then
-        echo "Package already installed: '$PACK'"
-    else
-        echo "Installing package: '$PACK'..."
-        yay -S $PACK --needed
-        echo "Package successfully installed: '$PACK'"
+    if ! pacman -Qs $PACK > /dev/null ; then
+        echo -e "\nInstalling package: '$PACK'..."
+        echo | yay -S $PACK --needed
+        echo -e "Package successfully installed: '$PACK'\n"
     fi
 done
 
-echo "Start keybase on login"
-systemctl --user enable keybase.service
-echo "Start dunst on login"
-systemctl --user enable dunst.service
-echo "Enable acpi"
-sudo systemctl enable acpid.service
+echo -e "\nAll packages were installed\n"

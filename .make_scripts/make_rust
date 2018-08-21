@@ -20,25 +20,16 @@ if [[ ! -x $(command -v bat) ]]; then
 fi
 
 # Install cargo-update
-# if [[ ! -x $(cargo-install-update) ]]; then
-#     cargo install cargo-update
-# fi
+if ! cargo install-update --version > /dev/null ; then
+    cargo install cargo-update
+fi
 
 # Install racer
 if [[ ! -x $(command -v cargo) ]]; then
-    # Install racer dependencies
-    sudo pacman -S base-devel cmake zlib openssl --needed
-
     cargo +nightly install racer
 fi
 
 # Install alacritty
 if [[ ! -x $(command -v alacritty) ]]; then
-    # Install dependencies
-    # sudo pacman -S cmake freetype2 fontconfig pkg-config make xclip --needed
-
     yay -S alacritty-git
 fi
-
-# Install fd and ripgrep
-sudo pacman -S fd ripgrep --needed

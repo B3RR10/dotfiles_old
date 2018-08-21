@@ -331,8 +331,7 @@ bindsym Control+Mod1+Shift+Delete exec $i3exit suspend
 exec --no-startup-id compton -f
 # Start programs with `systemctl --user`
 #   dunst
-
-exec --no-startup-id redshift
+#   redshift
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 #exec_always --no-startup-id xautolock -detectsleep -time 60 -locker '$i3exit lock'
@@ -341,5 +340,5 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 ####################
 #  Execute always  #
 ####################
-exec_always feh --bg-scale ~/Pictures/wallpapers/arch-linux-dark.png
+exec_always feh --bg-scale ~/.config/wallpaper/arch-linux-dark.png
 
