@@ -44,8 +44,8 @@ $SUDO $CP /boot/initramfs-linux-stable.img /boot/initramfs-linux-oldstable.img
 
 $SUDO $BTRFS subvolume snapshot / /.snapshots/STABLE
 $SUDO $SED -i 's/TESTING/STABLE/g' /.snapshots/STABLE/etc/fstab
-$SUDO $CP /boot/vmlinuz-linux /boot/vmlinuz-linux-stable
-$SUDO $CP /boot/initramfs-linux.img /boot/initramfs-linux-stable.img
+$SUDO $CP /boot/vmlinuz-linux-lts /boot/vmlinuz-linux-stable
+$SUDO $CP /boot/initramfs-linux-lts.img /boot/initramfs-linux-stable.img
 
 # --------------------------- #
 #       Update System         #
