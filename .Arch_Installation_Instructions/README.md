@@ -322,6 +322,7 @@ For wireless network:
 Enable at boot:
 
     # systemctl enable systemd-networkd.service
+    # systemctl enable systemd-resolved.service
 
 ### Other packages and services
 

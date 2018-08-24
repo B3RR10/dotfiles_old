@@ -6,21 +6,33 @@
 # Snapshot - Rollback - Btrfs #
 # --------------------------- #
 
-MV=/usr/bin/mv
 BTRFS=/usr/bin/btrfs
-SED=/usr/bin/sed
-PACMAN=/usr/bin/pacman
-PACAUR=/usr/bin/yay
-CP=/usr/bin/cp
-REFLECTOR=/usr/bin/reflector
-SUDO=/usr/bin/sudo
 CHUP=/usr/bin/checkupdates+aur
+CURL=/usr/bin/curl
+CP=/usr/bin/cp
+MV=/usr/bin/mv
+PACAUR=/usr/bin/yay
+PACMAN=/usr/bin/pacman
+REFLECTOR=/usr/bin/reflector
+SED=/usr/bin/sed
+SUDO=/usr/bin/sudo
+
+# Get the passwd for sudo
+$SUDO -v
+
+# Keep sudo alive through the hole script
+while true; do $SUDO -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 # --------------------------- #
 #       Check Updates         #
 # --------------------------- #
 
+# Update pacman mirrorlist
+echo -e "Update pacman mirrorlist\n"
+$SUDO $REFLECTOR --verbose -l 5 -p https --sort rate --save /etc/pacman.d/mirrorlist
+
 echo -e "Checking for updates...\n"
-$CHUP
+# $CHUP
 read -n 1 -p "Do you want to perform a system update [y/N]? " INPUT
 if [[ ! "$INPUT" =~ [yY] ]]; then
     echo -e "\nProgram finished"
@@ -51,8 +63,7 @@ $SUDO $CP /boot/initramfs-linux-lts.img /boot/initramfs-linux-stable.img
 #       Update System         #
 # --------------------------- #
 
-$SUDO $REFLECTOR --verbose -l 5 -p https --sort rate --save /etc/pacman.d/mirrorlist
-$PACAUR -Syyu
+$PACAUR -Syyu --noconfirm
 
 # --------------------------- #
 #     Balance Filesystem      #
@@ -64,8 +75,25 @@ $SUDO $BTRFS balance start -dusage=5 /btrfs
 #       Update Misc           #
 # --------------------------- #
 
-rustup update stable
+rustup update
 cargo install-update -a
 nvim +PlugUpdate +qall
+
+# ---------------------------- #
+#       Update Hosts           #
+# ---------------------------- #
+
+cd $(mktemp -d)
+$CURL https://someonewhocares.org/hosts/hosts > hosts
+if ! cmp hosts /etc/hosts > /dev/null 2>&1; then
+    echo -e "hosts file is not the same as in https://someonewhocares.org."
+    read -n 1 -p "Do you want to replace it [Y/n]? " INPUT
+    echo
+    if [[ ! "$INPUT" =~ [^yY] ]]; then
+        $SUDO $MV /etc/hosts /etc/hosts.old
+        $SUDO $CP hosts /etc/hosts
+    fi
+fi
+cd -
 
 # vim: ft=sh

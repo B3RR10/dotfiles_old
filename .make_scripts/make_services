@@ -1,35 +1,45 @@
 #!/usr/bin/env sh
 # vim: ft=sh
 
+SUDO=/usr/bin/sudo
+SYSCTL=/usr/bin/systemctl
+
 echo "Enabling services..."
 
-if ! systemctl --user is-enabled keybase.service > /dev/null ; then
-    echo "Enable keybase on login"
-    systemctl --user enable keybase.service
-fi
+USER_SERVICES=(
+    "keybase"
+    "dunst"
+    "geoclue-agent"
+    "redshift"
+)
+USER_TIMERS=(
+    "low-battery"
+)
+SYSTEM_SERVICES=(
+    "acpid"
+    "tlp"
+    "tlp-sleep"
+)
 
-if ! systemctl --user is-enabled dunst.service > /dev/null ; then
-    echo "Enable dunst on login"
-    systemctl --user enable dunst.service
-fi
+for SERVICE in ${USER_SERVICES[@]} ; do
+    if ! $SYSCTL --user is-enabled $SERVICE.service > /dev/null ; then
+        echo "Enable $SERVICE on login"
+        $SYSCTL --user enable $SERVICE.service
+    fi
+done
 
-if ! systemctl --user is-enabled geoclue-agent.service > /dev/null ; then
-    systemctl --user enable geoclue-agent.service
-fi
+for TIMER in ${USER_TIMERS[@]} ; do
+    if ! $SYSCTL --user is-enabled $TIMER.timer > /dev/null ; then
+        echo "Enable $TIMER on login"
+        $SYSCTL --user enable $TIMER.timer
+    fi
+done
 
-if ! systemctl --user is-enabled redshift.service > /dev/null ; then
-    echo "Enable Redshift"
-    systemctl --user enable redshift.service
-fi
-
-if ! systemctl --user is-enabled low-battery.timer > /dev/null ; then
-    echo "Enable low battery notification"
-    systemctl --user enable low-battery.timer
-fi
-
-if ! systemctl is-enabled acpid.service > /dev/null ; then
-    echo "Enable acpi"
-    sudo systemctl enable acpid.service
-fi
+for SERVICE in ${SYSTEM_SERVICES[@]} ; do
+    if ! $SYSCTL is-enabled $SERVICE.service > /dev/null ; then
+        echo "Enable $SERVICE on login"
+        $SUDO $SYSCTL enable $SERVICE.service
+    fi
+done
 
 echo "Done"
