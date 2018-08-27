@@ -2,90 +2,110 @@
 
 " runtime! archlinux.vim
 
-" ***** SETTINGS ***** {{{
-" }}}
+let $CONFIG_PATH = expand('$HOME/.config/nvim')
 
-" Plugins {{{
-" " "
-
+" Plugins {{{ "
 call plug#begin('$HOME/.local/share/nvim/plugged')
 "--------------------------------------------------"
-
 " UI
 Plug 'mhinz/vim-startify'
-Plug 'vim-airline/vim-airline' " Statusline
-Plug 'Lokaltog/powerline-fonts' " Required by airline
+" Statusline
+Plug 'vim-airline/vim-airline'
+" Required by airline
+Plug 'Lokaltog/powerline-fonts'
 Plug 'chrisbra/Colorizer'
-Plug 'romainl/Apprentice',          { 'branch': 'fancylines-and-neovim' }
+Plug 'romainl/Apprentice',             { 'branch' : 'fancylines-and-neovim' }
 
 " Languages
 Plug 'sheerun/vim-polyglot'
-Plug 'mattn/emmet-vim',             { 'for': [ 'html', 'xml', 'handlebars' ] }
-Plug 'othree/html5.vim',            { 'for': 'html' }
-Plug 'gregsexton/MatchTag',         { 'for': [ 'html', 'xml', 'handlebars' ] }
+Plug 'mattn/emmet-vim',                { 'for'    : [ 'html', 'xml', 'handlebars' ] }
+Plug 'othree/html5.vim',               { 'for'    : 'html' }
+Plug 'gregsexton/MatchTag',            { 'for'    : [ 'html', 'xml', 'handlebars' ] }
 
-Plug 'plasticboy/vim-markdown',     { 'for': 'markdown' }
+Plug 'plasticboy/vim-markdown',        { 'for'    : 'markdown' }
 
-Plug 'tmhedberg/SimpylFold',        { 'for': 'python' } " Fold code in Python
-Plug 'vim-scripts/indentpython.vim',{ 'for': 'python' }
+" Fold code in Python
+Plug 'tmhedberg/SimpylFold',           { 'for'    : 'python' }
+Plug 'vim-scripts/indentpython.vim',   { 'for'    : 'python' }
 
-Plug 'rust-lang/rust.vim',          { 'for': 'rust' } " Rust filetype *** TODO: CHECK OPTIONS ***
-Plug 'racer-rust/vim-racer',        { 'for': 'rust' }
-Plug 'timonv/vim-cargo',            { 'for': 'rust' }
+" Rust filetype *** TODO: CHECK OPTIONS ***
+Plug 'rust-lang/rust.vim',             { 'for'    : 'rust' }
+Plug 'racer-rust/vim-racer',           { 'for'    : 'rust' }
+Plug 'timonv/vim-cargo',               { 'for'    : 'rust' }
 Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
+    \ 'branch'                                    : 'next',
+    \ 'do'                                        : 'bash install.sh',
     \ }
 
-Plug 'cespare/vim-toml',            { 'for': 'toml' }
+Plug 'cespare/vim-toml',               { 'for'    : 'toml' }
 
 Plug 'lervag/vimtex'
 
-" Plug 'fatih/vim-go',                { 'for': 'go', 'do': ':GoInstallBinaries' }
-"
-Plug 'scrooloose/nerdcommenter' " Commenting operations
-Plug 'jiangmiao/auto-pairs'     " Close quotes, parenthesis, brackets, etc automatic
-Plug 'majutsushi/tagbar'        " Browse tags of source files
-Plug 'tpope/vim-surround'       " Add, change and delete surroundings
+" Plug 'fatih/vim-go',                 { 'for'    : 'go', 'do': ':GoInstallBinaries' }
+
+" Commenting operations
+Plug 'scrooloose/nerdcommenter'
+" Close quotes, parenthesis, brackets, etc automatic
+Plug 'jiangmiao/auto-pairs'
+" Browse tags of source files
+Plug 'majutsushi/tagbar'
+" Add, change and delete surroundings
+Plug 'tpope/vim-surround'
 
 " Tools
-Plug 'airblade/vim-gitgutter'   " Git integration (Show diff on files)
-Plug 'tpope/vim-fugitive',      { 'as': 'fugitive.vim' } " Git commands
-Plug 'junegunn/gv.vim'          " Git commit browser
-" Plug 'scrooloose/nerdtree',     { 'on': 'NERDTreeToggle' }
-" Plug 'simnalamburt/vim-mundo'
+" Git integration (Show diff on files)
+Plug 'airblade/vim-gitgutter'
+" Git commands
+Plug 'tpope/vim-fugitive',             { 'as'     : 'fugitive.vim' }
+" Git commit browser
+Plug 'junegunn/gv.vim'
 Plug 'ervandew/supertab'
-Plug 'junegunn/vim-easy-align'  " Alignment tool
-Plug 'godlygeek/tabular'        " Auto indent
-Plug 'tpope/vim-repeat'         " Repeat last command (Also when it's a plugin-map)
-Plug 'vim-scripts/Rename'       " Rename buffer and file on disk
-Plug 'suxpert/vimcaps'          " Turn off caps when change from insert to normal mode
-Plug 'easymotion/vim-easymotion' " Easy motions
-" Plug 'junegunn/fzf'            "{ 'dir': '~/.fzf', 'do': './install --all' }
+" Alignment tool
+Plug 'junegunn/vim-easy-align'
+" Auto indent
+Plug 'godlygeek/tabular'
+" Repeat last command (Also when it's a plugin-map)
+Plug 'tpope/vim-repeat'
+" Rename buffer and file on disk
+Plug 'vim-scripts/Rename'
+" Turn off caps when change from insert to normal mode
+Plug 'suxpert/vimcaps'
+" Easy motions
+Plug 'easymotion/vim-easymotion'
+" The best fuzzy finder
 Plug 'junegunn/fzf.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 Plug 'benekastah/neomake'
-Plug ('Shougo/deoplete.nvim'),          { 'do': ':UpdateRemotePlugins' } " Code completion
-" Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'sebastianmarkow/deoplete-rust',   { 'for': 'rust' }
-"Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+" Code completion
+Plug ('Shougo/deoplete.nvim'),         { 'do'     : ':UpdateRemotePlugins' }
+" Plug 'zchee/deoplete-go',            { 'do'     : 'make'}
+Plug 'sebastianmarkow/deoplete-rust',  { 'for'    : 'rust' }
+"Plug 'nsf/gocode',                    { 'rtp'    : 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
 " A better Vimdiff Git mergetool
 Plug 'whiteinge/diffconflicts'
-
 "--------------------------------------------------"
 call plug#end()
-" }}}
+" }}} Plugins "
 
-" Autocommands {{{
-" " "
+" File specific config {{{ "
+" Filetype specific files under ftplugin/
+" ftplugin/go.vim
+" ftplugin/rust.vim
+" ftplugin/tex.vim
+filetype plugin indent on
+" }}} File specific config "
 
+" Autocommands {{{ "
+
+" Reload init.vim after any change in the config
 augroup reload_vimrc
     autocmd!
     autocmd BufWritePost $MYVIMRC nested :source $MYVIMRC
+    autocmd BufWritePost $HOME/.config/nvim/*.vim nested :source $MYVIMRC
     autocmd BufWritePost $MYVIMRC AirlineRefresh
 augroup END
 
@@ -93,60 +113,135 @@ augroup END
 autocmd BufWritePre * silent! %s/\s\+$//ge
 autocmd BufWritePre * %retab!
 
-au InsertEnter * set nornu
-au InsertLeave * set rnu
+" Show relative numbers in normal mode
+autocmd InsertEnter * set nornu
+autocmd InsertLeave * set rnu
 
-" return to last edit position when opening files
-" autocmd BufReadPost *
-"             \ if line("'\"") > 0 && line("'\"") <= line("$") |
-"             \   exe "normal! g`\"" |
-"             \ endif
+" Make file executable
+autocmd FileType sh,bash,perl,python,ruby nno <leader>ex :! chmod +x %<CR>
+" }}} Autocommands "
 
-" }}}
-
-" Colorscheme {{{
-" " "
+" Colorscheme {{{ "
 if (has("termguicolors"))
     set termguicolors
 endif
 
 syntax enable
 colorscheme apprentice
-" }}}
+" }}} Colorscheme "
 
-" Functions {{{
-" " "
-
-au FileType sh,bash,perl,python,ruby nno <leader>ex :! chmod +x %<CR>
-
+" Functions {{{ "
 " Highlight all instances of word under cursor, when idle.
 " Useful when studying strange source code.
 " Type z/ to toggle highlighting on/off.
-nno z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
     let @/ = ''
     if exists('#auto_highlight')
-        au! auto_highlight
+        autocmd! auto_highlight
         augroup! auto_highlight
-        setl updatetime=4000
+        setlocal updatetime=4000
         echo 'Highlight current word: off'
         return 0
     else
         augroup auto_highlight
-            au!
-            au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
+            autocmd!
+            autocmd CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
         augroup end
-        setl updatetime=500
+        setlocal updatetime=500
         echo 'Highlight current word: ON'
         return 1
     endif
 endfunction
 
-" }}}
+" Open all config files
+function! Open_config()
+    e $MYVIMRC
+    arga $CONFIG_PATH/*.vim
+    arga $CONFIG_PATH/ftplugin/*.vim
+endfunction
 
-" Mappings {{{
-" " "
+" Close all the config files
+function! Close_config()
+    let s:bufNr = bufnr("$")
+    while s:bufNr > 0
+        if buflisted(s:bufNr)
+            if (matchstr(bufname(s:bufNr), "^".$CONFIG_PATH) == $CONFIG_PATH)
+                if getbufvar(s:bufNr, '&modified') == 0
+                    execute "bd ".s:bufNr
+                endif
+            endif
+        endif
+        let s:bufNr = s:bufNr - 1
+    endwhile
+endfunction
 
+" From: https://github.com/autozimu/LanguageClient-neovim/issues/379#issuecomment-403876177
+" let g:ulti_expand_res = 0 "default value, just set once
+" function! CompleteSnippet()
+"   if empty(v:completed_item)
+"     return
+"   endif
+"
+"   call UltiSnips#ExpandSnippet()
+"   if g:ulti_expand_res > 0
+"     return
+"   endif
+"
+"   let l:complete = type(v:completed_item) == v:t_dict ? v:completed_item.word : v:completed_item
+"   let l:comp_len = len(l:complete)
+"
+"   let l:cur_col = mode() == 'i' ? col('.') - 2 : col('.') - 1
+"   let l:cur_line = getline('.')
+"
+"   let l:start = l:comp_len <= l:cur_col ? l:cur_line[:l:cur_col - l:comp_len] : ''
+"   let l:end = l:cur_col < len(l:cur_line) ? l:cur_line[l:cur_col + 1 :] : ''
+"
+"   call setline('.', l:start . l:end)
+"   call cursor('.', l:cur_col - l:comp_len + 2)
+"
+"   call UltiSnips#Anon(l:complete)
+" endfunction
+"
+" autocmd CompleteDone * call CompleteSnippet()
+
+" From: https://github.com/autozimu/LanguageClient-neovim/issues/379#issuecomment-394071180
+function! ExpandLspSnippet()
+    call UltiSnips#ExpandSnippetOrJump()
+    if !pumvisible() || empty(v:completed_item)
+        return ''
+    endif
+
+    " only expand Lsp if UltiSnips#ExpandSnippetOrJump not effect.
+    let l:value = v:completed_item['word']
+    let l:matched = len(l:value)
+    if l:matched <= 0
+        return ''
+    endif
+
+    " remove inserted chars before expand snippet
+    if col('.') == col('$')
+        let l:matched -= 1
+        exec 'normal! ' . l:matched . 'Xx'
+    else
+        exec 'normal! ' . l:matched . 'X'
+    endif
+
+    if col('.') == col('$') - 1
+        " move to $ if at the end of line.
+        call cursor(line('.'), col('$'))
+    endif
+
+    " expand snippet now.
+    call UltiSnips#Anon(l:value)
+    return ''
+endfunction
+
+imap <C-j> <C-R>=ExpandLspSnippet()<CR>
+
+" }}} Functions "
+
+" Mappings {{{ "
 " Escape commands
 ino jk <Esc>
 ino JK <Esc>
@@ -223,9 +318,10 @@ no Y y$
 no <silent> <leader>/ :nohlsearch<CR>
 no <silent> <Space><Space> :nohlsearch<CR>
 
-" Edit .vimrc
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
+" Edit nvim config files
+nmap <silent> <leader>ev :call Open_config()<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nmap <silent> <leader>cv :call Close_config()<CR>
 
 " In-file navigation with enter and backspace
 nnoremap <BS> {
@@ -238,13 +334,9 @@ vnoremap <CR> }
 
 " Open search results in quickfix
 nmap <silent> <leader>o :vim // %<CR>:copen<CR>
-" }}}
+" }}} Mappings "
 
-" Settings {{{
-" " "
-
-filetype plugin indent on
-
+" Settings {{{ "
 " backups, undos, swaps
 set nobackup
 set noswapfile
@@ -264,7 +356,6 @@ set noerrorbells
 set visualbell
 
 " folding
-set foldmethod=syntax
 set foldcolumn=1
 set nofoldenable
 
@@ -282,10 +373,6 @@ set ttyfast
 
 " regex
 set magic
-
-" Required by Latex-Suite
-" set grepprg=grep\ -nH\ $*       " Required by Latex-Suite
-" set shellslash                  " Required by Latex-Suite
 
 " searching
 set ignorecase
@@ -328,25 +415,23 @@ highlight OverLength ctermbg=red ctermfg=white guibg=#870000
 " match ErrorMsg '\%81v'
 let w:m2=matchadd('OverLength', '\%121v', -1)
 match ErrorMsg '\s\+$'
-
-" }}}
+" }}} Settings "
 
 " ***** PLUGINS ***** {{{
 " }}}
 
-" Airline {{{
-" " "
+" Airline {{{ "
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#show_splits = 1
-let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_tabs = 0
 let g:airline#extensions#tabline#buffers_label = 'b'
 let g:airline#extensions#tabline#tabs_label = 't'
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree']
 let g:airline#extensions#tabline#buffer_nr_show = 0
-let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
+let g:airline#extensions#tabline#tab_nr_type = 3 " splits and tab number
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
 let g:airline_detect_modified=1
@@ -372,24 +457,16 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_alt_sep = ''
 
 let g:airline_theme='apprentice'
-" }}}
+" }}} Airline "
 
 " Autopairs {{{ "
 let g:AutoPairsMapCR = 0
 imap <silent><CR> <CR><Plug>AutoPairsReturn
 " }}} Autopairs "
 
-" Deoplete - Completion framework {{{
+" Deoplete - Completion framework {{{ "
 let g:deoplete#enable_at_startup = 1
-
-" Rust
-let g:deoplete#sources#rust#racer_binary='$HOME/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-let g:deoplete#sources#rust#show_duplicates=1
-let g:deoplete#sources#rust#disable_keymap=1
-let g:deoplete#sources#rust#documentation_max_height=20
-
-" }}}
+" }}} Deoplete - Completion framework "
 
 " Easy align {{{ "
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
@@ -404,15 +481,18 @@ map <leader><leader> <Plug>(easymotion-prefix)
 nmap F <Plug>(easymotion-prefix)s
 " }}} Easymotion "
 
-" Fugitive.vim - Git commands {{{
+" Fugitive.vim - Git commands {{{ "
 nmap <leader>gs :Gstatus<CR>
 nmap <leader>gd :Gdiff<CR>
 nmap <leader>gc :Gcommit<CR>
 nmap <leader>gb :Gblame<CR>
-" }}}
+" }}} Fugitive.vim - Git commands "
 
-" FZF - Fuzzy finder {{{
+" FZF - Fuzzy finder {{{ "
 no <C-Space> :FZF<CR>
+no <C-\> :Buffers<CR>
+nno ? :GFiles<CR>
+
 " This is the default extra key bindings
 let g:fzf_action = {
             \ 'ctrl-t': 'tab split',
@@ -429,7 +509,7 @@ let g:fzf_layout = { 'window': '-tabnew' }
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
-            \ { 'fg':      ['fg', 'Normal'],
+            \ { 'fg':    ['fg', 'Normal'],
             \ 'bg':      ['bg', 'Normal'],
             \ 'hl':      ['fg', 'Comment'],
             \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
@@ -458,12 +538,10 @@ function! s:fzf_statusline()
     setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
 endfunction
 
-nno ? :GFiles<CR>
-
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
-" }}}
+" }}} FZF - Fuzzy finder "
 
-" Gitgutter {{{
+" Gitgutter {{{ "
 nno ]h :GitGutterNextHunk<CR>
 nno [h :GitGutterPrevHunk<CR>
 nnoremap <Leader>hr :GitGutterRevertHunk<CR>
@@ -473,48 +551,30 @@ let g:gitgutter_sign_modified = '∙'
 let g:gitgutter_sign_removed = '∙'
 let g:gitgutter_sign_modified_removed = '∙'
 let g:gitgutter_grep_command = 'rg'
-" }}}
+" }}} Gitgutter "
 
-" Language Client {{{
+" Language Client {{{ "
 set hidden
-
 let g:LanguageClient_autoStart = 1
-
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'rust'           : ['rustup', 'run', 'stable', 'rls'],
+    \ 'javascript'     : ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx' : ['tcp://127.0.0.1:2089'],
+    \ 'python'         : ['/usr/local/bin/pyls'],
     \ }
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-" }}}
+" }}} Language Client "
 
-" Latex-Suite {{{
-" " "
-let g:tex_flavor='latex'
-let g:Tex_Env_figure="\\begin{figure}[<+htpb+>]\<cr>\\centering\<cr>\\includegraphics{<+file+>}\<cr>\\caption{<+caption text+>}\<cr>\\label{fig:<+label+>}\<cr>\\end{figure}<++>"
-autocmd FileType tex let g:Tex_CompileRule_dvi = 'make'
-" }}}
+" Neomake {{{ "
+let g:neomake_open_list = 2
+call neomake#configure#automake('rw', 1000)
+" }}} Neomake "
 
-" Neomake {{{
-" " "
-
-if has('nvim')
-    let g:neomake_open_list = 2
-    call neomake#configure#automake('rw', 1000)
-    " autocmd! BufWritePost,BufEnter * Neomake
-endif
-
-" }}}
-
-" NERD Commenter {{{
-" " "
-
+" NERD Commenter {{{ "
 nmap <Space>c <leader>c<Space>
 vmap <Space>c <leader>c<Space>
 
@@ -534,35 +594,18 @@ let g:NERDCustomDelimiters = { 'hbs': { 'left': '<!--','right': '-->' } }
 let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
+" }}} NERD Commenter "
 
-" }}}
-
-" Nerdtree {{{
-" " "
-
-" Open Nerdtree
-map <silent> <C-n> :NERDTreeToggle<CR>
-" Close nerdtree on file open
-let g:NERDTreeQuitOnOpen = 1
-" }}}
-
-" Python provider for neovim {{{
-" " "
+" Python provider for Neovim {{{ "
 let g:python_host_prog  = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
-" }}}
+" }}} Python provider for Neovim "
 
-" Rust {{{
-let g:rustfmt_autosave = 1
-let g:autofmt_autosave = 1
-" }}}
-
-" SimpylFold {{{
+" SimplyFold {{{ "
 let g:SimpylFold_docstring_preview=1
-" }}}
+" }}} SimplyFold "
 
-" Startify {{{
-
+" Startify {{{ "
 autocmd User Startified setlocal cursorline
 
 let g:startify_files_number = 8
@@ -582,19 +625,22 @@ let g:startify_session_sort = 1
 let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
 
 let g:startify_lists = [
-            \ { 'type': 'sessions',  'header': ['   Sessions']       },
-            \ { 'type': 'files',     'header': ['   MRU']            },
-            \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-            \ { 'type': 'commands',  'header': ['   Commands']       },
+            \ { 'type' : 'sessions'  , 'header' : ['   Sessions']       } ,
+            \ { 'type' : 'files'     , 'header' : ['   MRU']            } ,
+            \ { 'type' : 'bookmarks' , 'header' : ['   Bookmarks']      } ,
+            \ { 'type' : 'commands'  , 'header' : ['   Commands']       } ,
             \ ]
 
 let g:startify_bookmarks = [
             \ '$HOME/.dotfiles/.make_scripts/make_install_packages',
-            \ { 'n': '$HOME/.config/nvim/init.vim' },
-            \ { 'p': '$HOME/.config/polybar/config' },
-            \ { 't': '$HOME/.tmux.conf' },
-            \ { 'x': '$HOME/.config/i3/config' },
-            \ { 'z': '$HOME/.zshrc' },
+            \ { 'p' : '$HOME/.config/polybar/config' },
+            \ { 't' : '$HOME/.tmux.conf' },
+            \ { 'x' : '$HOME/.config/i3/config' },
+            \ { 'z' : '$HOME/.zshrc' },
+            \ ]
+
+let g:startify_commands = [
+            \ { 'n' : ['Open Nvim config files', 'call Open_config()'] },
             \ ]
 
 let g:startify_skiplist = [
@@ -602,155 +648,34 @@ let g:startify_skiplist = [
             \ ]
 
 hi StartifyHeader  ctermfg=114
+" }}} Startify "
 
-" }}}
-
-" Sessions {{{ "
-function! Mks(name)
-    execute 'mksession! ~/.local/share/nvim/sessions/' . a:name . '-session.vim'
-endfunction
-" }}} Sessions "
-
-" supertab {{{
+" Supertab {{{ "
 let g:SuperTabDefaultCompletionType = "<c-n>"
-" }}}
+" }}} Supertab "
 
-" Tagbar {{{
-" " "
+" Tagbar {{{ "
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_autoshowtag = 1
-" Add support to rust
-let g:tagbar_type_rust = {
-            \ 'ctagstype' : 'rust',
-            \ 'kinds' : [
-            \'T:types,type definitions',
-            \'f:functions,function definitions',
-            \'g:enum,enumeration names',
-            \'s:structure names',
-            \'m:modules,module names',
-            \'c:consts,static constants',
-            \'t:traits,traits',
-            \'i:impls,trait implementations',
-            \]
-            \}
-" }}}
+" }}} Tagbar "
 
-" UltiSnips {{{
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" Ultisnips {{{ "
+let g:UltiSnipsExpandTrigger = "<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 let g:UltiSnipsListSnippets = "<c-q>"
 
 let g:UltiSnipsEditSplit="vertical"
 
 set runtimepath+=~/.local/share/nvim
 let g:UltiSnipsSnippetDirectories = ['snippets/UltiSnips', 'UltiSnips']
-" }}}
-
-" Vim-go {{{
-autocmd BufNewFile,BufRead *.go
-            \ setlocal
-            \ noexpandtab
-            \ tabstop=4
-            \ shiftwidth=4
-            \ foldmethod=syntax
-
-" Alternate between file and file_test
-autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-
-" Mappings
-autocmd FileType go nmap <leader>r <Plug>(go-run)
-autocmd FileType go nmap <leader>t <Plug>(go-test)
-autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
-autocmd FileType go nmap <leader>i <Plug>(go-info)
-
-" run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-    let l:file = expand('%')
-    if l:file =~# '^\f\+_test\.go$'
-        call go#test#Test(0, 1)
-    elseif l:file =~# '^\f\+\.go$'
-        call go#cmd#Build(0)
-    endif
-endfunction
-autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-
-let g:go_list_type = "quickfix"
-
-" auto reformat code and add imports
-let g:go_fmt_command = "goimports"
-
-" Don't show window when errors occur
-let g:go_fmt_fail_silently = 1
-
-" Transform tags to camelcase
-" let g:go_addtags_transform = "camelcase"
-
-" Highlight code
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-
-" Go Metalinter for error checking
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['golint']
-let go_metalinter_deadline = "2s"
-
-" Show information of function
-let g:go_auto_type_info = 1
-
-" Highlight identifiers
-let g:go_auto_sameids = 1
-" }}}
-
-" Vim-hardtime {{{ "
-let g:hardtime_default_on = 1
-let g:hardtime_timeout = 2000
-let g:hardtime_showmsg = 0
-let g:hardtime_ignore_quickfix = 1
-let g:hardtime_ignore_buffer_patterns = [ "NERD.*", "Tagbar", "Help" ]
-let g:hardtime_maxcount = 1
-" }}} Vim-hardtime "
+" }}} Ultisnips "
 
 " vim-plug {{{ "
 let g:plug_window = 'enew'
 " }}} vim-plug "
 
-" Vimtex {{{ "
-" let g:vimtex_latexmk_options = '-pdf -verbose -bibtex -file-line-error -synctex=1 --interaction=nonstopmode'
-let g:vimtex_compiler_latexmk = {
-            \ 'build_dir' : 'build',
-            \}
-
-let g:vimtex_view_method = 'zathura'
-
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
-" }}} Vimtex "
-
-" Vim-markdown {{{ "
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_toc_autofit = 1
-" }}} Vim-markdown "
-
-" Vim-mundo {{{
-" nmap <F5> :MundoToggle<CR>
-" Enable persistent undo so that undo history persists across vim sessions
-" set undofile
-" set undodir=~/.vim/undo
-" }}}
-
 " Vim-polyglot {{{ "
 let g:polyglot_disabled = ['latex']
 " }}} Vim-polyglot "
 
-" vim:foldmethod=marker:foldlevel=0
