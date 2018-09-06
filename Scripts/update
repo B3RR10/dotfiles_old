@@ -31,9 +31,16 @@ while true; do $SUDO -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 echo -e "Update pacman mirrorlist\n"
 $SUDO $REFLECTOR --verbose -l 5 -p https --sort rate --save /etc/pacman.d/mirrorlist
 
-echo -e "Checking for updates...\n"
-# $CHUP
-read -n 1 -p "Do you want to perform a system update [y/N]? " INPUT
+echo -e "\nChecking for updates...\n"
+if [ "$( $CHUP )" == '' ] ; then
+    echo -e "There are no updates available. Script terminated.\n"
+    exit 0
+else
+    $CHUP
+fi
+
+echo
+read -t 30 -n 1 -p "Do you want to perform a system update [y/N]? " INPUT
 if [[ ! "$INPUT" =~ [yY] ]]; then
     echo -e "\nProgram finished"
     exit 0
