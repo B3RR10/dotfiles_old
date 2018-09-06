@@ -92,10 +92,7 @@ call plug#end()
 " }}} Plugins "
 
 " File specific config {{{ "
-" Filetype specific files under ftplugin/
-" ftplugin/go.vim
-" ftplugin/rust.vim
-" ftplugin/tex.vim
+let g:tex_flavor = 'tex'
 filetype plugin indent on
 " }}} File specific config "
 
@@ -356,7 +353,9 @@ set noerrorbells
 set visualbell
 
 " folding
-set foldcolumn=1
+set foldlevel=0
+set foldcolumn=3
+set foldnestmax=2
 set nofoldenable
 
 " indent
@@ -652,6 +651,7 @@ hi StartifyHeader  ctermfg=114
 
 " Supertab {{{ "
 let g:SuperTabDefaultCompletionType = "<c-n>"
+" let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
 " }}} Supertab "
 
 " Tagbar {{{ "

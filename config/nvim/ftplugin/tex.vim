@@ -16,5 +16,3 @@ endif
 let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 " }}} Vimtex "
 
-
-" vim:foldmethod=marker:foldlevel=0

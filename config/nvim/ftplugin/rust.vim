@@ -17,6 +17,10 @@ nmap <leader>t :CargoTest<CR>
 nmap <leader>b :CargoBuild<CR>
 " }}} Mappings "
 
+" Settings {{{ "
+set foldmethod=syntax
+" }}} Settings "
+
 " Tagbar {{{ "
 let g:tagbar_type_rust = {
             \ 'ctagstype' : 'rust',
@@ -32,5 +36,3 @@ let g:tagbar_type_rust = {
             \]
             \}
 " }}} Tagbar "
-
-" vim:foldmethod=marker:foldlevel=0

@@ -64,5 +64,3 @@ set tabstop=4
 set shiftwidth=4
 set foldmethod=syntax
 " }}} Settings "
-
-" vim:foldmethod=marker:foldlevel=0
