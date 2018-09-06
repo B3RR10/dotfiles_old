@@ -329,9 +329,9 @@ bindsym Control+Mod1+Shift+Delete exec $i3exit suspend
 # Execute on login #
 ####################
 exec --no-startup-id compton -f
+exec --no-startup-id redshift
 # Start programs with `systemctl --user`
 #   dunst
-#   redshift
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 #exec_always --no-startup-id xautolock -detectsleep -time 60 -locker '$i3exit lock'
