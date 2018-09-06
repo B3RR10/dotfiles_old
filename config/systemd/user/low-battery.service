@@ -3,4 +3,4 @@ Description=Low battery warning or suspension
 After=systemd-user-sessions.service
 
 [Service]
-ExecStart=/home/mberrio/.scripts/battery.sh
+ExecStart=/home/mberrio/Scripts/battery
