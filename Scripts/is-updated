@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+NOTIFY=/usr/bin/notify-send
+
+FILE="$HOME/.local/share/.lastupdate"
+
+if [[ -f $FILE ]]; then
+    lastupdate=$(head -n 1 $FILE)
+    now=$(date +%s)
+    elapsed=$(($now - $lastupdate))
+    weeksecs=$((7 * 24 * 3600))
+    if [[ $elapsed -ge $weeksecs ]]; then
+        DISPLAY=:0.0 $NOTIFY -u critical "Update your system!" "This system hasn't been updated for more than 7 days.\nPlease update your system with the script 'update'"
+    fi
+else
+    DISPLAY=:0.0 $NOTIFY -u critical "Update your system!" "This system appears to never have been updated.\nPlease update your system with the script 'update'"
+fi
+
+# vim: ft=sh

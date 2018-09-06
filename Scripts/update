@@ -96,4 +96,8 @@ if ! cmp hosts /etc/hosts > /dev/null 2>&1; then
 fi
 cd -
 
+# Create file with the actual date
+
+date +%s > $HOME/.local/share/.lastupdate
+
 # vim: ft=sh
