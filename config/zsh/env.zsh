@@ -34,3 +34,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND='fd --hidden --follow --type directory --exclude .git --exclude .wine'
 export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 
+# -------------------- Notes Script -------------------- #
+
+export NOTES_DIR=$HOME/Nextcloud/Notes
