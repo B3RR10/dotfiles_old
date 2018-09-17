@@ -1,24 +1,20 @@
 #!/usr/bin/env bash
 
 # Set default directory if not set
-if [[ -z "$NOTES_DIR" ]]; then
-    NOTES_DIR=$HOME/Notes
-fi
-if [[ -z "$NOTE_EXTENTION" ]]; then
-    NOTE_EXTENTION=".md"
-fi
+notes_dir=${NOTES_DIR:-$HOME/Notes}
+extention=${NOTE_EXTENTION:-".md"}
 
 # Load all notes
-NOTES=()
+notes=()
 while IFS= read -d $'\0' -r file ; do
-    NOTES=("${NOTES[@]}" "$file")
-done < <(find $NOTES_DIR -type f -print0 | sort -z)
+    notes=("${notes[@]}" "$file")
+done < <(find $notes_dir -type f -name "*$extention" -print0 | sort -z)
 
 function usage {
     echo -e "\nNote."
     echo -e "A simple script to manage notes."
-    echo -e "Directory: $NOTES_DIR"
-    echo -e "Extension: $NOTE_EXTENTION"
+    echo -e "Directory: $notes_dir"
+    echo -e "Extension: $extention"
     echo -e "\n\tUsage:"
     echo -e "\t\tnote"
     echo -e "\t\tnote new notename[.md]"
@@ -26,53 +22,52 @@ function usage {
 }
 
 function list_notes {
-    notes=("$@")
+    local notes=("$@")
     for i in "${!notes[@]}" ; do
-        echo -e "$(( $i + 1 )) - ${notes[$i]}" | sed -e "s|$NOTES_DIR/||g"
+        echo -e "$(( $i + 1 )) - ${notes[$i]}" | sed -e "s|$notes_dir/||g"
     done
 }
 
 function open_note {
-    notes=("$@")
+    local notes=("$@")
 
-    files=()
+    local files=()
     while IFS= read -d $'\0' -r file ; do
         files=("${files[@]}" "$file")
     done < <(list_notes "${notes[@]}" | fzf --multi --select-1 --print0)
 
     for i in "${!files[@]}" ; do
-        files[$i]=$(echo "${files[$i]}" | sed -E "s|[0-9]* - |$NOTES_DIR/|g")
+        files[$i]=$(echo "${files[$i]}" | sed -E "s|[0-9]* - |$notes_dir/|g")
     done
 
-    echo "${files[@]}"
+    # echo "${files[@]}"
     [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
 # function rename_note {  }
 
 function create_note {
-    re="$NOTE_EXTENTION$"
-    file_name="$NOTES_DIR/$1"
-    if [[ ! $1 =~ $re ]]; then
-        file_name="$file_name$NOTE_EXTENTION"
-    fi
+    local re="$extention$"
+    local file_name="$notes_dir/$1"
+    [[ $1 =~ $re ]] || {
+        file_name="$file_name$extention"
+    }
     file_dir=$( dirname $file_name )
-    if [[ ! -d $file_dir ]]; then
+    [[ -d $file_dir ]] || {
         echo "Creating directory: $( dirname $1 )"
         mkdir -p $file_dir
-    fi
+    }
 
     ${EDITOR:-vim} "$file_name"
-    # $EDITOR "$file_name"
 }
 
 # function delete_note {  }
 
 function find_note {
-    notes=()
+    local notes=()
     while IFS= read -d $'\0' -r file ; do
         notes=("${notes[@]}" "$file")
-    done < <(find $NOTES_DIR -type f -iname "*$1*" -print0 | sort -z)
+    done < <(find $notes_dir -type f -iname "*$1*" -print0 | sort -z)
 
     for file in ${notes[@]} ; do
         opts+=( -not -name $(basename "$file") )
@@ -80,18 +75,20 @@ function find_note {
 
     while IFS= read -d $'\0' -r file ; do
         notes=("${notes[@]}" "$file")
-    done < <(find "$NOTES_DIR" -type f "${opts[@]}" -print0 | xargs -0 grep -iRHlZ "$1")
+    done < <(find "$notes_dir" -type f "${opts[@]}" -print0 | xargs -0 grep -iRHlZ "$1")
 
     open_note "${notes[@]}"
 }
 
-if [[ "$#" -eq 0 ]]; then
-    open_note "${NOTES[@]}"
-fi
+[[ "$#" -eq 0 ]] && {
+    open_note "${notes[@]}"
+    exit 0
+}
 
-if [[ "$1" = "-h" ]] || [[ "$1" = "--help" ]] ; then
+[[ "$1" = "-h" ]] || [[ "$1" = "--help" ]] && {
     usage
-fi
+    exit 0
+}
 
 if [[ "$#" -eq 2 ]]; then
     case "$1" in
@@ -101,6 +98,6 @@ if [[ "$#" -eq 2 ]]; then
             find_note "$2";;
     esac
 else
-    echo "Wrong number of parameters"
+    usage
     exit 2
 fi
