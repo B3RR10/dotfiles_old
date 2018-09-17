@@ -17,19 +17,9 @@ REFLECTOR=/usr/bin/reflector
 SED=/usr/bin/sed
 SUDO=/usr/bin/sudo
 
-# Get the passwd for sudo
-$SUDO -v
-
-# Keep sudo alive through the hole script
-while true; do $SUDO -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
 # --------------------------- #
 #       Check Updates         #
 # --------------------------- #
-
-# Update pacman mirrorlist
-echo -e "Update pacman mirrorlist\n"
-$SUDO $REFLECTOR --verbose -l 5 -p https --sort rate --save /etc/pacman.d/mirrorlist
 
 echo -e "\nChecking for updates...\n"
 if [ "$( $CHUP )" == '' ] ; then
@@ -46,6 +36,17 @@ if [[ ! "$INPUT" =~ [yY] ]]; then
     exit 0
 fi
 echo -e "\n"
+
+# Get the passwd for sudo
+$SUDO -v
+
+# Keep sudo alive through the hole script
+while true; do $SUDO -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Update pacman mirrorlist
+echo -e "Update pacman mirrorlist\n"
+$SUDO $REFLECTOR --verbose -l 5 -p https --sort rate --save /etc/pacman.d/mirrorlist
+
 
 # --------------------------- #
 #      Snapshot System        #
