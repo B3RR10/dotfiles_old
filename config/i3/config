@@ -330,6 +330,7 @@ bindsym Control+Mod1+Shift+Delete exec $i3exit suspend
 ####################
 exec --no-startup-id compton -f
 exec --no-startup-id redshift
+exec --no-startup-id nextcloud
 # Start programs with `systemctl --user`
 #   dunst
 
