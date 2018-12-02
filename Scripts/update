@@ -7,19 +7,38 @@
 # --------------------------- #
 
 BTRFS=/usr/bin/btrfs
+CARGO="$(which cargo) install-update"
 CHUP=/usr/bin/checkupdates+aur
 CURL=/usr/bin/curl
 CP=/usr/bin/cp
+DIFF="$(which diff) -u"
+LASTUPDATEFILE="$HOME/.local/share/.lastupdate"
 MV=/usr/bin/mv
 PACAUR=/usr/bin/yay
 PACMAN=/usr/bin/pacman
+PAGER=$([[ $(command -v bat) > /dev/null ]] && echo "$(which bat)" || echo "$(which less) -R")
 REFLECTOR=/usr/bin/reflector
 SED=/usr/bin/sed
 SUDO=/usr/bin/sudo
 
+function show_diff() {
+    $DIFF "$1" "$2" | diff-so-fancy | $PAGER
+}
+
 # --------------------------- #
 #       Check Updates         #
 # --------------------------- #
+
+[[ -f $LASTUPDATEFILE ]] && {
+    lastupdate=$( head -n 1 $LASTUPDATEFILE )
+    now=$(date +%s)
+    elapsed=$(($now - $lastupdate))
+    days=$(($elapsed / (3600 * 24)))
+    [[ $days -le 1 ]] && {
+        hours=$(($elapsed / 3600))
+        echo -e "\nLast update $hours hours ago."
+    } || echo -e "\nLast update $days days ago."
+} || echo "Update has been never done."
 
 echo -e "\nChecking for updates...\n"
 if [ "$( $CHUP )" == '' ] ; then
@@ -27,6 +46,8 @@ if [ "$( $CHUP )" == '' ] ; then
     exit 0
 else
     $CHUP
+    echo
+    $CARGO -al
 fi
 
 echo
@@ -35,7 +56,7 @@ if [[ ! "$INPUT" =~ [yY] ]]; then
     echo -e "\nProgram finished"
     exit 0
 fi
-echo -e "\n"
+echo -en "\n"
 
 # Get the passwd for sudo
 $SUDO -v
@@ -43,10 +64,15 @@ $SUDO -v
 # Keep sudo alive through the hole script
 while true; do $SUDO -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+echo -en "\n---------------\n"
+clear
+
 # Update pacman mirrorlist
 echo -e "Update pacman mirrorlist\n"
 $SUDO $REFLECTOR --verbose -l 5 -p https --sort rate --save /etc/pacman.d/mirrorlist
 
+echo -en "\n---------------\n"
+clear
 
 # --------------------------- #
 #      Snapshot System        #
@@ -67,11 +93,17 @@ $SUDO $SED -i 's/TESTING/STABLE/g' /.snapshots/STABLE/etc/fstab
 $SUDO $CP /boot/vmlinuz-linux-lts /boot/vmlinuz-linux-stable
 $SUDO $CP /boot/initramfs-linux-lts.img /boot/initramfs-linux-stable.img
 
+echo -en "\n---------------\n"
+clear
+
 # --------------------------- #
 #       Update System         #
 # --------------------------- #
 
 $PACAUR -Syyu --noconfirm
+
+echo -en "\n---------------\n"
+clear
 
 # --------------------------- #
 #     Balance Filesystem      #
@@ -79,13 +111,22 @@ $PACAUR -Syyu --noconfirm
 
 $SUDO $BTRFS balance start -dusage=5 /btrfs
 
+echo -en "\n---------------\n"
+clear
+
 # --------------------------- #
 #       Update Misc           #
 # --------------------------- #
 
 rustup update
-cargo install-update -a
+echo -en "\n---------------\n"
+clear
+$CARGO -a
+echo -en "\n---------------\n"
+clear
 nvim +PlugUpdate +qall
+echo -en "\n---------------\n"
+clear
 
 # ---------------------------- #
 #       Update Hosts           #
@@ -95,6 +136,7 @@ cd $(mktemp -d)
 $CURL https://someonewhocares.org/hosts/hosts > hosts
 if ! cmp hosts /etc/hosts > /dev/null 2>&1; then
     echo -e "hosts file is not the same as in https://someonewhocares.org."
+    show_diff /etc/hosts hosts
     read -n 1 -p "Do you want to replace it [Y/n]? " INPUT
     echo
     if [[ ! "$INPUT" =~ [^yY] ]]; then
@@ -102,7 +144,6 @@ if ! cmp hosts /etc/hosts > /dev/null 2>&1; then
         $SUDO $CP hosts /etc/hosts
     fi
 fi
-cd -
 
 # Create file with the actual date
 

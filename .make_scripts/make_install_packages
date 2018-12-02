@@ -23,6 +23,7 @@ PACKAGES=(
     "alsa-tools"
     "alsa-utils"
     "arandr"
+    "bleachbit"
     "bind-tools"
     "chromium"
     "cmake"
