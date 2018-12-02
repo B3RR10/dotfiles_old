@@ -1,0 +1,9 @@
+[Unit]
+Description=Alert if system not updated
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=2h
+
+[Install]
+WantedBy=timers.target

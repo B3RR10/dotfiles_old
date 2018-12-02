@@ -1,0 +1,37 @@
+#!/usr/bin/env sh
+
+
+# System Rollback from stable
+
+# --------------------------- #
+# Snapshot - Rollback - Btrfs #
+# --------------------------- #
+
+MV=/usr/bin/mv
+BTRFS=/usr/bin/btrfs
+SED=/usr/bin/sed
+PACMAN=/usr/bin/pacman
+PACAUR=/usr/bin/yay
+CP=/usr/bin/cp
+REFLECTOR=/usr/bin/reflector
+SUDO=/usr/bin/sudo
+CHUP=/usr/bin/checkupdates+aur
+
+read -n 1 -p "Are you sure you want to make a rollbak to the stable snapshot (all changes in testing snapshot will be deleted) [y/N]? " INPUT
+if [[ ! "$INPUT" =~ [yY] ]]; then
+    echo -e "\nRollback canceled"
+    exit 0
+fi
+echo -e "\n"
+
+# --------------------------- #
+#      Snapshot System        #
+# --------------------------- #
+
+$SUDO $BTRFS sub del /.snapshots/TESTING
+$SUDO $BTRFS sub snap / /.snapshots/TESTING
+$SUDO $SED -i 's/STABLE/TESTING/g' /.snapshots/TESTING/etc/fstab
+$SUDO $CP /boot/vmlinuz-linux-stable /boot/vmlinuz-linux
+$SUDO $CP /boot/initramfs-linux-stable.img /boot/initramfs-linux.img
+
+# vim: ft=sh

@@ -1,6 +1,0 @@
-[Unit]
-Description=Alert if last system update is older than 1 week
-After=systemd-user-sessions.service
-
-[Service]
-ExecStart=/home/mberrio/Scripts/is-updated

@@ -1,0 +1,76 @@
+#!/usr/bin/env sh
+# vim: ft=sh
+HOME_DIR="$HOME"
+DOTFILES="$HOME/.dotfiles"
+
+echo "Dotfiles directory: $DOTFILES"
+echo "Target directory: $HOME_DIR"
+
+function format_path()
+{
+    RET=$(echo $1 | sed -e 's/\//\\\//g')
+    echo "$RET\/"
+}
+
+cd $DOTFILES
+DIRS=( $( find . -type d -not -path '*/\.*' -not -name README.md -not -name Makefile -regex '.*' ) )
+FILES=( $( find . -type f -not -path '*/\.*' -not -name README.md -not -name Makefile -regex '.*' ) )
+
+echo
+echo "Creating directories..."
+
+CAPS="\./[A-Z]"
+
+for DIR in ${DIRS[@]} ; do
+
+    # Remove parent directory
+    [ $DIR = '.' ] && continue
+
+    # Upper case directories are not hidden
+    if [[ $DIR =~ $CAPS ]]; then
+        TARGET_DIR=$(echo $DIR | sed -e "s/^.\//$(format_path $HOME_DIR)/g")
+    else
+        TARGET_DIR=$( echo $DIR | sed -e  "s/^.\//$(format_path $HOME_DIR)./g")
+    fi
+
+    # Create non-existent directories
+    if [[ ! -d $TARGET_DIR ]]; then
+        echo "Created directory $TARGET_DIR"
+        mkdir -p $TARGET_DIR
+    fi
+done
+
+echo "Done"
+echo "Creating symbolic links..."
+
+for FILE in ${FILES[@]} ; do
+
+    SOURCE_FILE=$(echo $FILE | sed -e "s/^.\//$(format_path $DOTFILES)/g")
+
+    # Upper case directories are not hidden
+    if [[ $FILE =~ $CAPS ]]; then
+        TARGET_FILE=$(echo $FILE | sed -e "s/^.\//$(format_path $HOME_DIR)/g")
+    else
+        TARGET_FILE=$(echo $FILE | sed -e "s/^.\//$(format_path $HOME_DIR)./g")
+    fi
+
+    # Create symlink if it doesnt exist or if the user wants to override it.
+    if [[ -f $TARGET_FILE ]]; then
+        if [[ ! -L $TARGET_FILE ]]; then
+            read -n 1 -p "A file already exists for $TARGET_FILE. Override it [y/N]? " INPUT
+            echo
+            if [[ $INPUT =~ [yY] ]]; then
+                echo "Created link $SOURCE_FILE -> $TARGET_FILE"
+                ln -sf $SOURCE_FILE $TARGET_FILE
+            else
+                echo "Link to $TARGET_FILE was not created"
+            fi
+        fi
+    else
+        echo "Created link $SOURCE_FILE -> $TARGET_FILE"
+        ln -s $SOURCE_FILE $TARGET_FILE
+    fi
+done
+
+echo "Done"
+

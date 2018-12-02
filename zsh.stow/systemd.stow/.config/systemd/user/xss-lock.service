@@ -1,0 +1,10 @@
+[Unit]
+Description=Run locker for systemd-events suspend, hibernate, lock-session and unlock-session
+After=display-manager.service
+
+[Service]
+ExecStart=/usr/bin/xss-lock -- /home/mberrio/.config/i3/i3exit lock &
+Restart=always
+
+[Install]
+WantedBy=default.target
