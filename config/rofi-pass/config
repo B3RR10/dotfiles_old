@@ -47,7 +47,7 @@ help_color="#4872FF"
 clip=primary
 
 # Options for generating new password entries
-default_user=miguelberrio91
+default_user=:filename
 default_user2=picasso91
 password_length=25
 

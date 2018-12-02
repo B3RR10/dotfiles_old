@@ -81,6 +81,9 @@ Plug 'honza/vim-snippets'
 Plug 'benekastah/neomake'
 " Code completion
 Plug ('Shougo/deoplete.nvim'),         { 'do'     : ':UpdateRemotePlugins' }
+Plug ( 'zchee/libclang-python3' ),
+Plug ('zchee/deoplete-clang'),
+
 " Plug 'zchee/deoplete-go',            { 'do'     : 'make'}
 Plug 'sebastianmarkow/deoplete-rust',  { 'for'    : 'rust' }
 "Plug 'nsf/gocode',                    { 'rtp'    : 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }

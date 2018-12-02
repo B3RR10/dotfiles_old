@@ -27,7 +27,7 @@ function o() {
 }
 
 # vimpager
-alias less=/usr/share/nvim/runtime/macros/less.sh
+# alias less=/usr/share/nvim/runtime/macros/less.sh
 
 # unalias md
 md () {

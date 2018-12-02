@@ -8,6 +8,7 @@ export TERM=tmux-256color
 
 # Add Scripts to Path
 export PATH=$PATH:$HOME/Scripts
+export PATH=$PATH:$HOME/bin
 # Add Screenlayouts to path
 export PATH=$PATH:$HOME/.screenlayout
 # Cargo env

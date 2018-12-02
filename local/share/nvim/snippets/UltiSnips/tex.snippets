@@ -3,6 +3,12 @@ snippet note "Add note for presentation" i
 ${2}
 endsnippet
 
+snippet lstin "Insert a listing from a file"
+\lstinputlisting[caption=${1:${VISUAL:caption}},label=lst:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}]{${3:name.ext}}
+
+$0
+endsnippet
+
 global !p
 def fix_indent(snip):
 	vim.eval('feedkeys("\<c-f>")')
