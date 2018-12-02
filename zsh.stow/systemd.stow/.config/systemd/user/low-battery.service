@@ -1,6 +1,0 @@
-[Unit]
-Description=Low battery warning or suspension
-After=systemd-user-sessions.service
-
-[Service]
-ExecStart=/home/mberrio/bin/battery
