@@ -40,23 +40,26 @@ function show_diff() {
     } || echo -e "\nLast update $days days ago."
 } || echo "Update has been never done."
 
-echo -e "\nChecking for updates...\n"
-if [ "$( $CHUP )" == '' ] ; then
-    echo -e "There are no updates available. Script terminated.\n"
-    exit 0
-else
-    $CHUP
+if [[ ! "$1" == "-y" ]]; then
+    echo -e "\nChecking for updates...\n"
+    if [ "$( $CHUP )" == '' ] ; then
+        echo -e "There are no updates available. Script terminated.\n"
+        exit 0
+    else
+        $CHUP
+        echo
+        $CARGO -al
+    fi
+
     echo
-    $CARGO -al
+    read -t 30 -n 1 -p "Do you want to perform a system update [y/N]? " INPUT
+    if [[ ! "$INPUT" =~ [yY] ]]; then
+        echo -e "\nProgram finished"
+        exit 0
+    fi
+    echo -en "\n"
 fi
 
-echo
-read -t 30 -n 1 -p "Do you want to perform a system update [y/N]? " INPUT
-if [[ ! "$INPUT" =~ [yY] ]]; then
-    echo -e "\nProgram finished"
-    exit 0
-fi
-echo -en "\n"
 
 # Get the passwd for sudo
 $SUDO -v

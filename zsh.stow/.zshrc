@@ -15,12 +15,11 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/cargo", from:oh-my-zsh
+zplug "plugins/globalias", from:oh-my-zsh
 zplug "lib/key-bindings", from:oh-my-zsh
 zplug "lib/completion", from:oh-my-zsh
 
 # From Github
-zplug "djui/alias-tips"
-# zplug "wfxr/forgit", defer:1
 zplug "zpm-zsh/zpm", use:"plugins/{cd,git,zsh-core}"
 zplug "zsh-users/zsh-completions"
 
