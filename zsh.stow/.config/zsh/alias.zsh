@@ -7,11 +7,11 @@ alias vi='nvim'
 alias edit='nvim'
 
 # ls commands
-alias -g ls='ls -A --color=auto --group-directories-first'
-alias -g ll='ls -l --color=auto --group-directories-first'
-alias -g la='ls -lA --color=auto --group-directories-first'
-alias -g l='ls -Ax --color=auto --group-directories-first'
-alias -g lh='ls -lh --color=auto --group-directories-first'
+alias ls='ls -A --color=auto --group-directories-first'
+alias ll='ls -l --color=auto --group-directories-first'
+alias la='ls -lA --color=auto --group-directories-first'
+alias l='ls -Ax --color=auto --group-directories-first'
+alias lh='ls -lh --color=auto --group-directories-first'
 
 # Ranger
 alias r='ranger'
@@ -26,9 +26,6 @@ function o() {
     i3 scratchpad show > /dev/null 2>&1
 }
 
-# vimpager
-# alias less=/usr/share/nvim/runtime/macros/less.sh
-
 # unalias md
 md () {
     mkdir -p -- "$1" &&
@@ -37,7 +34,7 @@ md () {
 
 # git aliases
 
-alias gs="gst"
+alias gs="git status"
 
 alias git-undopush="git push -f origin HEAD^:master"
 alias cpbr="git rev-parse --abbrev-ref HEAD | pbcopy"
@@ -60,7 +57,7 @@ function g() {
         git $@
     else
         # otherwise, run git status
-        gst
+        git status
     fi
 }
 

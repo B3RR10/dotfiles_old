@@ -24,6 +24,10 @@ zplug "zpm-zsh/zpm", use:"plugins/{cd,git,zsh-core}"
 zplug "zsh-users/zsh-completions"
 
 # Theme
+PURE_PROMPT_SYMBOL="-> "
+PURE_PROMPT_VICMD_SYMBOL="< "
+PURE_GIT_UP_ARROW=">"
+PURE_GIT_DOWN_ARROW="<"
 zplug "mafredri/zsh-async", from:github
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
@@ -37,11 +41,14 @@ zplug load
 # --------------- Source ZDOTDIR files... --------------- #
 
 # Files to source
-# ~/.dotfiles/config/zsh/alias.zsh
-# ~/.dotfiles/config/zsh/auto_ls.zsh
-# ~/.dotfiles/config/zsh/completions.zsh
-# ~/.dotfiles/config/zsh/env.zsh
-# ~/.dotfiles/config/zsh/history.zsh
+# ~/.config/zsh/alias.zsh
+# ~/.config/zsh/auto_ls.zsh
+# ~/.config/zsh/completions.zsh
+# ~/.config/zsh/env.zsh
+# ~/.config/zsh/history.zsh
 for config ($ZDOTDIR/**/*.zsh) source $config
+
+# Match files and directories starting with dot '.'
+setopt globdots
 
 compinit
