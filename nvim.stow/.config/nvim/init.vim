@@ -90,6 +90,9 @@ Plug 'sebastianmarkow/deoplete-rust',  { 'for'    : 'rust' }
 
 " A better Vimdiff Git mergetool
 Plug 'whiteinge/diffconflicts'
+
+" Toggle quickfix with \q and location list with \l
+Plug 'milkypostman/vim-togglelist'
 "--------------------------------------------------"
 call plug#end()
 " }}} Plugins "
@@ -110,7 +113,14 @@ augroup reload_vimrc
 augroup END
 
 " Autoremove trailing white spaces spaces and convert tabs in spaces
-autocmd BufWritePre * silent! %s/\s\+$//ge
+function! StripWhiteSpaces()
+    if &ft =~ 'gitcommit\|diff'
+        return
+    endif
+    %s/\s\+$//e
+endfunction
+" autocmd BufWritePre * silent! %s/\s\+$//ge
+autocmd BufWritePre * silent! call StripWhiteSpaces()
 autocmd BufWritePre * %retab!
 
 " Show relative numbers in normal mode
@@ -118,7 +128,7 @@ autocmd InsertEnter * set nornu
 autocmd InsertLeave * set rnu
 
 " Make file executable
-autocmd FileType sh,bash,perl,python,ruby nno <leader>ex :! chmod +x %<CR>
+autocmd FileType sh,bash,python nno <leader>ex :! chmod +x %<CR>
 " }}} Autocommands "
 
 " Colorscheme {{{ "
@@ -264,21 +274,9 @@ nno <leader>sen :set spelllang=en_us<CR>
 nno <leader>ses :set spelllang=es_mx<CR>
 
 " Move through buffers
-nno <silent> <leader>q :bdelete<CR>
 nno <silent> <Tab> :bnext<CR>
 nno <silent> <S-Tab> :bprevious<CR>
 
-" Tabs
-nno <silent> <leader>h :tabp<CR>
-nno <silent> <leader>l :tabn<CR>
-
-" Windows
-no <C-j> <C-W>j
-no <C-k> <C-W>k
-no <C-h> <C-W>h
-no <C-l> <C-W>l
-
-no <leader>vq <C-W>q
 no <leader>vl :vertical resize +10<CR>
 no <leader>vh :vertical resize -10<CR>
 no <leader>vj :res +10<CR>
@@ -288,25 +286,9 @@ no <leader>vk :res -10<CR>
 nno L xp
 nno H Xph
 
-" Move through wrapped lines
-imap <silent> <Down> <C-o>gj
-imap <silent> <Up> <C-o>gk
-nmap <silent> <Down> gj
-nmap <silent> <Up> gk
-
 " Return to visual selection when indenting
 vno < <gv
 vno > >gv
-
-" Move to next instance of the word
-no <Space>j *
-no <Space>k #
-
-" Move faster through text
-" nno <C-e> 5<C-e>
-" nno <C-y> 5<C-y>
-" vno <C-e> 5<C-e>
-" vno <C-y> 5<C-y>
 
 " Select all text
 map <Space>a ggVG
@@ -472,7 +454,7 @@ let g:deoplete#enable_at_startup = 1
 
 " Easy align {{{ "
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
+" vmap <Enter> <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
@@ -573,7 +555,7 @@ nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 " }}} Language Client "
 
 " Neomake {{{ "
-let g:neomake_open_list = 2
+let g:neomake_open_list = 0
 call neomake#configure#automake('rw', 1000)
 " }}} Neomake "
 
