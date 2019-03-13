@@ -1,0 +1,1 @@
+../../../.dotfiles/nvim.stow/.config/nvim/ftplugin/vim.vim
