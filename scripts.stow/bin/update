@@ -68,14 +68,12 @@ $SUDO -v
 while true; do $SUDO -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 echo -en "\n---------------\n"
-clear
 
 # Update pacman mirrorlist
 echo -e "Update pacman mirrorlist\n"
 $SUDO $REFLECTOR --verbose -l 5 -p https --sort rate --save /etc/pacman.d/mirrorlist
 
 echo -en "\n---------------\n"
-clear
 
 # --------------------------- #
 #      Snapshot System        #
@@ -97,7 +95,6 @@ $SUDO $CP /boot/vmlinuz-linux-lts /boot/vmlinuz-linux-stable
 $SUDO $CP /boot/initramfs-linux-lts.img /boot/initramfs-linux-stable.img
 
 echo -en "\n---------------\n"
-clear
 
 # --------------------------- #
 #       Update System         #
@@ -106,7 +103,6 @@ clear
 $PACAUR -Syyu --noconfirm
 
 echo -en "\n---------------\n"
-clear
 
 # --------------------------- #
 #     Balance Filesystem      #
@@ -115,7 +111,6 @@ clear
 $SUDO $BTRFS balance start -dusage=5 /btrfs
 
 echo -en "\n---------------\n"
-clear
 
 # --------------------------- #
 #       Update Misc           #
@@ -123,13 +118,10 @@ clear
 
 rustup update
 echo -en "\n---------------\n"
-clear
 $CARGO -a
 echo -en "\n---------------\n"
-clear
 nvim +PlugUpdate +qall
 echo -en "\n---------------\n"
-clear
 
 # ---------------------------- #
 #       Update Hosts           #
