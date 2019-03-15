@@ -2,6 +2,10 @@
 
 username=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 10 | head -n 1)
 
-echo "$username" | xclip -selection clipboard
+if [[ "$1" = "-c" ]]; then
+    echo "$username" | xclip -selection clipboard
+    notify-send "Create random username" "Username was created and copied in clipboard"
+else
+    echo "$username"
+fi
 
-notify-send "Create random username" "Username was created and copied in clipboard"
