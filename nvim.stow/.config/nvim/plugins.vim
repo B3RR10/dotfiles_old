@@ -1,5 +1,6 @@
 let $NVIM_PLUG_SOURCE = expand('$HOME/.local/share/nvim/site/autoload/plug.vim')
 let $NVIM_PLUG_DIR = expand('$HOME/.local/share/nvim/plugged')
+let $NVIM_SESSIONS_DIR = expand('$HOME/.local/share/nvim/sessions')
 
 if empty(glob($NVIM_PLUG_SOURCE))
   silent !curl -fLo $NVIM_PLUG_SOURCE --create-dirs
@@ -17,6 +18,11 @@ Plug 'mengelbrecht/lightline-bufferline'
 
 " TODO: Activate???
 " Plug 'mhinz/vim-startify'
+" Save persistent sessions on a workspace
+Plug 'thaerkh/vim-workspace'
+
+" Show indentation guides
+Plug 'Yggdroot/indentLine'
 
 " Language Client
 Plug 'autozimu/LanguageClient-neovim', {
@@ -32,7 +38,7 @@ Plug 'cespare/vim-toml'
 " Add, change and delete surroundings
 Plug 'tpope/vim-surround'
 
-" Git integration (Show diff on files)
+" Git integration (Show diff in the sign column - gutter -)
 Plug 'airblade/vim-gitgutter'
 
 " A better Vimdiff Git mergetool
@@ -100,10 +106,10 @@ no <Leader>fg :GFiles<CR>
 nmap ]h :GitGutterNextHunk<CR>
 nmap [h :GitGutterPrevHunk<CR>
 
-nmap ghr :GitGutterRevertHunk<CR>
-nmap gha :GitGutterStageHunk<CR>
-nmap ghh :GitGutterLineHighlightsToggle<CR>
-nmap ghf :GitGutterFold<CR>
+nmap <leader>hr :GitGutterRevertHunk<CR>
+nmap <leader>ha :GitGutterStageHunk<CR>
+nmap <leader>hh :GitGutterLineHighlightsToggle<CR>
+nmap <leader>hf :GitGutterFold<CR>
 
 " Use hunks as objects
 omap ih <Plug>GitGutterTextObjectInnerPending
@@ -117,6 +123,10 @@ let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_modified_removed = '~_'
 let g:gitgutter_grep_command = 'rg'
 " }}} Gitgutter "
+
+" Indentguides {{{ "
+let g:indentLine_char = '|'
+" }}} Indentguides "
 
 " Language Client {{{ "
 let g:LanguageClient_autoStart = 1
@@ -167,3 +177,10 @@ let g:UltiSnipsSnippetDirectories = ['snippets/UltiSnips', 'UltiSnips']
 let g:UltiSnipsSnippetDir = "~/.config/nvim/snippets/UltiSnips"
 " }}} Ultisnips "
 
+" Workspace {{{ "
+nnoremap <leader>s :ToggleWorkspace<CR>
+let g:workspace_session_directory = $NVIM_SESSIONS_DIR
+let g:workspace_persist_undo_history = 0
+let g:workspace_autosave = 0
+let g:workspace_session_disable_on_args = 1
+" }}} Workspace "

@@ -6,9 +6,6 @@ cno JK <Esc>
 nno <C-q> <Esc>
 vno <C-q> <Esc>
 
-nmap <leader>pi :PlugInstall<CR>
-nmap <leader>pu :PlugUpdate<CR>
-
 " Move through buffers
 nno <silent> <Tab> :bnext<CR>
 nno <silent> <S-Tab> :bprevious<CR>
@@ -24,5 +21,5 @@ vno > >gv
 " Copy until the end of the line
 no Y y$
 
-" Clean search highligt
-no <silent> <Space><Space> :nohlsearch<CR>
+" Close preview window
+nno <silent> <leader>p :pclose<CR>
