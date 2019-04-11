@@ -12,12 +12,7 @@ rustup default stable
 rustup toolchain add nightly
 
 # Install components
-rustup component add rls-preview rust-analysis rust-src rustfmt-preview
-
-# Install bat
-if [[ ! -x $(command -v bat) ]]; then
-    cargo install bat
-fi
+rustup component add rls rust-analysis rust-src rustfmt clippy
 
 # Install cargo-update
 if ! cargo install-update --version > /dev/null ; then
@@ -29,7 +24,3 @@ if [[ ! -x $(command -v cargo) ]]; then
     cargo +nightly install racer
 fi
 
-# Install alacritty
-if [[ ! -x $(command -v alacritty) ]]; then
-    yay -S alacritty-git
-fi

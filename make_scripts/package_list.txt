@@ -10,6 +10,7 @@ automake
 bash
 bash-completion
 bash-language-server
+bat
 bind
 binutils
 bison

@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
-# vim: ft=sh
+
+# Create a `package_list.txt` of the system with `pacman -Qqe > package_list.txt`
 
 git=$(command -v git)
 makepkg=$(command -v makepkg)
@@ -39,9 +40,13 @@ pacaur=$(command -v yay)
 error_pkgs=""
 echo "Installing packages..."
 while IFS= read -r package; do
-    if ! $pacaur -S --needed --noconfirm --quiet "$package"; then
-        echo "Error installing package $package" >&2
-        error_pkgs="${error_pkgs} $package"
+    if ! $pacaur -Qs "$package" > /dev/null; then
+        if ! $pacaur -S --needed --noconfirm --quiet "$package"; then
+            echo "Error installing package $package" >&2
+            error_pkgs="${error_pkgs} $package"
+        fi
+    else
+        echo "$package is already installed"
     fi
 done < "$package_list"
 
@@ -55,3 +60,4 @@ fi
 echo
 echo "All packages were installed"
 exit 0
+# vim: ft=sh
