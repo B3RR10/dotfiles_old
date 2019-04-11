@@ -3,5 +3,5 @@
 
 DOTFILES=$HOME/.dotfiles
 
-cd $DOTFILES
+cd "$DOTFILES" || exit
 make install

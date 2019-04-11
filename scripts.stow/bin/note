@@ -8,7 +8,7 @@ extention=${NOTE_EXTENTION:-".md"}
 notes=()
 while IFS= read -d $'\0' -r file ; do
     notes=("${notes[@]}" "$file")
-done < <(find $notes_dir -type f -name "*$extention" -print0 | sort -z)
+done < <(find "$notes_dir" -type f -name "*$extention" -print0 | sort -z)
 
 function usage {
     echo -e "\nNote."
@@ -52,10 +52,10 @@ function create_note {
     [[ $1 =~ $re ]] || {
         file_name="$file_name$extention"
     }
-    file_dir=$( dirname $file_name )
+    file_dir=$( dirname "$file_name" )
     [[ -d $file_dir ]] || {
-        echo "Creating directory: $( dirname $1 )"
-        mkdir -p $file_dir
+        echo "Creating directory: $( dirname "$1" )"
+        mkdir -p "$file_dir"
     }
 
     ${EDITOR:-vim} "$file_name"
@@ -67,9 +67,9 @@ function find_note {
     local notes=()
     while IFS= read -d $'\0' -r file ; do
         notes=("${notes[@]}" "$file")
-    done < <(find $notes_dir -type f -iname "*$1*" -print0 | sort -z)
+    done < <(find "$notes_dir" -type f -iname "*$1*" -print0 | sort -z)
 
-    for file in ${notes[@]} ; do
+    for file in "${notes[@]}" ; do
         opts+=( -not -name $(basename "$file") )
     done
 
