@@ -70,8 +70,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-" Neomake
-Plug 'benekastah/neomake'
+" Linter
+Plug 'w0rp/ale'
 
 " Code completion
 Plug ('Shougo/deoplete.nvim'),         { 'do'     : ':UpdateRemotePlugins' }
@@ -85,6 +85,13 @@ Plug 'suxpert/vimcaps'
 
 call plug#end()
 " }}} Pluggins "
+
+" Ale - Linter {{{ "
+let g:ale_linters = {
+    \ 'sh': ['shellcheck', 'language_server'],
+    \ 'rust': ['cargo', 'rls']
+    \ }
+" }}} Ale - Linter "
 
 " Autopairs {{{ "
 let g:AutoPairsFlyMode = 1
@@ -175,11 +182,6 @@ let g:lightline.tabline          = {'left': [['buffers']], 'right': [[]]}
 let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
 let g:lightline.component_type   = {'buffers': 'tabsel'}
 " }}} Lightline "
-
-" Neomake {{{ "
-let g:neomake_open_list = 0
-call neomake#configure#automake('rw', 1000)
-" }}} Neomake "
 
 " Python provider for Neovim {{{ "
 let g:python_host_prog  = '/usr/bin/python2'
