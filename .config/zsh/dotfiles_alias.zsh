@@ -2,6 +2,8 @@
 
 alias c="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
+alias ch="alias | rg -e '^c\w*='"
+
 alias ca='c add'
 alias cap='c add -p'
 
