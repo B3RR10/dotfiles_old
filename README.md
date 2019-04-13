@@ -45,10 +45,10 @@ c config --local status.showUntrackedFiles no
 - Your dorfiles are ready. You can now change your files and commit them...
 
 ```sh
-c status
-ca .vimrc
-cc -m "Add vimrc"
-ca .bashrc
-cc -m "Add bashrc"
-cpv
+cs # vim status
+ca .vimrc # vim add ...
+cc -m "Add vimrc" # vim commit -v -m ...
+ca .bashrc # vim add ...
+cc -m "Add bashrc" # vim commit -v -m ...
+cpv # git push -v
 ```
