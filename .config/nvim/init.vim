@@ -112,6 +112,7 @@ nmap F <Plug>(easymotion-prefix)s
 
 " FZF - Fuzzy finder {{{ "
 no <Leader>ff :FZF<CR>
+no <Leader>fh :FZF ~<CR>
 no <Leader>fb :Buffers<CR>
 no <Leader>fg :GFiles<CR>
 " }}} FZF - Fuzzy finder "
