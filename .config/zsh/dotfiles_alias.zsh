@@ -1,6 +1,6 @@
 # Aliases for easy dotfiles management
 
-alias c='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias c="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 alias ca='c add'
 alias cap='c add -p'
