@@ -1,15 +1,6 @@
 # reload zsh config
 alias zsh!='RELOAD=1 source ~/.zshrc'
 
-# dotfiles management
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias cs='config status'
-alias ca='config add'
-alias cp='config push'
-alias cup='config pull --rebase'
-alias cdiff='config diff'
-alias cc='config commit -v'
-
 # Editor
 alias vim='nvim'
 alias vi='nvim'
