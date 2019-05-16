@@ -35,6 +35,7 @@ set smartindent
 set linebreak
 let &showbreak='> '
 set cpoptions+=n
+set textwidth=120
 
 " performance
 set lazyredraw
