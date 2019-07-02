@@ -2,7 +2,7 @@
 auto-ls () {
     if [[ -z $BUFFER ]]; then
         zle && echo ""
-        l
+        ls
         echo ""
         if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == true ]]; then
             gst --column=row --short

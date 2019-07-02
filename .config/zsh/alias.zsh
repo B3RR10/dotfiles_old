@@ -7,15 +7,12 @@ alias vi='nvim'
 alias edit='nvim'
 
 # ls commands
-alias ls='ls -A --color=auto --group-directories-first'
+alias ls='ls --color=auto --group-directories-first'
+alias lsa='ls -A --color=auto --group-directories-first'
 alias ll='ls -l --color=auto --group-directories-first'
 alias la='ls -lA --color=auto --group-directories-first'
 alias l='ls -Ax --color=auto --group-directories-first'
 alias lh='ls -lh --color=auto --group-directories-first'
-
-# Ranger
-alias r='ranger'
-alias ranger='ranger --choosedir=$HOME/.config/ranger/rangedir;cd $(cat $HOME/.config/ranger/rangedir)'
 
 # Open file
 function o() {
@@ -24,12 +21,6 @@ function o() {
         xdg-open "$i" > /dev/null 2>&1 &
     done
     i3 scratchpad show > /dev/null 2>&1
-}
-
-# unalias md
-md () {
-    mkdir -p -- "$1" &&
-        cd -P -- "$1"
 }
 
 # git aliases
@@ -48,17 +39,6 @@ function give-credit() {
 function git-rename() {
     git mv $1 "${2}-"
     git mv "${2}-" $2
-}
-
-unalias g
-function g() {
-    if [[ $# > 0 ]]; then
-        # if there are arguments, send them to git
-        git $@
-    else
-        # otherwise, run git status
-        git status
-    fi
 }
 
 # tmux aliases
