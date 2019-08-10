@@ -1,5 +1,5 @@
 # reload zsh config
-alias zsh!='RELOAD=1 source ~/.config/zsh/.zshrc'
+alias zsh!='RELOAD=1 source "$ZDOTDIR/.zshrc"'
 
 # Editor
 alias vim='nvim'
@@ -7,12 +7,11 @@ alias vi='nvim'
 alias edit='nvim'
 
 # ls commands
-alias ls='ls --color=auto --group-directories-first'
-alias lsa='ls -A --color=auto --group-directories-first'
+alias ls='ls -x --color=auto --group-directories-first'
+alias l='ls -Ax --color=auto --group-directories-first'
 alias ll='ls -l --color=auto --group-directories-first'
 alias la='ls -lA --color=auto --group-directories-first'
-alias l='ls -Ax --color=auto --group-directories-first'
-alias lh='ls -lh --color=auto --group-directories-first'
+alias lh='ls -lAh --color=auto --group-directories-first'
 
 # Open file
 function o() {
