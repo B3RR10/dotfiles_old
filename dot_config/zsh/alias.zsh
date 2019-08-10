@@ -1,5 +1,5 @@
 # reload zsh config
-alias zsh!='RELOAD=1 source ~/.zshrc'
+alias zsh!='RELOAD=1 source ~/.config/zsh/.zshrc'
 
 # Editor
 alias vim='nvim'
