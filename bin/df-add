@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+# Add a file to the dotfiles
+DOTFILES=${DOTFILES:-$HOME/.dotfiles}
+
+programname=$0
+
+function main() {
+    # Capture parameters
+    if [[ "$#" -eq 2 ]]; then
+        if [[ "$1" = '-n' ]]; then
+            DRY_RUN=1
+            shift
+        else
+            exit-error "Parameter error"
+        fi
+    elif [[ "$#" -eq 1 ]]; then
+        if [[ "$1" = '-h' || "$1" = '--help' ]]; then
+            usage
+            exit 0
+        elif [[ "$1" = '-n' ]]; then
+            exit-error "Paramter error"
+        fi
+    else
+        exit-error "Paramter error"
+    fi
+
+    source_file=$1
+    [[ ! -f $source_file ]] && exit-error "File '${source_file/$HOME/\~}' not found"
+
+    dotfile_file=$(echo "$source_file" | sed -E -e 's|/\.|/dot_|g; s|'"$HOME"'|'"$DOTFILES"'|')
+    [[ -f $dotfile_file ]] && {
+        echo "File ${dotfile_file/$HOME/\~} already exists"
+        exit 1
+    }
+
+    dotfile_dir=$(dirname "$dotfile_file")
+    [[ -d "$dotfile_dir" ]] || perform mkdir -p "$dotfile_dir"
+    echo "Copy from ${source_file/$HOME/\~} to ${dotfile_file/$HOME/\~}"
+    perform cp "$source_file" "$dotfile_file"
+    echo "Create symlink ${source_file/$HOME/\~} -> ${dotfile_file/$HOME/\~}"
+    perform ln -s "$dotfile_file" "$source_file"
+}
+
+function perform() {
+    echo "${*/$HOME/\~}"
+    [[ -z "$DRY_RUN" ]] && eval "$*"
+}
+
+function exit-error() {
+    echo -e "$1\n"
+    usage
+    exit 1
+}
+
+function usage {
+    echo "Usage: $programname [-n] FILE"
+    echo "  FILE           File to add in the dotfiles"
+    echo "  -n             dry run"
+    echo "  -h, --help     display help"
+}
+
+main "$@"
