@@ -54,7 +54,7 @@ function add_to_df() {
             echo "Copy from ${source_file/$HOME/\~} to ${dotfile_file/$HOME/\~}"
             perform cp "$source_file" "$dotfile_file"
             echo "Create symlink ${source_file/$HOME/\~} -> ${dotfile_file/$HOME/\~}"
-            perform ln -s "$dotfile_file" "$source_file"
+            perform ln -fs "$dotfile_file" "$source_file"
         fi
     done
 }
