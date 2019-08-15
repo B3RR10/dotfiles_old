@@ -1,0 +1,11 @@
+account runbox
+host mail.runbox.com
+port 587
+protocol smtp
+auth on
+user miguelberrio@runbox.com
+from me@miguelberrio.xyz
+tls on
+tls_starttls on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+passwordeval "pass runbox.com/miguelberrio_neomutt"

@@ -1,0 +1,64 @@
+#################################
+######## Account runbox ########
+#################################
+
+IMAPAccount runbox
+Host mail.runbox.com
+User miguelberrio
+PassCmd "pass runbox.com/miguelberrio_neomutt"
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# Remote storage
+IMAPStore runbox-remote
+Account runbox
+
+# Local storage
+MaildirStore runbox-local
+Path ~/Mail/runbox/
+Inbox ~/Mail/runbox/INBOX
+
+Channel runbox-inbox
+Master :runbox-remote:"INBOX"
+Slave :runbox-local:INBOX
+Create Both
+Expunge Both
+
+Channel runbox-archive
+Master :runbox-remote:"Archive"
+Slave :runbox-local:archive
+Create Both
+Expunge Both
+
+Channel runbox-drafts
+Master :runbox-remote:"Drafts"
+Slave :runbox-local:drafts
+Create Both
+Expunge Both
+
+Channel runbox-sent
+Master :runbox-remote:"Sent"
+Slave :runbox-local:sent
+Create Both
+Expunge Both
+
+Channel runbox-trash
+Master :runbox-remote:"Trash"
+Slave :runbox-local:trash
+Create Both
+Expunge Both
+
+Channel runbox-junk
+Master :runbox-remote:"Spam"
+Slave :runbox-local:junk
+Create Both
+Expunge Both
+
+Group runbox
+Channel runbox-inbox
+Channel runbox-archive
+Channel runbox-drafts
+Channel runbox-sent
+Channel runbox-trash
+Channel runbox-junk
