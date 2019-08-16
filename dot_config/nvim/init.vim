@@ -101,6 +101,10 @@ let g:AutoPairsMapCR = 0
 imap <silent><CR> <CR><Plug>AutoPairsReturn
 " }}} Autopairs "
 
+" Colorscheme {{{ "
+colorscheme apprentice
+" }}} Colorscheme "
+
 " Deoplete - Completion framework {{{ "
 let g:deoplete#enable_at_startup = 1
 " }}} Deoplete - Completion framework "

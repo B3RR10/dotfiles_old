@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+
+# Add a file to the dotfiles
+DOTFILES=${DOTFILES:-$HOME/.dotfiles}
+
+programname=$0
+
+function main() {
+    # Capture parameters
+    if [[ "$#" -gt 1 ]]; then
+        if [[ "$1" = '-n' ]]; then
+            DRY_RUN=1
+            shift
+        fi
+    elif [[ "$#" -eq 1 ]]; then
+        if [[ "$1" = '-h' || "$1" = '--help' ]]; then
+            usage
+            exit 0
+        elif [[ "$1" = '-n' ]]; then
+            exit-error "Paramter error"
+        fi
+    else
+        exit-error "Paramter error"
+    fi
+
+    add_to_df "$@"
+}
+
+function add_to_df() {
+    for source_file in "$@"; do
+        if [[ -d "$source_file" ]]; then
+
+            local dir=$source_file
+            echo -e "\n---------- DIR: ${dir/$HOME/\~}"
+            for sub_file in "$dir"/* ; do
+                add_to_df "${sub_file//\/\//\/}"
+            done
+            echo -e "---------- DONE: ${dir/$HOME/\~}\n"
+        elif [[ -f $source_file ]]; then
+            echo -e "---------- FILE: $source_file"
+            if [[ ! -f $source_file ]]; then
+                echo "File '${source_file/$HOME/\~}' not found"
+                continue
+            fi
+
+            dotfile_file=$(echo "$source_file" | sed -E -e 's|/\.|/dot_|g; s|'"$HOME"'|'"$DOTFILES"'|')
+            if [[ -f $dotfile_file ]]; then
+                echo "File ${dotfile_file/$HOME/\~} already exists"
+                continue
+            fi
+
+            dotfile_dir=$(dirname "$dotfile_file")
+            [[ -d "$dotfile_dir" ]] || perform mkdir -p "$dotfile_dir"
+            echo "Copy from ${source_file/$HOME/\~} to ${dotfile_file/$HOME/\~}"
+            perform cp "$source_file" "$dotfile_file"
+            echo "Create symlink ${source_file/$HOME/\~} -> ${dotfile_file/$HOME/\~}"
+            perform ln -fs "$dotfile_file" "$source_file"
+        fi
+    done
+}
+
+function perform() {
+    echo "${*/$HOME/\~}"
+    [[ -z "$DRY_RUN" ]] && eval "$*"
+}
+
+function exit-error() {
+    echo -e "$1\n"
+    usage
+    exit 1
+}
+
+function usage {
+    echo "Usage: $programname [-n] FILE"
+    echo "  FILE           File to add in the dotfiles"
+    echo "  -n             dry run"
+    echo "  -h, --help     display help"
+}
+
+main "$@"

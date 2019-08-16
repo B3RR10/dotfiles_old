@@ -18,6 +18,7 @@ bleachbit
 btrfs-progs
 bzip2
 checkupdates+aur
+chezmoi
 chromium
 chromium-widevine
 cmake
@@ -76,15 +77,17 @@ i3-gaps
 i3blocks
 i3lock
 i3status
+i3status-rust-bin
 imagemagick
 inetutils
 iproute2
 iputils
-jabref
-jdk
+isync
+jdk-openjdk
 jfsutils
 keybase
 keybase-gui
+khard
 less
 libreoffice-fresh
 libtool
@@ -105,6 +108,7 @@ mdadm
 mpv
 msmtp
 mtpfs
+mu
 mupdf
 nano
 nemo
@@ -123,6 +127,8 @@ openvpn
 p7zip
 pacman
 pacman-contrib
+pacutils
+pandoc
 pass
 pass-otp
 patch
@@ -133,7 +139,6 @@ perl
 perl-file-mimeinfo
 pkgconf
 playerctl
-polybar
 ponymix
 procps-ng
 psmisc
@@ -156,6 +161,7 @@ redshift
 reflector
 reiserfsprogs
 ripgrep
+ripmime
 rofi
 rofi-pass
 rsync
@@ -165,6 +171,7 @@ scrot
 sed
 shadow
 shellcheck-static
+speedtest-cli
 spotify
 standardnotes-desktop
 stow
@@ -192,9 +199,11 @@ thunderbird
 tlp
 tmux
 traceroute
+upower
 urlscan
 usbutils
 util-linux
+vdirsyncer
 vi
 vim
 vlc
@@ -211,6 +220,7 @@ xorg-xinit
 yay-bin
 zathura
 zathura-pdf-mupdf
+zbar
 zsh
 zsh-completions
 zsh-lovers

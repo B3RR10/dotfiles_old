@@ -2,53 +2,30 @@
 
 Repository to keep my dotfiles up to date.
 
-The dotfiles are managed as a bare repository based on this [link](https://www.atlassian.com/git/tutorials/dotfiles)
-
-The command `c='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'` is used to treat the home directory as the root of the git repository. The file `~/.config/zsh/dotfiles_alias.zsh` contains some helping aliases for ease of use.
-
 ## Installation
 
-To install the dotfiles in a new system, follow the steps:
-
-- Define the alias in the current scope
-
-```sh
-alias c='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-```
-
-- Add the git directory to the ignored files
+To install the dotfiles in a new system, simply source the `bootstrap.sh` script with the `-b`
+parameter.
 
 ```sh
-echo ".dotfiles" > .gitignore
+./bootstrap.sh -b
 ```
 
-- Clone the repository as a --bare repo
+To see the changes that would be made in the system withouth doing them, use the `-n` flag (dry run)
+and the `-d` for extra information (debug).
 
 ```sh
-git clone --base <git-repo-url> $HOME/.dotfiles
+./bootstrap.sh -n -d
 ```
 
-- Checkout the actual content from the bare repository to your $HOME
+When creating the symlinks, the script creates a backup of a file that already exists in the system.
+If you want to avoid this, use the `-f` (force) flag.
 
 ```sh
-c checkout
+./bootstrap.sh -f
 ```
 
-This step may fail because the $HOME directory may already have some files that the git command want to overwrite. The solution is to backup those files and remove them. Then run the command again.
+All the flags can be used at the same time.
 
-- Set the flag `showUntrackedFiles` to `no` on this specific repository
-
-```sh
-c config --local status.showUntrackedFiles no
-```
-
-- Your dorfiles are ready. You can now change your files and commit them...
-
-```sh
-cs # vim status
-ca .vimrc # vim add ...
-cc -m "Add vimrc" # vim commit -v -m ...
-ca .bashrc # vim add ...
-cc -m "Add bashrc" # vim commit -v -m ...
-cpv # git push -v
-```
+If you have files in your dotfiles directory that should not be linked, add them to the `.dfignore`
+file.

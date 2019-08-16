@@ -3,7 +3,6 @@ if (has("termguicolors"))
 endif
 
 syntax enable
-colorscheme apprentice
 
 set noswapfile
 
