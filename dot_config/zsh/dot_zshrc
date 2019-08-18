@@ -39,9 +39,19 @@ zplug load
 # Source config files
 for config ($ZDOTDIR/**/*.zsh) source $config
 
+# Source fzf
+source /usr/share/doc/fzf/completion.zsh
+source /usr/share/doc/fzf/key-bindings.zsh
+
+# set completions directory
+completion_dir=$HOME/.local/share/zsh/functions/Completion
+fpath=( "$completion_dir" $fpath )
+
 autoload -Uz compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
     compinit;
 else
     compinit -C;
 fi
+
+# vim: ft=zsh

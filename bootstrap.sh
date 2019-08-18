@@ -85,6 +85,18 @@ function first_install() {
     # Install zsh plugins
     echo "Install zsh plugins running 'zplug install'"
 
+    # Create completions
+    local completion_dir=$HOME/.local/share/zsh/functions/Completion
+    if [[ ! -d "$completion_dir" ]]; then
+        mkdir -p "$completion_dir"
+    fi
+
+    # -- Keybase
+    curl -fLo "$completion_dir/_keybase" \
+        https://raw.githubusercontent.com/fnoris/keybase-zsh-completion/master/_keybase
+    # -- rustup
+    rustup completions zsh > "$completion_dir/_rustup"
+
     # Following services must be enabled:
     # - user:
     #   - keybase
