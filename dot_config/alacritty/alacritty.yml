@@ -389,7 +389,7 @@ working_directory: None
 enable_experimental_conpty_backend: false
 
 # Send ESC (\x1b) before characters when alt is pressed.
-alt_send_esc: false
+alt_send_esc: true
 
 debug:
   # Display the time it takes to redraw each frame.
@@ -533,6 +533,7 @@ key_bindings:
   #- { key: W,      mods: Command,         action: Quit             }
   #- { key: F,      mods: Command|Control, action: ToggleFullscreen }
 
+  - { key: X,        mods: Alt,     chars: ""                                }
   - { key: Paste,                   action: Paste                            }
   - { key: Copy,                    action: Copy                             }
   - { key: L,        mods: Control, action: ClearLogNotice                   }
