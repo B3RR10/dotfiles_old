@@ -142,7 +142,10 @@ function install_packages() {
 
     # Install packages with yay
     perform yay -S --noconfirm --needed "$(comm -12 <(yay -Slq | sort) <(sort package-list-2.txt))"
-# pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
+
+    # Install diff-so-fancy
+    curl https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy > $HOME/bin/diff-so-fancy
+    chmod +x $HOME/bin/diff-so-fancy
 
 }
 
