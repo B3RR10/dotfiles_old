@@ -4,4 +4,5 @@ isavailable redshift && redshift &
 
 # setxkbmap -model pc105 -layout us,de -variant intl, -option grp:alt_space_toggle &
 
-exec i3
+# exec i3
+exec ck-launch-session dbus-launch --sh-syntax --exit-with-x11 i3
