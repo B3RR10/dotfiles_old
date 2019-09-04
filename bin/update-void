@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+SUDO=$(which sudo)
+BTRFS=$(which btrfs)
+XBPS=$(which xbps-install)
+
+today=$(date +%Y-%m-%d)
+
+function create_snapshots() {
+    local snapshot_root=/.snapshots/${today}_root
+    local snapshot_home=/.snapshots/${today}_home
+
+    [[ -d $snapshot_root ]] || {
+        echo "Snapshot $snapshot_root"
+        $SUDO $BTRFS subvolume snapshot / $snapshot_root
+    }
+    [[ -d $snapshot_home ]] || {
+        echo "Snapshot $snapshot_home"
+        $SUDO $BTRFS subvolume snapshot /home /.snapshots/${today}_home
+    }
+}
+
+function update_system() {
+    topgrade
+    # $SUDO $XBPS -Suv
+}
+
+function main() {
+    create_snapshots
+    update_system
+}
+
+main
+exit 0
