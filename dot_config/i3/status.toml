@@ -1,5 +1,5 @@
 theme = "plain"
-icons = "awesome"
+icons = "none"
 
 [[block]]
 block = "net"
