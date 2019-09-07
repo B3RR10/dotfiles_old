@@ -1,0 +1,24 @@
+# SHELL=/bin/bash
+# MAILTO=root@example.com
+# PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+
+# For details see man 4 crontabs
+
+# Symbol | Description
+#   *    | Wildcard, specifies every possible time interval
+#   ,    | List multiple values separated by a comma.
+#   -    | Specify a range between two numbers, separated by a hyphen
+#   /    | Specify a periodicity/frequency using a slash
+
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name  command to be executed
+
+# Check battery level every 5 minutes
+*/5 * * * * DISPLAY=:0 $HOME/bin/battery
+
