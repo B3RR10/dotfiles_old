@@ -1,34 +1,52 @@
 #!/usr/bin/env bash
 
-SUDO=$(which sudo)
-BTRFS=$(which btrfs)
-XBPS=$(which xbps-install)
+# Define commands to use
+SUDO=$(command -v sudo)
+BTRFS=$(command -v btrfs)
+MV=$(command -v mv)
+TOPGRADE=$(command -v topgrade)
+if [[ -z $TOPGRADE ]]; then
+    echo "Install topgrade"
+    exit 1
+fi
 
+# Get the passwd for sudo
+$SUDO -v
+
+# Keep sudo alive through the hole script
+while true; do $SUDO -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+lastupdatefile=/.snapshots/LASTUPDATE
 today=$(date +%Y-%m-%d)
 
-function create_snapshots() {
-    local snapshot_root=/.snapshots/${today}_root
-    local snapshot_home=/.snapshots/${today}_home
+# Snapshot system only if not already done today
+if [[ $today = $($SUDO head -n 1 $lastupdatefile) ]]; then
+    echo "System snapshots already done"
+else
+    echo "Performing snapshots..."
 
-    [[ -d $snapshot_root ]] || {
-        echo "Snapshot $snapshot_root"
-        $SUDO $BTRFS subvolume snapshot / $snapshot_root
-    }
-    [[ -d $snapshot_home ]] || {
-        echo "Snapshot $snapshot_home"
-        $SUDO $BTRFS subvolume snapshot /home /.snapshots/${today}_home
-    }
-}
+    # OLDSTABLE
+    echo "Oldstable..."
+    $SUDO "$BTRFS" subvolume delete /.snapshots/OLDSTABLE_ROOT
+    $SUDO "$BTRFS" subvolume delete /.snapshots/OLDSTABLE_HOME
+    $SUDO "$MV" /.snapshots/STABLE /.snapshots/OLDSTABLE_ROOT
+    $SUDO "$MV" /.snapshots/STABLE /.snapshots/OLDSTABLE_HOME
+    echo "Done"
+    # $SUDO $SED -i 's/STABLE/OLDSTABLE/g' /.snapshots/OLDSTABLE/etc/fstab
+    # $SUDO $CP /boot/vmlinuz-linux-stable /boot/vmlinuz-linux-oldstable
+    # $SUDO $CP /boot/initramfs-linux-stable.img /boot/initramfs-linux-oldstable.img
 
-function update_system() {
-    topgrade
-    # $SUDO $XBPS -Suv
-}
+    echo "Stable..."
+    $SUDO "$BTRFS" subvolume snapshot / /.snapshots/STABLE_ROOT
+    $SUDO "$BTRFS" subvolume snapshot /home /.snapshots/STABLE_HOME
+    # $SUDO $SED -i 's/TESTING/STABLE/g' /.snapshots/STABLE/etc/fstab
+    # $SUDO $CP /boot/vmlinuz-linux-lts /boot/vmlinuz-linux-stable
+    # $SUDO $CP /boot/initramfs-linux-lts.img /boot/initramfs-linux-stable.img
+    echo "Done"
 
-function main() {
-    create_snapshots
-    update_system
-}
+    $SUDO "$BTRFS" balance start -dusage=5 /root
+fi
 
-main
-exit 0
+echo "$today" | $SUDO tee $lastupdatefile
+
+topgrade
