@@ -5,7 +5,7 @@ auto-ls () {
         ls
         echo ""
         if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == true ]]; then
-            gst --column=row --short
+            gs --column=row --short
         fi
         echo ""
 
