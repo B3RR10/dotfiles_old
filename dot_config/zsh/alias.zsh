@@ -43,6 +43,7 @@ alias gba='git branch --all'
 
 alias gc='git commit -v'
 alias gc!='git commit -v --amend'
+alias gca='git commit -v -a'
 alias gcb='git checkout -b'
 alias gcd='git checkout develop'
 alias gcm='git checkout master'
