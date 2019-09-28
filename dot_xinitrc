@@ -1,2 +1,2 @@
 # exec i3
-exec ck-launch-session dbus-launch --sh-syntax --exit-with-x11 i3
+exec dbus-launch --sh-syntax --exit-with-x11 i3
