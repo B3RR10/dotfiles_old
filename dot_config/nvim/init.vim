@@ -30,6 +30,9 @@ Plug 'thaerkh/vim-workspace'
 " Show indentation guides
 Plug 'Yggdroot/indentLine'
 
+" Editorconfig support
+Plug 'editorconfig/editorconfig-vim'
+
 " Language Client
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch'                    : 'next',
@@ -41,6 +44,12 @@ Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'cespare/vim-toml'
 
+" HTML plugins
+Plug 'mattn/emmet-vim'
+
+" Markdown plugins
+Plug 'tpope/vim-markdown'
+
 " Add, change and delete surroundings
 Plug 'tpope/vim-surround'
 
@@ -49,7 +58,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/vim-gitbranch'
 
 " A better Vimdiff Git mergetool
-" Plug 'whiteinge/diffconflicts'
+Plug 'whiteinge/diffconflicts'
 
 " Easy motions
 Plug 'easymotion/vim-easymotion'
@@ -113,6 +122,13 @@ let g:deoplete#enable_at_startup = 1
 map <leader><leader> <Plug>(easymotion-prefix)
 nmap F <Plug>(easymotion-prefix)s
 " }}} Easymotion "
+
+" Emmet {{{ "
+" Redefine trigger key
+let g:user_emmet_leader_key     = ','
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,xml EmmetInstall
+" " }}} Emmet ""
 
 " FZF - Fuzzy finder {{{ "
 no <Leader>ff :FZF<CR>

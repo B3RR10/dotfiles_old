@@ -34,7 +34,11 @@ set smartindent
 set linebreak
 let &showbreak='> '
 set cpoptions+=n
-set textwidth=120
+set textwidth=100
+" Don't auto-wrap on textwidth
+set formatoptions-=t
+" Where it makes sense, remove a comment leader when joining lines.
+set formatoptions+=j
 
 " performance
 set lazyredraw

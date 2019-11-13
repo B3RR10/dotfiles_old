@@ -103,6 +103,8 @@ function git-rename() {
     git mv $1 "${2}-"
     git mv "${2}-" $2
 }
+
+alias git-prune='git remote prune origin && git fetch -p && git branch -vv | awk '"'"'/: gone]/{print $1}'"'"' | xargs git branch -D'
 #  }}} Git aliases #
 
 #  tmux aliases {{{ #
