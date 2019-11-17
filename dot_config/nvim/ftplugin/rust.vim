@@ -1,3 +1,8 @@
+" Autocommand {{{ "
+autocmd BufWritePre * mkview
+autocmd BufWritePost * loadview
+" }}} Autocommand "
+
 " Config {{{ "
 let g:rustfmt_autosave = 1
 let g:autofmt_autosave = 1
