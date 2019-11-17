@@ -55,7 +55,6 @@ set send_charset = "utf-8:iso-8859-1:us-ascii"
 set charset = "utf-8"
 
 # Pager View Options
-set pager_index_lines = 10
 set pager_context = 3
 set pager_stop
 set menu_scroll
@@ -63,10 +62,6 @@ set tilde
 unset markers
 
 # email headers and attachments
-ignore *
-unignore from: to: cc: bcc: date: subject:
-unhdr_order *
-hdr_order from: to: cc: bcc: date: subject:
 alternative_order text/plain text/enriched text/html
 auto_view text/html
 
@@ -80,27 +75,22 @@ set sidebar_short_path
 set sidebar_folder_indent
 set sidebar_width = 25
 set sidebar_divider_char = ' | '
-set sidebar_indent_string = '  ''
-set sidebar_format = "%B %* [%?N?%N / ?%S]"
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
 
 # Mailboxes to show in the sidebar.
-# mailboxes =ALL-INBOXES
-mailboxes =runbox/INBOX
-mailboxes ="==================="
 mailboxes =runbox
-mailboxes =runbox/archive =runbox/sent =runbox/drafts =runbox/junk =runbox/trash
+mailboxes =runbox/INBOX =runbox/archive =runbox/drafts =runbox/sent =runbox/junk =runbox/trash
 
 # GPG/PGP
 set pgp_sign_as = 1DC24D0981F8B361333C69A2827963BBA9FDFA72
 set crypt_use_gpgme = yes
-set crypt_autosign = no
+set crypt_autosign = yes
 set crypt_verify_sig = yes
 set crypt_replysign = yes
 set crypt_replyencrypt = yes
 set crypt_replysignencrypted = yes
 
 # source colors and keybindings
-# keeping those in one place makes it easier for my brain
 source $my_mutt_config/colors
 source $my_mutt_config/bindings
 

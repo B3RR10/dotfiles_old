@@ -21,13 +21,22 @@ macro index o "<shell-escape>mbsync runbox<enter>" "run mbsync to sync mail for 
 macro index,pager J \
   "<enter-command>set my_old_resolve=\$resolve noresolve<enter>\
   <tag-prefix><clear-flag>n<enter-command>set resolve=\$my_old_resolve<enter>\
-  <save-message>+runbox/junk<enter>" \
-  "mark as read and move to junk folder"
+  <save-message>+runbox/junk<enter><exit>" \
+  "mark as read and move to spam folder"
 
 macro index,pager A \
-  "<save-message>+runbox/archive<enter>"  \
+  "<enter-command>set my_old_resolve=\$resolve noresolve<enter>\
+  <tag-prefix><clear-flag>n<enter-command>set resolve=\$my_old_resolve<enter>\
+  <save-message>+runbox/archive<enter><exit>"  \
   "move message to the archive"
 
 macro index,pager I \
-  "<save-message>+runbox/INBOX<enter>"  \
+  "<save-message>+runbox/INBOX<enter><exit>"  \
   "move message to the inbox"
+
+macro index ga "<change-folder> =runbox/archive<enter>" "Got to Archive"
+macro index gd "<change-folder> =runbox/drafts<enter>" "Got to Drafts"
+macro index gi "<change-folder> =runbox/INBOX<enter>" "Got to INBOX"
+macro index gj "<change-folder> =runbox/junk<enter>" "Got to Spam"
+macro index gs "<change-folder> =runbox/sent<enter>" "Got to Sent"
+macro index gt "<change-folder> =runbox/trash<enter>" "Got to Trash"
