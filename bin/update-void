@@ -29,8 +29,8 @@ else
     echo "Oldstable..."
     $SUDO "$BTRFS" subvolume delete /.snapshots/OLDSTABLE_ROOT
     $SUDO "$BTRFS" subvolume delete /.snapshots/OLDSTABLE_HOME
-    $SUDO "$MV" /.snapshots/STABLE /.snapshots/OLDSTABLE_ROOT
-    $SUDO "$MV" /.snapshots/STABLE /.snapshots/OLDSTABLE_HOME
+    $SUDO "$MV" /.snapshots/STABLE_ROOT /.snapshots/OLDSTABLE_ROOT
+    $SUDO "$MV" /.snapshots/STABLE_HOME /.snapshots/OLDSTABLE_HOME
     echo "Done"
     # $SUDO $SED -i 's/STABLE/OLDSTABLE/g' /.snapshots/OLDSTABLE/etc/fstab
     # $SUDO $CP /boot/vmlinuz-linux-stable /boot/vmlinuz-linux-oldstable
