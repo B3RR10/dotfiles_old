@@ -1,6 +1,6 @@
 # Local Env Var
 export EDITOR=nvim
-export BROWSER=/usr/bin/chromium
+export BROWSER=/usr/bin/firefox
 export GIT_EDITOR=nvim
 export VISUAL=nvim
 export LESSCHARSET=UTF-8
