@@ -4,11 +4,6 @@
 SUDO=$(command -v sudo)
 BTRFS=$(command -v btrfs)
 MV=$(command -v mv)
-TOPGRADE=$(command -v topgrade)
-if [[ -z $TOPGRADE ]]; then
-    echo "Install topgrade"
-    exit 1
-fi
 
 # Get the passwd for sudo
 $SUDO -v
@@ -48,5 +43,3 @@ else
 fi
 
 echo "$today" | $SUDO tee $lastupdatefile
-
-topgrade
