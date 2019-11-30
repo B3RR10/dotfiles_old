@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 username=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 10 | head -n 1)
 
