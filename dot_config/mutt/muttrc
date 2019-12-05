@@ -78,7 +78,6 @@ set sidebar_divider_char = ' | '
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
 
 # Mailboxes to show in the sidebar.
-mailboxes =runbox
 mailboxes =runbox/INBOX =runbox/archive =runbox/drafts =runbox/sent =runbox/junk =runbox/trash
 
 # GPG/PGP

@@ -21,13 +21,13 @@ macro index o "<shell-escape>mbsync runbox<enter>" "run mbsync to sync mail for 
 macro index,pager J \
   "<enter-command>set my_old_resolve=\$resolve noresolve<enter>\
   <tag-prefix><clear-flag>n<enter-command>set resolve=\$my_old_resolve<enter>\
-  <save-message>+runbox/junk<enter><exit>" \
+  <save-message>+runbox/junk<enter>" \
   "mark as read and move to spam folder"
 
 macro index,pager A \
   "<enter-command>set my_old_resolve=\$resolve noresolve<enter>\
   <tag-prefix><clear-flag>n<enter-command>set resolve=\$my_old_resolve<enter>\
-  <save-message>+runbox/archive<enter><exit>"  \
+  <save-message>+runbox/archive<enter>"  \
   "move message to the archive"
 
 macro index,pager I \
