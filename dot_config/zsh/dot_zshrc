@@ -1,49 +1,68 @@
-if [[ -d $ZPLUG_HOME ]]; then
-    source $ZPLUG_HOME/init.zsh
+#  Zplugin {{{ #
+
+if [[ ! -d ${ZPLGM[HOME_DIR]} ]]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+    RELOAD=1 source $ZDOTDIR/.zshrc
 else
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-    RELOAD=1 source $HOME/.zshrc
+    source ${ZPLGM[HOME_DIR]}/bin/zplugin.zsh
+    autoload -Uz _zplugin
+    (( ${+_comps} )) && _comps[zplugin]=_zplugin
 fi
 
-# Auto manage zplug
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplugin ice wait lucid blockf atpull'zplugin creinstall -q .'
+zplugin light zsh-users/zsh-completions
 
-# From oh-my-zsh
-zplug "plugins/colored-man-pages", from:oh-my-zsh
-zplug "plugins/cargo", from:oh-my-zsh
-zplug "lib/key-bindings", from:oh-my-zsh
-zplug "lib/completion", from:oh-my-zsh
+zplugin ice wait lucid
+zplugin light zdharma/fast-syntax-highlighting
 
-# From Github
-zplug "zsh-users/zsh-completions"
+zplugin snippet OMZ::lib/completion.zsh
 
-# Theme
-PURE_PROMPT_SYMBOL="$"
-PURE_PROMPT_VICMD_SYMBOL="< "
-PURE_GIT_UP_ARROW=">"
-PURE_GIT_DOWN_ARROW="<"
-zplug "mafredri/zsh-async", from:github
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+zplugin snippet OMZ::lib/key-bindings.zsh
 
-# Install plugins if there are plugins that have not been installed
-if ! zplug check; then
-    zplug install
-fi
+zplugin ice wait lucid
+zplugin snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
 
-zplug load
+zplugin ice as"completion"
+zplugin snippet OMZ::plugins/fd/_fd
 
-# --------------- Source ZDOTDIR files... --------------- #
+zplugin ice wait lucid
+zplugin snippet OMZ::plugins/fzf/fzf.plugin.zsh
 
-# vi mode
-bindkey -v
+zplugin ice wait lucid
+zplugin snippet OMZ::plugins/git/git.plugin.zsh
+
+# Correct previous command with <Esc><Esc>
+zplugin ice wait lucid
+zplugin snippet OMZ::plugins/thefuck/thefuck.plugin.zsh
+
+zplugin ice wait lucid
+zplugin snippet PZT::modules/completion/init.zsh
+
+zplugin ice wait lucid
+zplugin snippet PZT::modules/rsync/init.zsh
+
+# diff-so-fancy
+zplugin ice wait"2" lucid as"program" pick"bin/git-dsf"
+zplugin load zdharma/zsh-diff-so-fancy
+
+# Load the pure theme, with zsh-async library that's bundled with it.
+export PURE_PROMPT_SYMBOL="$"
+export PURE_PROMPT_VICMD_SYMBOL=">>> "
+export PURE_GIT_UP_ARROW=">"
+export PURE_GIT_DOWN_ARROW="<"
+zplugin ice pick"async.zsh" src"pure.zsh"
+zplugin light sindresorhus/pure
+
+#  }}} Zplugin #
+
+#  Vim mode and bindkeys {{{ #
+
 export KEYTIMEOUT=1
 
 bindkey '^P' up-history
 bindkey '^N' down-history
-bindkey '^w' backward-kill-word
-bindkey '^u' vi-change-whole-line
-bindkey '^r' history-incremental-search-backward
 bindkey '^o' vi-cmd-mode
+bindkey '^[' vi-cmd-mode
 
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
@@ -52,19 +71,68 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 # Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'V' edit-command-line
 
-# Source config files
-for config ($ZDOTDIR/**/*.zsh) source $config
+#  }}} Vim mode and bindkeys #
 
-# Source fzf
-source /usr/share/doc/fzf/completion.zsh
-source /usr/share/doc/fzf/key-bindings.zsh
+#  aliases {{{ #
+source $ZDOTDIR/alias.zsh
+#  }}} aliases #
 
+#  auto_ls {{{ #
+auto-ls () {
+    if [[ -z $BUFFER ]]; then
+        zle && echo ""
+        ls
+        echo ""
+        if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == true ]]; then
+            git status --column=row --short
+        fi
+        echo ""
+
+        zle && zle redisplay
+    else
+        zle .$WIDGET
+    fi
+}
+zle -N auto-ls
+zle -N accept-line auto-ls
+add-zsh-hook chpwd auto-ls
+#  }}} auto_ls #
+
+#  Completions {{{ #
 # set completions directory
 completion_dir=$HOME/.local/share/zsh/functions/Completion
 fpath=( "$completion_dir" $fpath )
+
+# Add completions
+if command -v rustup > /dev/null; then
+    if [[ ! -f $completion_dir/_cargo ]]; then
+        rustup completions zsh cargo > $completion_dir/_cargo
+    fi
+    if [[ ! -f $completion_dir/_rustup ]]; then
+        rustup completions zsh rustup > $completion_dir/_rustup
+    fi
+fi
+#  }}} Completions #
+
+#  History {{{ #
+## History file configuration
+[ -z "$HISTFILE" ] && HISTFILE="$HOME/.cache/zsh/history"
+HISTSIZE=10000
+SAVEHIST=10000
+
+## History command configuration
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt inc_append_history     # add commands to HISTFILE in order of execution
+#  }}} History #
+
+#  Finalize - Generate zcompdump if older than 24 hours {{{ #
 
 autoload -Uz compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
@@ -73,6 +141,6 @@ else
     compinit -C;
 fi
 
-# vim: ft=zsh
+#  }}} Finalize - Generate zcompdump if older than 24 hours #
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# vim: foldmethod=marker

@@ -1,9 +1,1 @@
 export ZDOTDIR=$HOME/.config/zsh
-. $ZDOTDIR/.zshenv
-
-# autologin on tty1
-# if [ -z $DISPLAY ] && [ "$(fgconsole)" -eq 1 ]; then
-#     exec startx
-# fi
-
-export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
