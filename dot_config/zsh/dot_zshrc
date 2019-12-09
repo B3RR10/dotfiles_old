@@ -1,5 +1,4 @@
 #  Zplugin {{{ #
-
 if [[ ! -d ${ZPLGM[HOME_DIR]} ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
     RELOAD=1 source $ZDOTDIR/.zshrc
@@ -31,10 +30,6 @@ zplugin snippet OMZ::plugins/fzf/fzf.plugin.zsh
 zplugin ice wait lucid
 zplugin snippet OMZ::plugins/git/git.plugin.zsh
 
-# Correct previous command with <Esc><Esc>
-zplugin ice wait lucid
-zplugin snippet OMZ::plugins/thefuck/thefuck.plugin.zsh
-
 zplugin ice wait lucid
 zplugin snippet PZT::modules/completion/init.zsh
 
@@ -52,11 +47,9 @@ export PURE_GIT_UP_ARROW=">"
 export PURE_GIT_DOWN_ARROW="<"
 zplugin ice pick"async.zsh" src"pure.zsh"
 zplugin light sindresorhus/pure
-
 #  }}} Zplugin #
 
 #  Vim mode and bindkeys {{{ #
-
 export KEYTIMEOUT=1
 
 bindkey '^P' up-history
@@ -70,16 +63,11 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
-# Edit line in vim with ctrl-e:
+# Edit line in vim with `V` in normal mode:
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd 'V' edit-command-line
-
 #  }}} Vim mode and bindkeys #
-
-#  aliases {{{ #
-source $ZDOTDIR/alias.zsh
-#  }}} aliases #
 
 #  auto_ls {{{ #
 auto-ls () {
@@ -102,9 +90,18 @@ zle -N accept-line auto-ls
 add-zsh-hook chpwd auto-ls
 #  }}} auto_ls #
 
+# Fre {{{ #
+fre_chpwd() {
+  fre --add "$(pwd)"
+}
+typeset -gaU chpwd_functions
+chpwd_functions+=fre_chpwd
+# }}} Fre #
+
 #  Completions {{{ #
 # set completions directory
 completion_dir=$HOME/.local/share/zsh/functions/Completion
+if [[ ! -d $completion_dir ]]; then; mkdir -p $completion_dir; fi
 fpath=( "$completion_dir" $fpath )
 
 # Add completions
@@ -133,14 +130,12 @@ setopt inc_append_history     # add commands to HISTFILE in order of execution
 #  }}} History #
 
 #  Finalize - Generate zcompdump if older than 24 hours {{{ #
-
 autoload -Uz compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
     compinit;
 else
     compinit -C;
 fi
-
 #  }}} Finalize - Generate zcompdump if older than 24 hours #
 
-# vim: foldmethod=marker
+# vim: foldmethod=marker ft=zsh
