@@ -163,6 +163,7 @@ let g:gitgutter_grep_command = 'rg'
 " }}} Gitgutter "
 
 " Indentguides {{{ "
+let g:indentLine_fileTypeExclude = ['markdown']
 let g:indentLine_char = '|'
 " }}} Indentguides "
 
