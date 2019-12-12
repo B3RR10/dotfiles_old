@@ -80,12 +80,21 @@ Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+" Vim syntax
+Plug 'Shougo/neco-vim'
+
 " Linter
 Plug 'w0rp/ale'
 
 " Code completion
-Plug ('Shougo/deoplete.nvim'),         { 'do'     : ':UpdateRemotePlugins' }
-Plug 'sebastianmarkow/deoplete-rust'
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-vim'
+Plug 'ncm2/ncm2-racer'
+Plug 'fgrsnau/ncm2-otherbuf'
+Plug 'ncm2/ncm2-ultisnips'
 
 " Toggle quickfix with \q and location list with \l
 Plug 'milkypostman/vim-togglelist'
@@ -98,9 +107,16 @@ call plug#end()
 
 " Ale - Linter {{{ "
 let g:ale_linters = {
-    \ 'sh': ['shellcheck', 'language_server'],
-    \ 'rust': ['cargo', 'rls']
+    \ 'rust' : ['rustup', 'run', 'stable', 'rls'],
+    \ 'sh'   : ['shellcheck', 'language_server'],
     \ }
+let g:ale_rust_cargo_use_clippy = 1
+let g:ale_rust_cargo_clippy_options = '--all-targets'
+let g:ale_rust_rls_config = {
+            \   'rust': {
+            \     'clippy_preference': 'on'
+            \   }
+            \ }
 " }}} Ale - Linter "
 
 " Autopairs {{{ "
@@ -114,10 +130,6 @@ imap <silent><CR> <CR><Plug>AutoPairsReturn
 " Colorscheme {{{ "
 colorscheme apprentice
 " }}} Colorscheme "
-
-" Deoplete - Completion framework {{{ "
-let g:deoplete#enable_at_startup = 1
-" }}} Deoplete - Completion framework "
 
 " Easymotion {{{ "
 map <leader><leader> <Plug>(easymotion-prefix)
@@ -170,7 +182,8 @@ let g:indentLine_char = '|'
 " Language Client {{{ "
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
-    \ 'rust'           : ['rustup', 'run', 'stable', 'rls'],
+    \ 'rust' : ['rustup', 'run', 'stable', 'rls'],
+    \ 'sh'   : ['shellcheck', 'language_server'],
     \ }
 
 function! LC_maps()
@@ -206,6 +219,12 @@ let g:lightline.tabline          = {'left': [['buffers']], 'right': [[]]}
 let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
 let g:lightline.component_type   = {'buffers': 'tabsel'}
 " }}} Lightline "
+
+" ncm2 {{{ "
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+set shortmess+=c
+" }}} ncm2 "
 
 " Python provider for Neovim {{{ "
 let g:python_host_prog  = '/usr/bin/python2'
