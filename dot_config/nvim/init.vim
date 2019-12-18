@@ -50,6 +50,9 @@ Plug 'mattn/emmet-vim'
 " Markdown plugins
 Plug 'tpope/vim-markdown'
 
+" Python plugins
+Plug 'davidhalter/jedi-vim'
+
 " Add, change and delete surroundings
 Plug 'tpope/vim-surround'
 
@@ -95,6 +98,7 @@ Plug 'ncm2/ncm2-vim'
 Plug 'ncm2/ncm2-racer'
 Plug 'fgrsnau/ncm2-otherbuf'
 Plug 'ncm2/ncm2-ultisnips'
+Plug 'ncm2/ncm2-jedi'
 
 " Toggle quickfix with \q and location list with \l
 Plug 'milkypostman/vim-togglelist'
@@ -107,9 +111,13 @@ call plug#end()
 
 " Ale - Linter {{{ "
 let g:ale_linters = {
-    \ 'rust' : ['rustup', 'run', 'stable', 'rls'],
-    \ 'sh'   : ['shellcheck', 'language_server'],
-    \ }
+            \ 'rust'   : ['rustup', 'run', 'stable', 'rls'],
+            \ 'sh'     : ['shellcheck', 'language_server'],
+            \ 'python' : ['pylint']
+            \ }
+let g:ale_fixers = {
+            \ 'python' : ['autopep8', 'yapf']
+            \ }
 let g:ale_rust_cargo_use_clippy = 1
 let g:ale_rust_cargo_clippy_options = '--all-targets'
 let g:ale_rust_rls_config = {
@@ -231,6 +239,8 @@ let g:lightline.component_type   = {'buffers': 'tabsel'}
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 set shortmess+=c
+" Use new fuzzy based matches
+let g:ncm2#matcher = 'substrfuzzy'
 " }}} ncm2 "
 
 " Python provider for Neovim {{{ "
