@@ -22,8 +22,6 @@ Plug 'romainl/Apprentice',         { 'branch' : 'fancylines-and-neovim' }
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 
-" TODO: Activate???
-" Plug 'mhinz/vim-startify'
 " Save persistent sessions on a workspace
 Plug 'thaerkh/vim-workspace'
 
@@ -42,7 +40,9 @@ Plug 'autozimu/LanguageClient-neovim', {
 " Rust plugins
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
+
 Plug 'cespare/vim-toml'
+Plug 'avakhov/vim-yaml'
 
 " HTML plugins
 Plug 'mattn/emmet-vim'
@@ -51,6 +51,7 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-markdown'
 
 " Python plugins
+Plug 'tmhedberg/SimpylFold'
 Plug 'davidhalter/jedi-vim'
 
 " Add, change and delete surroundings
@@ -66,7 +67,7 @@ Plug 'whiteinge/diffconflicts'
 " Easy motions
 Plug 'easymotion/vim-easymotion'
 
-" Commentaries
+" Comments
 Plug 'tpope/vim-commentary'
 
 " Close quotes, parenthesis, brackets, etc automatic
@@ -113,10 +114,15 @@ call plug#end()
 let g:ale_linters = {
             \ 'rust'   : ['rustup', 'run', 'stable', 'rls'],
             \ 'sh'     : ['shellcheck', 'language_server'],
-            \ 'python' : ['pylint']
+            \ 'python' : ['pylint', 'pydocstyle'],
             \ }
 let g:ale_fixers = {
-            \ 'python' : ['autopep8', 'yapf']
+            \   'python' : [
+            \     'isort',
+            \     'autopep8',
+            \     'yapf',
+            \     'remove_trailing_lines',
+            \   ]
             \ }
 let g:ale_rust_cargo_use_clippy = 1
 let g:ale_rust_cargo_clippy_options = '--all-targets'
