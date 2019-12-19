@@ -30,6 +30,12 @@ zplugin snippet OMZ::plugins/fzf/fzf.plugin.zsh
 zplugin ice wait lucid
 zplugin snippet OMZ::plugins/git/git.plugin.zsh
 
+zplugin ice svn as"completion" source"pip.plugin.zsh" pick"_pip" atpull'zplugin creinstall -q .'
+zplugin snippet OMZ::plugins/pip
+
+zplugin ice wait lucid
+zplugin snippet OMZ::plugins/virtualenvwrapper/virtualenvwrapper.plugin.zsh
+
 zplugin ice wait lucid
 zplugin snippet PZT::modules/completion/init.zsh
 

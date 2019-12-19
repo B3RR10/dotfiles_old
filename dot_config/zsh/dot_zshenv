@@ -27,6 +27,8 @@ export PATH=$PATH:$HOME/bin
 # Cargo env
 export PATH=$PATH:$HOME/.cargo/bin
 export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+# Local bins
+export PATH=$PATH:$HOME/.local/bin
 #  }}} PATH #
 
 #  FZF FuzzyFinder {{{ #
