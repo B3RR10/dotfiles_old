@@ -1,13 +1,3 @@
-" Autocommand {{{ "
-autocmd BufWritePre * mkview
-autocmd BufWritePost * loadview
-" }}} Autocommand "
-
-" Config {{{ "
-let g:rustfmt_autosave = 1
-let g:autofmt_autosave = 1
-" }}} Config "
-
 " Deoplete - Completion framework {{{ "
 let g:deoplete#sources#rust#racer_binary='$HOME/.cargo/bin/racer'
 let g:deoplete#sources#rust#rust_source_path='$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'

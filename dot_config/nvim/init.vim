@@ -117,7 +117,8 @@ let g:ale_linters = {
             \ 'python' : ['pylint', 'pydocstyle'],
             \ }
 let g:ale_fixers = {
-            \   'python' : [
+            \ 'rust'   : ['rustfmt'],
+            \ 'python' : [
             \     'isort',
             \     'autopep8',
             \     'yapf',
@@ -131,6 +132,8 @@ let g:ale_rust_rls_config = {
             \     'clippy_preference': 'on'
             \   }
             \ }
+
+let g:ale_fix_on_save = 1
 " }}} Ale - Linter "
 
 " Autopairs {{{ "
