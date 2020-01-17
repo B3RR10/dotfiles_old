@@ -114,7 +114,7 @@ call plug#end()
 let g:ale_linters = {
             \ 'rust'   : ['rustup', 'run', 'stable', 'rls'],
             \ 'sh'     : ['shellcheck', 'language_server'],
-            \ 'python' : ['pylint', 'pydocstyle'],
+            \ 'python' : ['pylama'],
             \ }
 let g:ale_fixers = {
             \ 'rust'   : ['rustfmt'],
