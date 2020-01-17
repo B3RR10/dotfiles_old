@@ -1,0 +1,44 @@
+snippet nsetup "NUnit Setup" bs
+
+[SetUp]
+public void Setup()
+{
+	${0}
+}
+endsnippet
+
+snippet nteardown "NUnit Teardown" bs
+
+[TearDown]
+public void Teardown()
+{
+	${0}
+}
+endsnippet
+
+snippet ntest "NUnit Test Case" bsA
+
+[Test]
+public void ${1:function_name}()
+{
+	${0}
+}
+endsnippet
+
+snippet nfixture "NUnit test class" bs
+using NUnit.Framework;
+
+namespace ${1:Namestace}
+{
+	public class ${2:Class}
+	{
+		${0}
+	}
+}
+endsnippet
+
+snippet #region "#region #endregion" b
+#region ${1:Region}
+${VISUAL}$0
+#endregion ${2:$1}
+endsnippet

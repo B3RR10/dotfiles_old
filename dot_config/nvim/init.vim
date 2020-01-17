@@ -44,6 +44,9 @@ Plug 'racer-rust/vim-racer'
 Plug 'cespare/vim-toml'
 Plug 'avakhov/vim-yaml'
 
+" C# - .NET
+Plug 'OmniSharp/omnisharp-vim'
+
 " HTML plugins
 Plug 'mattn/emmet-vim'
 
@@ -115,6 +118,7 @@ let g:ale_linters = {
             \ 'rust'   : ['rustup', 'run', 'stable', 'rls'],
             \ 'sh'     : ['shellcheck', 'language_server'],
             \ 'python' : ['pylama'],
+            \ 'cs'     : ['OmniSharp'],
             \ }
 let g:ale_fixers = {
             \ 'rust'   : ['rustfmt'],
@@ -251,6 +255,13 @@ set shortmess+=c
 " Use new fuzzy based matches
 let g:ncm2#matcher = 'substrfuzzy'
 " }}} ncm2 "
+
+" OmniSharp {{{ "
+let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_server_path = '/mnt/c/Users/berriom.DMI-MS/scoop/apps/omnisharp/current/OmniSharp.exe'
+let g:OmniSharp_translate_cygwin_wsl = 1
+let g:OmniSharp_selector_ui = 'fzf'
+" }}} OmniSharp "
 
 " Python provider for Neovim {{{ "
 let g:python_host_prog  = '/usr/bin/python2'
