@@ -124,6 +124,7 @@ fi
 #  History {{{ #
 ## History file configuration
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.cache/zsh/history"
+[ ! -d $(dirname $HISTFILE) ] && mkdir -p $(dirname $HISTFILE)
 HISTSIZE=10000
 SAVEHIST=10000
 
