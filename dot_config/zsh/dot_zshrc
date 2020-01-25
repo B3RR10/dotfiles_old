@@ -1,59 +1,60 @@
-#  Zplugin {{{ #
-if [[ ! -d ${ZPLGM[HOME_DIR]} ]]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+#  zinit {{{ #
+if [[ ! -d ${ZINIT[HOME_DIR]} ]]; then
+    mkdir -p ${ZINIT[HOME_DIR]}
+    git clone https://github.com/zdharma/zinit.git ${ZINIT[HOME_DIR]}
     RELOAD=1 source $ZDOTDIR/.zshrc
 else
-    source ${ZPLGM[HOME_DIR]}/bin/zplugin.zsh
-    autoload -Uz _zplugin
-    (( ${+_comps} )) && _comps[zplugin]=_zplugin
+    source ${ZINIT[BIN_DIR]}/zinit.zsh
+    autoload -Uz _zinit
+    (( ${+_comps} )) && _comps[zinit]=_zinit
 fi
 
-zplugin ice wait lucid blockf atpull'zplugin creinstall -q .'
-zplugin light zsh-users/zsh-completions
+zinit ice wait lucid blockf atpull'zinit creinstall -q .'
+zinit light zsh-users/zsh-completions
 
-zplugin ice wait lucid
-zplugin light zdharma/fast-syntax-highlighting
+zinit ice wait lucid
+zinit light zdharma/fast-syntax-highlighting
 
-zplugin snippet OMZ::lib/completion.zsh
+zinit snippet OMZ::lib/completion.zsh
 
-zplugin snippet OMZ::lib/key-bindings.zsh
+zinit snippet OMZ::lib/key-bindings.zsh
 
-zplugin ice wait lucid
-zplugin snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
 
-zplugin ice as"completion"
-zplugin snippet OMZ::plugins/fd/_fd
+zinit ice as"completion"
+zinit snippet OMZ::plugins/fd/_fd
 
-zplugin ice wait lucid
-zplugin snippet OMZ::plugins/fzf/fzf.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
 
-zplugin ice wait lucid
-zplugin snippet OMZ::plugins/git/git.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/git/git.plugin.zsh
 
-zplugin ice svn as"completion" source"pip.plugin.zsh" pick"_pip" atpull'zplugin creinstall -q .'
-zplugin snippet OMZ::plugins/pip
+zinit ice svn as"completion" source"pip.plugin.zsh" pick"_pip" atpull'zinit creinstall -q .'
+zinit snippet OMZ::plugins/pip
 
-zplugin ice wait lucid
-zplugin snippet OMZ::plugins/virtualenvwrapper/virtualenvwrapper.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/virtualenvwrapper/virtualenvwrapper.plugin.zsh
 
-zplugin ice wait lucid
-zplugin snippet PZT::modules/completion/init.zsh
+zinit ice wait lucid
+zinit snippet PZT::modules/completion/init.zsh
 
-zplugin ice wait lucid
-zplugin snippet PZT::modules/rsync/init.zsh
+zinit ice wait lucid
+zinit snippet PZT::modules/rsync/init.zsh
 
 # diff-so-fancy
-zplugin ice wait"2" lucid as"program" pick"bin/git-dsf"
-zplugin load zdharma/zsh-diff-so-fancy
+zinit ice wait"2" lucid as"program" pick"bin/git-dsf"
+zinit load zdharma/zsh-diff-so-fancy
 
 # Load the pure theme, with zsh-async library that's bundled with it.
 export PURE_PROMPT_SYMBOL="$"
 export PURE_PROMPT_VICMD_SYMBOL=">>> "
 export PURE_GIT_UP_ARROW=">"
 export PURE_GIT_DOWN_ARROW="<"
-zplugin ice pick"async.zsh" src"pure.zsh"
-zplugin light sindresorhus/pure
-#  }}} Zplugin #
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light sindresorhus/pure
+#  }}} zinit #
 
 #  Vim mode and bindkeys {{{ #
 export KEYTIMEOUT=1

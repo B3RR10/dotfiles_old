@@ -1,8 +1,9 @@
 #  Zplugin {{{ #
-declare -A ZPLGM # Zplugin's hash definition
-export ZPLG_HOME=$HOME/.local/share/zplugin
-export ZPLGM[HOME_DIR]="$HOME/.local/share/zplugin"
-export ZPFX=${ZPLGM[HOME_DIR]}/polaris
+declare -A ZINIT
+export ZINIT_HOME=$HOME/.local/share/zinit
+export ZINIT[HOME_DIR]=$ZINIT_HOME
+export ZINIT[BIN_DIR]=$ZINIT_HOME/bin
+export ZPFX=${ZINIT[HOME_DIR]}/polaris
 #  }}} Zplugin #
 
 #  XDG_CONFIG {{{ #
