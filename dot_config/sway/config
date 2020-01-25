@@ -235,6 +235,25 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 # }}} Resize #
 
+# Power menu {{{ #
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+
+mode "$mode_system" {
+    bindsym l exec --no-startup-id swayexit lock, mode "default"
+    bindsym e exec --no-startup-id swayexit logout, mode "default"
+    bindsym s exec --no-startup-id swayexit suspend, mode "default"
+    bindsym $mod+Escape exec --no-startup-id swayexit suspend, mode "default"
+    # bindsym h exec --no-startup-id swayexit hibernate, mode "default"
+    bindsym r exec --no-startup-id swayexit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id swayexit shutdown, mode "default"
+
+# back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Escape mode "$mode_system"
+# }}} Power menu #
+
 # Status Bar {{{ #
 #
 # Status Bar:
