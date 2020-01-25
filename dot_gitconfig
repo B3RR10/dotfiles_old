@@ -110,6 +110,9 @@
     # Make `git push` push relevant annotated tags when pushing branches out.
     followTags = true
 
+[interactive]
+    diffFilter = (echo && diff-so-fancy)
+
 [user]
 
     signingkey = A9FDFA72
