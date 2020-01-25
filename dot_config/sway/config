@@ -206,6 +206,9 @@ input type:keyboard {
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+# }}} Key bindings #
+
+# Resize {{{ #
 #
 # Resizing containers:
 #
@@ -230,7 +233,7 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-# }}} Key bindings #
+# }}} Resize #
 
 # Status Bar {{{ #
 #
