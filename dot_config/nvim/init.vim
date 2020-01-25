@@ -122,6 +122,7 @@ let g:ale_linters = {
             \ }
 let g:ale_fixers = {
             \ 'rust'   : ['rustfmt'],
+            \ 'sh'     : ['shfmt'],
             \ 'python' : [
             \     'isort',
             \     'autopep8',
