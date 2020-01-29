@@ -1,0 +1,15 @@
+# Style options
+font=FuraMono Nerd Font Mono 9
+
+[urgency="low"]
+background-color=#4c7899AA
+default-timeout=8000
+
+[urgency="normal"]
+background-color=#4c7899FF
+default-timeout=10000
+
+[urgency="high"]
+background-color=#900000FF
+border-color=#900000FF
+default-timeout=15000
