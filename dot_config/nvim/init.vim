@@ -53,6 +53,11 @@ Plug 'mattn/emmet-vim'
 " Markdown plugins
 Plug 'tpope/vim-markdown'
 
+" Latex plugins
+Plug 'lervag/vimtex'
+Plug 'Konfekt/FastFold'
+Plug 'matze/vim-tex-fold'
+
 " Python plugins
 Plug 'tmhedberg/SimpylFold'
 Plug 'davidhalter/jedi-vim'
@@ -117,12 +122,14 @@ call plug#end()
 let g:ale_linters = {
             \ 'rust'   : ['rustup', 'run', 'stable', 'rls'],
             \ 'sh'     : ['shellcheck', 'language_server'],
+            \ 'tex'    : ['chktex', 'lacheck', 'vale'],
             \ 'python' : ['pylama'],
             \ 'cs'     : ['OmniSharp'],
             \ }
 let g:ale_fixers = {
             \ 'rust'   : ['rustfmt'],
             \ 'sh'     : ['shfmt'],
+            \ 'tex'    : ['latexindent'],
             \ 'python' : [
             \     'isort',
             \     'autopep8',
@@ -206,6 +213,7 @@ let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
     \ 'rust' : ['rustup', 'run', 'stable', 'rls'],
     \ 'sh'   : ['shellcheck', 'language_server'],
+    \ 'tex'  : ['texlab'],
     \ }
 
 function! LC_maps()
@@ -281,6 +289,13 @@ set runtimepath+=~/.config/nvim
 let g:UltiSnipsSnippetDirectories = ['snippets/UltiSnips', 'UltiSnips']
 let g:UltiSnipsSnippetDir = "~/.config/nvim/snippets/UltiSnips"
 " }}} Ultisnips "
+
+" vimtex {{{ "
+let g:tex_flavor = 'latex'
+let g:tex_conceal = ''
+let g:vimtex_fold_manual = 1
+let g:vimtex_latexmk_conrinuous = 1
+" }}} vimtex "
 
 " Workspace {{{ "
 nnoremap <leader>s :ToggleWorkspace<CR>
