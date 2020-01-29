@@ -8,4 +8,4 @@ from me@miguelberrio.xyz
 tls on
 tls_starttls on
 tls_trust_file /etc/ssl/certs/ca-certificates.crt
-passwordeval "pass runbox.com/miguelberrio_neomutt"
+passwordeval "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.msmtp-runbox.gpg"
