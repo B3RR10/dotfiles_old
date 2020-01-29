@@ -2,7 +2,7 @@
 # MAILTO=root@example.com
 # PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 
-# For details see man 4 crontabs
+# For details see man 5 crontab
 
 # Symbol | Description
 #   *    | Wildcard, specifies every possible time interval
@@ -19,6 +19,11 @@
 # |  |  |  |  |
 # *  *  *  *  * user-name  command to be executed
 
+# Load crontab with command `crontab ~/path/to/crontab`
+
 # Check battery level every 5 minutes
-*/5 * * * * DISPLAY=:0 $HOME/bin/battery
+*/5 * * * * $HOME/bin/battery
+
+# Check for new email every 15 minutes
+*/15 * * * * mbsync -a >/dev/null 2>&1
 
