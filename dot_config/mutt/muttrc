@@ -80,18 +80,10 @@ set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
 # Mailboxes to show in the sidebar.
 mailboxes =runbox/INBOX =runbox/archive =runbox/drafts =runbox/sent =runbox/junk =runbox/trash
 
-# GPG/PGP
-set pgp_sign_as = 1DC24D0981F8B361333C69A2827963BBA9FDFA72
-set crypt_use_gpgme = yes
-set crypt_autosign = yes
-set crypt_verify_sig = yes
-set crypt_replysign = yes
-set crypt_replyencrypt = yes
-set crypt_replysignencrypted = yes
-
 # source colors and keybindings
 source $my_mutt_config/colors
 source $my_mutt_config/bindings
+source $my_mutt_config/gpgrc
 
 # And finally the account config for multiple accounts
 #############################################################
