@@ -1,5 +1,4 @@
-#!/usr/bin/env sh
-
+#!/usr/bin/env bash
 
 # System Rollback from stable
 
@@ -7,31 +6,31 @@
 # Snapshot - Rollback - Btrfs #
 # --------------------------- #
 
-MV=/usr/bin/mv
 BTRFS=/usr/bin/btrfs
 SED=/usr/bin/sed
-PACMAN=/usr/bin/pacman
-PACAUR=/usr/bin/yay
 CP=/usr/bin/cp
-REFLECTOR=/usr/bin/reflector
 SUDO=/usr/bin/sudo
-CHUP=/usr/bin/checkupdates+aur
 
-read -n 1 -p "Are you sure you want to make a rollbak to the stable snapshot (all changes in testing snapshot will be deleted) [y/N]? " INPUT
+if mount | grep -q 'subvol=/@)'; then
+    echo -e "The Subvolume '@' must be unmounted!!!\nBoot in another snapshot."
+    exit 1
+fi
+
+read -r -n 1 -p "Are you sure you want to make a rollbak to the stable snapshot (all changes in current snapshot will be deleted) [y/N]? " INPUT
 if [[ ! "$INPUT" =~ [yY] ]]; then
     echo -e "\nRollback canceled"
     exit 0
 fi
-echo -e "\n"
+echo
 
 # --------------------------- #
 #      Snapshot System        #
 # --------------------------- #
 
-$SUDO $BTRFS sub del /.snapshots/TESTING
-$SUDO $BTRFS sub snap / /.snapshots/TESTING
-$SUDO $SED -i 's/STABLE/TESTING/g' /.snapshots/TESTING/etc/fstab
-$SUDO $CP /boot/vmlinuz-linux-stable /boot/vmlinuz-linux
-$SUDO $CP /boot/initramfs-linux-stable.img /boot/initramfs-linux.img
+$SUDO $BTRFS subvolume delete /.snapshots/root/CURRENT
+$SUDO $BTRFS subvolume snapshot / /.snapshots/root/CURRENT
+$SUDO $SED -i 's|STABLE|CURRENT|g' /btrfs/@/etc/fstab
+$SUDO $CP /boot/vmlinuz-linux-STABLE /boot/vmlinuz-linux
+$SUDO $CP /boot/initramfs-linux-STABLE.img /boot/initramfs-linux.img
 
 # vim: ft=sh
