@@ -53,7 +53,7 @@ on_click = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 block = "maildir"
 interval = 60
 inboxes = ["/home/mberrio/Mail/runbox/INBOX"]
-threshold_warning = 1
+threshold_warning = 5
 threshold_critical = 10
 display_type = "new"
 
