@@ -85,7 +85,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'godlygeek/tabular'
 
 " Fuzzy finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 
 " Snippets
@@ -211,7 +211,7 @@ let g:indentLine_char = '|'
 " Language Client {{{ "
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
-    \ 'rust' : ['rustup', 'run', 'stable', 'rls'],
+    \ 'rust' : ['ra_lsp_server'],
     \ 'sh'   : ['shellcheck', 'language_server'],
     \ 'tex'  : ['texlab'],
     \ }
