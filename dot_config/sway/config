@@ -45,7 +45,7 @@ bindswitch --reload lid:off output $laptop enable
 # General config
 default_border pixel 2
 gaps inner 5
-font pango:FuraMono Nerd Font Mono 9
+font pango:Noto Sans 9
 # }}} Output configuration #
 
 # Idle configuration {{{ #
@@ -94,13 +94,42 @@ input type:keyboard {
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec $term
+    bindsym $mod+Return exec $term -e tmux -u
 
     # Kill focused window
     bindsym $mod+Shift+q kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
+    bindsym $mod+p exec pass-autotype
+
+    bindsym $mod+x exec firefox
+    bindsym $mod+m exec open-mutt
+
+    # Take a screenshot of an area
+    bindsym --release Print exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/$(date +'%s_grim.png')
+    # Take a screenshot of the active window
+    # bindsym --release Shift+Print exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible? and .focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" $(xdg-user-dir PICTURES)/$(date +'%s_grim.png')
+
+    # Volume settings
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+    # Media player controls
+    #   Needed: playerctl
+    bindsym XF86AudioPlay exec playerctl play-pause
+    bindsym XF86AudioPause exec playerctl pause
+    bindsym XF86AudioNext exec playerctl next
+    bindsym XF86AudioPrev exec playerctl previous
+
+    # Sreen brightness controls
+    bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+    bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+
+    # Discard notification
+    bindsym Ctrl+Space exec makoctl dismiss
+    bindsym Ctrl+Shift+Space exec makoctl dismiss -a
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -252,24 +281,26 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 bindsym $mod+Escape mode "$mode_system"
+bindsym Ctrl+Alt+Backspace exec swayexit lock
 # }}} Power menu #
 
 # Status Bar {{{ #
 #
-# Status Bar:
-#
 # Read `man 5 sway-bar` for more information about this section.
 bar {
+    font pango:Noto Sans, Material Icons 10
     position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-
+    gaps 1 0 0 0
+    # mode hide
+    status_command i3status-rs ~/.config/i3/status.toml
     colors {
-        statusline $text-color
-        background $bg-color
-        inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+        separator #000000
+        # background #222222
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
     }
 }
 # }}} Status Bar #
@@ -282,7 +313,11 @@ client.urgent           $urgent-border-color   $urgent-bg-color   $text-color   
 # }}} Window colors #
 
 # Startup programs {{{ #
-exec redshift -l 51.96236:7.62571
+exec gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
+exec redshift
+exec mako
+exec ydotoold
+exec nextcloud
 # }}} Startup programs #
 
 include /etc/sway/config.d/*
