@@ -1,0 +1,143 @@
+config:
+  backup: true
+  banner: true
+  create: true
+  dotpath: home
+  ignoreempty: false
+  keepdot: false
+  link_dotfile_default: nolink
+  link_on_import: nolink
+  longkey: false
+  showdiff: false
+  workdir: ~/.config/dotdrop
+dotfiles:
+  d_bin:
+    dst: ~/bin
+    src: bin
+  d_fonts:
+    dst: ~/.local/share/fonts
+    src: local/share/fonts
+  d_i3:
+    dst: ~/.config/i3
+    src: config/i3
+  d_mutt:
+    dst: ~/.config/mutt
+    src: config/mutt
+  d_nvim:
+    dst: ~/.config/nvim
+    src: config/nvim
+    cmpignore:
+      - "*/.netrwhist"
+    instignore:
+      - "*/.netrwhist"
+    upignore:
+      - "*/.netrwhist"
+  d_redshift:
+    dst: ~/.config/redshift
+    src: config/redshift
+  d_sway:
+    dst: ~/.config/sway
+    src: config/sway
+  d_systemd:
+    dst: ~/.config/systemd/user
+    src: config/systemd/user
+  d_zsh:
+    dst: ~/.config/zsh
+    src: config/zsh
+    cmpignore:
+      - "*/.zcompdump"
+    instignore:
+      - "*/.zcompdump"
+    upignore:
+      - "*/.zcompdump"
+  f_alacritty:
+    dst: ~/.config/alacritty/alacritty.yml
+    src: config/alacritty/alacritty.yml
+  f_dunst:
+    dst: ~/.config/dunst/dunstrc
+    src: config/dunst/dunstrc
+  f_gsimplecal:
+    dst: ~/.config/gsimplecal/config
+    src: config/gsimplecal/config
+  f_gtk3:
+    dst: ~/.config/gtk-3.0/settings.ini
+    src: config/gtk-3.0/settings.ini
+  f_i3status-rs:
+    dst: ~/.config/i3status-rs/status.toml
+    src: config/i3status-rs/status.toml
+  f_mako:
+    dst: ~/.config/mako/config
+    src: config/mako/config
+  f_rofi:
+    dst: ~/.config/rofi/config
+    src: config/rofi/config
+  f_rofipass:
+    dst: ~/.config/rofi-pass/config
+    src: config/rofi-pass/config
+  f_termite:
+    dst: ~/.config/termite/config
+    src: config/termite/config
+  f_topgrade:
+    dst: ~/.config/topgrade.toml
+    src: config/topgrade.toml
+  f_wallpaper:
+    dst: ~/.config/wallpaper/arch-linux-dark.png
+    src: config/wallpaper/arch-linux-dark.png
+  f_zathura:
+    dst: ~/.config/zathura/zathurarc
+    src: config/zathura/zathurarc
+  f_gitconfig:
+    dst: ~/.gitconfig
+    src: gitconfig
+  f_gtk2:
+    dst: ~/.gtkrc-2.0
+    src: gtkrc-2.0
+  f_mbsync:
+    dst: ~/.mbsyncrc
+    src: mbsyncrc
+  f_msmtp:
+    dst: ~/.msmtprc
+    src: msmtprc
+  f_tmux:
+    dst: ~/.tmux.conf
+    src: tmux.conf
+  f_xinit:
+    dst: ~/.xinitrc
+    src: xinitrc
+  f_zshrc:
+    dst: ~/.zshrc
+    src: zshrc
+profiles:
+  Mail:
+    dotfiles:
+      - d_mutt
+      - f_mbsync
+      - f_msmtp
+  Sway:
+    dotfiles:
+      - d_fonts
+      - d_redshift
+      - d_sway
+      - f_gtk2
+      - f_gtk3
+      - f_i3status-rs
+      - f_mako
+      - f_wallpaper
+      - f_zathura
+  Terminal:
+    dotfiles:
+      - d_bin
+      - d_nvim
+      - d_zsh
+      - f_gitconfig
+      - f_tmux
+      - f_topgrade
+      - f_zshrc
+
+  arch-xps:
+    dotfiles:
+      - f_alacritty
+    include:
+      - Mail
+      - Sway
+      - Terminal

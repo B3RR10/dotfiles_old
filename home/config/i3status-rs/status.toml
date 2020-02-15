@@ -1,0 +1,67 @@
+icons = "material"
+
+[theme]
+name = "plain"
+[theme.overrides]
+separator = "  |  "
+
+[[block]]
+block = "music"
+buttons = ["play", "next"]
+on_collapsed_click = "spotify"
+
+[[block]]
+block = "net"
+device = "wlp1s0"
+ssid = true
+ip = true
+signal_strength = true
+interval = 2
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "/"
+info_type = "available"
+unit = "GiB"
+interval = 20
+warning = 20.0
+alert = 10.0
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{MFg} GiB"
+format_swap = "{SUp}%"
+
+[[block]]
+block = "uptime"
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "backlight"
+device = "acpi_video0"
+
+[[block]]
+block = "sound"
+on_click = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+
+[[block]]
+block = "maildir"
+interval = 60
+inboxes = ["/home/mberrio/Mail/runbox/INBOX"]
+threshold_warning = 5
+threshold_critical = 10
+display_type = "new"
+
+[[block]]
+block = "battery"
+format = "{percentage}% {time} {power} W"
+
+[[block]]
+block = "time"
+interval = 30
+format = "%V - %d.%m.%Y %R "

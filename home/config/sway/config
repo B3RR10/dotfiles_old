@@ -292,7 +292,7 @@ bar {
     position top
     gaps 1 0 0 0
     # mode hide
-    status_command i3status-rs ~/.config/i3/status.toml
+    status_command i3status-rs ~/.config/i3status-rs/status.toml
     colors {
         separator #000000
         # background #222222

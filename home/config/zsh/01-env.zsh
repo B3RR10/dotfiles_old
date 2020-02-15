@@ -1,3 +1,18 @@
+# Misc {{{ #
+export KEYTIMEOUT=1
+# }}} Misc #
+
+# Directories {{{ #
+export ZDOTDIR=$HOME/.config/zsh
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+# }}} Directories #
+
+# dotdrop {{{ #
+export DOTREPO=$HOME/.dotfiles
+# Variable to pass to sdot to get current user
+export USRNAME=$USER
+# }}} dotdrop #
+
 #  Zplugin {{{ #
 declare -A ZINIT
 export ZINIT_HOME=$HOME/.local/share/zinit
@@ -5,14 +20,6 @@ export ZINIT[HOME_DIR]=$ZINIT_HOME
 export ZINIT[BIN_DIR]=$ZINIT_HOME/bin
 export ZPFX=${ZINIT[HOME_DIR]}/polaris
 #  }}} Zplugin #
-
-#  XDG_CONFIG {{{ #
-export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-#  }}} XDG_CONFIG #
-
-#  aliases {{{ #
-source $ZDOTDIR/alias.zsh
-#  }}} aliases #
 
 #  Env Programs {{{ #
 export EDITOR=nvim
@@ -23,16 +30,16 @@ export LESSCHARSET=UTF-8
 #  }}} Env Programs #
 
 #  PATH {{{ #
-# scripts from ~/bin
-export PATH=$PATH:$HOME/bin
 # Cargo env
-export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$HOME/.cargo/bin:$PATH
 export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
-# Local bins
-export PATH=$PATH:$HOME/.local/bin
+# Local bins (mostly python)
+export PATH=$HOME/.local/bin:$PATH
+# scripts from ~/bin
+export PATH=$HOME/bin:$PATH
 #  }}} PATH #
 
-#  FZF FuzzyFinder {{{ #
+#  fzf settings {{{ #
 export FZF_COMPLETION_TRIGGER='~~'
 _fzf_compgen_path() {
     fd --hidden --follow --exclude ".git" --exclude ".wine" . "$1"
@@ -48,6 +55,20 @@ export FZF_TMUX_HEIGHT=30\%
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND='command cat <(fre --sorted) <(fd -t d --exclude .git --exclude .wine) <(fd -t d --exclude .git --exclude .wine . ~)'
 export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
-#  }}} FZF FuzzyFinder #
+#  }}} fzf settings #
+
+# History {{{ #
+[ -z "$HISTFILE" ] && HISTFILE="$HOME/.cache/zsh/history"
+[ ! -d $(dirname $HISTFILE) ] && mkdir -p $(dirname $HISTFILE)
+export HISTSIZE=10000
+export SAVEHIST=10000
+# }}} History #
+
+# Prompt customization {{{ #
+export PURE_PROMPT_SYMBOL="$"
+export PURE_PROMPT_VICMD_SYMBOL=">>> "
+export PURE_GIT_UP_ARROW=">"
+export PURE_GIT_DOWN_ARROW="<"
+# }}} Prompt customization #
 
 # vim: foldmethod=marker
