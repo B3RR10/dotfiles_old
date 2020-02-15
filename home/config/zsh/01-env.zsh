@@ -3,7 +3,6 @@ export KEYTIMEOUT=1
 # }}} Misc #
 
 # Directories {{{ #
-export ZDOTDIR=$HOME/.config/zsh
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 # }}} Directories #
 
@@ -29,15 +28,9 @@ export VISUAL=nvim
 export LESSCHARSET=UTF-8
 #  }}} Env Programs #
 
-#  PATH {{{ #
-# Cargo env
-export PATH=$HOME/.cargo/bin:$PATH
+# Rust {{{ #
 export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
-# Local bins (mostly python)
-export PATH=$HOME/.local/bin:$PATH
-# scripts from ~/bin
-export PATH=$HOME/bin:$PATH
-#  }}} PATH #
+# }}} Rust #
 
 #  fzf settings {{{ #
 export FZF_COMPLETION_TRIGGER='~~'

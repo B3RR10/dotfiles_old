@@ -1,0 +1,8 @@
+# scripts from ~/bin
+export PATH=$PATH:$HOME/bin
+
+# Cargo env
+export PATH=$PATH:$HOME/.cargo/bin
+
+# Local bins (mostly python)
+export PATH=$PATH:$HOME/.local/bin

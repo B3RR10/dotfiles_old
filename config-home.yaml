@@ -23,15 +23,21 @@ dotfiles:
   d_mutt:
     dst: ~/.config/mutt
     src: config/mutt
+    cmpignore:
+    - '*/tmp'
+    instignore:
+    - '*/tmp'
+    upignore:
+    - '*/tmp'
   d_nvim:
     dst: ~/.config/nvim
     src: config/nvim
     cmpignore:
-      - "*/.netrwhist"
+    - '*/.netrwhist'
     instignore:
-      - "*/.netrwhist"
+    - '*/.netrwhist'
     upignore:
-      - "*/.netrwhist"
+    - '*/.netrwhist'
   d_redshift:
     dst: ~/.config/redshift
     src: config/redshift
@@ -44,12 +50,6 @@ dotfiles:
   d_zsh:
     dst: ~/.config/zsh
     src: config/zsh
-    cmpignore:
-      - "*/.zcompdump"
-    instignore:
-      - "*/.zcompdump"
-    upignore:
-      - "*/.zcompdump"
   f_alacritty:
     dst: ~/.config/alacritty/alacritty.yml
     src: config/alacritty/alacritty.yml
@@ -107,37 +107,41 @@ dotfiles:
   f_zshrc:
     dst: ~/.zshrc
     src: zshrc
+  f_zshenv:
+    src: zshenv
+    dst: ~/.zshenv
 profiles:
   Mail:
     dotfiles:
-      - d_mutt
-      - f_mbsync
-      - f_msmtp
+    - d_mutt
+    - f_mbsync
+    - f_msmtp
   Sway:
     dotfiles:
-      - d_fonts
-      - d_redshift
-      - d_sway
-      - f_gtk2
-      - f_gtk3
-      - f_i3status-rs
-      - f_mako
-      - f_wallpaper
-      - f_zathura
+    - d_fonts
+    - d_redshift
+    - d_sway
+    - f_gtk2
+    - f_gtk3
+    - f_i3status-rs
+    - f_mako
+    - f_wallpaper
+    - f_zathura
   Terminal:
     dotfiles:
-      - d_bin
-      - d_nvim
-      - d_zsh
-      - f_gitconfig
-      - f_tmux
-      - f_topgrade
-      - f_zshrc
+    - d_bin
+    - d_nvim
+    - d_zsh
+    - f_gitconfig
+    - f_tmux
+    - f_topgrade
+    - f_zshrc
+    - f_zshenv
 
   arch-xps:
     dotfiles:
-      - f_alacritty
+    - f_alacritty
     include:
-      - Mail
-      - Sway
-      - Terminal
+    - Mail
+    - Sway
+    - Terminal

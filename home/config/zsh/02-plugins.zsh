@@ -46,5 +46,9 @@ zinit load zdharma/zsh-diff-so-fancy
 zinit ice wait'1' lucid as'completion'
 zinit snippet '$DOTREPO/dotdrop/completion/_dotdrop-completion.zsh'
 
+# git with fzf
+zinit ice wait'1' lucid atload'source $HOME/.config/zsh/03-aliases.zsh'
+zinit light wfxr/forgit
+
 zinit ice lucid atinit'zpcompinit'
 zinit light zdharma/fast-syntax-highlighting
