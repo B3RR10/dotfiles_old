@@ -7,8 +7,8 @@ nno <C-q> <Esc>
 vno <C-q> <Esc>
 
 " Move through buffers
-nno <silent> <Tab> :bnext<CR>
-nno <silent> <S-Tab> :bprevious<CR>
+nno <silent> <Tab> :Buffers<CR>
+nno <silent> <S-Tab> :Windows<CR>
 
 " Moving characters
 nno L xp

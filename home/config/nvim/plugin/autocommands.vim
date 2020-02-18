@@ -22,3 +22,16 @@ autocmd BufWritePre * %retab!
 " Show relative numbers in normal mode
 autocmd InsertEnter * set nornu
 autocmd InsertLeave * set rnu
+{%@@ if profile == "NB-MIB" @@%}
+
+" Fix clipboard for WSL
+function! PasteFromWindows()
+    set paste
+    exe 'norm a'.system('/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -Command Get-Clipboard')
+    set nopaste
+endfunction
+
+if system('uname -r') =~ "Microsoft"
+    noremap "+p :call PasteFromWindows()<CR>
+endif
+{%@@ endif @@%}

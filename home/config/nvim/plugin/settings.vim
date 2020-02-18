@@ -21,8 +21,7 @@ set encoding=utf-8
 set visualbell
 
 " folding
-set foldcolumn=3
-"set foldclose=all
+set foldcolumn=1
 set foldnestmax=2
 
 " indent

@@ -62,6 +62,11 @@ Plug 'matze/vim-tex-fold'
 Plug 'tmhedberg/SimpylFold'
 Plug 'davidhalter/jedi-vim'
 
+{%@@ if profile == "NB-MIB" @@%}
+" PowerShell
+Plug 'PProvost/vim-ps1'
+{%@@ endif @@%}
+
 " Add, change and delete surroundings
 Plug 'tpope/vim-surround'
 
@@ -85,7 +90,11 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'godlygeek/tabular'
 
 " Fuzzy finder
+{%@@ if profile == "NB-MIB" @@%}
+Plug '~/.fzf'
+{%@@ else @@%}
 Plug '/usr/bin/fzf'
+{%@@ endif @@%}
 Plug 'junegunn/fzf.vim'
 
 " Snippets
@@ -112,8 +121,18 @@ Plug 'ncm2/ncm2-jedi'
 " Toggle quickfix with \q and location list with \l
 Plug 'milkypostman/vim-togglelist'
 
+" CTAGS
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+Plug 'majutsushi/tagbar'
+
+" NerdTree
+Plug 'preservim/nerdtree'
+
+{%@@ if profile != "NB-MIB" @@%}
 " Turn off caps when change from insert to normal mode
 Plug 'suxpert/vimcaps'
+{%@@ endif @@%}
 
 call plug#end()
 " }}} Pluggins "
@@ -170,14 +189,16 @@ nmap F <Plug>(easymotion-prefix)s
 let g:user_emmet_leader_key     = ','
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,xml EmmetInstall
-" " }}} Emmet ""
+" }}} Emmet "
 
 " FZF - Fuzzy finder {{{ "
-no <Leader>ff :FZF<CR>
-no <Leader>fh :FZF ~<CR>
 no <Leader>fb :Buffers<CR>
-no <Leader>fm :Marks<CR>
+no <Leader>ff :Files<CR>
 no <Leader>fg :GFiles<CR>
+no <Leader>fh :FZF ~<CR>
+no <Leader>ft :Tags<CR>
+command! -bang -nargs=? -complete=dir Files
+            \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 " }}} FZF - Fuzzy finder "
 
 " Gitgutter {{{ "
@@ -265,6 +286,16 @@ set shortmess+=c
 let g:ncm2#matcher = 'substrfuzzy'
 " }}} ncm2 "
 
+" NERDTree {{{ "
+nmap <Leader>n :NERDTreeToggle<CR>
+let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeAutoDeleteBuffer=1
+let g:NERDTreeWinSize=60
+let g:NERDTreeMinimalUI=1
+let g:NERDTreeDirArrows=1
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" }}} NERDTree "
+
 " OmniSharp {{{ "
 let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_server_path = '/mnt/c/Users/berriom.DMI-MS/scoop/apps/omnisharp/current/OmniSharp.exe'
@@ -276,6 +307,16 @@ let g:OmniSharp_selector_ui = 'fzf'
 let g:python_host_prog  = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
 " }}} Python provider for Neovim "
+
+" Tagbar {{{ "
+nmap <Leader>T :TagbarToggle<CR>
+nmap <Leader>t :TagbarOpen fj<CR>
+let g:tagbar_sort=0
+let g:tagbar_compact=1
+let g:tagbar_indent=1
+let g:tagbar_iconchars = ['▸', '▾']
+autocmd FileType cs call tagbar#autoopen(0)
+" }}} Tagbar "
 
 " Ultisnips {{{ "
 let g:UltiSnipsExpandTrigger = "<C-j>"
@@ -298,7 +339,6 @@ let g:vimtex_latexmk_conrinuous = 1
 " }}} vimtex "
 
 " Workspace {{{ "
-nnoremap <leader>s :ToggleWorkspace<CR>
 let g:workspace_session_directory = $NVIM_SESSIONS_DIR
 let g:workspace_persist_undo_history = 0
 let g:workspace_autosave = 0
