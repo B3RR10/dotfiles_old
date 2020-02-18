@@ -6,3 +6,7 @@ export PATH=$PATH:$HOME/.cargo/bin
 
 # Local bins (mostly python)
 export PATH=$PATH:$HOME/.local/bin
+{%@@ if profile == "NB-MIB" @@%}
+
+umask 022
+{%@@ endif @@%}

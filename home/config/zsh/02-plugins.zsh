@@ -3,7 +3,7 @@ if [[ ! -d ${ZINIT[HOME_DIR]} ]]; then
     git clone https://github.com/zdharma/zinit.git ${ZINIT[HOME_DIR]}
 fi
 
-source ${ZINIT[BIN_DIR]}/zinit.zsh
+source ${ZINIT[HOME_DIR]}/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
