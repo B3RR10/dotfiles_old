@@ -1,3 +1,5 @@
+actions:
+  vim-plug: nvim +PlugInstall +qall
 config:
   backup: true
   banner: true
@@ -32,6 +34,8 @@ dotfiles:
   d_nvim:
     dst: ~/.config/nvim
     src: config/nvim
+    actions:
+    - vim-plug
     cmpignore:
     - '*/.netrwhist'
     instignore:
@@ -68,6 +72,9 @@ dotfiles:
   f_mako:
     dst: ~/.config/mako/config
     src: config/mako/config
+  f_mimeapps:
+    dst: ~/.config/mimeapps.list
+    src: config/mimeapps.list
   f_rofi:
     dst: ~/.config/rofi/config
     src: config/rofi/config
@@ -110,6 +117,9 @@ dotfiles:
   f_zshenv:
     src: zshenv
     dst: ~/.zshenv
+  f_08-wsl.zsh:
+    src: config/zsh/08-wsl.zsh
+    dst: ~/.config/zsh/08-wsl.zsh
 profiles:
   Mail:
     dotfiles:
@@ -125,6 +135,7 @@ profiles:
     - f_gtk3
     - f_i3status-rs
     - f_mako
+    - f_mimeapps
     - f_wallpaper
     - f_zathura
   Terminal:
@@ -144,4 +155,10 @@ profiles:
     include:
     - Mail
     - Sway
+    - Terminal
+
+  NB-MIB:
+    dotfiles:
+    - f_08-wsl.zsh
+    include:
     - Terminal
