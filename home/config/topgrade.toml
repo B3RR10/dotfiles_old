@@ -35,13 +35,15 @@
 #set_title = false
 # Commands to run before anything
 [pre_commands]
+{%@@ if profile == "arch-xps" @@%}
 "Update Pacman mirrorlist" = "sudo /usr/bin/reflector --protocol https --latest 30 --number 20 --sort rate --save /etc/pacman.d/mirrorlist"
+{%@@ endif @@%}
 #"Emacs Snapshot" = "rm -rf ~/.emacs.d/elpa.bak && cp -rl ~/.emacs.d/elpa ~/.emacs.d/elpa.bak"
 
 # Custom commands
 [commands]
 #"Python Environment" = "~/dev/.env/bin/pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager jupyter"
-"Zplugin update" = "source ${ZINIT[BIN_DIR]}/zinit.zsh; zinit self-update; zinit update --all"
+"Zplugin update" = "source ${ZINIT[HOME_DIR]}/zinit.zsh; zinit self-update; zinit update --all"
 
 # Cleanup temporary or old files
 #cleanup = true
