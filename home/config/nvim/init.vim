@@ -165,6 +165,9 @@ let g:ale_rust_rls_config = {
             \ }
 
 let g:ale_fix_on_save = 1
+
+nmap [a <Plug>(ale_previous_wrap)
+nmap ]a <Plug>(ale_next_wrap)
 " }}} Ale - Linter "
 
 " Autopairs {{{ "
