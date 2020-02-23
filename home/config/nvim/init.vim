@@ -39,6 +39,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 
 " Rust plugins
 Plug 'rust-lang/rust.vim'
+Plug 'arzg/vim-rust-syntax-ext'
 Plug 'racer-rust/vim-racer'
 
 Plug 'cespare/vim-toml'
@@ -72,7 +73,12 @@ Plug 'tpope/vim-surround'
 
 " Git integration (Show diff in the sign column - gutter -)
 Plug 'airblade/vim-gitgutter'
+
+" To show the branch in ligtline
 Plug 'itchyny/vim-gitbranch'
+
+" Git syntax highlight
+Plug 'tpope/vim-git'
 
 " A better Vimdiff Git mergetool
 Plug 'whiteinge/diffconflicts'
@@ -122,8 +128,6 @@ Plug 'ncm2/ncm2-jedi'
 Plug 'milkypostman/vim-togglelist'
 
 " CTAGS
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
 Plug 'majutsushi/tagbar'
 
 " NerdTree

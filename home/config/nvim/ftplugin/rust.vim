@@ -1,33 +1,41 @@
-" Deoplete - Completion framework {{{ "
-let g:deoplete#sources#rust#racer_binary='$HOME/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-let g:deoplete#sources#rust#show_duplicates=1
-let g:deoplete#sources#rust#disable_keymap=1
-let g:deoplete#sources#rust#documentation_max_height=20
-" }}} Deoplete - Completion framework "
-
-" Mappings {{{ "
-nmap <leader>r :CargoRun<CR>
-nmap <leader>t :CargoTest<CR>
-nmap <leader>b :CargoBuild<CR>
-" }}} Mappings "
-
 " Settings {{{ "
 set foldmethod=syntax
 " }}} Settings "
 
 " Tagbar {{{ "
-let g:tagbar_type_rust = {
-            \ 'ctagstype' : 'rust',
-            \ 'kinds' : [
-            \'T:types,type definitions',
-            \'f:functions,function definitions',
-            \'g:enum,enumeration names',
-            \'s:structure names',
-            \'m:modules,module names',
-            \'c:consts,static constants',
-            \'t:traits,traits',
-            \'i:impls,trait implementations',
-            \]
-            \}
+let g:rust_use_custom_ctags_defs = 1  " if using rust.vim
+let g:tagbar_type_rust =
+            \ {
+            \     'ctagsbin' : '/usr/bin/ctags',
+            \     'ctagstype' : 'rust',
+            \     'kinds' : [
+            \         'n:modules',
+            \         's:structures:1',
+            \         'i:interfaces',
+            \         'c:implementations',
+            \         'f:functions:1',
+            \         'g:enumerations:1',
+            \         't:type aliases:1:0',
+            \         'v:constants:1:0',
+            \         'M:macros:1',
+            \         'm:fields:1:0',
+            \         'e:enum variants:1:0',
+            \         'P:methods:1',
+            \     ],
+            \     'sro': '::',
+            \     'kind2scope' : {
+            \         'n': 'module',
+            \         's': 'struct',
+            \         'i': 'interface',
+            \         'c': 'implementation',
+            \         'f': 'function',
+            \         'g': 'enum',
+            \         't': 'typedef',
+            \         'v': 'variable',
+            \         'M': 'macro',
+            \         'm': 'field',
+            \         'e': 'enumerator',
+            \         'P': 'method',
+            \     },
+            \ }
 " }}} Tagbar "
