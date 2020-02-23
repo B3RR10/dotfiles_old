@@ -6,6 +6,13 @@ export PATH=$PATH:$HOME/.cargo/bin
 
 # Local bins (mostly python)
 export PATH=$PATH:$HOME/.local/bin
+
+#  Zplugin
+declare -A ZINIT
+export ZINIT_HOME=$HOME/.local/share/zinit
+export ZINIT[HOME_DIR]=$ZINIT_HOME
+export ZINIT[BIN_DIR]=$ZINIT_HOME/bin
+export ZPFX=${ZINIT[HOME_DIR]}/polaris
 {%@@ if profile == "NB-MIB" @@%}
 
 umask 022

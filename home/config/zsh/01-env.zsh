@@ -12,14 +12,6 @@ export DOTREPO=$HOME/.dotfiles
 export USRNAME=$USER
 # }}} dotdrop #
 
-#  Zplugin {{{ #
-declare -A ZINIT
-export ZINIT_HOME=$HOME/.local/share/zinit
-export ZINIT[HOME_DIR]=$ZINIT_HOME
-export ZINIT[BIN_DIR]=$ZINIT_HOME/bin
-export ZPFX=${ZINIT[HOME_DIR]}/polaris
-#  }}} Zplugin #
-
 #  Env Programs {{{ #
 export EDITOR=nvim
 export BROWSER=/usr/bin/firefox
