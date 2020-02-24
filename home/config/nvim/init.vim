@@ -200,6 +200,7 @@ no <Leader>ff :Files<CR>
 no <Leader>fg :GFiles<CR>
 no <Leader>fh :FZF ~<CR>
 no <Leader>ft :Tags<CR>
+let g:fzf_buffers_jump = 1
 command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 " }}} FZF - Fuzzy finder "
@@ -264,7 +265,8 @@ let g:lightline.colorscheme = 'apprentice'
 let g:lightline.component_function = { 'gitbranch' : 'GitBranchName' }
 let g:lightline.active = {
             \ 'left' : [ [ 'mode', 'paste' ],
-            \            [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+            \            [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+            \            [ 'statuslinetabs' ]]
             \ }
 
 function! GitBranchName()
@@ -277,8 +279,13 @@ endfunction
 
 let g:lightline#bufferline#show_number  = 1
 let g:lightline.tabline          = {'left': [['buffers']], 'right': [[]]}
-let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers', 'statuslinetabs': 'LightlineStatuslineTabs',}
 let g:lightline.component_type   = {'buffers': 'tabsel'}
+
+function! LightlineStatuslineTabs() abort
+    return join(map(range(1, tabpagenr('$')),
+                \ '(v:val == tabpagenr() ? "[*] " : "") . lightline#tab#filename(v:val)'), " \u2b81 ")
+endfunction
 " }}} Lightline "
 
 " ncm2 {{{ "
