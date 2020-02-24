@@ -81,3 +81,6 @@ let w:m2=matchadd('OverLength', '\%101v', -1)
 
 " Match trailing spaces
 match ErrorMsg '\s\+$'
+
+" Workspace
+set sessionoptions-=blank
