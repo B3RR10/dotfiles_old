@@ -34,6 +34,9 @@ zinit ice svn as"completion" source"pip.plugin.zsh" pick"_pip" atpull'zinit crei
 zinit snippet OMZ::plugins/pip
 
 zinit ice wait lucid
+zinit snippet OMZ::plugins/virtualenvwrapper/virtualenvwrapper.plugin.zsh
+
+zinit ice wait lucid
 zinit snippet PZT::modules/completion/init.zsh
 
 zinit ice wait lucid

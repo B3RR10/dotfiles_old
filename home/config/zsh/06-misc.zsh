@@ -15,6 +15,12 @@ if command -v rustup > /dev/null; then
 fi
 #  }}} Completions #
 
+# Make Envs dir if does not exist {{{ #
+if [[ ! -d "$WORKON_HOME" ]]; then
+    mkdir -p "$WORKON_HOME"
+fi
+# }}} Make Envs dir if does not exist #
+
 #  Generate zcompdump if older than 24 hours {{{ #
 autoload -Uz compinit
 if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
@@ -22,3 +28,5 @@ if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
 else
     compinit -C;
 fi
+
+# vim: foldmethod=marker
