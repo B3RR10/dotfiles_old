@@ -22,7 +22,10 @@ set visualbell
 
 " folding
 set foldcolumn=1
-set foldnestmax=2
+if ! &diff
+    set foldopen=all
+    set foldclose=all
+endif
 
 " indent
 set autoindent
