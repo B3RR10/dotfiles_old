@@ -13,6 +13,13 @@ if command -v rustup > /dev/null; then
         rustup completions zsh rustup > $completion_dir/_rustup
     fi
 fi
+
+# diesel completions
+if command -v diesel > /dev/null; then
+    if [[ ! -f $completion_dir/_diesel ]]; then
+        diesel completions zsh > $completion_dir/_diesel
+    fi
+fi
 #  }}} Completions #
 
 # Make Envs dir if does not exist {{{ #
