@@ -28,12 +28,4 @@ if [[ ! -d "$WORKON_HOME" ]]; then
 fi
 # }}} Make Envs dir if does not exist #
 
-#  Generate zcompdump if older than 24 hours {{{ #
-autoload -Uz compinit
-if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
-    compinit;
-else
-    compinit -C;
-fi
-
 # vim: foldmethod=marker
