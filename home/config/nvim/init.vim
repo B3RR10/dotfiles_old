@@ -25,8 +25,11 @@ Plug 'mengelbrecht/lightline-bufferline'
 " Save persistent sessions on a workspace
 Plug 'thaerkh/vim-workspace'
 
+" Auto Headers
+Plug 'mnabila/vim-header'
+
 " Show indentation guides
-Plug 'Yggdroot/indentLine'
+Plug 'nathanaelkane/vim-indent-guides'
 
 " Editorconfig support
 Plug 'editorconfig/editorconfig-vim'
@@ -63,11 +66,14 @@ Plug 'matze/vim-tex-fold'
 Plug 'tmhedberg/SimpylFold'
 Plug 'davidhalter/jedi-vim'
 
+" Multiple cursors
+Plug 'terryma/vim-multiple-cursors'
+
 {%@@ if profile == "NB-MIB" @@%}
 " PowerShell
 Plug 'PProvost/vim-ps1'
-{%@@ endif @@%}
 
+{%@@ endif @@%}
 " Add, change and delete surroundings
 Plug 'tpope/vim-surround'
 
@@ -93,6 +99,7 @@ Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 
 "Alignment tool
+Plug 'junegunn/vim-easy-align'
 Plug 'godlygeek/tabular'
 
 " Fuzzy finder
@@ -177,14 +184,22 @@ nmap ]a <Plug>(ale_next_wrap)
 " Autopairs {{{ "
 let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutBackInsert = '<M-b>'
-" let g:AutoPairs['<']='>'
-let g:AutoPairsMapCR = 0
-imap <silent><CR> <CR><Plug>AutoPairsReturn
+let g:AutoPairsShortcutJump = ''
+" let g:AutoPairsMapCR = 0
+" imap <silent><CR> <CR><Plug>AutoPairsReturn
 " }}} Autopairs "
 
 " Colorscheme {{{ "
 colorscheme apprentice
 " }}} Colorscheme "
+
+" EasyAlign {{{ "
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+" }}} EasyAlign "
 
 " Easymotion {{{ "
 map <leader><leader> <Plug>(easymotion-prefix)
@@ -232,10 +247,12 @@ let g:gitgutter_sign_modified_removed = '~_'
 let g:gitgutter_grep_command = 'rg'
 " }}} Gitgutter "
 
-" Indentguides {{{ "
-let g:indentLine_fileTypeExclude = ['markdown']
-let g:indentLine_char = '|'
-" }}} Indentguides "
+" indent-guides {{{ "
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+" }}} indent-guides "
 
 " Language Client {{{ "
 let g:LanguageClient_autoStart = 1
@@ -346,6 +363,13 @@ set runtimepath+=~/.config/nvim
 let g:UltiSnipsSnippetDirectories = ['snippets/UltiSnips', 'UltiSnips']
 let g:UltiSnipsSnippetDir = "~/.config/nvim/snippets/UltiSnips"
 " }}} Ultisnips "
+
+" vim-header {{{ "
+let g:header_auto_add_header = 0
+let g:header_field_author = 'Miguel Berrio'
+let g:header_field_author_email = 'me@miguelberrio.xyz'
+map <Leader>ah :AddHeader<CR>
+" }}} vim-header "
 
 " vimtex {{{ "
 let g:tex_flavor = 'latex'
