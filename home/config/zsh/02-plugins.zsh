@@ -49,22 +49,12 @@ zinit load zdharma/zsh-diff-so-fancy
 zinit ice wait'1' lucid as'completion' aliases
 zinit snippet '$DOTREPO/dotdrop/completion/_dotdrop-completion.zsh'
 
-compdef _dotdrop-completion.zsh dot
-compdef _dotdrop-completion.zsh sdot
+zicompdef _dotdrop-completion.zsh dot
+zicompdef _dotdrop-completion.zsh sdot
 
 # git with fzf
-zinit ice wait'1' lucid atload'source $HOME/.config/zsh/03-aliases.zsh'
+zinit ice wait'1' lucid
 zinit light wfxr/forgit
 
-zinit ice wait lucid
+zinit ice wait lucid atload'zicompinit; zicdreplay'
 zinit light zdharma/fast-syntax-highlighting
-
- # Generate zcompdump if older than 24 hours
-autoload -Uz compinit
-if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
-    compinit;
-else
-    compinit -C;
-fi
-
-zinit cdreplay -q
