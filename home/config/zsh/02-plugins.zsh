@@ -57,4 +57,4 @@ zinit ice wait'1' lucid
 zinit light wfxr/forgit
 
 zinit ice wait lucid atload'zicompinit; zicdreplay'
-zinit light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-syntax-highlighting
