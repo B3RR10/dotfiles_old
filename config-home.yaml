@@ -120,6 +120,9 @@ dotfiles:
   f_08-wsl.zsh:
     src: config/zsh/08-wsl.zsh
     dst: ~/.config/zsh/08-wsl.zsh
+  d_applications:
+    src: local/share/applications
+    dst: ~/.local/share/applications
 profiles:
   Mail:
     dotfiles:
@@ -128,6 +131,7 @@ profiles:
     - f_msmtp
   Sway:
     dotfiles:
+    - d_applications
     - d_fonts
     - d_redshift
     - d_sway
@@ -146,8 +150,8 @@ profiles:
     - f_gitconfig
     - f_tmux
     - f_topgrade
-    - f_zshrc
     - f_zshenv
+    - f_zshrc
 
   arch-xps:
     dotfiles:
