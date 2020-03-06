@@ -135,7 +135,11 @@ Plug 'ncm2/ncm2-jedi'
 Plug 'milkypostman/vim-togglelist'
 
 " CTAGS
+{%@@ if profile == "NB-MIB" @@%}
+Plug 'majutsushi/tagbar'
+{%@@ else @@%}
 Plug 'liuchengxu/vista.vim'
+{%@@ endif @@%}
 
 " NerdTree
 Plug 'preservim/nerdtree'
@@ -143,6 +147,8 @@ Plug 'preservim/nerdtree'
 
 " Turn off caps when change from insert to normal mode
 Plug 'suxpert/vimcaps'
+
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 {%@@ endif @@%}
 
 " Split the selected text in new window (<C-w>gss)
@@ -156,8 +162,6 @@ Plug 'machakann/vim-swap'
 
 " Focus with :Goyo
 Plug 'junegunn/goyo.vim'
-
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 
 call plug#end()
 " }}} Pluggins "
@@ -203,12 +207,14 @@ let g:AutoPairsShortcutJump = ''
 " imap <silent><CR> <CR><Plug>AutoPairsReturn
 " }}} Autopairs "
 
+{%@@ if profile != "NB-MIB" @@%}
 " Clap {{{ "
 nmap <C-S-p> :Clap<CR>
 let g:clap_popup_input_delay = 0
 let g:clap_insert_mode_only = 1
 " }}} Clap "
 
+{%@@ endif @@%}
 " Colorscheme {{{ "
 colorscheme apprentice
 " }}} Colorscheme "
@@ -372,6 +378,17 @@ let g:python_host_prog  = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
 " }}} Python provider for Neovim "
 
+{%@@ if profile == "NB-MIB" @@%}
+" Tagbar {{{ "
+nmap <Leader>T :TagbarToggle<CR>
+nmap <Leader>t :TagbarOpen fj<CR>
+let g:tagbar_sort=0
+let g:tagbar_compact=1
+let g:tagbar_indent=1
+let g:tagbar_iconchars = ['▸', '▾']
+" }}} Tagbar "
+
+{%@@ endif @@%}
 " Ultisnips {{{ "
 let g:UltiSnipsExpandTrigger = "<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
@@ -399,6 +416,7 @@ let g:vimtex_fold_manual = 1
 let g:vimtex_latexmk_conrinuous = 1
 " }}} vimtex "
 
+{%@@ if profile != "NB-MIB" @@%}
 " Vista {{{ "
 nmap <Leader>t :Vista!!<CR>
 nmap <Leader>T :Vista finder<CR>
@@ -408,6 +426,7 @@ let g:vista_fold_toggle_icons = ['▸', '▾']
 let g:vista_fzf_preview = ['right:50%']
 " }}} Vista "
 
+{%@@ endif @@%}
 " Workspace {{{ "
 let g:workspace_session_directory = $NVIM_SESSIONS_DIR
 let g:workspace_persist_undo_history = 0
