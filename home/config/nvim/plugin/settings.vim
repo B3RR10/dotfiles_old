@@ -22,6 +22,7 @@ set visualbell
 
 " folding
 set foldcolumn=1
+set foldlevelstart=2
 if ! &diff
     set foldopen=all
     set foldclose=all

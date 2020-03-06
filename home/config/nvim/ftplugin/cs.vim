@@ -1,9 +1,6 @@
 " Settings {{{"
 set foldmethod=syntax
 set foldnestmax=5
-set foldlevelstart=2
-set foldopen=all
-set foldclose=all
 " }}} Settings"
 
 " autocmd CursorHold *.cs OmniSharpTypeLookup
