@@ -135,15 +135,29 @@ Plug 'ncm2/ncm2-jedi'
 Plug 'milkypostman/vim-togglelist'
 
 " CTAGS
-Plug 'majutsushi/tagbar'
+Plug 'liuchengxu/vista.vim'
 
 " NerdTree
 Plug 'preservim/nerdtree'
-
 {%@@ if profile != "NB-MIB" @@%}
+
 " Turn off caps when change from insert to normal mode
 Plug 'suxpert/vimcaps'
 {%@@ endif @@%}
+
+" Split the selected text in new window (<C-w>gss)
+Plug 'wellle/visual-split.vim'
+
+" Add more vim objects
+Plug 'wellle/targets.vim'
+
+" Swap arguments in parens
+Plug 'machakann/vim-swap'
+
+" Focus with :Goyo
+Plug 'junegunn/goyo.vim'
+
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 
 call plug#end()
 " }}} Pluggins "
@@ -188,6 +202,12 @@ let g:AutoPairsShortcutJump = ''
 " let g:AutoPairsMapCR = 0
 " imap <silent><CR> <CR><Plug>AutoPairsReturn
 " }}} Autopairs "
+
+" Clap {{{ "
+nmap <C-S-p> :Clap<CR>
+let g:clap_popup_input_delay = 0
+let g:clap_insert_mode_only = 1
+" }}} Clap "
 
 " Colorscheme {{{ "
 colorscheme apprentice
@@ -247,6 +267,13 @@ let g:gitgutter_sign_modified_removed = '~_'
 let g:gitgutter_grep_command = 'rg'
 " }}} Gitgutter "
 
+" Goyo {{{ "
+nmap <Leader>g :Goyo<CR>
+let g:goyo_width = 120
+let g:goyo_height = 100
+let g:goyo_linenr = 1
+" }}} Goyo "
+
 " indent-guides {{{ "
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
@@ -283,11 +310,15 @@ autocmd FileType * call LC_maps()
 " Lightline {{{ "
 let g:lightline = {}
 let g:lightline.colorscheme = 'apprentice'
-let g:lightline.component_function = { 'gitbranch' : 'GitBranchName' }
+let g:lightline.component_function =
+            \ {
+            \   'gitbranch' : 'GitBranchName',
+            \ }
 let g:lightline.active = {
             \ 'left' : [ [ 'mode', 'paste' ],
             \            [ 'gitbranch', 'readonly', 'filename', 'modified' ],
-            \            [ 'statuslinetabs' ]]
+            \            [ 'statuslinetabs' ]
+            \          ]
             \ }
 
 function! GitBranchName()
@@ -341,16 +372,6 @@ let g:python_host_prog  = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
 " }}} Python provider for Neovim "
 
-" Tagbar {{{ "
-nmap <Leader>T :TagbarToggle<CR>
-nmap <Leader>t :TagbarOpen fj<CR>
-let g:tagbar_sort=0
-let g:tagbar_compact=1
-let g:tagbar_indent=1
-let g:tagbar_iconchars = ['▸', '▾']
-autocmd FileType cs call tagbar#autoopen(0)
-" }}} Tagbar "
-
 " Ultisnips {{{ "
 let g:UltiSnipsExpandTrigger = "<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
@@ -377,6 +398,15 @@ let g:tex_conceal = ''
 let g:vimtex_fold_manual = 1
 let g:vimtex_latexmk_conrinuous = 1
 " }}} vimtex "
+
+" Vista {{{ "
+nmap <Leader>t :Vista!!<CR>
+nmap <Leader>T :Vista finder<CR>
+let g:vista#renderer#enable_icon = 1
+let g:vista_sidebar_width = 40
+let g:vista_fold_toggle_icons = ['▸', '▾']
+let g:vista_fzf_preview = ['right:50%']
+" }}} Vista "
 
 " Workspace {{{ "
 let g:workspace_session_directory = $NVIM_SESSIONS_DIR
