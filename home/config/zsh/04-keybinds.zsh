@@ -1,6 +1,6 @@
 # Vim mode {{{ #
-bindkey '^P' up-history
-bindkey '^N' down-history
+bindkey '^P' up-line-or-search
+bindkey '^N' down-line-or-search
 bindkey '^o' vi-cmd-mode
 bindkey '^[' vi-cmd-mode
 
