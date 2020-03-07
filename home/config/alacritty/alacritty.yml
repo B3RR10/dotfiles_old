@@ -108,7 +108,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: InconsolataGo Nerd Font Mono
+    family: Source Code Pro
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -119,7 +119,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: InconsolataGo Nerd Font Mono
+    family: Source Code Pro
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -130,13 +130,13 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: InconsolataGo Nerd Font Mono
+    family: Source Code Pro
 
     # The `style` can be specified to pick a specific face.
     style: Italic
 
   # Point size
-  size: 12
+  size: 10
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -148,8 +148,8 @@ font:
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
   glyph_offset:
-    x: 0
-    y: 0
+    x: 1
+    y: 1
 
   # Thin stroke font rendering (macOS only)
   #
@@ -174,8 +174,8 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    background: '0x000000'
-    foreground: '0xeaeaea'
+    background: '0x262626'
+    foreground: '0xbcbcbc'
 
     # Bright and dim foreground colors
     #
@@ -191,7 +191,7 @@ colors:
   # the cursor color will be the inverse of the cell color.
   cursor:
    text: '0x000000'
-   cursor: '0xffffff'
+   cursor: '0xbcbcbc'
 
   # Selection colors
   #
@@ -204,39 +204,39 @@ colors:
 
   # Normal colors
   normal:
-    black:   '0x000000'
-    red:     '0xd54e53'
-    green:   '0xb9ca4a'
-    yellow:  '0xe6c547'
-    blue:    '0x7aa6da'
-    magenta: '0xc397d8'
-    cyan:    '0x70c0ba'
-    white:   '0xeaeaea'
+    black:   '0x1c1c1c'
+    red:     '0xaf5f5f'
+    green:   '0x5f875f'
+    yellow:  '0x87875f'
+    blue:    '0x5f87af'
+    magenta: '0x5f5f87'
+    cyan:    '0x5f8787'
+    white:   '0x6c6c6c'
 
   # Bright colors
   bright:
-    black:   '0x666666'
-    red:     '0xff3334'
-    green:   '0x9ec400'
-    yellow:  '0xe7c547'
-    blue:    '0x7aa6da'
-    magenta: '0xb77ee0'
-    cyan:    '0x54ced6'
+    black:   '0x444444'
+    red:     '0xff8700'
+    green:   '0x87af87'
+    yellow:  '0xffffaf'
+    blue:    '0x8fafd7'
+    magenta: '0x8787af'
+    cyan:    '0x5fafaf'
     white:   '0xffffff'
 
   # Dim colors
   #
   # If the dim colors are not set, they will be calculated automatically based
   # on the `normal` colors.
-  dim:
-   black:   '0x000000'
-   red:     '0x8c3336'
-   green:   '0x7a8530'
-   yellow:  '0x97822e'
-   blue:    '0x506d8f'
-   magenta: '0x80638e'
-   cyan:    '0x497e7a'
-   white:   '0x9a9a9a'
+  # dim:
+  #  black:   '0x000000'
+  #  red:     '0x8c3336'
+  #  green:   '0x7a8530'
+  #  yellow:  '0x97822e'
+  #  blue:    '0x506d8f'
+  #  magenta: '0x80638e'
+  #  cyan:    '0x497e7a'
+  #  white:   '0x9a9a9a'
 
   # Indexed Colors
   #
