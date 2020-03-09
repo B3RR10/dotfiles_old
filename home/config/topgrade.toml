@@ -43,7 +43,6 @@
 # Custom commands
 [commands]
 #"Python Environment" = "~/dev/.env/bin/pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager jupyter"
-"Zplugin update" = "source ${ZINIT[HOME_DIR]}/zinit.zsh; zinit self-update; zinit update --all"
 
 # Cleanup temporary or old files
 #cleanup = true
