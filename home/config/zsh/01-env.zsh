@@ -44,7 +44,7 @@ export FZF_DEFAULT_COMMAND='fd --hidden --follow --type f --exclude .git --exclu
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT=30\%
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND='command cat <(fre --sorted) <(fd -t d --follow --exclude .git --exclude .wine) <(fd -t d --exclude .git --exclude .wine . ~)'
+export FZF_ALT_C_COMMAND='command cat <(fre --sorted) <(fd -t d --exclude .git --exclude .wine) <(fd -t d --follow --exclude .git --exclude .wine . ~)'
 export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 #  }}} fzf settings #
 
