@@ -29,7 +29,7 @@ Plug 'thaerkh/vim-workspace'
 Plug 'mnabila/vim-header'
 
 " Highlight word under cursor
-Plug 'RRethy/vim-illuminate'
+Plug 'dominikduda/vim_current_word'
 
 " Show indentation guides
 Plug 'nathanaelkane/vim-indent-guides'
@@ -282,11 +282,6 @@ let g:goyo_width = 120
 let g:goyo_height = 100
 let g:goyo_linenr = 1
 " }}} Goyo "
-
-" illuminate {{{ "
-let g:Illuminate_ftblacklist = [ 'nerdtree', 'help' ]
-hi illuminatedWord cterm=underline gui=underline
-" }}} illuminate "
 
 " indent-guides {{{ "
 let g:indent_guides_enable_on_vim_startup = 1
