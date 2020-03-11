@@ -1,2 +1,7 @@
-#!/bin/bash
-echo "$( dirname "$1" | sed -e "s;^$HOME;~;" -e 's;/\([^/\.]\)[^/]*;/\1;g' -e 's;/\.\([^/]\)[^/]*;/\.\1;g' )/$( basename "$1" )"
+#!/usr/bin/env bash
+path="${1/$HOME/\~}"
+if [[ "$path" = '~' ]]; then
+    echo "$path"
+else
+    echo "$(dirname "$path" | sed -e 's;/\([^/\.]\)[^/]*;/\1;g' -e 's;/\.\([^/]\)[^/]*;/\.\1;g')/$(basename "$path")"
+fi
