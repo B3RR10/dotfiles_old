@@ -22,6 +22,9 @@ Plug 'romainl/Apprentice',         { 'branch' : 'fancylines-and-neovim' }
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 
+" Use vim power!
+Plug 'takac/vim-hardtime'
+
 " Save persistent sessions on a workspace
 Plug 'thaerkh/vim-workspace'
 
@@ -282,6 +285,10 @@ let g:goyo_width = 120
 let g:goyo_height = 100
 let g:goyo_linenr = 1
 " }}} Goyo "
+
+" Hardtime {{{ "
+let g:hardtime_default_on = 1
+" }}} Hardtime "
 
 " indent-guides {{{ "
 let g:indent_guides_enable_on_vim_startup = 1
