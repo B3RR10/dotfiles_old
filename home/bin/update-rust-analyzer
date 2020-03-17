@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+cd "$HOME/src/rust-analyzer" || exit 1
+git pull
+"$HOME/.cargo/bin/cargo" xtask install --server
