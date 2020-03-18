@@ -209,7 +209,7 @@ nmap ]a <Plug>(ale_next_wrap)
 let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutBackInsert = '<M-b>'
 let g:AutoPairsShortcutJump = ''
-" let g:AutoPairsMapCR = 0
+let g:AutoPairsMapCR = 0
 " imap <silent><CR> <CR><Plug>AutoPairsReturn
 " }}} Autopairs "
 
@@ -358,10 +358,27 @@ endfunction
 
 " ncm2 {{{ "
 autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
+
+autocmd User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
+autocmd User Ncm2PopupClose set completeopt=menuone
+
 set shortmess+=c
+
+" enable auto complete for `<backspace>`, `<c-w>` keys.
+" known issue https://github.com/ncm2/ncm2/issues/7
+autocmd TextChangedI * call ncm2#auto_trigger()
+
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
+inoremap <silent> <Plug>(MyCR) <CR><C-R>=AutoPairsReturn()<CR>
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<CR>" : "\<CR>\<C-R>=AutoPairsReturn()\<CR>")
+
 " Use new fuzzy based matches
 let g:ncm2#matcher = 'substrfuzzy'
+
+" Set length to start completion
+let g:ncm2#complete_length = 2
 " }}} ncm2 "
 
 " NERDTree {{{ "
