@@ -288,6 +288,7 @@ let g:goyo_linenr = 1
 
 " Hardtime {{{ "
 let g:hardtime_default_on = 1
+let g:hardtime_ignore_buffer_patterns = [ "NERD.*", "tagbar" ]
 " }}} Hardtime "
 
 " indent-guides {{{ "
