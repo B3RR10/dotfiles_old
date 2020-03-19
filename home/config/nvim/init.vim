@@ -42,9 +42,9 @@ Plug 'editorconfig/editorconfig-vim'
 
 " Language Client
 Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch'                    : 'next',
-    \ 'do'                    : 'bash install.sh',
-    \ }
+            \ 'branch': 'next',
+            \ 'do': 'bash install.sh',
+            \ }
 
 " Rust plugins
 Plug 'rust-lang/rust.vim'
