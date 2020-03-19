@@ -260,10 +260,10 @@ let g:gitgutter_map_keys = 0
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 
-nmap <Leader>hp <Plug>(GitGutterPreviewHunk)
-nmap <Leader>hs <Plug>(GitGutterStageHunk)
-nmap <Leader>hu <Plug>(GitGutterUndoHunk)
-nmap <Leader>hh :GitGutterLineHighlightsToggle<CR>
+nmap <C-h>p <Plug>(GitGutterPreviewHunk)
+nmap <C-h>s <Plug>(GitGutterStageHunk)
+nmap <C-h>u <Plug>(GitGutterUndoHunk)
+nmap <C-h>h :GitGutterLineHighlightsToggle<CR>
 
 " Use hunks as objects
 omap ih <Plug>(GitGutterTextObjectInnerPending)
@@ -271,10 +271,15 @@ omap ah <Plug>(GitGutterTextObjectOuterPending)
 xmap ih <Plug>(GitGutterTextObjectInnerVisual)
 xmap ah <Plug>(GitGutterTextObjectOuterVisual)
 
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_modified = '~'
-let g:gitgutter_sign_removed = '-'
-let g:gitgutter_sign_modified_removed = '~_'
+set signcolumn=no
+let g:gitgutter_signs = 0
+let g:gitgutter_highlight_linenrs = 1
+
+highlight link GitGutterAddLineNr GitGutterAdd
+highlight link GitGutterChangeLineNr GitGutterChange
+highlight link GitGutterDeleteLineNr GitGutterDelete
+highlight link GitGutterChangeDeleteLineNr GitGutterChangeDelete
+
 let g:gitgutter_grep_command = 'rg'
 " }}} Gitgutter "
 
