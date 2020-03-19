@@ -312,16 +312,16 @@ let g:LanguageClient_serverCommands = {
 
 function! LC_maps()
     if has_key(g:LanguageClient_serverCommands, &filetype)
-        nnoremap <buffer> <leader>ld :call LanguageClient#textDocument_definition()<CR>
-        nnoremap <buffer> <leader>lr :call LanguageClient#textDocument_rename()<CR>
-        nnoremap <buffer> <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-        nnoremap <buffer> <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-        nnoremap <buffer> <leader>lx :call LanguageClient#textDocument_references()<CR>
-        nnoremap <buffer> <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-        nnoremap <buffer> <leader>lc :call LanguageClient#textDocument_completion()<CR>
-        nnoremap <buffer> <leader>lh :call LanguageClient#textDocument_hover()<CR>
-        nnoremap <buffer> <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-        nnoremap <buffer> <leader>lm :call LanguageClient_contextMenu()<CR>
+        nnoremap <buffer> <C-l>d :call LanguageClient#textDocument_definition()<CR>
+        nnoremap <buffer> <C-l>r :call LanguageClient#textDocument_rename()<CR>
+        nnoremap <buffer> <C-l>f :call LanguageClient#textDocument_formatting()<CR>
+        nnoremap <buffer> <C-l>t :call LanguageClient#textDocument_typeDefinition()<CR>
+        nnoremap <buffer> <C-l>x :call LanguageClient#textDocument_references()<CR>
+        nnoremap <buffer> <C-l>a :call LanguageClient_workspace_applyEdit()<CR>
+        nnoremap <buffer> <C-l>c :call LanguageClient#textDocument_completion()<CR>
+        nnoremap <buffer> <C-l>h :call LanguageClient#textDocument_hover()<CR>
+        nnoremap <buffer> <C-l>s :call LanguageClient_textDocument_documentSymbol()<CR>
+        nnoremap <buffer> <C-l><Space> :call LanguageClient_contextMenu()<CR>
         nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
     endif
 endfunction
