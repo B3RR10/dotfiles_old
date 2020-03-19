@@ -7,15 +7,15 @@ set foldnestmax=5
 
 " OmniSharp maps {{{"
 nnoremap gd :OmniSharpGotoDefinition<CR>
-nnoremap <Leader>oi :OmniSharpFindImplementations<CR>
-nnoremap <Leader>os :OmniSharpFindSymbol<CR>
-nnoremap <Leader>ou :OmniSharpFindUsages<CR>
+nnoremap <C-l>i :OmniSharpFindImplementations<CR>
+nnoremap <C-l>s :OmniSharpFindSymbol<CR>
+nnoremap <C-l>u :OmniSharpFindUsages<CR>
 
 " Finds members in the current buffer
-nnoremap <Leader>om :OmniSharpFindMembers<CR>
+nnoremap <C-l>m :OmniSharpFindMembers<CR>
 
-nnoremap <Leader>ox :OmniSharpFixUsings<CR>
-nnoremap <Leader>ot :OmniSharpTypeLookup<CR>
+nnoremap <C-l>x :OmniSharpFixUsings<CR>
+nnoremap <C-l>t :OmniSharpTypeLookup<CR>
 nnoremap K :OmniSharpDocumentation<CR>
 nnoremap <C-\> :OmniSharpSignatureHelp<CR>
 inoremap <C-\> <C-o>:OmniSharpSignatureHelp<CR>
@@ -25,21 +25,21 @@ nnoremap [[ :OmniSharpNavigateUp<CR>
 nnoremap ]] :OmniSharpNavigateDown<CR>
 
 " Find all code errors/warnings for the current solution and populate the quickfix window
-nnoremap <Leader>oc :OmniSharpGlobalCodeCheck<CR>
+nnoremap <C-l>c :OmniSharpGlobalCodeCheck<CR>
 
 " Contextual code actions (uses fzf, CtrlP or unite.vim when available)
-nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
+nnoremap <C-l><Space> :OmniSharpGetCodeActions<CR>
 " Run code actions with text selected in visual mode to extract method
-xnoremap <Leader><Space> :call OmniSharp#GetCodeActions('visual')<CR>
+xnoremap <C-l><Space> :call OmniSharp#GetCodeActions('visual')<CR>
 
 " Rename with dialog
-nnoremap <Leader>or :OmniSharpRename<CR>
+nnoremap <C-l>r :OmniSharpRename<CR>
 " Rename without dialog - with cursor on the symbol to rename: `:Rename newname`
 command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
 
-nnoremap <Leader>of :OmniSharpCodeFormat<CR>
+nnoremap <C-l>f :OmniSharpCodeFormat<CR>
 
 " Start the omnisharp server for the current solution
-nnoremap <Leader>oss :OmniSharpStartServer<CR>
-nnoremap <Leader>osp :OmniSharpStopServer<CR>
+nnoremap <C-l>ss :OmniSharpStartServer<CR>
+nnoremap <C-l>sp :OmniSharpStopServer<CR>
 " }}} OmniSharp maps"
