@@ -246,11 +246,10 @@ autocmd FileType html,css,xml EmmetInstall
 " }}} Emmet "
 
 " FZF - Fuzzy finder {{{ "
-no <Leader>fb :Buffers<CR>
-no <Leader>ff :Files<CR>
-no <Leader>fg :GFiles<CR>
-no <Leader>fh :FZF ~<CR>
-no <Leader>ft :Tags<CR>
+no <Leader>b :Buffers<CR>
+no <Leader>f :Files<CR>
+no <Leader>F :FZF ~<CR>
+no <Leader>g :GFiles<CR>
 let g:fzf_buffers_jump = 1
 command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
@@ -280,7 +279,7 @@ let g:gitgutter_grep_command = 'rg'
 " }}} Gitgutter "
 
 " Goyo {{{ "
-nmap <Leader>g :Goyo<CR>
+nmap <Leader>G :Goyo<CR>
 let g:goyo_width = 120
 let g:goyo_height = 100
 let g:goyo_linenr = 1
