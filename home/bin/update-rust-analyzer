@@ -2,4 +2,4 @@
 
 cd "$HOME/src/rust-analyzer" || exit 1
 git pull
-"$HOME/.cargo/bin/cargo" xtask install --server
+"$HOME/.cargo/bin/cargo" install-ra --server
