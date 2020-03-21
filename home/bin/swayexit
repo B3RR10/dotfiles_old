@@ -10,22 +10,23 @@ lock() {
 }
 
 case "$1" in
-    lock)
-        lock
-        ;;
-    logout)
-        swaymsg exit
-        ;;
-    suspend)
-        lock && sudo sleep
-        ;;
-    reboot)
-        sudo reboot
-        ;;
-    shutdown)
-        sudo poweroff
-        ;;
-    *)
-        echo "Usage: $0 <lock|logout|suspend|reboot|shutdown>"
-        exit 2
+lock)
+    lock
+    ;;
+logout)
+    swaymsg exit
+    ;;
+suspend)
+    systemctl suspend
+    ;;
+reboot)
+    sudo reboot
+    ;;
+shutdown)
+    sudo poweroff
+    ;;
+*)
+    echo "Usage: $0 <lock|logout|suspend|reboot|shutdown>"
+    exit 2
+    ;;
 esac
