@@ -39,9 +39,6 @@ zinit snippet OMZ::plugins/virtualenvwrapper/virtualenvwrapper.plugin.zsh
 zinit ice wait lucid
 zinit snippet PZT::modules/completion/init.zsh
 
-zinit ice wait lucid
-zinit snippet PZT::modules/rsync/init.zsh
-
 # diff-so-fancy
 zinit ice wait"2" lucid as"program" pick"bin/git-dsf"
 zinit load zdharma/zsh-diff-so-fancy
