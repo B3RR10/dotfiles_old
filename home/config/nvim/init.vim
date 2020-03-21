@@ -17,96 +17,126 @@ endif
 " Pluggins {{{ "
 call plug#begin($NVIM_PLUG_DIR)
 
-" Aesthetics
-Plug 'romainl/Apprentice',         { 'branch' : 'fancylines-and-neovim' }
+""""""""""""""""
+"  Aesthetics  "
+""""""""""""""""
+
+Plug 'romainl/Apprentice', { 'branch' : 'fancylines-and-neovim' }
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
-
-" Use vim power!
-Plug 'takac/vim-hardtime'
-
-" Save persistent sessions on a workspace
-Plug 'thaerkh/vim-workspace'
-
-" Auto Headers
-Plug 'mnabila/vim-header'
 
 " Highlight word under cursor
 Plug 'dominikduda/vim_current_word'
 
+" To show the branch in ligtline
+Plug 'itchyny/vim-gitbranch'
+
+" Git integration (Show diff in the sign column - gutter -)
+Plug 'airblade/vim-gitgutter'
+
 " Show indentation guides
 Plug 'nathanaelkane/vim-indent-guides'
 
-" Editorconfig support
-Plug 'editorconfig/editorconfig-vim'
+"""""""""""""""""""""""
+"  Lins and Complete  "
+"""""""""""""""""""""""
 
 " Language Client
-Plug 'autozimu/LanguageClient-neovim', {
-            \ 'branch': 'next',
-            \ 'do': 'bash install.sh',
-            \ }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-neco'
 
-" Rust plugins
-Plug 'rust-lang/rust.vim'
-Plug 'arzg/vim-rust-syntax-ext'
-Plug 'racer-rust/vim-racer'
+" Linter
+Plug 'w0rp/ale'
 
-Plug 'cespare/vim-toml'
-Plug 'avakhov/vim-yaml'
+"""""""""""""""
+"  Filetypes  "
+"""""""""""""""
 
 " C# - .NET
 Plug 'OmniSharp/omnisharp-vim'
 
-" HTML plugins
-Plug 'mattn/emmet-vim'
+" Editorconfig
+Plug 'editorconfig/editorconfig-vim'
 
-" Markdown plugins
-Plug 'tpope/vim-markdown'
+" Git
+Plug 'tpope/vim-git'
+
+" HTML
+Plug 'mattn/emmet-vim'
 
 " Latex plugins
 Plug 'lervag/vimtex'
 Plug 'Konfekt/FastFold'
 Plug 'matze/vim-tex-fold'
 
-" Python plugins
-Plug 'tmhedberg/SimpylFold'
-Plug 'davidhalter/jedi-vim'
-
-" Multiple cursors
-Plug 'terryma/vim-multiple-cursors'
+" Markdown
+Plug 'tpope/vim-markdown'
 
 {%@@ if profile == "NB-MIB" @@%}
 " PowerShell
 Plug 'PProvost/vim-ps1'
 
 {%@@ endif @@%}
-" Add, change and delete surroundings
-Plug 'tpope/vim-surround'
+" Python
+Plug 'tmhedberg/SimpylFold'
+Plug 'davidhalter/jedi-vim'
 
-" Git integration (Show diff in the sign column - gutter -)
-Plug 'airblade/vim-gitgutter'
+" Rust
+Plug 'rust-lang/rust.vim'
+Plug 'arzg/vim-rust-syntax-ext'
+Plug 'racer-rust/vim-racer'
 
-" To show the branch in ligtline
-Plug 'itchyny/vim-gitbranch'
+" Toml
+Plug 'cespare/vim-toml'
 
-" Git syntax highlight
-Plug 'tpope/vim-git'
+" Vim
+Plug 'Shougo/neco-vim'
 
-" A better Vimdiff Git mergetool
-Plug 'whiteinge/diffconflicts'
+" Yaml
+Plug 'avakhov/vim-yaml'
 
-" Easy motions
-Plug 'easymotion/vim-easymotion'
+""""""""""""
+"  Editor  "
+""""""""""""
+
+" Alignment tool
+Plug 'junegunn/vim-easy-align'
+Plug 'godlygeek/tabular'
 
 " Comments
 Plug 'tpope/vim-commentary'
 
-" Close quotes, parenthesis, brackets, etc automatic
-Plug 'jiangmiao/auto-pairs'
+" Headers
+Plug 'mnabila/vim-header'
 
-"Alignment tool
-Plug 'junegunn/vim-easy-align'
-Plug 'godlygeek/tabular'
+" Motions
+Plug 'easymotion/vim-easymotion'
+
+" Multiple cursors
+Plug 'terryma/vim-multiple-cursors'
+
+" Snippets
+Plug 'honza/vim-snippets'
+
+" Surroundings
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+
+" Swap arguments in parens
+Plug 'machakann/vim-swap'
+
+" Add more vim objects
+Plug 'wellle/targets.vim'
+
+" Save persistent sessions on a workspace
+Plug 'thaerkh/vim-workspace'
+
+"""""""""""
+"  Tools  "
+"""""""""""
+
+" Git mergetool
+Plug 'whiteinge/diffconflicts'
 
 " Fuzzy finder
 {%@@ if profile == "NB-MIB" @@%}
@@ -116,59 +146,37 @@ Plug '/usr/bin/fzf'
 {%@@ endif @@%}
 Plug 'junegunn/fzf.vim'
 
-" Snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Focus with :Goyo
+Plug 'junegunn/goyo.vim'
 
-" Vim syntax
-Plug 'Shougo/neco-vim'
+" NerdTree
+Plug 'preservim/nerdtree'
 
-" Linter
-Plug 'w0rp/ale'
-
-" Code completion
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-vim'
-Plug 'ncm2/ncm2-racer'
-Plug 'fgrsnau/ncm2-otherbuf'
-Plug 'ncm2/ncm2-ultisnips'
-Plug 'ncm2/ncm2-jedi'
-
-" Toggle quickfix with \q and location list with \l
-Plug 'milkypostman/vim-togglelist'
-
-" CTAGS
+" Tags
 {%@@ if profile == "NB-MIB" @@%}
 Plug 'majutsushi/tagbar'
 {%@@ else @@%}
 Plug 'liuchengxu/vista.vim'
 {%@@ endif @@%}
 
-" NerdTree
-Plug 'preservim/nerdtree'
-{%@@ if profile != "NB-MIB" @@%}
+""""""""""
+"  Misc  "
+""""""""""
 
-" Turn off caps when change from insert to normal mode
-Plug 'suxpert/vimcaps'
+" Use vim power!
+Plug 'takac/vim-hardtime'
 
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-{%@@ endif @@%}
+" Toggle quickfix with \q and location list with \l
+Plug 'milkypostman/vim-togglelist'
 
 " Split the selected text in new window (<C-w>gss)
 Plug 'wellle/visual-split.vim'
 
-" Add more vim objects
-Plug 'wellle/targets.vim'
+{%@@ if profile != "NB-MIB" @@%}
 
-" Swap arguments in parens
-Plug 'machakann/vim-swap'
-
-" Focus with :Goyo
-Plug 'junegunn/goyo.vim'
-
+" Turn off caps when change from insert to normal mode
+Plug 'suxpert/vimcaps'
+{%@@ endif @@%}
 call plug#end()
 " }}} Pluggins "
 
@@ -209,8 +217,6 @@ nmap ]a <Plug>(ale_next_wrap)
 let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutBackInsert = '<M-b>'
 let g:AutoPairsShortcutJump = ''
-let g:AutoPairsMapCR = 0
-" imap <silent><CR> <CR><Plug>AutoPairsReturn
 " }}} Autopairs "
 
 {%@@ if profile != "NB-MIB" @@%}
@@ -221,6 +227,72 @@ let g:clap_insert_mode_only = 1
 " }}} Clap "
 
 {%@@ endif @@%}
+" coc.nvim {{{ "
+let g:coc_global_extensions = [
+            \   'coc-clangd',
+            \   'coc-json',
+            \   'coc-lists',
+            \   'coc-omnisharp',
+            \   'coc-python',
+            \   'coc-rust-analyzer',
+            \   'coc-snippets',
+            \   'coc-texlab',
+            \   'coc-vimtex',
+            \   'coc-xml',
+            \   'coc-yaml',
+            \   'coc-yank',
+            \ ]
+
+autocmd TextChangedI * call coc#start()
+
+"Snippets
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+vmap <C-j> <Plug>(coc-snippets-select)
+let g:coc_snippet_next = '<C-j>'
+let g:coc_snippet_prev = '<C-k>'
+imap <C-q> <C-o>:CocList snippets<CR>
+
+nnoremap <silent> <Leader>y :<C-u>CocList -A --normal yank<CR>
+
+" GoTo code navigation
+nmap <C-l>d <Plug>(coc-definitions)
+nmap <C-l>t <Plug>(coc-type-definition)
+nmap <C-l>i <Plug>(coc-implementation)
+nmap <C-l>x <Plug>(coc-references)
+
+nmap <C-l>r <Plug>(coc-rename)
+
+xmap <C-l>f <Plug>(coc-format-selected)
+nmap <C-l>f <Plug>(coc-format-selected)
+
+" Code actions
+nmap <C-l><Space> <Plug>(coc-codeaction)
+" Apply AutoFix to problem on current line
+nmap <C-l>a <Plug>(coc-fix-current)
+
+nmap <C-l>c :<C-u>CocList diagnostics<CR>
+nmap <C-l>p <Plug>(coc-diagnostic-prev)
+nmap <C-l>n <Plug>(coc-diagnostic-next)
+nmap <C-l>o :<C-u>CocList outline<CR>
+nmap <C-l>s :<C-u>CocList -I symbols<CR>
+nmap <C-l>l :<C-u>CocListResume<CR>
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
+
+" Create function text objects
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+" }}} coc.nvim "
+
 " Colorscheme {{{ "
 colorscheme apprentice
 " }}} Colorscheme "
@@ -271,7 +343,6 @@ omap ah <Plug>(GitGutterTextObjectOuterPending)
 xmap ih <Plug>(GitGutterTextObjectInnerVisual)
 xmap ah <Plug>(GitGutterTextObjectOuterVisual)
 
-set signcolumn=no
 let g:gitgutter_signs = 0
 let g:gitgutter_highlight_linenrs = 1
 
@@ -301,32 +372,6 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 " }}} indent-guides "
-
-" Language Client {{{ "
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_serverCommands = {
-    \ 'rust' : ['ra_lsp_server'],
-    \ 'sh'   : ['shellcheck', 'language_server'],
-    \ 'tex'  : ['texlab'],
-    \ }
-
-function! LC_maps()
-    if has_key(g:LanguageClient_serverCommands, &filetype)
-        nnoremap <buffer> <C-l>d :call LanguageClient#textDocument_definition()<CR>
-        nnoremap <buffer> <C-l>r :call LanguageClient#textDocument_rename()<CR>
-        nnoremap <buffer> <C-l>f :call LanguageClient#textDocument_formatting()<CR>
-        nnoremap <buffer> <C-l>t :call LanguageClient#textDocument_typeDefinition()<CR>
-        nnoremap <buffer> <C-l>x :call LanguageClient#textDocument_references()<CR>
-        nnoremap <buffer> <C-l>a :call LanguageClient_workspace_applyEdit()<CR>
-        nnoremap <buffer> <C-l>c :call LanguageClient#textDocument_completion()<CR>
-        nnoremap <buffer> <C-l>h :call LanguageClient#textDocument_hover()<CR>
-        nnoremap <buffer> <C-l>s :call LanguageClient_textDocument_documentSymbol()<CR>
-        nnoremap <buffer> <C-l><Space> :call LanguageClient_contextMenu()<CR>
-        nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
-    endif
-endfunction
-autocmd FileType * call LC_maps()
-" }}} Language Client "
 
 " Lightline {{{ "
 let g:lightline = {}
@@ -360,31 +405,6 @@ function! LightlineStatuslineTabs() abort
                 \ '(v:val == tabpagenr() ? "[*] " : "") . lightline#tab#filename(v:val)'), " \u2b81 ")
 endfunction
 " }}} Lightline "
-
-" ncm2 {{{ "
-autocmd BufEnter * call ncm2#enable_for_buffer()
-
-autocmd User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
-autocmd User Ncm2PopupClose set completeopt=menuone
-
-set shortmess+=c
-
-" enable auto complete for `<backspace>`, `<c-w>` keys.
-" known issue https://github.com/ncm2/ncm2/issues/7
-autocmd TextChangedI * call ncm2#auto_trigger()
-
-" When the <Enter> key is pressed while the popup menu is visible, it only
-" hides the menu. Use this mapping to close the menu and also start a new
-" line.
-inoremap <silent> <Plug>(MyCR) <CR><C-R>=AutoPairsReturn()<CR>
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<CR>" : "\<CR>\<C-R>=AutoPairsReturn()\<CR>")
-
-" Use new fuzzy based matches
-let g:ncm2#matcher = 'substrfuzzy'
-
-" Set length to start completion
-let g:ncm2#complete_length = 2
-" }}} ncm2 "
 
 " NERDTree {{{ "
 nmap <Leader>n :NERDTreeToggle<CR>
@@ -421,19 +441,6 @@ let g:tagbar_iconchars = ['▸', '▾']
 " }}} Tagbar "
 
 {%@@ endif @@%}
-" Ultisnips {{{ "
-let g:UltiSnipsExpandTrigger = "<C-j>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-let g:UltiSnipsListSnippets = "<c-q>"
-
-let g:UltiSnipsEditSplit="vertical"
-
-set runtimepath+=~/.config/nvim
-let g:UltiSnipsSnippetDirectories = ['snippets/UltiSnips', 'UltiSnips']
-let g:UltiSnipsSnippetDir = "~/.config/nvim/snippets/UltiSnips"
-" }}} Ultisnips "
-
 " vim-header {{{ "
 let g:header_auto_add_header = 0
 let g:header_field_author = 'Miguel Berrio'

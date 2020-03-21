@@ -6,8 +6,6 @@ cno JK <Esc>
 nno <C-q> <Esc>
 vno <C-q> <Esc>
 
-map <Esc><Esc> :nohlsearch<CR>
-
 " Move through buffers
 nno <silent> <Tab> :Buffers<CR>
 nno <silent> <S-Tab> :Windows<CR>

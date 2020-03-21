@@ -54,6 +54,12 @@ set ignorecase
 set incsearch
 set smartcase
 
+" Don't show ins-completion-menu messages
+set shortmess+=c
+
+" show signcolumn always
+set signcolumn=yes
+
 " tabs
 set expandtab
 set shiftwidth=0 "use the tabstop value
@@ -76,7 +82,7 @@ set scrolloff=5
 set showtabline=2
 
 " Updatetime
-set updatetime=500
+set updatetime=300
 
 " Split windows the sane way
 set splitbelow

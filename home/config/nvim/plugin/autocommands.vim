@@ -22,6 +22,9 @@ autocmd BufWritePre * %retab!
 " Show relative numbers in normal mode
 autocmd InsertEnter * set nornu
 autocmd InsertLeave * set rnu
+
+" Allow comments in json
+autocmd FileType json syntax match Comment +\/\/.\+$+
 {%@@ if profile == "NB-MIB" @@%}
 
 " Fix clipboard for WSL
