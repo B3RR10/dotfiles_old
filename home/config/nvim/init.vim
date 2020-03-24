@@ -139,11 +139,7 @@ Plug 'thaerkh/vim-workspace'
 Plug 'whiteinge/diffconflicts'
 
 " Fuzzy finder
-{%@@ if profile == "NB-MIB" @@%}
-Plug '~/.fzf'
-{%@@ else @@%}
 Plug '/usr/bin/fzf'
-{%@@ endif @@%}
 Plug 'junegunn/fzf.vim'
 
 " Focus with :Goyo
