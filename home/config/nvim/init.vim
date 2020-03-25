@@ -149,11 +149,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'preservim/nerdtree'
 
 " Tags
-{%@@ if profile == "NB-MIB" @@%}
-Plug 'majutsushi/tagbar'
-{%@@ else @@%}
 Plug 'liuchengxu/vista.vim'
-{%@@ endif @@%}
 
 """"""""""
 "  Misc  "
@@ -427,17 +423,6 @@ let g:python_host_prog  = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
 " }}} Python provider for Neovim "
 
-{%@@ if profile == "NB-MIB" @@%}
-" Tagbar {{{ "
-nmap <Leader>T :TagbarToggle<CR>
-nmap <Leader>t :TagbarOpen fj<CR>
-let g:tagbar_sort=0
-let g:tagbar_compact=1
-let g:tagbar_indent=1
-let g:tagbar_iconchars = ['▸', '▾']
-" }}} Tagbar "
-
-{%@@ endif @@%}
 " vim-header {{{ "
 let g:header_auto_add_header = 0
 let g:header_field_author = 'Miguel Berrio'
@@ -452,7 +437,6 @@ let g:vimtex_fold_manual = 1
 let g:vimtex_latexmk_conrinuous = 1
 " }}} vimtex "
 
-{%@@ if profile != "NB-MIB" @@%}
 " Vista {{{ "
 nmap <Leader>t :Vista!!<CR>
 nmap <Leader>T :Vista finder<CR>
@@ -462,7 +446,6 @@ let g:vista_fold_toggle_icons = ['▸', '▾']
 let g:vista_fzf_preview = ['right:50%']
 " }}} Vista "
 
-{%@@ endif @@%}
 " Workspace {{{ "
 let g:workspace_session_directory = $NVIM_SESSIONS_DIR
 let g:workspace_persist_undo_history = 0
