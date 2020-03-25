@@ -247,7 +247,7 @@ imap <C-q> <C-o>:CocList snippets<CR>
 nnoremap <silent> <Leader>y :<C-u>CocList -A --normal yank<CR>
 
 " GoTo code navigation
-nmap <C-l>d <Plug>(coc-definitions)
+nmap gd <Plug>(coc-definition)
 nmap <C-l>t <Plug>(coc-type-definition)
 nmap <C-l>i <Plug>(coc-implementation)
 nmap <C-l>x <Plug>(coc-references)
@@ -262,9 +262,10 @@ nmap <C-l><Space> <Plug>(coc-codeaction)
 " Apply AutoFix to problem on current line
 nmap <C-l>a <Plug>(coc-fix-current)
 
+nmap [g <Plug>(coc-diagnostic-prev)
+nmap ]g <Plug>(coc-diagnostic-next)
+
 nmap <C-l>c :<C-u>CocList diagnostics<CR>
-nmap <C-l>p <Plug>(coc-diagnostic-prev)
-nmap <C-l>n <Plug>(coc-diagnostic-next)
 nmap <C-l>o :<C-u>CocList outline<CR>
 nmap <C-l>s :<C-u>CocList -I symbols<CR>
 nmap <C-l>l :<C-u>CocListResume<CR>
