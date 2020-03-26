@@ -211,20 +211,11 @@ let g:AutoPairsShortcutBackInsert = '<M-b>'
 let g:AutoPairsShortcutJump = ''
 " }}} Autopairs "
 
-{%@@ if profile != "NB-MIB" @@%}
-" Clap {{{ "
-nmap <C-S-p> :Clap<CR>
-let g:clap_popup_input_delay = 0
-let g:clap_insert_mode_only = 1
-" }}} Clap "
-
-{%@@ endif @@%}
 " coc.nvim {{{ "
 let g:coc_global_extensions = [
             \   'coc-clangd',
             \   'coc-json',
             \   'coc-lists',
-            \   'coc-omnisharp',
             \   'coc-python',
             \   'coc-rust-analyzer',
             \   'coc-snippets',
@@ -232,7 +223,6 @@ let g:coc_global_extensions = [
             \   'coc-vimtex',
             \   'coc-xml',
             \   'coc-yaml',
-            \   'coc-yank',
             \ ]
 
 autocmd TextChangedI * call coc#start()
