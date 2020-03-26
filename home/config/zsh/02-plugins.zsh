@@ -51,3 +51,5 @@ zinit light wfxr/forgit
 
 zinit ice wait lucid atload'zicompinit; zicdreplay'
 zinit light zsh-users/zsh-syntax-highlighting
+
+eval "$(zoxide init zsh)"

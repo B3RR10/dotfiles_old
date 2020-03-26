@@ -62,4 +62,8 @@ export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
 export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 # }}} Rust #
 
+# zoxide {{{ #
+export _ZO_DATA=$HOME/.cache/zoxide
+# }}} zoxide #
+
 # vim: foldmethod=marker
