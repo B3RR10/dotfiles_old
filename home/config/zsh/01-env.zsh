@@ -20,16 +20,6 @@ export VISUAL=nvim
 export LESSCHARSET=UTF-8
 #  }}} Env Programs #
 
-# Python virtualenvwrapper {{{ #
-export WORKON_HOME=$HOME/.envs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
-# }}} Python virtualenvwrapper #
-
-# Rust {{{ #
-export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
-# }}} Rust #
-
 #  fzf settings {{{ #
 export FZF_COMPLETION_TRIGGER='~~'
 _fzf_compgen_path() {
@@ -61,5 +51,15 @@ export PURE_PROMPT_VICMD_SYMBOL=">>> "
 export PURE_GIT_UP_ARROW=">"
 export PURE_GIT_DOWN_ARROW="<"
 # }}} Prompt customization #
+
+# Python virtualenvwrapper {{{ #
+export WORKON_HOME=$HOME/.envs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
+# }}} Python virtualenvwrapper #
+
+# Rust {{{ #
+export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+# }}} Rust #
 
 # vim: foldmethod=marker
