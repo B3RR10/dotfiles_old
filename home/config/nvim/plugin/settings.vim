@@ -57,8 +57,8 @@ set smartcase
 " Don't show ins-completion-menu messages
 set shortmess+=c
 
-" show signcolumn always
-set signcolumn=yes
+" don't show signcolumn ever
+set signcolumn=no
 
 " tabs
 set expandtab
