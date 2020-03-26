@@ -19,12 +19,4 @@ zle -N accept-line auto-ls
 add-zsh-hook chpwd auto-ls
 #  }}} auto_ls #
 
-# Fre {{{ #
-fre_chpwd() {
-  fre --add "$(pwd)"
-}
-typeset -gaU chpwd_functions
-chpwd_functions+=fre_chpwd
-# }}} Fre #
-
 # vim: foldmethod=marker
