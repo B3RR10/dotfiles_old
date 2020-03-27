@@ -347,7 +347,7 @@ let g:goyo_linenr = 1
 
 " Hardtime {{{ "
 let g:hardtime_default_on = 1
-let g:hardtime_ignore_buffer_patterns = [ "NERD.*", "tagbar" ]
+let g:hardtime_ignore_buffer_patterns = [ "NERD.*", "__vista__" ]
 " }}} Hardtime "
 
 " indent-guides {{{ "
@@ -442,4 +442,5 @@ let g:workspace_session_directory = $NVIM_SESSIONS_DIR
 let g:workspace_persist_undo_history = 0
 let g:workspace_autosave = 0
 let g:workspace_session_disable_on_args = 1
+let g:workspace_autosave_ignore = [ 'gitcommit', 'NERD.*', '__vista__' ]
 " }}} Workspace "
