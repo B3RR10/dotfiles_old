@@ -57,6 +57,7 @@ alias ta='tmux attach'
 alias tls='tmux ls'
 alias tat='tmux attach -t'
 alias tns='tmux new-session -s'
+alias dev='. ~/bin/tmux-dev'
 #  }}} tmux aliases #
 
 # vim: foldmethod=marker

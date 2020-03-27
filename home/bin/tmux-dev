@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+# Open vim in the principal pane
+tmux send-keys 'nvim' Enter
+
+tmux split-window -h -p 30
+tmux split-window -v
+
+tmux select-pane -t 1
