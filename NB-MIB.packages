@@ -33,6 +33,7 @@ python-pip
 python-pynvim
 python2
 python2-pip
+reflector
 ripgrep
 shellcheck
 subversion
