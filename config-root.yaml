@@ -1,0 +1,20 @@
+config:
+  backup: false
+  banner: true
+  create: true
+  dotpath: root
+  ignoreempty: false
+  keepdot: false
+  link_dotfile_default: nolink
+  link_on_import: nolink
+  longkey: true
+  showdiff: false
+  workdir: ~/.config/dotdrop
+dotfiles:
+  f_etc_wsl.conf:
+    src: etc/wsl.conf
+    dst: /etc/wsl.conf
+profiles:
+  NB-MIB:
+    dotfiles:
+    - f_etc_wsl.conf
