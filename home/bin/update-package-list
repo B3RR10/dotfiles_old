@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+PACKAGES="$HOME/.dotfiles/$(uname -n).packages"
+ACTUAL="$(yay -Qqe | grep -Fvx "$(yay -Qqm)")"
+if [[ ! -f $PACKAGES ]]; then
+    echo "$ACTUAL" > "$PACKAGES"
+    print "Packages saved under $PACKAGES"
+    exit 0
+fi
+if ! cmp "$PACKAGES" <(echo "$ACTUAL") > /dev/null; then
+    printf "List of packages differ with installed packages.\n"
+    diff -u "$PACKAGES" <(echo "$ACTUAL") | bat
+    read -r -p "Do you want to replace it [Y/n]? " INPUT
+    if [[ ! "$INPUT" =~ [^yY] ]]; then
+        mv "$PACKAGES" "$PACKAGES.old"
+        echo "$ACTUAL" > "$PACKAGES"
+    fi
+fi
