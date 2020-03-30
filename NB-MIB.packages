@@ -1,6 +1,7 @@
 arch-install-scripts
 autoconf
 automake
+autopep8
 base
 bash-language-server
 bat
@@ -8,6 +9,7 @@ binutils
 bison
 diff-so-fancy
 fd
+flake8
 flex
 fzf
 gcc
@@ -20,6 +22,7 @@ lldb
 llvm
 m4
 make
+man-db
 nano
 neovim
 npm
@@ -29,8 +32,15 @@ openssh
 patch
 pkgconf
 python
+python-language-server
+python-mccabe
 python-pip
+python-pycodestyle
+python-pydocstyle
+python-pyflakes
+python-pylint
 python-pynvim
+python-rope
 python2
 python2-pip
 reflector
@@ -44,4 +54,5 @@ tmux
 vi
 vim
 which
+yapf
 zsh
