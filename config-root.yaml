@@ -14,7 +14,11 @@ dotfiles:
   f_etc_wsl.conf:
     src: etc/wsl.conf
     dst: /etc/wsl.conf
+  f_etc_pacman.conf:
+    src: etc/pacman.conf
+    dst: /etc/pacman.conf
 profiles:
   NB-MIB:
     dotfiles:
     - f_etc_wsl.conf
+    - f_etc_pacman.conf
