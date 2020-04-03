@@ -6,4 +6,5 @@ tmux send-keys 'nvim' Enter
 tmux split-window -h -p 30
 tmux split-window -v
 
+tmux select-pane -t 2
 tmux select-pane -t 1
