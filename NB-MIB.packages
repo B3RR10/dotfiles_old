@@ -8,6 +8,7 @@ bat
 binutils
 bison
 diff-so-fancy
+entr
 fd
 flake8
 flex
@@ -16,6 +17,7 @@ gcc
 gdb
 git
 groff
+htop
 less
 libtool
 lldb
@@ -39,7 +41,6 @@ python-pycodestyle
 python-pydocstyle
 python-pyflakes
 python-pylint
-python-pynvim
 python-rope
 python2
 python2-pip
