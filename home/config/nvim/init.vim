@@ -354,9 +354,13 @@ let g:lightline.component_function =
             \ {
             \   'gitbranch' : 'GitBranchName',
             \ }
+let g:lightline.component =
+            \ {
+            \   'coc': '%{coc#status()}',
+            \ }
 let g:lightline.active = {
             \ 'left' : [ [ 'mode', 'paste' ],
-            \            [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+            \            [ 'gitbranch', 'readonly', 'filename', 'modified', 'coc' ],
             \            [ 'statuslinetabs' ]
             \          ]
             \ }
