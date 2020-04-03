@@ -1,0 +1,39 @@
+#!/bin/env bash
+# Check if snapper installed
+command -v snapper >/dev/null 2>&1 || exit 1
+command -v btrfs >/dev/null 2>&1 || exit 1
+
+OLDKERNEL=$(pacman -Qi linux | grep Version | awk '{ print $3 }')
+SNAPNUM=$(snapper list | grep pre | tail -1 | awk '{ print $1 }')
+
+# OLDSTABLE Snapshot
+btrfs subvolume delete /.snapshots/root/OLDSTABLE
+mv /.snapshots/root/{STABLE,OLDSTABLE}
+cp /boot/initramfs-linux-{STABLE,OLDSTABLE}.img
+cp /boot/vmlinuz-linux-{STABLE,OLDSTABLE}
+cp /boot/loader/entries/{2_stable,3_oldstable}.conf
+sed -i \
+    -e 's/STABLE/OLDSTABLE/g' \
+    -e 's/Stable/Oldstable/' \
+    /boot/loader/entries/3_oldstable.conf
+sed -i \
+    -e 's/STABLE/OLDSTABLE/g' \
+    /.snapshots/root/OLDSTABLE/etc/fstab
+
+# Copy CURRENT to STABLE (Edit the snapshot number in the fstab)
+cp /boot/initramfs-linux{,-STABLE}.img
+cp /boot/vmlinuz-linux{,-STABLE}
+cp /boot/loader/entries/{1_current,2_stable}.conf
+sed -i \
+    -e "s|\(Arch Linux\) .*|\1 Stable $OLDKERNEL|" \
+    -e 's|\(initramfs-linux\)|\1-STABLE|g' \
+    -e 's|\(vmlinuz-linux\)|\1-STABLE|g' \
+    -e "s|CURRENT|STABLE|g" \
+    /boot/loader/entries/2_stable.conf
+btrfs subvolume snapshot / /.snapshots/root/STABLE
+sed -i \
+    -e "s|CURRENT|STABLE|g" \
+    /.snapshots/root/STABLE/etc/fstab
+
+# Snapper Modify Snapshot before Kernel Upgrade
+snapper -c root modify --userdata important=yes --description "$OLDKERNEL" "$SNAPNUM"

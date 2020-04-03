@@ -1,0 +1,11 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = boot/vmlinuz-linux
+Target = usr/lib/initcpio/*
+
+[Action]
+Description = New Kernel - Snapshot!
+When = PostTransaction
+Exec = /etc/pacman.d/hooks/newkernel.sh

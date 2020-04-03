@@ -65,3 +65,9 @@ git submodule update
 pip install --user -r "$DOTREPO/dotdrop/requirements.txt"
 "$DOTREPO/dotdrop/dotdrop.sh" --cfg="$DOTREPO/config-home.yaml" install
 chsh -s /usr/bin/zsh
+
+# Install pfetch from github
+if [[ ! -f "$HOME/bin/pfetch" ]]; then
+    curl https://raw.githubusercontent.com/dylanaraps/pfetch/master/pfetch >"$HOME/bin/pfetch"
+    chmod +x "$HOME/bin/pfetch"
+fi

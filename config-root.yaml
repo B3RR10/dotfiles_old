@@ -9,16 +9,39 @@ config:
   link_on_import: nolink
   longkey: true
   showdiff: false
-  workdir: ~/.config/dotdrop
+  workdir: ~/.config/sdotdrop
 dotfiles:
   f_etc_wsl.conf:
     src: etc/wsl.conf
     dst: /etc/wsl.conf
+  d_etc_pacman.d_hooks:
+    src: etc/pacman.d/hooks
+    dst: /etc/pacman.d/hooks
   f_etc_pacman.conf:
     src: etc/pacman.conf
     dst: /etc/pacman.conf
+  f_etc_welcomemessage.conf:
+    src: etc/welcomemessage.conf
+    dst: /etc/welcomemessage.conf
+  f_etc_mkinitcpio.conf:
+    src: etc/mkinitcpio.conf
+    dst: /etc/mkinitcpio.conf
+  f_etc_issue:
+    src: etc/issue
+    dst: /etc/issue
+  d_etc_udev_rules.d:
+    src: etc/udev/rules.d
+    dst: /etc/udev/rules.d
 profiles:
   NB-MIB:
     dotfiles:
     - f_etc_wsl.conf
     - f_etc_pacman.conf
+  arch-xps:
+    dotfiles:
+    - d_etc_pacman.d_hooks
+    - f_etc_pacman.conf
+    - f_etc_welcomemessage.conf
+    - f_etc_mkinitcpio.conf
+    - f_etc_issue
+    - d_etc_udev_rules.d
