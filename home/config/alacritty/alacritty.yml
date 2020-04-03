@@ -77,29 +77,8 @@ scrolling:
   # scrollback is enabled (history > 0).
   multiplier: 3
 
-  # Faux Scrolling
-  #
-  # The `faux_multiplier` setting controls the number of lines the terminal
-  # should scroll when the alternate screen buffer is active. This is used
-  # to allow mouse scrolling for applications like `man`.
-  #
-  # Specifying `0` will disable faux scrolling.
-  # faux_multiplier: 3
-
-  # Scroll to the bottom when new text is written to the terminal.
-  auto_scroll: false
-
-# Spaces per Tab (changes require restart)
-#
-# This setting defines the width of a tab in cells.
-#
-# Some applications, like Emacs, rely on knowing about the width of a tab.
-# To prevent unexpected behavior in these applications, it's also required to
-# change the `it` value in terminfo when altering this setting.
-tabspaces: 8
-
-# Font configuration (changes require restart)
-font:
+# Font configuration
+#font:
   # Normal (roman) font face
   normal:
     # Font family
@@ -129,6 +108,17 @@ font:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
+    # value specified for the normal font.
+    family: Source Code Pro
+
+    # The `style` can be specified to pick a specific face.
+    #style: Italic
+
+  # Bold italic font face
+  #bold_italic:
+    # Font family
+    #
+    # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
     family: Source Code Pro
 
@@ -174,24 +164,24 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    background: '0x262626'
-    foreground: '0xbcbcbc'
+    background: '#262626'
+    foreground: '#bcbcbc'
 
     # Bright and dim foreground colors
     #
     # The dimmed foreground color is calculated automatically if it is not present.
     # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
     # is `false`, the normal foreground color will be used.
-    #dim_foreground: '0x9a9a9a'
-    #bright_foreground: '0xffffff'
+    #dim_foreground: '#9a9a9a'
+    #bright_foreground: '#ffffff'
 
   # Cursor colors
   #
   # Colors which should be used to draw the terminal cursor. If these are unset,
   # the cursor color will be the inverse of the cell color.
   cursor:
-   text: '0x000000'
-   cursor: '0xbcbcbc'
+   text: '#000000'
+   cursor: '#bcbcbc'
 
   # Selection colors
   #
@@ -199,44 +189,44 @@ colors:
   # background is unset, selection color will be the inverse of the cell colors.
   # If only text is unset the cell text color will remain the same.
   #selection:
-  #  text: '0xeaeaea'
-  #  background: '0x404040'
+  #  text: '#eaeaea'
+  #  background: '#404040'
 
   # Normal colors
   normal:
-    black:   '0x1c1c1c'
-    red:     '0xaf5f5f'
-    green:   '0x5f875f'
-    yellow:  '0x87875f'
-    blue:    '0x5f87af'
-    magenta: '0x5f5f87'
-    cyan:    '0x5f8787'
-    white:   '0x6c6c6c'
+    black:   '#1c1c1c'
+    red:     '#af5f5f'
+    green:   '#5f875f'
+    yellow:  '#87875f'
+    blue:    '#5f87af'
+    magenta: '#5f5f87'
+    cyan:    '#5f8787'
+    white:   '#6c6c6c'
 
   # Bright colors
   bright:
-    black:   '0x444444'
-    red:     '0xff8700'
-    green:   '0x87af87'
-    yellow:  '0xffffaf'
-    blue:    '0x8fafd7'
-    magenta: '0x8787af'
-    cyan:    '0x5fafaf'
-    white:   '0xffffff'
+    black:   '#444444'
+    red:     '#ff8700'
+    green:   '#87af87'
+    yellow:  '#ffffaf'
+    blue:    '#8fafd7'
+    magenta: '#8787af'
+    cyan:    '#5fafaf'
+    white:   '#ffffff'
 
   # Dim colors
   #
   # If the dim colors are not set, they will be calculated automatically based
   # on the `normal` colors.
   # dim:
-  #  black:   '0x000000'
-  #  red:     '0x8c3336'
-  #  green:   '0x7a8530'
-  #  yellow:  '0x97822e'
-  #  blue:    '0x506d8f'
-  #  magenta: '0x80638e'
-  #  cyan:    '0x497e7a'
-  #  white:   '0x9a9a9a'
+  #  black:   '#000000'
+  #  red:     '#8c3336'
+  #  green:   '#7a8530'
+  #  yellow:  '#97822e'
+  #  blue:    '#506d8f'
+  #  magenta: '#80638e'
+  #  cyan:    '#497e7a'
+  #  white:   '#9a9a9a'
 
   # Indexed Colors
   #
@@ -244,7 +234,7 @@ colors:
   # When these are not set, they're filled with sensible defaults.
   #
   # Example:
-  #   `- { index: 16, color: '0xff00ff' }`
+  #   `- { index: 16, color: '#ff00ff' }`
   #
   indexed_colors: []
 
@@ -272,7 +262,7 @@ colors:
 visual_bell:
   animation: EaseOutExpo
   duration: 0
-  color: '0xffffff'
+  color: '#ffffff'
 
 # Background opacity
 #
