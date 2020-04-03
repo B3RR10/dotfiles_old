@@ -79,7 +79,6 @@ Plug 'PProvost/vim-ps1'
 {%@@ endif @@%}
 " Python
 Plug 'tmhedberg/SimpylFold'
-Plug 'davidhalter/jedi-vim'
 
 " Rust
 Plug 'rust-lang/rust.vim'
@@ -116,6 +115,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
 
 " Snippets
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " Surroundings
@@ -177,7 +177,7 @@ let g:ale_linters = {
             \ 'rust'   : ['rustup', 'run', 'stable', 'rls'],
             \ 'sh'     : ['shellcheck', 'language_server'],
             \ 'tex'    : ['chktex', 'lacheck', 'vale'],
-            \ 'python' : ['pylama'],
+            \ 'python' : ['pyls'],
             \ 'cs'     : ['OmniSharp'],
             \ }
 let g:ale_fixers = {
@@ -221,20 +221,10 @@ let g:coc_global_extensions = [
             \   'coc-snippets',
             \   'coc-texlab',
             \   'coc-vimtex',
-            \   'coc-xml',
             \   'coc-yaml',
             \ ]
 
 autocmd TextChangedI * call coc#start()
-
-"Snippets
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-vmap <C-j> <Plug>(coc-snippets-select)
-let g:coc_snippet_next = '<C-j>'
-let g:coc_snippet_prev = '<C-k>'
-imap <C-q> <C-o>:CocList snippets<CR>
-
-nnoremap <silent> <Leader>y :<C-u>CocList -A --normal yank<CR>
 
 " GoTo code navigation
 nmap gd <Plug>(coc-definition)
@@ -346,7 +336,7 @@ let g:goyo_linenr = 1
 " }}} Goyo "
 
 " Hardtime {{{ "
-let g:hardtime_default_on = 1
+let g:hardtime_default_on = 0
 let g:hardtime_ignore_buffer_patterns = [ "NERD.*", "__vista__" ]
 " }}} Hardtime "
 
@@ -413,6 +403,19 @@ let g:OmniSharp_highlight_types = 2
 let g:python_host_prog  = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
 " }}} Python provider for Neovim "
+
+" Ultisnips {{{ "
+let g:UltiSnipsExpandTrigger = "<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+let g:UltiSnipsListSnippets = "<c-q>"
+
+let g:UltiSnipsEditSplit="vertical"
+
+set runtimepath+=~/.config/nvim
+let g:UltiSnipsSnippetDirectories = ['snippets/UltiSnips', 'UltiSnips']
+let g:UltiSnipsSnippetDir = "~/.config/nvim/snippets/UltiSnips"
+" }}} Ultisnips "
 
 " vim-header {{{ "
 let g:header_auto_add_header = 0
