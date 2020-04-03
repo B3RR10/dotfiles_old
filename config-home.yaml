@@ -38,10 +38,13 @@ dotfiles:
     - vim-plug
     cmpignore:
     - '*/.netrwhist'
+    - '**/spell'
     instignore:
     - '*/.netrwhist'
+    - '**/spell'
     upignore:
     - '*/.netrwhist'
+    - '**/spell'
   d_redshift:
     dst: ~/.config/redshift
     src: config/redshift
