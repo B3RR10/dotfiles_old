@@ -360,8 +360,8 @@ let g:lightline.component =
             \ }
 let g:lightline.active = {
             \ 'left' : [ [ 'mode', 'paste' ],
-            \            [ 'gitbranch', 'readonly', 'filename', 'modified', 'coc' ],
-            \            [ 'statuslinetabs' ]
+            \            [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+            \            [ 'statuslinetabs', 'coc' ]
             \          ]
             \ }
 
