@@ -6,10 +6,6 @@ cno JK <Esc>
 nno <C-q> <Esc>
 vno <C-q> <Esc>
 
-" Move through buffers
-nno <silent> <Tab> :Buffers<CR>
-nno <silent> <S-Tab> :Windows<CR>
-
 " Moving characters
 nno L xp
 nno H Xph

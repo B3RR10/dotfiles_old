@@ -296,6 +296,7 @@ no <Leader>f :Files<CR>
 no <Leader>F :FZF ~<CR>
 no <Leader>g :GFiles<CR>
 no <Leader>r :Rg<CR>
+no <Leader>w :Windows<CR>
 let g:fzf_buffers_jump = 1
 command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
