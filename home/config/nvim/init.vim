@@ -28,11 +28,9 @@ Plug 'mengelbrecht/lightline-bufferline'
 " Highlight word under cursor
 Plug 'dominikduda/vim_current_word'
 
-" To show the branch in ligtline
-Plug 'itchyny/vim-gitbranch'
-
-" Git integration (Show diff in the sign column - gutter -)
+" Git integration
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 " Show indentation guides
 Plug 'nathanaelkane/vim-indent-guides'
@@ -351,13 +349,10 @@ let g:indent_guides_guide_size = 1
 " Lightline {{{ "
 let g:lightline = {}
 let g:lightline.colorscheme = 'apprentice'
-let g:lightline.component_function =
-            \ {
-            \   'gitbranch' : 'GitBranchName',
-            \ }
 let g:lightline.component =
             \ {
             \   'coc': '%{coc#status()}',
+            \   'gitbranch': '%{fugitive#head()}',
             \ }
 let g:lightline.active = {
             \ 'left' : [ [ 'mode', 'paste' ],
@@ -366,14 +361,6 @@ let g:lightline.active = {
             \          ]
             \ }
 
-function! GitBranchName()
-    let b:name = gitbranch#name()
-    if b:name != '' && GitGutterGetHunks() != []
-        return b:name . "*"
-    endif
-    return b:name
-endfunction
-
 let g:lightline#bufferline#show_number  = 1
 let g:lightline.tabline          = {'left': [['buffers']], 'right': [[]]}
 let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers', 'statuslinetabs': 'LightlineStatuslineTabs',}
@@ -381,7 +368,7 @@ let g:lightline.component_type   = {'buffers': 'tabsel'}
 
 function! LightlineStatuslineTabs() abort
     return join(map(range(1, tabpagenr('$')),
-                \ '(v:val == tabpagenr() ? "[*] " : "") . lightline#tab#filename(v:val)'), " \u2b81 ")
+                \ '(v:val == tabpagenr() ? "[*] " : "[ ] ") . lightline#tab#filename(v:val)'), " | ")
 endfunction
 " }}} Lightline "
 
