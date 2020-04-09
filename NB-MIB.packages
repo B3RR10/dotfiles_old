@@ -52,6 +52,7 @@ sudo
 systemd
 texinfo
 tmux
+tree
 vi
 vim
 which
