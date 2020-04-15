@@ -7,16 +7,13 @@ config:
   keepdot: false
   link_dotfile_default: nolink
   link_on_import: nolink
-  longkey: true
+  longkey: false
   showdiff: false
   workdir: ~/.config/sdotdrop
 dotfiles:
   f_etc_wsl.conf:
     src: etc/wsl.conf
     dst: /etc/wsl.conf
-  d_etc_pacman.d_hooks:
-    src: etc/pacman.d/hooks
-    dst: /etc/pacman.d/hooks
   f_etc_pacman.conf:
     src: etc/pacman.conf
     dst: /etc/pacman.conf
@@ -32,6 +29,21 @@ dotfiles:
   d_etc_udev_rules.d:
     src: etc/udev/rules.d
     dst: /etc/udev/rules.d
+  f_50-backup-boot.hook:
+    src: usr/share/libalpm/hooks/50-backup-boot.hook
+    dst: /usr/share/libalpm/hooks/50-backup-boot.hook
+  f_50-snapshot-system.hook:
+    src: usr/share/libalpm/hooks/50-snapshot-system.hook
+    dst: /usr/share/libalpm/hooks/50-snapshot-system.hook
+  f_99-newkernel.hook:
+    src: usr/share/libalpm/hooks/99-newkernel.hook
+    dst: /usr/share/libalpm/hooks/99-newkernel.hook
+  f_snapshot-system:
+    src: usr/share/libalpm/scripts/snapshot-system
+    dst: /usr/share/libalpm/scripts/snapshot-system
+  f_newkernel:
+    src: usr/share/libalpm/scripts/newkernel
+    dst: /usr/share/libalpm/scripts/newkernel
 profiles:
   NB-MIB:
     dotfiles:
@@ -39,9 +51,13 @@ profiles:
     - f_etc_pacman.conf
   arch-xps:
     dotfiles:
-    - d_etc_pacman.d_hooks
     - f_etc_pacman.conf
     - f_etc_welcomemessage.conf
     - f_etc_mkinitcpio.conf
     - f_etc_issue
     - d_etc_udev_rules.d
+    - f_50-backup-boot.hook
+    - f_50-snapshot-system.hook
+    - f_99-newkernel.hook
+    - f_snapshot-system
+    - f_newkernel

@@ -21,8 +21,8 @@ sed -i \
     /.snapshots/root/OLDSTABLE/etc/fstab
 
 # Copy CURRENT to STABLE (Edit the snapshot number in the fstab)
-cp /boot/initramfs-linux{,-STABLE}.img
-cp /boot/vmlinuz-linux{,-STABLE}
+cp /boot/initramfs-linux.img /boot/initramfs-linux-STABLE.img
+cp /boot/vmlinuz-linux /boot/vmlinuz-linux-STABLE
 cp /boot/loader/entries/{1_current,2_stable}.conf
 sed -i \
     -e "s|\(Arch Linux\) .*|\1 Stable $OLDKERNEL|" \

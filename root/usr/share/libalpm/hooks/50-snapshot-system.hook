@@ -3,9 +3,9 @@ Operation = Upgrade
 Operation = Install
 Operation = Remove
 Type = Package
-Target = linux
+Target = linux*
 
 [Action]
 Description = Old Kernel - Backup!
 When = PreTransaction
-Exec = /etc/pacman.d/hooks/oldkernel.sh
+Exec = /usr/share/libalpm/scripts/snapshot-system
