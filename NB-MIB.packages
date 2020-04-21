@@ -7,6 +7,7 @@ bash-language-server
 bat
 binutils
 bison
+ctags
 diff-so-fancy
 entr
 fd
@@ -31,6 +32,7 @@ npm
 openmp
 openmpi
 openssh
+p7zip
 patch
 pkgconf
 python
@@ -41,6 +43,7 @@ python-pycodestyle
 python-pydocstyle
 python-pyflakes
 python-pylint
+python-pyodbc
 python-rope
 python2
 python2-pip
