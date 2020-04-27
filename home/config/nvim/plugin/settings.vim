@@ -21,7 +21,7 @@ set encoding=utf-8
 set visualbell
 
 " folding
-set foldcolumn=1
+set foldcolumn=0
 
 if &diff
     set foldopen=
@@ -58,7 +58,7 @@ set smartcase
 set shortmess+=c
 
 " don't show signcolumn ever
-set signcolumn=no
+" set signcolumn=no
 
 " tabs
 set expandtab

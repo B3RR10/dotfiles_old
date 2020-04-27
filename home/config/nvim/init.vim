@@ -316,8 +316,13 @@ omap ah <Plug>(GitGutterTextObjectOuterPending)
 xmap ih <Plug>(GitGutterTextObjectInnerVisual)
 xmap ah <Plug>(GitGutterTextObjectOuterVisual)
 
-let g:gitgutter_signs = 0
-let g:gitgutter_highlight_linenrs = 1
+let g:gitgutter_signs = 1
+
+let g:gitgutter_sign_added = '▌'
+let g:gitgutter_sign_modified = '▌'
+let g:gitgutter_sign_removed = '▁'
+let g:gitgutter_sign_removed_first_line = '▌'
+let g:gitgutter_sign_modified_removed = '▌'
 
 highlight link GitGutterAddLineNr GitGutterAdd
 highlight link GitGutterChangeLineNr GitGutterChange
