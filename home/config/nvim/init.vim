@@ -211,7 +211,6 @@ let g:AutoPairsShortcutJump = ''
 
 " coc.nvim {{{ "
 let g:coc_global_extensions = [
-            \   'coc-clangd',
             \   'coc-json',
             \   'coc-lists',
             \   'coc-python',
@@ -324,11 +323,6 @@ let g:gitgutter_sign_removed = '▁'
 let g:gitgutter_sign_removed_first_line = '▌'
 let g:gitgutter_sign_modified_removed = '▌'
 
-highlight link GitGutterAddLineNr GitGutterAdd
-highlight link GitGutterChangeLineNr GitGutterChange
-highlight link GitGutterDeleteLineNr GitGutterDelete
-highlight link GitGutterChangeDeleteLineNr GitGutterChangeDelete
-
 let g:gitgutter_grep_command = 'rg'
 " }}} Gitgutter "
 
@@ -359,17 +353,31 @@ let g:lightline.component =
             \   'coc': '%{coc#status()}',
             \   'gitbranch': '%{fugitive#head()}',
             \ }
-let g:lightline.active = {
-            \ 'left' : [ [ 'mode', 'paste' ],
-            \            [ 'gitbranch', 'readonly', 'filename', 'modified' ],
-            \            [ 'statuslinetabs', 'coc' ]
-            \          ]
+let g:lightline.active =
+            \ {
+            \   'left' :
+            \     [
+            \       [ 'mode', 'paste' ],
+            \       [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+            \       [ 'coc' ]
+            \     ],
             \ }
 
 let g:lightline#bufferline#show_number  = 1
-let g:lightline.tabline          = {'left': [['buffers']], 'right': [[]]}
-let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers', 'statuslinetabs': 'LightlineStatuslineTabs',}
-let g:lightline.component_type   = {'buffers': 'tabsel'}
+let g:lightline.tabline =
+            \ {
+            \   'left': [[ 'buffers' ]],
+            \   'right': [[ 'statuslinetabs' ]]
+            \ }
+let g:lightline.component_expand =
+            \ {
+            \   'buffers': 'lightline#bufferline#buffers',
+            \   'statuslinetabs': 'LightlineStatuslineTabs',
+            \ }
+let g:lightline.component_type   =
+            \ {
+            \   'buffers': 'tabsel',
+            \ }
 
 function! LightlineStatuslineTabs() abort
     return join(map(range(1, tabpagenr('$')),
