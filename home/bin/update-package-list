@@ -12,7 +12,6 @@ if ! cmp "$PACKAGES" <(echo "$ACTUAL") > /dev/null; then
     diff -u "$PACKAGES" <(echo "$ACTUAL") | bat
     read -r -p "Do you want to replace it [Y/n]? " INPUT
     if [[ ! "$INPUT" =~ [^yY] ]]; then
-        mv "$PACKAGES" "$PACKAGES.old"
         echo "$ACTUAL" > "$PACKAGES"
     fi
 fi
