@@ -45,10 +45,6 @@ zinit snippet '$DOTREPO/dotdrop/completion/_dotdrop-completion.zsh'
 zicompdef _dotdrop-completion.zsh dot
 zicompdef _dotdrop-completion.zsh sdot
 
-# git with fzf
-zinit ice wait'1' lucid
-zinit light wfxr/forgit
-
 zinit ice wait lucid atload'zicompinit; zicdreplay'
 zinit light zsh-users/zsh-syntax-highlighting
 
