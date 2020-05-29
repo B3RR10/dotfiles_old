@@ -21,7 +21,6 @@ export LESSCHARSET=UTF-8
 #  }}} Env Programs #
 
 #  fzf settings {{{ #
-export FZF_COMPLETION_TRIGGER='~~'
 _fzf_compgen_path() {
     fd --hidden --follow --exclude ".git" --exclude ".wine" . "$1"
 }
@@ -55,7 +54,6 @@ export PURE_GIT_DOWN_ARROW="<"
 # Python virtualenvwrapper {{{ #
 export WORKON_HOME=$HOME/.envs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
 # }}} Python virtualenvwrapper #
 
 # Rust {{{ #
