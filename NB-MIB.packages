@@ -8,8 +8,11 @@ bat
 binutils
 bison
 ctags
+davfs2
 diff-so-fancy
+dos2unix
 entr
+exa
 fd
 flake8
 flex
@@ -36,6 +39,7 @@ p7zip
 patch
 pkgconf
 python
+python-jedi
 python-language-server
 python-mccabe
 python-pip
@@ -58,6 +62,7 @@ tmux
 tree
 vi
 vim
+wget
 which
 yapf
 zsh
