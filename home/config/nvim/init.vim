@@ -172,7 +172,7 @@ call plug#end()
 
 " Ale - Linter {{{ "
 let g:ale_linters = {
-            \ 'rust'   : ['rustup', 'run', 'stable', 'rls'],
+            \ 'rust'   : ['analyzer', 'cargo'],
             \ 'sh'     : ['shellcheck', 'language_server'],
             \ 'tex'    : ['chktex', 'lacheck', 'vale'],
             \ 'python' : ['pyls'],
@@ -189,13 +189,12 @@ let g:ale_fixers = {
             \     'remove_trailing_lines',
             \   ]
             \ }
+
+let g:ale_rust_cargo_use_check = 1
+let g:ale_rust_cargo_check_all_targets = 1
+let g:ale_rust_cargo_check_tests = 1
+let g:ale_rust_cargo_check_examples = 1
 let g:ale_rust_cargo_use_clippy = 1
-let g:ale_rust_cargo_clippy_options = '--all-targets'
-let g:ale_rust_rls_config = {
-            \   'rust': {
-            \     'clippy_preference': 'on'
-            \   }
-            \ }
 
 let g:ale_fix_on_save = 1
 
