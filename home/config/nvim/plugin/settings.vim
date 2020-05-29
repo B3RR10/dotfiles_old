@@ -50,9 +50,7 @@ set formatoptions+=j
 set lazyredraw
 
 " searching
-set ignorecase
 set incsearch
-set smartcase
 
 " Don't show ins-completion-menu messages
 set shortmess+=c
