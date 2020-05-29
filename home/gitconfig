@@ -26,6 +26,7 @@
 {%@@ if profile == "NB-MIB" @@%}
 
     fileMode = false
+    autocrlf = input
 {%@@ endif @@%}
 
 [color]
