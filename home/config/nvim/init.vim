@@ -64,7 +64,6 @@ Plug 'mattn/emmet-vim'
 
 " Latex plugins
 Plug 'lervag/vimtex'
-Plug 'Konfekt/FastFold'
 Plug 'matze/vim-tex-fold'
 
 " Markdown
@@ -148,6 +147,10 @@ Plug 'preservim/nerdtree'
 
 " Tags
 Plug 'liuchengxu/vista.vim'
+
+" Zettelkasten
+Plug 'vimwiki/vimwiki'
+Plug 'michal-h21/vim-zettel'
 
 """"""""""
 "  Misc  "
@@ -384,6 +387,18 @@ function! LightlineStatuslineTabs() abort
 endfunction
 " }}} Lightline "
 
+" vim-markdown {{{ "
+let g:vim_markdown_conceal = 2
+let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_math = 1
+let g:vim_markdown_toml_frontmatter = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_strikethrough = 1
+let g:vim_markdown_autowrite = 1
+let g:vim_markdown_edit_url_in = 'tab'
+let g:vim_markdown_follow_anchor = 1
+" }}} vim-markdown "
+
 " NERDTree {{{ "
 nmap <Leader>n :NERDTreeToggle<CR>
 let g:NERDTreeQuitOnOpen=1
@@ -444,6 +459,14 @@ let g:vista_fold_toggle_icons = ['▸', '▾']
 let g:vista_fzf_preview = ['right:50%']
 " }}} Vista "
 
+" vimwiki {{{ "
+let g:vimwiki_list =
+            \ [
+            \   { 'path': '~/Notes/', 'syntax': 'markdown', 'ext': '.md', },
+            \   { 'path': '~/Notes/', 'syntax': 'markdown', 'ext': '.md', },
+            \ ]
+" }}} vimwiki "
+
 " Workspace {{{ "
 let g:workspace_session_directory = $NVIM_SESSIONS_DIR
 let g:workspace_persist_undo_history = 0
@@ -451,3 +474,8 @@ let g:workspace_autosave = 0
 let g:workspace_session_disable_on_args = 1
 let g:workspace_autosave_ignore = [ 'gitcommit', 'NERD.*', '__vista__' ]
 " }}} Workspace "
+
+" vim-zettel {{{ "
+let g:zettel_fzf_command = "rg --column --line-number --ignore-case --no-heading --color=always "
+let g:zettel_options = ['{}', '{"front_matter" : {"tags": ""}, "template": "~/.config/nvim/zettel-template.tpl"}']
+" }}} vim-zettel "
