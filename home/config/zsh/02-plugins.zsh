@@ -11,33 +11,16 @@ autoload -Uz _zinit
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
 
-zinit ice wait lucid blockf atpull'zinit creinstall -q .'
-zinit light zsh-users/zsh-completions
+zinit wait lucid for \
+    blockf atpull'zinit creinstall -q .' zsh-users/zsh-completions \
+    OMZP::colored-man-pages \
+    OMZP::fzf \
+    OMZP::git \
+    svn as'completion' pick'_pip' atpull'zinit creinstall -q .' OMZP::pip \
+    svn PZT::modules/completion
 
 zinit snippet OMZ::lib/completion.zsh
-
 zinit snippet OMZ::lib/key-bindings.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
-
-zinit ice as"completion"
-zinit snippet OMZ::plugins/fd/_fd
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/git/git.plugin.zsh
-
-zinit ice svn as"completion" source"pip.plugin.zsh" pick"_pip" atpull'zinit creinstall -q .'
-zinit snippet OMZ::plugins/pip
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/virtualenvwrapper/virtualenvwrapper.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet PZT::modules/completion/init.zsh
 
 zinit ice wait'1' lucid as'completion' aliases
 zinit snippet '$DOTREPO/dotdrop/completion/_dotdrop-completion.zsh'
@@ -47,5 +30,9 @@ zicompdef _dotdrop-completion.zsh sdot
 
 zinit ice wait lucid atload'zicompinit; zicdreplay'
 zinit light zsh-users/zsh-syntax-highlighting
+
+if whence zi | grep "zinit" >/dev/null; then
+    unalias zi
+fi
 
 eval "$(zoxide init zsh)"
