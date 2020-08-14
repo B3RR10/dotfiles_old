@@ -464,7 +464,7 @@ let g:vimwiki_list =
 " }}} vimwiki "
 
 " Workspace {{{ "
-let g:workspace_session_directory = $NVIM_SESSIONS_DIR
+let g:workspace_session_name = 'session.vim'
 let g:workspace_persist_undo_history = 0
 let g:workspace_autosave = 0
 let g:workspace_session_disable_on_args = 1

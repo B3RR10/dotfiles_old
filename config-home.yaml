@@ -3,6 +3,8 @@ actions:
 config:
   backup: true
   banner: true
+  cmpignore:
+    - "session.vim"
   create: true
   dotpath: home
   ignoreempty: false
@@ -126,6 +128,9 @@ dotfiles:
   d_applications:
     src: local/share/applications
     dst: ~/.local/share/applications
+  f_gitignore:
+    src: gitignore
+    dst: ~/.gitignore
 profiles:
   Mail:
     dotfiles:
@@ -151,6 +156,7 @@ profiles:
     - d_nvim
     - d_zsh
     - f_gitconfig
+    - f_gitignore
     - f_tmux
     - f_topgrade
     - f_zshenv
