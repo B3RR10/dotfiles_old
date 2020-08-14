@@ -16,11 +16,13 @@ zinit wait lucid for \
     OMZP::colored-man-pages \
     OMZP::fzf \
     OMZP::git \
+    svn as'completion' pick'_fd' atpull'zinit creinstall -q .' OMZP::fd \
     svn as'completion' pick'_pip' atpull'zinit creinstall -q .' OMZP::pip \
-    svn PZT::modules/completion
+    svn PZT::modules/completion \
+    rupa/z
 
-zinit snippet OMZ::lib/completion.zsh
-zinit snippet OMZ::lib/key-bindings.zsh
+zinit snippet OMZL::completion.zsh
+zinit snippet OMZL::key-bindings.zsh
 
 zinit ice wait'1' lucid as'completion' aliases
 zinit snippet '$DOTREPO/dotdrop/completion/_dotdrop-completion.zsh'
@@ -30,9 +32,3 @@ zicompdef _dotdrop-completion.zsh sdot
 
 zinit ice wait lucid atload'zicompinit; zicdreplay'
 zinit light zsh-users/zsh-syntax-highlighting
-
-if whence zi | grep "zinit" >/dev/null; then
-    unalias zi
-fi
-
-eval "$(zoxide init zsh)"

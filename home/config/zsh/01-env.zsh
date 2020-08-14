@@ -60,8 +60,9 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 # }}} Rust #
 
-# zoxide {{{ #
-export _ZO_DATA=$HOME/.cache/zoxide
-# }}} zoxide #
+# z {{{ #
+export _Z_DATA=$HOME/.cache/z
+export _Z_NO_RESOLVE_SYMLINKS=1
+# }}} z #
 
 # vim: foldmethod=marker
