@@ -450,6 +450,7 @@ let g:vimtex_latexmk_conrinuous = 1
 nmap <Leader>t :Vista!!<CR>
 nmap <Leader>T :Vista finder<CR>
 let g:vista#renderer#enable_icon = 1
+let g:vista_close_on_jump = 1
 let g:vista_sidebar_width = 40
 let g:vista_fold_toggle_icons = ['▸', '▾']
 let g:vista_fzf_preview = ['right:50%']
@@ -470,8 +471,3 @@ let g:workspace_autosave = 0
 let g:workspace_session_disable_on_args = 1
 let g:workspace_autosave_ignore = [ 'gitcommit', 'NERD.*', '__vista__' ]
 " }}} Workspace "
-
-" vim-zettel {{{ "
-let g:zettel_fzf_command = "rg --column --line-number --ignore-case --no-heading --color=always "
-let g:zettel_options = ['{}', '{"front_matter" : {"tags": ""}, "template": "~/.config/nvim/zettel-template.tpl"}']
-" }}} vim-zettel "
