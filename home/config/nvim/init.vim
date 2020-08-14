@@ -148,6 +148,9 @@ Plug 'preservim/nerdtree'
 " Tags
 Plug 'liuchengxu/vista.vim'
 
+" Wiki
+Plug 'vimwiki/vimwiki'
+
 """"""""""
 "  Misc  "
 """"""""""
@@ -451,9 +454,30 @@ let g:vista_fzf_preview = ['right:50%']
 " vimwiki {{{ "
 let g:vimwiki_list =
             \ [
-            \   { 'path': '~/Notes/', 'syntax': 'markdown', 'ext': '.md', },
-            \   { 'path': '~/Notes/', 'syntax': 'markdown', 'ext': '.md', },
+            \   { 'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md', },
             \ ]
+let g:vimwiki_global_ext = 0
+
+function! VimwikiFindIncompleteTasks()
+  lvimgrep /- \[ \]/ %:p
+  lopen
+endfunction
+
+function! VimwikiFindAllIncompleteTasks()
+  VimwikiSearch /- \[ \]/
+  lopen
+endfunction
+
+nmap <Leader>wa :call VimwikiFindAllIncompleteTasks()<CR>
+nmap <Leader>wx :call VimwikiFindIncompleteTasks()<CR>
+
+command! Diary VimwikiDiaryIndex
+"" Lame adaptation of Josh's buffer file here:
+""  https://gist.github.com/dphase/1792d67b4ac06aea11a49ed801f18a7e
+function! s:DScratch()
+  exe 'edit ~/vimwiki/Scratch Buffer.md'
+endfunction
+command! Scratch call s:DScratch(<f-args>)
 " }}} vimwiki "
 
 " Workspace {{{ "

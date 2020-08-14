@@ -19,4 +19,18 @@ zle -N accept-line auto-ls
 add-zsh-hook chpwd auto-ls
 #  }}} auto_ls #
 
+# Vimwiki {{{ #
+vimwiki () {
+    if [[ $# == 0 ]]
+    then
+        nvim +'VimwikiIndex'
+    elif [[ $1 == 'git' ]]
+    then
+        git -C ~/vimwiki/ ${@:2}
+    else
+        echo 'Usage: vimwiki [git] [args ...]'
+    fi
+}
+# }}} Vimwiki #
+
 # vim: foldmethod=marker
