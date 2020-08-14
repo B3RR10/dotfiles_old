@@ -152,9 +152,6 @@ Plug 'liuchengxu/vista.vim'
 "  Misc  "
 """"""""""
 
-" Use vim power!
-Plug 'takac/vim-hardtime'
-
 " Toggle quickfix with \q and location list with \l
 Plug 'milkypostman/vim-togglelist'
 
@@ -330,11 +327,6 @@ let g:goyo_width = 120
 let g:goyo_height = 100
 let g:goyo_linenr = 1
 " }}} Goyo "
-
-" Hardtime {{{ "
-let g:hardtime_default_on = 0
-let g:hardtime_ignore_buffer_patterns = [ "NERD.*", "__vista__" ]
-" }}} Hardtime "
 
 " indent-guides {{{ "
 let g:indent_guides_enable_on_vim_startup = 1
