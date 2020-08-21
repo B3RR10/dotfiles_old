@@ -286,7 +286,7 @@ autocmd FileType html,css,xml EmmetInstall
 " }}} Emmet "
 
 " FZF - Fuzzy finder {{{ "
-no <Leader>b :Buffers<CR>
+no <Leader><Space> :Buffers<CR>
 no <Leader>f :Files<CR>
 no <Leader>F :FZF ~<CR>
 no <Leader>g :GFiles<CR>
