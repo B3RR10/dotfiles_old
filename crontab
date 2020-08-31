@@ -27,3 +27,5 @@
 # Check for new email every 15 minutes
 */15 * * * * mbsync -a >/dev/null 2>&1
 
+# Sync vimwiki every 5 minutes
+*/5 * * * * $HOME/bin/sync-wiki

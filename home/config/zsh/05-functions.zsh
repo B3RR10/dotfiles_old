@@ -23,7 +23,7 @@ add-zsh-hook chpwd auto-ls
 vimwiki () {
     if [[ $# == 0 ]]
     then
-        nvim +'VimwikiIndex'
+        pushd ~/vimwiki && nvim +'VimwikiIndex' && popd
     elif [[ $1 == 'git' ]]
     then
         git -C ~/vimwiki/ ${@:2}
@@ -31,6 +31,10 @@ vimwiki () {
         echo 'Usage: vimwiki [git] [args ...]'
     fi
 }
+
+alias todo='pushd ~/vimwiki && nvim ~/vimwiki/Todo.md +Goyo && popd'
+alias idea='pushd ~/vimwiki && nvim ~/vimwiki/Scratchpad.md +Goyo && popd'
+alias diary='pushd ~/vimwiki && nvim +VimwikiMakeDiaryNote +Goyo && popd'
 # }}} Vimwiki #
 
 # vim: foldmethod=marker

@@ -148,6 +148,9 @@ Plug 'preservim/nerdtree'
 " Tags
 Plug 'liuchengxu/vista.vim'
 
+" Taskwarrior integration.
+Plug 'tools-life/taskwiki'
+
 " Wiki
 Plug 'vimwiki/vimwiki'
 

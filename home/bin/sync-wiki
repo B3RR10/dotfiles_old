@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+cd ~/vimwiki || exit 1
+
+# pull from master
+git pull -q origin master
+
+# Commit changes
+if [[ -n $(git status -s) ]]; then
+    git commit --all -m "Commit $(date "+%F %R")"
+    git push origin master
+fi

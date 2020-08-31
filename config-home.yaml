@@ -4,7 +4,7 @@ config:
   backup: true
   banner: true
   cmpignore:
-    - "session.vim"
+  - session.vim
   create: true
   dotpath: home
   ignoreempty: false
@@ -131,6 +131,9 @@ dotfiles:
   f_gitignore:
     src: gitignore
     dst: ~/.gitignore
+  f_taskrc:
+    src: taskrc
+    dst: ~/.taskrc
 profiles:
   Mail:
     dotfiles:
@@ -157,6 +160,7 @@ profiles:
     - d_zsh
     - f_gitconfig
     - f_gitignore
+    - f_taskrc
     - f_tmux
     - f_topgrade
     - f_zshenv
