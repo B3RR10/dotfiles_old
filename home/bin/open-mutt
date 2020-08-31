@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-MUTT="$(command -v alacritty) --class email --command neomutt"
-SWAYMSG="$(command -v swaymsg)"
-
-$SWAYMSG -- workspace 10
-if [[ -z $(pgrep -f "$MUTT") ]]; then
-    $MUTT &
-fi

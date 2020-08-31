@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+MAIL="$(command -v alacritty) --class email --command aerc"
+SWAYMSG="$(command -v swaymsg)"
+
+$SWAYMSG -- workspace 10
+if [[ -z $(pgrep -f "$MAIL") ]]; then
+    $MAIL &
+fi

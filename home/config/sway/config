@@ -104,7 +104,7 @@ input type:keyboard {
     bindsym $mod+p exec pass-autotype
 
     bindsym $mod+x exec firefox
-    bindsym $mod+m exec open-mutt
+    bindsym $mod+m exec open-mail
 
     # Take a screenshot of an area
     bindsym --release Print exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/$(date +'%s_grim.png')
