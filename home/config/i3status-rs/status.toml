@@ -6,11 +6,6 @@ name = "plain"
 separator = "  |  "
 
 [[block]]
-block = "music"
-buttons = ["play", "next"]
-on_collapsed_click = "spotify"
-
-[[block]]
 block = "net"
 device = "wlp1s0"
 ssid = true
@@ -50,16 +45,8 @@ block = "sound"
 on_click = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 
 [[block]]
-block = "maildir"
-interval = 60
-inboxes = ["/home/mberrio/Mail/runbox/INBOX"]
-threshold_warning = 5
-threshold_critical = 10
-display_type = "new"
-
-[[block]]
 block = "battery"
-format = "{percentage}% {time} {power} W"
+format = "{percentage}% {time}"
 
 [[block]]
 block = "time"
