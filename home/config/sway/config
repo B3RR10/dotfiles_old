@@ -291,11 +291,9 @@ bar {
     font pango:Noto Sans, Material Icons 10
     position top
     gaps 1 0 0 0
-    # mode hide
     status_command i3status-rs ~/.config/i3status-rs/status.toml
     colors {
         separator #000000
-        # background #222222
         statusline #dddddd
         focused_workspace #0088CC #0088CC #ffffff
         active_workspace #333333 #333333 #ffffff
