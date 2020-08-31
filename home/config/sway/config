@@ -306,10 +306,10 @@ bar {
 # }}} Status Bar #
 
 # Window colors {{{ #
-client.focused          $border-color $bg-color          $text-color          $indicator-color $border-color
-client.unfocused        $inactive-border-color $inactive-bg-color $inactive-text-color $indicator-color $inactive-border-color
-client.focused_inactive $inactive-border-color $inactive-bg-color $inactive-text-color $indicator-color $inactive-border-color
-client.urgent           $urgent-border-color   $urgent-bg-color   $text-color          $indicator-color $urgent-border-color
+client.focused            $border-color            $bg-color            $text-color            $indicator-color   $border-color
+client.unfocused          $inactive-border-color   $inactive-bg-color   $inactive-text-color   $indicator-color   $inactive-border-color
+client.focused_inactive   $inactive-border-color   $inactive-bg-color   $inactive-text-color   $indicator-color   $inactive-border-color
+client.urgent             $urgent-border-color     $urgent-bg-color     $text-color            $indicator-color   $urgent-border-color
 # }}} Window colors #
 
 # Startup programs {{{ #
