@@ -8,7 +8,6 @@ bat
 binutils
 bison
 ctags
-davfs2
 diff-so-fancy
 dos2unix
 entr
@@ -29,8 +28,8 @@ llvm
 m4
 make
 man-db
+mdp
 nano
-neovim
 npm
 openmp
 openmpi
@@ -53,10 +52,9 @@ python2
 python2-pip
 reflector
 ripgrep
-shellcheck
 subversion
 sudo
-systemd
+task
 texinfo
 tmux
 tree
