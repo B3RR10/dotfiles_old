@@ -78,7 +78,7 @@ scrolling:
   multiplier: 3
 
 # Font configuration
-#font:
+font:
   # Normal (roman) font face
   normal:
     # Font family
@@ -87,7 +87,7 @@ scrolling:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: Source Code Pro
+    family: FiraCode Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -98,24 +98,24 @@ scrolling:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Source Code Pro
+    family: FiraCode Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Bold
 
   # Italic font face
-  #italic:
+  italic:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Source Code Pro
+    family: FiraCode Nerd Font
 
     # The `style` can be specified to pick a specific face.
     #style: Italic
 
   # Bold italic font face
-  #bold_italic:
+  bold_italic:
     # Font family
     #
     # If the bold italic family is not specified, it will fall back to the
@@ -126,7 +126,7 @@ scrolling:
     style: Italic
 
   # Point size
-  size: 10
+  size: 11
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -259,10 +259,10 @@ colors:
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
-  animation: EaseOutExpo
-  duration: 0
-  color: '#ffffff'
+# visual_bell:
+#   animation: EaseOutExpo
+#   duration: 0
+#   color: '#ffffff'
 
 # Background opacity
 #
@@ -329,7 +329,7 @@ selection:
   save_to_clipboard: true
 
 # Allow terminal applications to change Alacritty's window title.
-dynamic_title: true
+# dynamic_title: true
 
 cursor:
   # Cursor style
