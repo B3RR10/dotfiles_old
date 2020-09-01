@@ -140,10 +140,12 @@ Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 
 " Focus with :Goyo
-Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
+Plug 'reedes/vim-pencil', { 'on': 'Goyo' }
 
 " NerdTree
-Plug 'preservim/nerdtree'
+Plug 'tpope/vim-vinegar'
 
 " Tags
 Plug 'liuchengxu/vista.vim'
@@ -332,6 +334,18 @@ nmap <Leader>G :Goyo<CR>
 let g:goyo_width = 120
 let g:goyo_height = 100
 let g:goyo_linenr = 1
+
+function! GoyoBefore()
+  :Limelight
+  :PencilSoft
+endfunction
+
+function! GoyoAfter()
+  :Limelight!
+  :PencilOff
+endfunction
+
+let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 " }}} Goyo "
 
 " indent-guides {{{ "
@@ -393,15 +407,10 @@ let g:vim_markdown_edit_url_in = 'tab'
 let g:vim_markdown_follow_anchor = 1
 " }}} vim-markdown "
 
-" NERDTree {{{ "
-nmap <Leader>n :NERDTreeToggle<CR>
-let g:NERDTreeQuitOnOpen=1
-let g:NERDTreeAutoDeleteBuffer=1
-let g:NERDTreeWinSize=60
-let g:NERDTreeMinimalUI=1
-let g:NERDTreeDirArrows=1
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" }}} NERDTree "
+" netrw {{{ "
+autocmd FileType netrw setl bufhidden=wipe
+let g:netrw_liststyle=3
+" }}} netrw "
 
 " OmniSharp {{{ "
 let g:OmniSharp_server_stdio = 1
