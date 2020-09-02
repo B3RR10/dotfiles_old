@@ -40,8 +40,24 @@ Plug 'nathanaelkane/vim-indent-guides'
 """""""""""""""""""""""
 
 " Language Client
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-neco'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'thomasfaingnaert/vim-lsp-snippets'
+Plug 'thomasfaingnaert/vim-lsp-ultisnips'
+
+" Autocompletion
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'wellle/tmux-complete.vim'
+Plug 'ncm2/ncm2-ultisnips'
+Plug 'ncm2/ncm2-jedi'
+Plug 'ncm2/ncm2-vim'
+Plug 'ncm2/ncm2-markdown-subscope'
+Plug 'fgrsnau/ncm2-otherbuf'
+Plug 'ncm2/ncm2-vim-lsp'
 
 " Linter
 Plug 'w0rp/ale'
@@ -87,6 +103,7 @@ Plug 'cespare/vim-toml'
 
 " Vim
 Plug 'Shougo/neco-vim'
+Plug 'Shougo/neco-syntax'
 
 " Yaml
 Plug 'avakhov/vim-yaml'
@@ -212,60 +229,6 @@ let g:AutoPairsShortcutBackInsert = '<M-b>'
 let g:AutoPairsShortcutJump = ''
 " }}} Autopairs "
 
-" coc.nvim {{{ "
-let g:coc_global_extensions = [
-            \   'coc-json',
-            \   'coc-lists',
-            \   'coc-python',
-            \   'coc-rust-analyzer',
-            \   'coc-snippets',
-            \   'coc-texlab',
-            \   'coc-vimtex',
-            \   'coc-yaml',
-            \ ]
-
-autocmd TextChangedI * call coc#start()
-
-" GoTo code navigation
-nmap gd <Plug>(coc-definition)
-nmap <C-l>t <Plug>(coc-type-definition)
-nmap <C-l>i <Plug>(coc-implementation)
-nmap <C-l>x <Plug>(coc-references)
-
-nmap <C-l>r <Plug>(coc-rename)
-
-xmap <C-l>f <Plug>(coc-format-selected)
-nmap <C-l>f <Plug>(coc-format-selected)
-
-" Code actions
-nmap <C-l><Space> <Plug>(coc-codeaction)
-" Apply AutoFix to problem on current line
-nmap <C-l>a <Plug>(coc-fix-current)
-
-nmap [g <Plug>(coc-diagnostic-prev)
-nmap ]g <Plug>(coc-diagnostic-next)
-
-nmap <C-l>c :<C-u>CocList diagnostics<CR>
-nmap <C-l>o :<C-u>CocList outline<CR>
-nmap <C-l>s :<C-u>CocList -I symbols<CR>
-nmap <C-l>l :<C-u>CocListResume<CR>
-
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-    else
-        call CocAction('doHover')
-    endif
-endfunction
-
-" Create function text objects
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-" }}} coc.nvim "
-
 " Colorscheme {{{ "
 colorscheme apprentice
 " }}} Colorscheme "
@@ -360,7 +323,6 @@ let g:lightline = {}
 let g:lightline.colorscheme = 'apprentice'
 let g:lightline.component =
             \ {
-            \   'coc': '%{coc#status()}',
             \   'gitbranch': '%{fugitive#head()}',
             \ }
 let g:lightline.active =
@@ -369,7 +331,6 @@ let g:lightline.active =
             \     [
             \       [ 'mode', 'paste' ],
             \       [ 'gitbranch', 'readonly', 'filename', 'modified' ],
-            \       [ 'coc' ]
             \     ],
             \ }
 
@@ -395,6 +356,30 @@ function! LightlineStatuslineTabs() abort
 endfunction
 " }}} Lightline "
 
+" vim-lsp {{{ "
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+autocmd FileType rust setlocal omnifunc=lsp#complete
+" }}} vim-lsp "
+
 " vim-markdown {{{ "
 let g:vim_markdown_conceal = 2
 let g:vim_markdown_conceal_code_blocks = 0
@@ -406,6 +391,20 @@ let g:vim_markdown_autowrite = 1
 let g:vim_markdown_edit_url_in = 'tab'
 let g:vim_markdown_follow_anchor = 1
 " }}} vim-markdown "
+
+" ncm2 {{{ "
+autocmd BufEnter * call ncm2#enable_for_buffer()
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
+inoremap <silent> <Plug>(MyCR) <CR><C-R>=AutoPairsReturn()<CR>
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<CR>" : "\<CR>\<C-R>=AutoPairsReturn()\<CR>")
+
+au User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
+au User Ncm2PopupClose set completeopt=menuone
+
+let g:ncm2#complete_length = 2
+" }}} ncm2 "
 
 " netrw {{{ "
 autocmd FileType netrw setl bufhidden=wipe
