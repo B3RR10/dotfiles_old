@@ -7,6 +7,7 @@ bash-language-server
 bat
 binutils
 bison
+cronie
 ctags
 diff-so-fancy
 dos2unix
@@ -56,10 +57,12 @@ subversion
 sudo
 task
 texinfo
+texlab
 tmux
 tree
 vi
 vim
+vint
 wget
 which
 yapf
