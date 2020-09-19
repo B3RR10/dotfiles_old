@@ -1,4 +1,4 @@
-icons = "material"
+icons = "none"
 
 [theme]
 name = "plain"
@@ -6,11 +6,18 @@ name = "plain"
 separator = "  |  "
 
 [[block]]
+block = "speedtest"
+bytes = true
+
+[[block]]
 block = "net"
 device = "wlp1s0"
+# format = "{ssid} {signal_strength} {ip} {speed_down} {graph_down}"
 ssid = true
-ip = true
 signal_strength = true
+ip = true
+# graph_down = true
+speed_up = false
 interval = 2
 
 [[block]]
@@ -26,7 +33,7 @@ alert = 10.0
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{MFg} GiB"
+format_mem = "{MFg} GiB ({MUpi}%)"
 format_swap = "{SUp}%"
 
 [[block]]
@@ -35,6 +42,8 @@ block = "uptime"
 [[block]]
 block = "cpu"
 interval = 1
+format = "{barchart} {utilization}% {frequency}GHz"
+# on_click = "st -e gotop"
 
 [[block]]
 block = "backlight"
@@ -42,7 +51,7 @@ device = "acpi_video0"
 
 [[block]]
 block = "sound"
-on_click = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+on_click = "st -e alsamixer"
 
 [[block]]
 block = "battery"
@@ -51,4 +60,4 @@ format = "{percentage}% {time}"
 [[block]]
 block = "time"
 interval = 30
-format = "%V - %d.%m.%Y %R "
+format = "%V - %F %R "
