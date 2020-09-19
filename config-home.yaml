@@ -5,6 +5,7 @@ config:
   banner: true
   cmpignore:
   - session.vim
+  - '*.secret'
   create: true
   dotpath: home
   ignoreempty: false
@@ -134,6 +135,9 @@ dotfiles:
   f_taskrc:
     src: taskrc
     dst: ~/.taskrc
+  f_99-my-env.zsh:
+    src: config/zsh/99-my-env.zsh
+    dst: ~/.config/zsh/99-my-env.zsh
 profiles:
   Mail:
     dotfiles:
@@ -169,6 +173,7 @@ profiles:
   arch-xps:
     dotfiles:
     - f_alacritty
+    - f_99-my-env.zsh
     include:
     - Mail
     - Sway
