@@ -7,6 +7,7 @@ git pull -q origin master
 
 # Commit changes
 if [[ -n $(git status -s) ]]; then
-    git commit --all -m "Commit $(date "+%F %R")" --no-gpg-sign
+    git add .
+    git commit -m "Commit $(date "+%F %R")" --no-gpg-sign
     git push origin master
 fi
