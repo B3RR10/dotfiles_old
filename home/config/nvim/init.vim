@@ -161,6 +161,9 @@ Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
 Plug 'reedes/vim-pencil', { 'on': 'Goyo' }
 
+" NerdTree
+Plug 'preservim/nerdtree'
+
 " Tags
 Plug 'liuchengxu/vista.vim'
 
@@ -401,10 +404,15 @@ set completeopt=noinsert,menuone,noselect
 let g:ncm2#complete_length = 2
 " }}} ncm2 "
 
-" netrw {{{ "
-autocmd FileType netrw setl bufhidden=wipe
-let g:netrw_liststyle=3
-" }}} netrw "
+" NERDTree {{{ "
+nmap <C-p> :NERDTreeToggleVCS<CR>
+let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeAutoDeleteBuffer=1
+let g:NERDTreeWinSize=60
+let g:NERDTreeMinimalUI=1
+let g:NERDTreeDirArrows=1
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" }}} NERDTree "
 
 " OmniSharp {{{ "
 let g:OmniSharp_server_stdio = 1
