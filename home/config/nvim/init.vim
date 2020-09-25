@@ -35,9 +35,9 @@ Plug 'tpope/vim-fugitive'
 " Show indentation guides
 Plug 'nathanaelkane/vim-indent-guides'
 
-"""""""""""""""""""""""
-"  Lins and Complete  "
-"""""""""""""""""""""""
+"""""""""""""""""""""""""""
+"  Linter and Completion  "
+"""""""""""""""""""""""""""
 
 " Language Client
 Plug 'prabirshrestha/async.vim'
@@ -161,9 +161,6 @@ Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
 Plug 'reedes/vim-pencil', { 'on': 'Goyo' }
 
-" NerdTree
-Plug 'tpope/vim-vinegar'
-
 " Tags
 Plug 'liuchengxu/vista.vim'
 
@@ -182,7 +179,6 @@ Plug 'milkypostman/vim-togglelist'
 
 " Split the selected text in new window (<C-w>gss)
 Plug 'wellle/visual-split.vim'
-
 {%@@ if profile != "NB-MIB" @@%}
 
 " Turn off caps when change from insert to normal mode
@@ -400,8 +396,7 @@ autocmd BufEnter * call ncm2#enable_for_buffer()
 inoremap <silent> <Plug>(MyCR) <CR><C-R>=AutoPairsReturn()<CR>
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<CR>" : "\<CR>\<C-R>=AutoPairsReturn()\<CR>")
 
-au User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
-au User Ncm2PopupClose set completeopt=menuone
+set completeopt=noinsert,menuone,noselect
 
 let g:ncm2#complete_length = 2
 " }}} ncm2 "
@@ -449,7 +444,9 @@ map <Leader>ah :AddHeader<CR>
 let g:tex_flavor = 'latex'
 let g:tex_conceal = ''
 let g:vimtex_fold_manual = 1
-let g:vimtex_latexmk_conrinuous = 1
+let g:vimtex_compiler_latexmk = {
+            \ 'build_dir' : 'build'
+            \ }
 " }}} vimtex "
 
 " Vista {{{ "
