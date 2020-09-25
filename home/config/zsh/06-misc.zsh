@@ -20,6 +20,13 @@ if command -v diesel > /dev/null; then
         diesel completions zsh > $completion_dir/_diesel
     fi
 fi
+
+# github-cli completions
+if command -v gh > /dev/null; then
+    if [[ ! -f $completion_dir/_gh ]]; then
+        gh completion -s zsh > $completion_dir/_gh
+    fi
+fi
 #  }}} Completions #
 
 # Make Envs dir if does not exist {{{ #
