@@ -1,3 +1,7 @@
+snippet cwp "Console.WriteLine with parameters" bsA
+Console.WriteLine($"${0}");
+endsnippet
+
 snippet nsetup "NUnit Setup" bsA
 [SetUp]
 public void Setup()
@@ -14,13 +18,32 @@ public void Teardown()
 }
 endsnippet
 
-snippet ntest "NUnit Test Case" bsA
+snippet test "NUnit Test Case" bsA
 [Test]
 public void ${1:function_name}()
 {
+	// Arrange
 	${0}
+	// Act
+
+	// Assert
+
 }
 endsnippet
+
+snippet atest "NUnit Async Test Case" bsA
+[Test]
+public async Task ${1:function_name}()
+{
+	// Arrange
+	${0}
+	// Act
+
+	// Assert
+
+}
+endsnippet
+
 
 snippet nfixture "NUnit test class" bs
 using NUnit.Framework;
@@ -41,3 +64,5 @@ ${VISUAL}$0
 
 #endregion ${2:$1}
 endsnippet
+
+
