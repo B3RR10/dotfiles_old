@@ -25,10 +25,8 @@ set foldcolumn=0
 
 if &diff
     set foldopen=
-    set foldclose=
 else
     set foldopen=all
-    set foldclose=all
 endif
 
 " indent
