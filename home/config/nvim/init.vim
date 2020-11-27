@@ -11,7 +11,10 @@ let $NVIM_SESSIONS_DIR = expand('$HOME/.local/share/nvim/sessions/')
 if empty(glob($NVIM_PLUG_SOURCE))
   silent !curl -fLo $NVIM_PLUG_SOURCE --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  augroup install_plugins
+      autocmd!
+      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  augroup END
 endif
 
 " Pluggins {{{ "
@@ -249,7 +252,10 @@ nmap F <Plug>(easymotion-prefix)s
 " Redefine trigger key
 let g:user_emmet_leader_key     = ','
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,xml EmmetInstall
+augroup emmet_install
+    autocmd!
+    autocmd FileType html,css,xml EmmetInstall
+augroup END
 " }}} Emmet "
 
 " FZF - Fuzzy finder {{{ "
@@ -392,7 +398,6 @@ let g:vim_markdown_follow_anchor = 1
 " }}} vim-markdown "
 
 " ncm2 {{{ "
-autocmd BufEnter * call ncm2#enable_for_buffer()
 " When the <Enter> key is pressed while the popup menu is visible, it only
 " hides the menu. Use this mapping to close the menu and also start a new
 " line.
@@ -400,6 +405,11 @@ inoremap <silent> <Plug>(MyCR) <CR><C-R>=AutoPairsReturn()<CR>
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<CR>" : "\<CR>\<C-R>=AutoPairsReturn()\<CR>")
 
 set completeopt=noinsert,menuone,noselect
+
+augroup ncm2
+    autocmd!
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+augroup END
 
 let g:ncm2#complete_length = 2
 " }}} ncm2 "
@@ -411,7 +421,10 @@ let g:NERDTreeAutoDeleteBuffer=1
 let g:NERDTreeWinSize=60
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeDirArrows=1
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup NERDTree
+    autocmd!
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup END
 " }}} NERDTree "
 
 " OmniSharp {{{ "
