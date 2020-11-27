@@ -1,4 +1,4 @@
-if (has("termguicolors"))
+if (has('termguicolors'))
     set termguicolors
 endif
 

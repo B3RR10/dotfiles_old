@@ -201,7 +201,9 @@ let g:ale_linters = {
             \ 'tex'    : ['chktex', 'lacheck', 'vale'],
             \ 'python' : ['pyls'],
             \ 'cs'     : ['OmniSharp'],
+            \ 'vim'    : ['vint']
             \ }
+let g:ale_vim_vimls_executable = '$HOME/.local/share/vim-lsp-settings/servers/vim-language-server/vim-language-server'
 let g:ale_fixers = {
             \ 'rust'   : ['rustfmt'],
             \ 'sh'     : ['shfmt'],
@@ -369,7 +371,7 @@ let g:lightline.component_type   =
 
 function! LightlineStatuslineTabs() abort
     return join(map(range(1, tabpagenr('$')),
-                \ '(v:val == tabpagenr() ? "[*] " : "[ ] ") . lightline#tab#filename(v:val)'), " | ")
+                \ '(v:val == tabpagenr() ? "[*] " : "[ ] ") . lightline#tab#filename(v:val)'), ' | ')
 endfunction
 " }}} Lightline "
 
@@ -454,12 +456,12 @@ let g:python3_host_prog = '/usr/bin/python3'
 " }}} Python provider for Neovim "
 
 " Ultisnips {{{ "
-let g:UltiSnipsExpandTrigger = "<C-j>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-let g:UltiSnipsListSnippets = "<c-q>"
+let g:UltiSnipsExpandTrigger = '<C-j>'
+let g:UltiSnipsJumpForwardTrigger='<C-j>'
+let g:UltiSnipsJumpBackwardTrigger='<C-k>'
+let g:UltiSnipsListSnippets = '<c-q>'
 
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEditSplit='vertical'
 
 set runtimepath+=~/.config/nvim
 let g:UltiSnipsSnippetDirectories = ['snippets/UltiSnips', 'UltiSnips']
