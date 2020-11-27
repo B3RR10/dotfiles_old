@@ -31,6 +31,7 @@ make
 man-db
 mdp
 nano
+neovim
 npm
 openmp
 openmpi
