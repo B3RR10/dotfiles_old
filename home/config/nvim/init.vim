@@ -430,11 +430,15 @@ let g:ncm2#complete_length = 2
 
 " NERDTree {{{ "
 nmap <C-p> :NERDTreeToggleVCS<CR>
-let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeAutoDeleteBuffer=1
-let g:NERDTreeWinSize=60
-let g:NERDTreeMinimalUI=1
+let g:NERDTreeCascadeSingleChildDir=1
+let g:NERDTreeCascadeOpenSingleChildDir=1
 let g:NERDTreeDirArrows=1
+let g:NERDTreeHijackNetrw=1
+let g:NERDTreeMinimalUI=1
+let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeShowLineNumbers=1
+let g:NERDTreeWinSize=60
 augroup NERDTree
     autocmd!
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
