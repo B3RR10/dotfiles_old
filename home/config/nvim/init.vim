@@ -35,6 +35,7 @@ Plug 'dominikduda/vim_current_word'
 " Git integration
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'rhysd/git-messenger.vim'
 
 " Show indentation guides
 Plug 'nathanaelkane/vim-indent-guides'
