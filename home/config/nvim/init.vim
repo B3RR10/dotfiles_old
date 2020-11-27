@@ -468,8 +468,6 @@ let g:UltiSnipsListSnippets = '<c-q>'
 let g:UltiSnipsEditSplit='vertical'
 
 set runtimepath+=~/.config/nvim
-let g:UltiSnipsSnippetDirectories = ['snippets/UltiSnips', 'UltiSnips']
-let g:UltiSnipsSnippetDir = "~/.config/nvim/snippets/UltiSnips"
 " }}} Ultisnips "
 
 " vim-header {{{ "
