@@ -65,10 +65,6 @@ set tabstop=4
 set list
 set listchars=tab:\|\ ,trail:·,precedes:«,extends:»,nbsp:·
 
-" TODO: WTF???
-" style of divider
-autocmd ColorScheme * hi VertSplit cterm=NONE ctermbg=NONE ctermfg=green
-
 " UI
 set autoread
 set hidden
