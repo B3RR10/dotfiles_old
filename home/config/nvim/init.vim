@@ -391,12 +391,12 @@ function! s:on_lsp_buffer_enabled() abort
 endfunction
 
 augroup lsp_install
-    au!
+    autocmd!
     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+    autocmd FileType rust setlocal omnifunc=lsp#complete
 augroup END
 
-autocmd FileType rust setlocal omnifunc=lsp#complete
 " }}} vim-lsp "
 
 " vim-markdown {{{ "
