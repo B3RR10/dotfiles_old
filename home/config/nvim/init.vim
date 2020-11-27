@@ -27,6 +27,7 @@ call plug#begin($NVIM_PLUG_DIR)
 Plug 'romainl/Apprentice', { 'branch' : 'fancylines-and-neovim' }
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
+Plug 'maximbaz/lightline-ale'
 
 " Highlight word under cursor
 Plug 'dominikduda/vim_current_word'
@@ -336,6 +337,7 @@ let g:lightline.active =
             \     [
             \       [ 'mode', 'paste' ],
             \       [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+            \       [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok'  ]
             \     ],
             \ }
 
@@ -349,10 +351,20 @@ let g:lightline.component_expand =
             \ {
             \   'buffers': 'lightline#bufferline#buffers',
             \   'statuslinetabs': 'LightlineStatuslineTabs',
+            \   'linter_checking': 'lightline#ale#checking',
+            \   'linter_infos': 'lightline#ale#infos',
+            \   'linter_warnings': 'lightline#ale#warnings',
+            \   'linter_errors': 'lightline#ale#errors',
+            \   'linter_ok': 'lightline#ale#ok',
             \ }
 let g:lightline.component_type   =
             \ {
             \   'buffers': 'tabsel',
+            \   'linter_checking': 'right',
+            \   'linter_infos': 'right',
+            \   'linter_warnings': 'warning',
+            \   'linter_errors': 'error',
+            \   'linter_ok': 'right',
             \ }
 
 function! LightlineStatuslineTabs() abort
