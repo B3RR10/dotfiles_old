@@ -22,13 +22,34 @@
     # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
     whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
-    pager = diff-so-fancy | less --tabs=4 -RFX
+    pager = delta
     excludeFile = /home/berriom/.gitignore
 {%@@ if profile == "NB-MIB" @@%}
 
     fileMode = false
     autocrlf = input
 {%@@ endif @@%}
+
+[delta]
+    features = line-numbers decorations
+    syntax-theme = Dracula
+    minus-style = red bold
+    plus-style = green bold
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = cyan box ul
+
+[delta "line-numbers"]
+    line-numbers-left-style = cyan
+    line-numbers-right-style = cyan
+    line-numbers-minus-style = red
+    line-numbers-plus-style = green
+
+[interactive]
+    diffFilter = delta --color-only
 
 [color]
     # Use colors in Git commands that are capable of colored output when
