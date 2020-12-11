@@ -76,7 +76,7 @@
 [mergetool]
     keepBackup = false
 
-{%@@ if profile == "arch-xps" @@%}
+{%@@ if profile == "arch-xps" or profile == "rivendell" @@%}
 [user]
     signingkey = A9FDFA72
     name = Miguel Berrio
