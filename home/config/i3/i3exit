@@ -1,37 +1,33 @@
 #!/bin/sh
 lock() {
-    # Take screenshot
-    scrot /tmp/screen_locked.png
-    # Pixellate it 10x
-    mogrify -scale 5% -scale 2000% /tmp/screen_locked.png
-    # Lock screen
-    i3lock -i /tmp/screen_locked.png
-    # Turn the screen off after a delay
-    if [[ $1 = "lock" ]]; then
-        sleep 60; pgrep i3lock && xset dpms force off
+    local image=/tmp/screen_locked.png
+    # Remove old screenshot
+    if [[ -f $image ]]; then
+        rm $image
     fi
-    sleep 1
+    # Take new screenshot
+    scrot $image
+    # Pixellate it 10x
+    mogrify -scale 5% -scale 2000% $image
+    # Lock screen
+    i3lock -i $image
 }
 
 case "$1" in
-    lock)
-        lock $1
-        ;;
     logout)
         i3-msg exit
         ;;
     suspend)
-        lock && sudo zzz
+        lock && systemctl suspend
         ;;
     reboot)
-        sudo reboot
+        systemctl reboot
         ;;
     shutdown)
-        sudo poweroff
+        systemctl poweroff
         ;;
     *)
-        echo "Usage: $0 {lock|logout|suspend|reboot|shutdown}"
-        exit 2
+        lock
 esac
 
 exit 0
