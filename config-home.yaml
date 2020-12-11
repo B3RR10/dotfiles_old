@@ -157,6 +157,22 @@ profiles:
     - f_mimeapps
     - f_wallpaper
     - f_zathura
+  Xorg:
+    dotfiles:
+    - d_applications
+    - d_fonts
+    - d_i3
+    - d_redshift
+    - f_dunst
+    - f_gtk2
+    - f_gtk3
+    - f_i3status-rs
+    - f_mimeapps
+    - f_rofi
+    - f_rofipass
+    - f_wallpaper
+    - f_xinit
+    - f_zathura
   Terminal:
     dotfiles:
     - d_bin
@@ -169,6 +185,11 @@ profiles:
     - f_topgrade
     - f_zshenv
     - f_zshrc
+
+  rivendell:
+    include:
+      - Terminal
+      - Xorg
 
   arch-xps:
     dotfiles:
