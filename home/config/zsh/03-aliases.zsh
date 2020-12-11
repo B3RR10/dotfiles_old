@@ -13,8 +13,8 @@ alias edit='nvim'
 #  }}} Editor #
 
 #  ls aliases {{{ #
-alias ls='exa -x --color=auto --group-directories-first'
-alias l='exa -ax --color=auto --group-directories-first'
+alias ls='exa --color=auto --group-directories-first'
+alias l='exa -a --color=auto --group-directories-first'
 alias ll='exa -l --git --color=auto --group-directories-first'
 alias la='exa -la --git --color=auto --group-directories-first'
 alias lt='exa -lT --git-ignore --git --color=auto --group-directories-first'
