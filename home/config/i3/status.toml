@@ -1,4 +1,4 @@
-icons = "material"
+icons = "none"
 
 [theme]
 name = "plain"
@@ -6,16 +6,13 @@ name = "plain"
 separator = "  |  "
 
 [[block]]
-block = "music"
-buttons = ["play", "next"]
-on_collapsed_click = "spotify"
+block = "speedtest"
+bytes = true
 
 [[block]]
 block = "net"
-device = "wlp1s0"
-ssid = true
-ip = true
-signal_strength = true
+device = "enp5s0"
+format = "{ssid} {signal_strength} {ip} {speed_down} {graph_down}"
 interval = 2
 
 [[block]]
@@ -31,7 +28,7 @@ alert = 10.0
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{MFg} GiB"
+format_mem = "{MFg} GiB ({MUpi}%)"
 format_swap = "{SUp}%"
 
 [[block]]
@@ -40,28 +37,14 @@ block = "uptime"
 [[block]]
 block = "cpu"
 interval = 1
-
-[[block]]
-block = "backlight"
-device = "acpi_video0"
+format = "{barchart} {utilization}% {frequency}GHz"
+on_click = "st -e btm"
 
 [[block]]
 block = "sound"
 on_click = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 
 [[block]]
-block = "maildir"
-interval = 60
-inboxes = ["/home/mberrio/Mail/runbox/INBOX"]
-threshold_warning = 5
-threshold_critical = 10
-display_type = "new"
-
-[[block]]
-block = "battery"
-format = "{percentage}% {time} {power} W"
-
-[[block]]
 block = "time"
 interval = 30
-format = "%V - %d.%m.%Y %R "
+format = "%V - %F %R "
