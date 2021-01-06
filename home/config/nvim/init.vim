@@ -388,8 +388,9 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> gt <plug>(lsp-type-definition)
     nmap <buffer> <leader>rn <plug>(lsp-rename)
     nmap <buffer> K <plug>(lsp-hover)
-    nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
-    nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
+    nmap <buffer> gF <plug>(lsp-document-format)
+
+    nmap <buffer> g<Space> <plug>(lsp-code-action)
 endfunction
 
 augroup lsp_install
