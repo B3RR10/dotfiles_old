@@ -178,6 +178,10 @@ Plug 'tools-life/taskwiki'
 
 " Wiki
 Plug 'vimwiki/vimwiki'
+Plug 'michal-h21/vimwiki-sync'
+
+" Zettelkasten
+Plug 'michal-h21/vim-zettel'
 
 """"""""""
 "  Misc  "
@@ -498,26 +502,25 @@ let g:vista_fzf_preview = ['right:50%']
 " }}} Vista "
 
 " vimwiki {{{ "
-let g:vimwiki_list =
-            \ [
-            \   { 'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md', },
-            \ ]
+let wiki = {}
+let wiki.path = ''
+let wiki.path = '~/vimwiki/'
+let wiki.syntax = 'markdown'
+let wiki.ext = '.md'
+let wiki.links_space_char = '_'
+let wiki.auto_tags = 1
+let wiki.auto_diary_index = 1
+let wiki.auto_generate_links = 1
+" let wiki.auto_generate_tags = 1
+
+let g:vimwiki_list = [wiki]
 let g:vimwiki_global_ext = 0
-
-function! VimwikiFindIncompleteTasks()
-  lvimgrep /- \[ \]/ %:p
-  lopen
-endfunction
-
-function! VimwikiFindAllIncompleteTasks()
-  VimwikiSearch /- \[ \]/
-  lopen
-endfunction
-
-nmap <Leader>wa :call VimwikiFindAllIncompleteTasks()<CR>
-nmap <Leader>wx :call VimwikiFindIncompleteTasks()<CR>
+let g:vimwiki_markdown_link_ext = 1
+let g:vimwiki_conceallevel = 0
+let g:vimwiki_auto_chdir = 1
 
 command! Diary VimwikiDiaryIndex
+
 "" Lame adaptation of Josh's buffer file here:
 ""  https://gist.github.com/dphase/1792d67b4ac06aea11a49ed801f18a7e
 function! s:DScratch()
@@ -534,3 +537,12 @@ let g:workspace_autosave = 0
 let g:workspace_session_disable_on_args = 1
 let g:workspace_autosave_ignore = [ 'gitcommit', 'NERD.*', '__vista__' ]
 " }}} Workspace "
+
+" vim-zettel {{{ "
+let g:zettel_options = [{"front_matter" : [["tags", ""], ["type", "note"]],
+            \ "template" : "~/.config/nvim/zettel.tpl"}]
+
+" expand($CONFIG_PATH) . "zettel.tpl"}]
+let g:zettel_fzf_command = "rg --column --line-number --ignore-case --no-heading --color=always "
+let g:zettel_format = "%y%m%d-%H%M-%title"
+" }}} vim-zettel "
