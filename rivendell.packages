@@ -13,6 +13,7 @@ base
 bash-completion
 bash-language-server
 bat
+bind
 binutils
 bison
 bleachbit
@@ -24,6 +25,7 @@ diff-so-fancy
 dmenu
 dosfstools
 dunst
+element-desktop
 entr
 evince
 exa
@@ -65,6 +67,7 @@ imv
 intel-ucode
 keybase
 keybase-gui
+libreoffice-fresh
 libtool
 light
 linux
@@ -145,6 +148,7 @@ texlive-pictures
 texlive-pstricks
 texlive-publishers
 texlive-science
+tmate
 tmux
 ttf-dejavu
 ttf-font-awesome
