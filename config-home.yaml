@@ -187,6 +187,8 @@ profiles:
     - f_zshrc
 
   rivendell:
+    dotfiles:
+      - f_alacritty
     include:
       - Terminal
       - Xorg

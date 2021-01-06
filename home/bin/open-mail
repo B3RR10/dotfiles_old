@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
-MAIL="$(command -v alacritty) --class email --command aerc"
-SWAYMSG="$(command -v swaymsg)"
+MAIL="$(command -v st) -c email -e aerc"
+if command -v swaymsg > /dev/null; then
+    $(command -v swaymsg) -- workspace 10
+elif command -v i3-msg > /dev/null; then
+    $(command -v i3-msg) -- workspace 10
+fi
 
-$SWAYMSG -- workspace 10
 if [[ -z $(pgrep -f "$MAIL") ]]; then
     $MAIL &
 fi
