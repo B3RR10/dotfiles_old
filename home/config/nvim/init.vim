@@ -1,4 +1,5 @@
 " init.vim
+scriptencoding utf-8
 
 " runtime! archlinux.vim
 
@@ -447,13 +448,10 @@ augroup END
 " }}} NERDTree "
 
 " OmniSharp {{{ "
-let g:OmniSharp_server_stdio = 1
-let g:OmniSharp_lookup_metadata = 0
-let g:OmniSharp_server_path = '/mnt/c/Users/berriom.DMI-MS/scoop/apps/omnisharp/current/OmniSharp.exe'
-let g:OmniSharp_translate_cygwin_wsl = 1
 let g:OmniSharp_diagnostic_showid = 1
+let g:OmniSharp_lookup_metadata = 0
 let g:OmniSharp_selector_ui = 'fzf'
-let g:OmniSharp_highlight_types = 2
+let g:OmniSharp_translate_cygwin_wsl = 1
 " }}} OmniSharp "
 
 " Python provider for Neovim {{{ "
