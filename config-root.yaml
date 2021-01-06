@@ -44,6 +44,9 @@ dotfiles:
   f_newkernel:
     src: usr/share/libalpm/scripts/newkernel
     dst: /usr/share/libalpm/scripts/newkernel
+  f_sddm.conf:
+    src: etc/sddm.conf
+    dst: /etc/sddm.conf
 profiles:
   NB-MIB:
     dotfiles:
@@ -61,3 +64,6 @@ profiles:
     - f_99-newkernel.hook
     - f_snapshot-system
     - f_newkernel
+  rivendell:
+    dotfiles:
+    - f_sddm.conf
