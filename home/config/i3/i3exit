@@ -26,6 +26,9 @@ case "$1" in
     shutdown)
         systemctl poweroff
         ;;
+    hibernate)
+        lock && systemctl hibernate
+        ;;
     *)
         lock
 esac
