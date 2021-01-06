@@ -1,2 +1,6 @@
-# exec i3
-exec dbus-launch --sh-syntax --exit-with-x11 i3
+GTK_IM_MODULE DEFAULT=fcitx
+QT_IM_MODULE  DEFAULT=fcitx
+XMODIFIERS    DEFAULT=\@im=fcitx
+
+eval "$(dbus-launch --sh-syntax --exit-with-x11)"
+exec i3

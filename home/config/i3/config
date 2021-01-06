@@ -307,6 +307,7 @@ bindsym Control+Mod1+BackSpace exec $i3exit lock
 exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 exec --no-startup-id redshift
 exec --no-startup-id nextcloud
+exec --no-startup-id fcitx5 -d
 # Start programs with `systemctl --user`
 #   dunst
 

@@ -28,6 +28,12 @@ entr
 evince
 exa
 fakeroot
+fcitx5
+fcitx5-configtool
+fcitx5-gtk
+fcitx5-material-color
+fcitx5-mozc
+fcitx5-qt
 fd
 feh
 file
@@ -43,6 +49,7 @@ gimp
 git
 github-cli
 gnome-keyring
+gnu-free-fonts
 grep
 groff
 gzip
@@ -74,6 +81,7 @@ neovim
 nextcloud-client
 nmap
 noto-fonts
+noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
 npm
@@ -138,7 +146,11 @@ texlive-pstricks
 texlive-publishers
 texlive-science
 tmux
+ttf-dejavu
 ttf-font-awesome
+ttf-inconsolata
+ttf-linux-libertine
+ttf-ubuntu-font-family
 ufw
 vi
 vim
