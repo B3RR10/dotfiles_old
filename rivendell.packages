@@ -99,6 +99,7 @@ otf-font-awesome
 p7zip
 pacman
 pacman-contrib
+pandoc
 pass
 pass-otp
 patch
@@ -129,11 +130,13 @@ rust-analyzer
 scrot
 sddm
 sed
+signal-desktop
 skim
 speedtest-cli
 spotifyd
 subversion
 sudo
+task
 telegram-desktop
 texinfo
 texlive-bibtexextra
