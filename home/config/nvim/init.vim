@@ -167,6 +167,9 @@ Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
 Plug 'reedes/vim-pencil', { 'on': 'Goyo' }
 
+" Ledger
+Plug 'ledger/vim-ledger'
+
 " NerdTree
 Plug 'preservim/nerdtree'
 
