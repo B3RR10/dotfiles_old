@@ -23,6 +23,7 @@ git
 groff
 htop
 less
+libiodbc
 libtool
 lldb
 llvm
@@ -56,11 +57,13 @@ reflector
 ripgrep
 subversion
 sudo
+systemd
 task
 texinfo
 texlab
 tmux
 tree
+unzip
 vi
 vim
 vint
