@@ -19,11 +19,4 @@ zle -N accept-line auto-ls
 add-zsh-hook chpwd auto-ls
 #  }}} auto_ls #
 
-# Vimwiki {{{ #
-alias vimwiki='nvim +VimwikiIndex'
-alias todo='pushd ~/vimwiki && nvim ~/vimwiki/Todo.md +Goyo && popd'
-alias idea='pushd ~/vimwiki && nvim ~/vimwiki/Scratchpad.md +Goyo && popd'
-alias diary='pushd ~/vimwiki && nvim +VimwikiMakeDiaryNote +Goyo && popd'
-# }}} Vimwiki #
-
 # vim: foldmethod=marker
