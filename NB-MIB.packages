@@ -11,8 +11,10 @@ cronie
 ctags
 diff-so-fancy
 dos2unix
+dotnet-sdk-bin
 entr
 exa
+fakeroot-tcp
 fd
 flake8
 flex
@@ -20,10 +22,13 @@ fzf
 gcc
 gdb
 git
+git-delta-bin
 groff
 htop
+ledger
 less
 libiodbc
+libodb-mssql
 libtool
 lldb
 llvm
@@ -31,8 +36,9 @@ m4
 make
 man-db
 mdp
+mssql-tools
 nano
-neovim
+neovim-nightly-bin
 npm
 openmp
 openmpi
@@ -53,6 +59,7 @@ python-pyodbc
 python-rope
 python2
 python2-pip
+rbenv
 reflector
 ripgrep
 subversion
@@ -70,4 +77,5 @@ vint
 wget
 which
 yapf
+yay-bin
 zsh
