@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 PACKAGES="$HOME/.dotfiles/$(uname -n).packages"
-ACTUAL="$(yay -Qqe | grep -Fvx "$(yay -Qqm)")"
+ACTUAL="$(yay -Qqe)"
 if [[ ! -f $PACKAGES ]]; then
     echo "$ACTUAL" > "$PACKAGES"
     print "Packages saved under $PACKAGES"
