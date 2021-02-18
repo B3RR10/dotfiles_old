@@ -544,10 +544,10 @@ let g:workspace_autosave_ignore = [ 'gitcommit', 'NERD.*', '__vista__' ]
 " }}} Workspace "
 
 " vim-zettel {{{ "
-let g:zettel_options = [{"front_matter" : [["tags", ""], ["type", "note"]],
-            \ "template" : "~/.config/nvim/zettel.tpl"}]
+let g:zettel_options = [{'front_matter' : [['tags', ''], ['type', 'note']],
+            \ 'template' : glob($CONFIG_PATH) . '/zettel.tpl'}]
 
 " expand($CONFIG_PATH) . "zettel.tpl"}]
-let g:zettel_fzf_command = "rg --column --line-number --ignore-case --no-heading --color=always "
-let g:zettel_format = "%y%m%d-%H%M-%title"
+let g:zettel_fzf_command = 'rg --column --line-number --ignore-case --no-heading --color=always '
+let g:zettel_format = '%y%m%d-%H%M-%title'
 " }}} vim-zettel "
