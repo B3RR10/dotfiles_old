@@ -7,7 +7,6 @@ let $CONFIG_PATH = expand('$HOME/.config/nvim')
 
 let $NVIM_PLUG_SOURCE = expand('$HOME/.local/share/nvim/site/autoload/plug.vim')
 let $NVIM_PLUG_DIR = expand('$HOME/.local/share/nvim/plugged')
-let $NVIM_SESSIONS_DIR = expand('$HOME/.local/share/nvim/sessions/')
 
 if empty(glob($NVIM_PLUG_SOURCE))
   silent !curl -fLo $NVIM_PLUG_SOURCE --create-dirs
