@@ -20,6 +20,7 @@ bleachbit
 btrfs-progs
 calibre
 chromium
+clang
 cronie
 diff-so-fancy
 dmenu
@@ -55,6 +56,9 @@ gnu-free-fonts
 grep
 groff
 gzip
+hledger
+hledger-ui
+hledger-web
 htop
 i3-gaps
 i3blocks
@@ -67,6 +71,7 @@ imv
 intel-ucode
 keybase
 keybase-gui
+ledger
 libreoffice-fresh
 libtool
 light
@@ -78,9 +83,9 @@ m4
 make
 man-db
 man-pages
+mplayer
 mpv
 mupdf
-neovim
 nextcloud-client
 nmap
 noto-fonts
@@ -126,6 +131,7 @@ ripgrep
 rofi
 rofi-pass
 rsync
+ruby-docs
 rust-analyzer
 scrot
 sddm
@@ -175,6 +181,7 @@ xorg-xbacklight
 xorg-xev
 xorg-xrandr
 xsel
+yarn
 youtube-dl
 zathura
 zathura-djvu
