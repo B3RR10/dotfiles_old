@@ -44,12 +44,12 @@ alias gs='git status'
 
 # A simple git rename file function
 # git does not track case-sensitive changes to a filename.
-function git-rename() {
+function gmv() {
     git mv $1 "${2}-"
     git mv "${2}-" $2
 }
 
-alias git-prune='git remote prune origin && git fetch -p && git branch -vv | awk '"'"'/: gone]/{print $1}'"'"' | xargs git branch -D'
+alias gprune='git remote prune origin && git fetch -p && git branch -vv | awk '"'"'/: gone]/{print $1}'"'"' | xargs git branch -D'
 #  }}} Git aliases #
 
 #  tmux aliases {{{ #
