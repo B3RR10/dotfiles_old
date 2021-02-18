@@ -44,13 +44,6 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 # }}} History #
 
-# Prompt customization {{{ #
-export PURE_PROMPT_SYMBOL="$"
-export PURE_PROMPT_VICMD_SYMBOL=">>> "
-export PURE_GIT_UP_ARROW=">"
-export PURE_GIT_DOWN_ARROW="<"
-# }}} Prompt customization #
-
 # Python virtualenvwrapper {{{ #
 export WORKON_HOME=$HOME/.envs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3

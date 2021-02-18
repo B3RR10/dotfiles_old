@@ -8,8 +8,7 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Load the pure theme, with zsh-async library that's bundled with it.
-zinit ice pick"async.zsh" src"pure.zsh"
-zinit light sindresorhus/pure
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 zinit wait lucid for \
     blockf atpull'zinit creinstall -q .' zsh-users/zsh-completions \
