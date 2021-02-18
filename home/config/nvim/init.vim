@@ -25,6 +25,7 @@ call plug#begin($NVIM_PLUG_DIR)
 """"""""""""""""
 
 Plug 'romainl/Apprentice', { 'branch' : 'fancylines-and-neovim' }
+Plug 'sainnhe/sonokai'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'maximbaz/lightline-ale'
@@ -243,7 +244,9 @@ let g:AutoPairsShortcutJump = ''
 " }}} Autopairs "
 
 " Colorscheme {{{ "
-colorscheme apprentice
+let g:sonokai_style = 'atlantis'
+let g:sonokai_enable_italic = 1
+colorscheme sonokai
 " }}} Colorscheme "
 
 " EasyAlign {{{ "
