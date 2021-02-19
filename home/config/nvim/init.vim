@@ -24,9 +24,9 @@ call plug#begin($NVIM_PLUG_DIR)
 "  Aesthetics  "
 """"""""""""""""
 
-Plug 'romainl/Apprentice', { 'branch' : 'fancylines-and-neovim' }
-Plug 'sainnhe/sonokai'
+Plug 'ayu-theme/ayu-vim'
 Plug 'itchyny/lightline.vim'
+Plug 'sainnhe/lightline_foobar.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'maximbaz/lightline-ale'
 
@@ -244,9 +244,8 @@ let g:AutoPairsShortcutJump = ''
 " }}} Autopairs "
 
 " Colorscheme {{{ "
-let g:sonokai_style = 'atlantis'
-let g:sonokai_enable_italic = 1
-colorscheme sonokai
+let ayucolor='mirage'
+colorscheme ayu
 " }}} Colorscheme "
 
 " EasyAlign {{{ "
@@ -339,7 +338,7 @@ let g:indent_guides_guide_size = 1
 
 " Lightline {{{ "
 let g:lightline = {}
-let g:lightline.colorscheme = 'apprentice'
+let g:lightline.colorscheme = 'ayu_mirage'
 let g:lightline.component =
             \ {
             \   'gitbranch': '%{fugitive#head()}',
