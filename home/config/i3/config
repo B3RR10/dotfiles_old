@@ -17,7 +17,7 @@ set $indicator-color     #458588
 set $i3 $HOME/.config/i3
 
 # Set terminal
-set $terminal alacritty
+set $terminal kitty
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 

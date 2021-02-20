@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CMD="alacritty --class __scratchpad"
+CMD="kitty --class __scratchpad"
 # CMD="st -n __scratchpad"
 
 if [[ ! -z $(pgrep -f "$CMD") ]]; then

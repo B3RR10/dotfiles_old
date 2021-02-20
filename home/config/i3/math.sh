@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CMD="alacritty --class __math -e R"
+CMD="kitty --class __math -e R"
 # CMD="st -n __math -e R"
 
 if [[ ! -z $(pgrep -f "$CMD") ]]; then
