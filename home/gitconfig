@@ -112,4 +112,7 @@
 
 [commit]
     gpgsign = false
+
 {%@@ endif @@%}
+[pull]
+    rebase = true
