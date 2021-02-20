@@ -44,6 +44,10 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 # }}} History #
 
+# Ledger {{{ #
+export LEDGER_FILE=~/Finance/2020.journal
+# }}} Ledger #
+
 # Python virtualenvwrapper {{{ #
 export WORKON_HOME=$HOME/.envs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
