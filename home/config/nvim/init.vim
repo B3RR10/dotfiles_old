@@ -99,6 +99,15 @@ Plug 'PProvost/vim-ps1'
 " Python
 Plug 'tmhedberg/SimpylFold'
 
+" Ruby
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rake', { 'for': 'ruby' }
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rbenv', { 'for': 'ruby' }
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+Plug 'Keithbsmiley/rspec.vim', { 'for': 'ruby' }
+Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
+
 " Rust
 Plug 'rust-lang/rust.vim'
 Plug 'arzg/vim-rust-syntax-ext'
@@ -267,7 +276,7 @@ let g:user_emmet_leader_key     = ','
 let g:user_emmet_install_global = 0
 augroup emmet_install
     autocmd!
-    autocmd FileType html,css,xml EmmetInstall
+    autocmd FileType html,css,xml,eruby EmmetInstall
 augroup END
 " }}} Emmet "
 
