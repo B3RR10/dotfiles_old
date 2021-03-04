@@ -3,6 +3,7 @@ acpi
 acpid
 adobe-source-han-sans-jp-fonts
 adobe-source-han-serif-jp-fonts
+aerc
 alacritty
 alsa-tools
 alsa-utils
@@ -65,6 +66,7 @@ gparted
 grep
 grim
 groff
+gscan2pdf
 gst-libav
 gzip
 highlight
@@ -160,7 +162,9 @@ samba
 sddm
 seahorse
 sed
+sequoia
 shfmt
+signal-desktop
 slurp
 smartmontools
 snap-pac
@@ -215,8 +219,8 @@ wl-clipboard
 wpa_supplicant
 x86_energy_perf_policy
 xdg-user-dirs
-xorg-server-xwayland
 xorg-xev
+xorg-xwayland
 youtube-dl
 zathura
 zathura-djvu
