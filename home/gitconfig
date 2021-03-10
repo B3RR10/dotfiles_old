@@ -101,18 +101,19 @@
 [user]
     signingkey = A9FDFA72
     name = Miguel Berrio
-    email = miguelberrio91@gmail.com
-
-[commit]
-    gpgsign = true
+    email = mail@berrio.dev
 {%@@ elif profile == "NB-MIB" @@%}
 [user]
     name = Berrio, Miguel
     email = miguel.berrio@dmi.de
+{%@@ endif @@%}
 
 [commit]
+{%@@ if profile == "arch-xps" or profile == "rivendell" @@%}
+    gpgsign = true
+{%@@ else @@%}
     gpgsign = false
-
 {%@@ endif @@%}
+
 [pull]
     rebase = true
