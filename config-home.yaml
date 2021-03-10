@@ -144,35 +144,28 @@ profiles:
     - d_mutt
     - f_mbsync
     - f_msmtp
+  Desktop:
+    dotfiles:
+    - d_applications
+    - d_fonts
+    - d_redshift
+    - f_gtk2
+    - f_gtk3
+    - f_mimeapps
+    - f_wallpaper
+    - f_zathura
   Sway:
     dotfiles:
-    - d_applications
-    - d_fonts
-    - d_redshift
     - d_sway
-    - f_gtk2
-    - f_gtk3
     - f_i3status-rs
     - f_mako
-    - f_mimeapps
-    - f_wallpaper
-    - f_zathura
   Xorg:
     dotfiles:
-    - d_applications
-    - d_fonts
     - d_i3
-    - d_redshift
     - f_dunst
-    - f_gtk2
-    - f_gtk3
-    - f_i3status-rs
-    - f_mimeapps
     - f_rofi
     - f_rofipass
-    - f_wallpaper
     - f_xinit
-    - f_zathura
   Terminal:
     dotfiles:
     - d_bin
@@ -188,16 +181,18 @@ profiles:
 
   rivendell:
     dotfiles:
-      - f_alacritty
+    - f_alacritty
     include:
-      - Terminal
-      - Xorg
+    - Desktop
+    - Terminal
+    - Xorg
 
   arch-xps:
     dotfiles:
     - f_alacritty
     - f_99-my-env.zsh
     include:
+    - Desktop
     - Mail
     - Sway
     - Terminal
