@@ -138,6 +138,9 @@ dotfiles:
   f_99-my-env.zsh:
     src: config/zsh/99-my-env.zsh
     dst: ~/.config/zsh/99-my-env.zsh
+  d_kitty:
+    src: config/kitty
+    dst: ~/.config/kitty
 profiles:
   Mail:
     dotfiles:
@@ -148,6 +151,7 @@ profiles:
     dotfiles:
     - d_applications
     - d_fonts
+    - d_kitty
     - d_redshift
     - f_gtk2
     - f_gtk3
