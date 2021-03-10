@@ -13,6 +13,7 @@ zinit wait lucid for \
     OMZP::fzf \
     OMZP::git \
     OMZP::rbenv \
+    OMZP::globalias \
     svn as'completion' pick'_fd' atpull'zinit creinstall -q .' OMZP::fd \
     svn as'completion' pick'_pip' atpull'zinit creinstall -q .' OMZP::pip \
     svn PZT::modules/completion \
