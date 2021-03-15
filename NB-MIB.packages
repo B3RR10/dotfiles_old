@@ -11,7 +11,6 @@ cronie
 ctags
 diff-so-fancy
 dos2unix
-dotnet-sdk-bin
 entr
 exa
 fakeroot-tcp
@@ -62,6 +61,7 @@ python2-pip
 rbenv
 reflector
 ripgrep
+starship-bin
 subversion
 sudo
 systemd
