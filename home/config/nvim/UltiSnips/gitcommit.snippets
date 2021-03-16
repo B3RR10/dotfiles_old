@@ -1,9 +1,9 @@
-snippet commit "Git Commit Project" i
-${1:type}(${2:scope}): ${3:subject}
+snippet c "Git Commit Project" b
+${1:type}${2:(${3:scope})}: ${4:subject}
 
- ${4:body}
+ ${5:body}
 
-Ticket: #${5:--}
+${6:Ticket: #${0:--}}
 
 # type: what type of change this commit contains.
 # scope: what item of code this commit is changing.
@@ -13,11 +13,15 @@ Ticket: #${5:--}
 # Type
 # feat: A new feature
 # fix: A bug fix
-# wip: While working on a fix/feature
 # docs: Documentation only changes
 # style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
 # refactor: A code change that neither fixes a bug or adds a feature
+# perf: A code change that improves performance
 # test: Adding missing tests
-# chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
+# build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+# ci: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+# chore: Other changes that don't modify src or test files
+# revert: Reverts a previous commit
+# wip: While working on a fix/feature
 
 endsnippet
