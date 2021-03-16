@@ -82,6 +82,10 @@ set updatetime=300
 set splitbelow
 set splitright
 
+" Hide ~ in blank lines
+hi NonText guifg=bg
+hi VertSplit guifg=black
+
 " Highlight column 101 to warn for longer lines
 highlight OverLength ctermbg=red ctermfg=white guibg=#870000
 let w:m2=matchadd('OverLength', '\%101v', -1)
