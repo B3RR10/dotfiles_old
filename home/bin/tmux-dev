@@ -1,10 +1,14 @@
 #!/usr/bin/env sh
 
-# Open vim in the principal pane
-tmux send-keys 'nvim' Enter
-
+# First create the panes
 tmux split-window -h -p 30
 tmux split-window -v
-
 tmux select-pane -t 2
 tmux select-pane -t 1
+
+# Zoom on the first pane
+tmux resize-pane -Z
+sleep 0.1
+# and open neovim
+tmux send-keys 'nvim' Enter
+tmux display-message "Dev Environment in $(pwd)"
