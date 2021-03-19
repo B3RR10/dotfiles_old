@@ -63,6 +63,7 @@ gettext
 ghostscript
 gimp
 git
+git-delta-bin
 git-secret
 github-cli
 gmtp
@@ -85,9 +86,7 @@ imagemagick-doc
 imv
 intel-ucode
 isync
-java-openjfx
 java-openjfx-doc
-java8-openjfx
 java8-openjfx-doc
 jdk-openjdk
 jdk8-openjdk
@@ -148,7 +147,7 @@ otf-ipafont
 otf-ipamjfont
 p7zip
 pacman
-pandoc
+pacman-contrib
 pass
 pass-autotype
 pass-otp
@@ -169,12 +168,14 @@ pwgen
 python-pip
 python2-pip
 qutebrowser
+rbenv
 redshift-wlr-gamma-control-git
 reflector
 ripgrep
 ristretto
 rsync
 rtmpdump
+ruby-build
 rust-analyzer
 samba
 sddm
@@ -246,6 +247,7 @@ x86_energy_perf_policy
 xdg-user-dirs
 xorg-xev
 xorg-xwayland
+yarn
 yay-bin
 ydotool
 youtube-dl
