@@ -87,7 +87,6 @@ bindsym $mod+p exec --no-startup-id pass-autotype
 # Execute programs
 bindsym $mod+x exec env GTK_THEME=United-Arch-Light-Compact firefox
 bindsym $mod+m exec open-mail
-bindsym $mod+n exec $terminal -e spt
 
 # Install imagemagik
 # Take a screenshot of an area
