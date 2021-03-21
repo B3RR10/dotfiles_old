@@ -17,7 +17,6 @@ set statusbar-basename "true"
 
 #stop at page boundries
 set scroll-page-aware "true"
-set smooth-scroll "true"
 set scroll-full-overlap 0.2
 set scroll-step 40
 
