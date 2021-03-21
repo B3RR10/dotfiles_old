@@ -141,6 +141,15 @@ dotfiles:
   d_kitty:
     src: config/kitty
     dst: ~/.config/kitty
+  d_aerc:
+    src: config/aerc
+    dst: ~/.config/aerc
+    cmpignore:
+    - 'accounts.conf'
+    instignore:
+    - 'accounts.conf'
+    upignore:
+    - 'accounts.conf'
 profiles:
   Mail:
     dotfiles:
@@ -186,6 +195,7 @@ profiles:
   rivendell:
     dotfiles:
     - f_alacritty
+    - d_aerc
     include:
     - Desktop
     - Terminal
@@ -195,6 +205,7 @@ profiles:
     dotfiles:
     - f_alacritty
     - f_99-my-env.zsh
+    - d_aerc
     include:
     - Desktop
     - Mail
