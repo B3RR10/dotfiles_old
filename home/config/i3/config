@@ -57,10 +57,10 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec $terminal -e tmux -u
+bindsym $mod+Shift+Return exec $terminal -e tmate
 
 # Floating terminal
 bindsym $mod+t exec --no-startup-id $i3/floating.sh
-bindsym $mod+Shift+Return exec --no-startup-id $i3/floating.sh
 for_window [instance="__scratchpad"] move scratchpad
 for_window [instance="__scratchpad"] scratchpad show, resize set 1000 600
 for_window [instance="__scratchpad"] move position center
