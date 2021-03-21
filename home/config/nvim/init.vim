@@ -46,11 +46,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 """""""""""""""""""""""""""
 
 " Language Client
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-Plug 'thomasfaingnaert/vim-lsp-snippets'
-Plug 'thomasfaingnaert/vim-lsp-ultisnips'
+Plug 'neovim/nvim-lsp'
+Plug 'neovim/nvim-lspconfig'
 
 " Autocompletion
 Plug 'roxma/nvim-yarp'
@@ -63,7 +60,6 @@ Plug 'ncm2/ncm2-jedi'
 Plug 'ncm2/ncm2-vim'
 Plug 'ncm2/ncm2-markdown-subscope'
 Plug 'fgrsnau/ncm2-otherbuf'
-Plug 'ncm2/ncm2-vim-lsp'
 
 " Linter
 Plug 'w0rp/ale'
@@ -222,7 +218,8 @@ let g:ale_linters = {
             \ 'tex'    : ['chktex', 'lacheck', 'vale'],
             \ 'python' : ['pyls'],
             \ 'cs'     : ['OmniSharp'],
-            \ 'vim'    : ['vint']
+            \ 'vim'    : ['vint'],
+            \ 'ruby'   : ['solargraph']
             \ }
 let g:ale_vim_vimls_executable = '$HOME/.local/share/vim-lsp-settings/servers/vim-language-server/vim-language-server'
 let g:ale_fixers = {
@@ -396,30 +393,36 @@ function! LightlineStatuslineTabs() abort
 endfunction
 " }}} Lightline "
 
-" vim-lsp {{{ "
-function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
-    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    nmap <buffer> gd <plug>(lsp-definition)
-    nmap <buffer> gD <plug>(lsp-implementation)
-    nmap <buffer> gr <plug>(lsp-references)
-    nmap <buffer> gt <plug>(lsp-type-definition)
-    nmap <buffer> <leader>rn <plug>(lsp-rename)
-    nmap <buffer> K <plug>(lsp-hover)
-    nmap <buffer> gF <plug>(lsp-document-format)
+" nvim-lsp {{{ "
+lua << EOF
+local ncm2 = require('ncm2')
+-- vim
+require'lspconfig'.vimls.setup{on_init = ncm2.register_lsp_source}
+-- bash
+require'lspconfig'.bashls.setup{on_init = ncm2.register_lsp_source}
+-- ruby
+require'lspconfig'.solargraph.setup{on_init = ncm2.register_lsp_source}
+-- python
+require'lspconfig'.jedi_language_server.setup{on_init = ncm2.register_lsp_source}
+-- rust
+require'lspconfig'.rust_analyzer.setup{on_init = ncm2.register_lsp_source}
+-- tex
+-- require'lspconfig'.texlab.setup{on_init = ncm2.register_lsp_source}
+EOF
 
-    nmap <buffer> g<Space> <plug>(lsp-code-action)
-endfunction
-
-augroup lsp_install
-    autocmd!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-    autocmd FileType rust setlocal omnifunc=lsp#complete
-augroup END
-
-" }}} vim-lsp "
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> gt   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gF <cmd>lua vim.lsp.buf.formatting_sync(nil, 1000)<CR>
+nnoremap <silent> <Leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
+" nnoremap <silent>
+" nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+" nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+" nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+" }}} nvim-lsp "
 
 " vim-markdown {{{ "
 let g:vim_markdown_conceal = 2
