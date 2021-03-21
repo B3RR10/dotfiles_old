@@ -206,7 +206,6 @@ profiles:
     - d_aerc
     include:
     - Desktop
-    - Mail
     - Sway
     - Terminal
 
