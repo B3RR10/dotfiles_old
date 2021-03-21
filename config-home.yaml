@@ -194,7 +194,6 @@ profiles:
 
   rivendell:
     dotfiles:
-    - f_alacritty
     - d_aerc
     include:
     - Desktop
@@ -203,7 +202,6 @@ profiles:
 
   arch-xps:
     dotfiles:
-    - f_alacritty
     - f_99-my-env.zsh
     - d_aerc
     include:
