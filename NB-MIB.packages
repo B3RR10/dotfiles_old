@@ -24,6 +24,7 @@ git
 git-delta-bin
 groff
 htop
+lazygit
 ledger
 less
 libiodbc
