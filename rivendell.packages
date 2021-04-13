@@ -5,6 +5,7 @@ alsa-tools
 alsa-utils
 anki
 apache-tools
+arandr
 arc-gtk-theme
 arc-icon-theme
 archlinux-themes-sddm
@@ -24,9 +25,11 @@ bitwarden-cli-bin
 bleachbit
 btrfs-progs
 calibre
+catimg
 chromium
 clang
 cronie
+dante
 diff-so-fancy
 dmenu
 dosfstools
@@ -65,8 +68,6 @@ groff
 gtk-theme-united-archers-git
 gzip
 hledger
-hledger-ui
-hledger-web
 htop
 i3-gaps
 i3blocks
@@ -79,7 +80,9 @@ imv
 intel-ucode
 keybase
 keybase-gui
+khard
 kitty
+lazygit
 ledger
 libreoffice-fresh
 libtool
@@ -93,6 +96,7 @@ m4
 make
 man-db
 man-pages
+mediainfo
 mplayer
 mpv
 mupdf
@@ -110,15 +114,18 @@ ntfs-3g
 ntp
 nvidia
 nvidia-settings
+nyx
+obsidian-appimage
 opencl-nvidia
 openssh
 openvpn
+openvpn-nordvpn
 otf-font-awesome
 p7zip
 pacman
 pacman-contrib
+pacutils
 pandoc
-paru-bin
 pass
 pass-autotype
 pass-file
@@ -137,6 +144,7 @@ pulseaudio
 pulseaudio-alsa
 pwgen
 python
+python-pandas
 python-pip
 python-pynvim
 python-setuptools
@@ -163,7 +171,6 @@ skim
 speedtest-cli
 spotify
 spotifyd
-spt
 starship-bin
 subversion
 sudo
@@ -186,6 +193,8 @@ texlive-publishers
 texlive-science
 tmate
 tmux
+tor
+torbrowser-launcher
 tspreed
 ttf-dejavu
 ttf-font-awesome
@@ -198,6 +207,7 @@ turtl
 ufw
 universal-ctags-git
 v4l2ucp
+vdirsyncer
 vi
 vim
 vlc
