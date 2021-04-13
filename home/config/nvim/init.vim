@@ -24,7 +24,7 @@ call plug#begin($NVIM_PLUG_DIR)
 "  Aesthetics  "
 """"""""""""""""
 
-Plug 'ayu-theme/ayu-vim'
+Plug 'romainl/Apprentice', { 'branch' : 'fancylines-and-neovim' }
 Plug 'itchyny/lightline.vim'
 Plug 'sainnhe/lightline_foobar.vim'
 Plug 'mengelbrecht/lightline-bufferline'
@@ -256,8 +256,7 @@ let g:AutoPairsShortcutJump = ''
 " }}} Autopairs "
 
 " Colorscheme {{{ "
-let ayucolor='mirage'
-colorscheme ayu
+colorscheme apprentice
 " }}} Colorscheme "
 
 " EasyAlign {{{ "
@@ -350,7 +349,7 @@ let g:indent_guides_guide_size = 1
 
 " Lightline {{{ "
 let g:lightline = {}
-let g:lightline.colorscheme = 'ayu_mirage'
+let g:lightline.colorscheme = 'apprentice'
 let g:lightline.component =
             \ {
             \   'gitbranch': '%{fugitive#head()}',
