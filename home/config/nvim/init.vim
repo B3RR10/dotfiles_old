@@ -285,6 +285,7 @@ no <Leader>f :Files<CR>
 no <Leader>F :FZF ~<CR>
 no <Leader>g :GFiles<CR>
 no <Leader>r :Rg<CR>
+no <Leader>t :Tags<CR>
 no <Leader>w :Windows<CR>
 let g:fzf_buffers_jump = 1
 command! -bang -nargs=? -complete=dir Files
@@ -515,8 +516,7 @@ let g:vimtex_compiler_latexmk = {
 " }}} vimtex "
 
 " Vista {{{ "
-nmap <Leader>t :Vista!!<CR>
-nmap <Leader>T :Vista finder<CR>
+nmap <Leader>T :Vista!!<CR>
 let g:vista#renderer#enable_icon = 1
 let g:vista_close_on_jump = 1
 let g:vista_sidebar_width = 40
