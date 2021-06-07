@@ -21,7 +21,6 @@ bash-language-server
 bat
 binutils
 bison
-bitwarden
 bleachbit
 bluez
 btrfs-progs
@@ -42,11 +41,6 @@ exercism-bin
 exfat-utils
 expac
 fakeroot
-fcitx
-fcitx-anthy
-fcitx-configtool
-fcitx-mozc
-fcitx-qt5
 fd
 fdupes
 ffmpegthumbnailer
@@ -54,7 +48,6 @@ file
 findutils
 firefox
 flex
-freecad-appimage
 fzf
 gawk
 gcc
@@ -80,12 +73,10 @@ highlight
 htop
 i3status-rust
 ibus
-ibus-anthy
 imagemagick
 imagemagick-doc
 imv
 intel-ucode
-isync
 java-openjfx-doc
 java8-openjfx-doc
 jdk-openjdk
@@ -116,21 +107,18 @@ man-db
 man-pages
 mkinitcpio-welcomemessage
 mpv
-msmtp
 mtpfs
 mupdf
 neomutt
-neovim
+neovim-nightly-bin
 nerd-fonts-dejavu-complete
 nerd-fonts-fira-code
 nerd-fonts-inconsolata
 nerd-fonts-inconsolata-go
 nerd-fonts-noto-sans-regular-complete
 nerd-fonts-source-code-pro
-newsboat
 nextcloud-client
 nmap
-nnn
 nordvpn-bin
 notmuch
 noto-fonts
@@ -179,7 +167,6 @@ ruby-build
 rust-analyzer
 samba
 sddm
-seahorse
 sed
 sequoia
 shfmt
@@ -199,7 +186,6 @@ swayidle
 swaylock
 task
 teamviewer
-telegram-desktop
 texinfo
 texlab
 texlive-bibtexextra
@@ -228,7 +214,6 @@ ttf-opensans
 ttf-sazanami
 tumbler
 ufw
-uim
 universal-ctags-git
 urlscan
 vdirsyncer
