@@ -39,11 +39,13 @@ mdp
 mssql-tools
 nano
 neovim-nightly-bin
+nnn
 npm
 openmp
 openmpi
 openssh
 p7zip
+paru-bin
 patch
 pkgconf
 python
@@ -62,6 +64,7 @@ python2-pip
 rbenv
 reflector
 ripgrep
+speedtest-cli
 starship-bin
 subversion
 sudo
@@ -77,6 +80,6 @@ vim
 vint
 wget
 which
+xplr-bin
 yapf
-yay-bin
 zsh
