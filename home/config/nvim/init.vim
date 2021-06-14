@@ -325,12 +325,10 @@ let g:goyo_linenr = 1
 
 function! GoyoBefore()
   :Limelight
-  :PencilSoft
 endfunction
 
 function! GoyoAfter()
   :Limelight!
-  :PencilOff
 endfunction
 
 let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
