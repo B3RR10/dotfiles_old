@@ -185,9 +185,6 @@ Plug 'liuchengxu/vista.vim'
 " Taskwarrior integration.
 Plug 'tools-life/taskwiki'
 
-" Toggle Terminal
-Plug 'caenrique/nvim-toggle-terminal'
-
 " Wiki
 Plug 'vimwiki/vimwiki'
 Plug 'michal-h21/vimwiki-sync'
@@ -483,11 +480,6 @@ let g:OmniSharp_translate_cygwin_wsl = 1
 let g:python_host_prog  = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
 " }}} Python provider for Neovim "
-
-" Terminal {{{ "
-nnoremap <silent> <C-\> :ToggleTerminal<Enter>
-tnoremap <silent> <C-\> <C-\><C-n>:ToggleTerminal<Enter>
-" }}} Terminal "
 
 " Ultisnips {{{ "
 let g:UltiSnipsExpandTrigger = '<C-j>'
