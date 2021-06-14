@@ -25,8 +25,11 @@ autocmd InsertLeave * set rnu
 
 " Allow comments in json
 autocmd FileType json syntax match Comment +\/\/.\+$+
-{%@@ if profile == "NB-MIB" @@%}
 
+" Disable fold in commit buffers
+autocmd FileType gitcommit set nofoldenable
+
+{%@@ if profile == "NB-MIB" @@%}
 " Fix clipboard for WSL
 function! PasteFromWindows()
     set paste
