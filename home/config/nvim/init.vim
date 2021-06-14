@@ -152,6 +152,7 @@ Plug 'machakann/vim-swap'
 
 " Add more vim objects
 Plug 'wellle/targets.vim'
+Plug 'tpope/vim-unimpaired'
 
 " Save persistent sessions on a workspace
 Plug 'thaerkh/vim-workspace'
