@@ -23,4 +23,7 @@ nnoremap gx :OmniSharpFixUsings<CR>
 
 " Find all code errors/warnings for the current solution and populate the quickfix window
 nnoremap <C-l>c :OmniSharpGlobalCodeCheck<CR>
+
+nnoremap [[ :OmniSharpNavigateUp<CR>
+nnoremap ]] :OmniSharpNavigateDown<CR>
 " }}} OmniSharp maps"
