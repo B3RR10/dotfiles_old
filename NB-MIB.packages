@@ -25,7 +25,6 @@ git-delta-bin
 groff
 htop
 lazygit
-ledger
 less
 libiodbc
 libodb-mssql
@@ -39,7 +38,6 @@ mdp
 mssql-tools
 nano
 neovim-nightly-bin
-nnn
 npm
 openmp
 openmpi
