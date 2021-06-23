@@ -1,0 +1,9 @@
+[directory]
+truncation_length = 3
+truncation_symbol = "…/"
+
+[python]
+symbol = " "
+
+[ruby]
+symbol = " "

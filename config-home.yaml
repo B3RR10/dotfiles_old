@@ -145,11 +145,14 @@ dotfiles:
     src: config/aerc
     dst: ~/.config/aerc
     cmpignore:
-    - 'accounts.conf'
+    - accounts.conf
     instignore:
-    - 'accounts.conf'
+    - accounts.conf
     upignore:
-    - 'accounts.conf'
+    - accounts.conf
+  f_starship.toml:
+    src: config/starship.toml
+    dst: ~/.config/starship.toml
 profiles:
   Mail:
     dotfiles:
@@ -186,6 +189,7 @@ profiles:
     - d_zsh
     - f_gitconfig
     - f_gitignore
+    - f_starship.toml
     - f_taskrc
     - f_tmux
     - f_topgrade
