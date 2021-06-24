@@ -87,7 +87,7 @@ Plug 'matze/vim-tex-fold'
 " Markdown
 Plug 'tpope/vim-markdown'
 
-{%@@ if profile == "NB-MIB" @@%}
+{%@@ if profile == "work" @@%}
 " PowerShell
 Plug 'PProvost/vim-ps1'
 
@@ -201,7 +201,7 @@ Plug 'milkypostman/vim-togglelist'
 
 " Split the selected text in new window (<C-w>gss)
 Plug 'wellle/visual-split.vim'
-{%@@ if profile != "NB-MIB" @@%}
+{%@@ if profile != "work" @@%}
 
 " Turn off caps when change from insert to normal mode
 Plug 'suxpert/vimcaps'

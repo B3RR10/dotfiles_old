@@ -29,7 +29,7 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 " Disable fold in commit buffers
 autocmd FileType gitcommit set nofoldenable
 
-{%@@ if profile == "NB-MIB" @@%}
+{%@@ if profile == "work" @@%}
 " Fix clipboard for WSL
 function! PasteFromWindows()
     set paste

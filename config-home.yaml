@@ -213,7 +213,7 @@ profiles:
     - Sway
     - Terminal
 
-  NB-MIB:
+  work:
     dotfiles:
     - f_08-wsl.zsh
     include:

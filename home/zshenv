@@ -13,7 +13,7 @@ export ZINIT_HOME=$HOME/.local/share/zinit
 export ZINIT[HOME_DIR]=$ZINIT_HOME
 export ZINIT[BIN_DIR]=$ZINIT_HOME/bin
 export ZPFX=${ZINIT[HOME_DIR]}/polaris
-{%@@ if profile == "NB-MIB" @@%}
+{%@@ if profile == "work" @@%}
 
 umask 022
 {%@@ endif @@%}

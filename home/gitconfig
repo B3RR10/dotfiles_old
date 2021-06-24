@@ -24,7 +24,7 @@
 
     pager = delta
     excludeFile = /home/berriom/.gitignore
-{%@@ if profile == "NB-MIB" @@%}
+{%@@ if profile == "work" @@%}
 
     fileMode = false
     autocrlf = input
@@ -102,7 +102,7 @@
     signingkey = A9FDFA72
     name = Miguel Berrio
     email = mail@berrio.dev
-{%@@ elif profile == "NB-MIB" @@%}
+{%@@ elif profile == "work" @@%}
 [user]
     name = Berrio, Miguel
     email = miguel.berrio@dmi.de

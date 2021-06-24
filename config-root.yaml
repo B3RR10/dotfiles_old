@@ -48,7 +48,7 @@ dotfiles:
     src: etc/sddm.conf
     dst: /etc/sddm.conf
 profiles:
-  NB-MIB:
+  work:
     dotfiles:
     - f_etc_wsl.conf
     - f_etc_pacman.conf
