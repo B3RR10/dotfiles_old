@@ -132,9 +132,6 @@ dotfiles:
   f_gitignore:
     src: gitignore
     dst: ~/.gitignore
-  f_taskrc:
-    src: taskrc
-    dst: ~/.taskrc
   f_99-my-env.zsh:
     src: config/zsh/99-my-env.zsh
     dst: ~/.config/zsh/99-my-env.zsh
@@ -190,7 +187,6 @@ profiles:
     - f_gitconfig
     - f_gitignore
     - f_starship.toml
-    - f_taskrc
     - f_tmux
     - f_topgrade
     - f_zshenv
