@@ -6,8 +6,11 @@ name = "plain"
 separator = "  |  "
 
 [[block]]
+block = "maildir"
+inboxes = ["/home/miguel/.mail/berrio.dev/Inbox", "/home/miguel/.mail/miguelberrio.xyz/Inbox"]
+
+[[block]]
 block = "speedtest"
-bytes = true
 
 [[block]]
 block = "net"
@@ -16,28 +19,22 @@ format = "{ssid} {signal_strength} {ip} {speed_down} {graph_down}"
 interval = 2
 
 [[block]]
+block = "nvidia_gpu"
+
+[[block]]
 block = "disk_space"
-path = "/"
-alias = "/"
-info_type = "available"
-unit = "GiB"
-interval = 20
-warning = 20.0
-alert = 10.0
+format = "{icon} {used}/{total} ({available} free)"
 
 [[block]]
 block = "memory"
-display_type = "memory"
-format_mem = "{MFg} GiB ({MUpi}%)"
-format_swap = "{SUp}%"
+format_mem = "{mem_used} ({mem_used_percents})"
 
 [[block]]
 block = "uptime"
 
 [[block]]
 block = "cpu"
-interval = 1
-format = "{barchart} {utilization}% {frequency}GHz"
+format = "{barchart} {utilization} {frequency}"
 on_click = "st -e btm"
 
 [[block]]
