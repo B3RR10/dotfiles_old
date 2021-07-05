@@ -105,12 +105,6 @@ dotfiles:
   f_gtk2:
     dst: ~/.gtkrc-2.0
     src: gtkrc-2.0
-  f_mbsync:
-    dst: ~/.mbsyncrc
-    src: mbsyncrc
-  f_msmtp:
-    dst: ~/.msmtprc
-    src: msmtprc
   f_tmux:
     dst: ~/.tmux.conf
     src: tmux.conf
@@ -154,8 +148,6 @@ profiles:
   Mail:
     dotfiles:
     - d_mutt
-    - f_mbsync
-    - f_msmtp
   Desktop:
     dotfiles:
     - d_applications
