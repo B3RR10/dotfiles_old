@@ -12,7 +12,7 @@ diff-so-fancy
 dos2unix
 entr
 exa
-fakeroot
+fakeroot-tcp
 fd
 flake8
 flex
@@ -35,7 +35,7 @@ man-db
 mdp
 mssql-tools
 nano
-neovim-nightly-bin
+neovim
 npm
 openmp
 openmpi
@@ -44,6 +44,7 @@ p7zip
 paru-bin
 patch
 pkgconf
+pwgen
 python
 python-mccabe
 python-pip
