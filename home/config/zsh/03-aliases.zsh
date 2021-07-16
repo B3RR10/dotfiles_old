@@ -62,6 +62,7 @@ alias tls='tmux ls'
 alias tat='tmux attach -t'
 alias tns='tmux new-session -s'
 alias dev='. ~/bin/tmux-dev'
+alias rdev='. ~/bin/tmux-rdev'
 #  }}} tmux aliases #
 
 # Vimwiki {{{ #

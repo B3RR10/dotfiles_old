@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+if ! grep rails $(pwd)/Gemfile > /dev/null 2>&1; then
+    echo "Error: This is not a rails project"
+    return 1
+fi
+
+# Rails Console on the top right pane
+tmux split-window -h -p 30
+tmux send-keys 'rails c' Enter
+
+# Rails Server on the bottom right pane
+tmux split-window -v
+tmux send-keys 'rails s' Enter
+
+# Return to the first pane
+tmux select-pane -t 2
+tmux select-pane -t 1
+
+# Zoom the first pane
+tmux resize-pane -Z
+sleep 0.5
+# and open neovim
+tmux send-keys 'nvim' Enter
+tmux display-message "Dev Environment in $(pwd)"
