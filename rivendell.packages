@@ -32,6 +32,7 @@ cronie
 dante
 diff-so-fancy
 dmenu
+docker
 dosfstools
 dunst
 element-desktop
@@ -52,6 +53,8 @@ file
 findutils
 firefox
 flex
+freetube
+frum-bin
 fzf
 gawk
 gcc
@@ -78,18 +81,23 @@ imagemagick
 imagemagick-doc
 imv
 intel-ucode
+isync
 keybase
 keybase-gui
 khard
 kitty
 lazygit
 ledger
+libertinus-font
+libpqxx
 libreoffice-fresh
 libtool
 light
 linux
 linux-firmware
 linux-headers
+linux-lts
+linux-lts-headers
 lsof
 lyriek
 m4
@@ -97,9 +105,12 @@ make
 man-db
 man-pages
 mediainfo
+moreutils
 mplayer
 mpv
+msmtp
 mupdf
+neomutt
 neovim-nightly-bin
 nerd-fonts-fira-code
 nerd-fonts-victor-mono
@@ -116,6 +127,7 @@ nvidia
 nvidia-settings
 nyx
 obsidian-appimage
+onlyoffice-bin
 opencl-nvidia
 openssh
 openvpn
@@ -126,6 +138,7 @@ pacman
 pacman-contrib
 pacutils
 pandoc
+paru-bin
 pass
 pass-autotype
 pass-file
@@ -135,6 +148,8 @@ patch
 pavucontrol
 pdftk
 pencil
+pigz
+pinta
 pkgconf
 playerctl
 pomotroid-bin
@@ -153,10 +168,10 @@ python2-neovim-git
 python2-pip
 python2-setuptools
 r
-rbenv
 redshift
 reflector
 ripgrep
+ripmime
 rofi
 rofi-pass
 rsync
@@ -206,6 +221,7 @@ ttf-ubuntu-font-family
 turtl
 ufw
 universal-ctags-git
+urlscan
 v4l2ucp
 vdirsyncer
 vi
@@ -226,7 +242,6 @@ xorg-xev
 xorg-xrandr
 xsel
 yarn
-yay-bin
 youtube-dl
 zathura
 zathura-djvu
