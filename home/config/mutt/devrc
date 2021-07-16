@@ -1,0 +1,42 @@
+set from = "Miguel Berrio <mail@berrio.dev>"
+set sendmail = "`which msmtp` -a dev"
+
+# Set folders
+set spoolfile = "+berrio.dev/Inbox"
+set mbox = "+berrio.dev/Archive"
+set postponed = "+berrio.dev/Drafts"
+set record = "+berrio.dev/Sent"
+set trash = "+berrio.dev/Trash"
+
+# Alternate email addresses.
+alternates ^mail@berrio.dev$
+
+# custom signaure
+set signature = $my_mutt_config/signature
+
+color status cyan default
+
+macro index o "<shell-escape>mbsync dev<enter>" "run mbsync to sync mail for this account"
+
+macro index,pager J \
+  "<enter-command>set my_old_resolve=\$resolve noresolve<enter>\
+  <tag-prefix><clear-flag>n<enter-command>set resolve=\$my_old_resolve<enter>\
+  <save-message>+berrio.dev/Junk<enter>" \
+  "mark as read and move to spam folder"
+
+macro index,pager A \
+  "<enter-command>set my_old_resolve=\$resolve noresolve<enter>\
+  <tag-prefix><clear-flag>n<enter-command>set resolve=\$my_old_resolve<enter>\
+  <save-message>+berrio.dev/Archive<enter>"  \
+  "move message to the archive"
+
+macro index,pager I \
+  "<save-message>+berrio.dev/Inbox<enter><exit>"  \
+  "move message to the inbox"
+
+macro index ga "<change-folder> =berrio.dev/Archive<enter>" "Got to Archive"
+macro index gd "<change-folder> =berrio.dev/Drafts<enter>" "Got to Drafts"
+macro index gi "<change-folder> =berrio.dev/Inbox<enter>" "Got to INBOX"
+macro index gj "<change-folder> =berrio.dev/Junk<enter>" "Got to Spam"
+macro index gs "<change-folder> =berrio.dev/Sent<enter>" "Got to Sent"
+macro index gt "<change-folder> =berrio.dev/Trash<enter>" "Got to Trash"

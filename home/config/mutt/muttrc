@@ -1,12 +1,13 @@
 set my_mutt_config = "$HOME/.config/mutt"
+set my_mutt_cache = "$HOME/.cache/mutt"
 
 # paths
-set folder           = $HOME/Mail
-set header_cache     = $my_mutt_config/cache/headers
-set message_cachedir = $my_mutt_config/cache/bodies
+set folder           = $HOME/.mail
+set header_cache     = $my_mutt_cache/cache/headers
+set message_cachedir = $my_mutt_cache/cache/bodies
 set certificate_file = /etc/ssl/certs/ca-certificates.crt
 set mailcap_path     = $my_mutt_config/mailcap
-set tmpdir           = $my_mutt_config/tmp
+set tmpdir           = $my_mutt_cache/tmp
 
 # basic options
 set wait_key   = no
@@ -67,18 +68,25 @@ auto_view text/html
 
 # when composing emails, use this command to get addresses from
 # the addressbook with khard first, and everything else from mu index
-set query_command = "( khard email --parsable '%s' | sed -n '1!p'; mu cfind --format=mutt-ab '%s' )"
+set query_command = "( khard email --remove-first-line --parsable '%s' | sed -n '1!p'; mu cfind --format=mutt-ab '%s' )"
 
 # sidebar patch config
 set sidebar_visible
-set sidebar_short_path
 set sidebar_folder_indent
-set sidebar_width = 25
-set sidebar_divider_char = ' | '
-set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_short_path
+set sidebar_delim_chars="/"
+# set sidebar_indent_string="  "
+# set sidebar_width = 30
+# set sidebar_divider_char = ' | '
+set sidebar_format = "%D%* %?N?%N/?%S"
 
 # Mailboxes to show in the sidebar.
-mailboxes =runbox/INBOX =runbox/archive =runbox/drafts =runbox/sent =runbox/junk =runbox/trash
+# mailboxes AllMailboxes
+named-mailboxes "berrio.dev ======" "=berrio.dev/Inbox"
+mailboxes =berrio.dev/Archive =berrio.dev/Drafts =berrio.dev/Sent =berrio.dev/Junk =berrio.dev/Trash
+
+named-mailboxes "miguelberrio.xyz ======" "=miguelberrio.xyz/Inbox"
+mailboxes =miguelberrio.xyz/Archive =miguelberrio.xyz/Drafts =miguelberrio.xyz/Sent =miguelberrio.xyz/Junk =miguelberrio.xyz/Trash
 
 # source colors and keybindings
 source $my_mutt_config/colors
@@ -88,7 +96,14 @@ source $my_mutt_config/gpgrc
 # And finally the account config for multiple accounts
 #############################################################
 
-# by default, use runbox
+# by default, use dev
 set realname = "Miguel Berrio"
-set spoolfile = "+runbox/INBOX"
-source $my_mutt_config/runboxrc
+source $my_mutt_config/devrc
+
+# Folder hooks
+folder-hook berrio.dev/*        source $my_mutt_config/devrc
+folder-hook miguelberrio.xyz/*  source $my_mutt_config/xyzrc
+
+# Macros for switching accounts
+macro index > '<sync-mailbox><enter-command>source $my_mutt_config/xyzrc<enter><change-folder>!<enter>'
+macro index < '<sync-mailbox><enter-command>source $my_mutt_config/devrc<enter><change-folder>!<enter>'

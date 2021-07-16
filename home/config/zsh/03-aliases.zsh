@@ -52,6 +52,10 @@ function gmv() {
 alias gprune='git remote prune origin && git fetch -p && git branch -vv | awk '"'"'/: gone]/{print $1}'"'"' | xargs git branch -D'
 #  }}} Git aliases #
 
+# mbsync {{{ #
+alias mbsync="mbsync -c \"$XDG_CONFIG_HOME/isync/mbsyncrc\""
+# }}} mbsync #
+
 #  tmux aliases {{{ #
 alias ta='tmux attach'
 alias tls='tmux ls'

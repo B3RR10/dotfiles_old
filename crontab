@@ -24,5 +24,4 @@
 # Check battery level every 5 minutes
 */5 * * * * $HOME/bin/battery
 
-# Sync vimwiki every 5 minutes
-*/5 * * * * $HOME/bin/sync-wiki
+* * * * * chronic mbsync -c $HOME/.config/isync/mbsyncrc -a

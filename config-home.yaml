@@ -144,10 +144,24 @@ dotfiles:
   f_starship.toml:
     src: config/starship.toml
     dst: ~/.config/starship.toml
+  d_isync:
+    src: config/isync
+    dst: ~/.config/isync
+    cmpignore:
+    - '*.gpg'
+    instignore:
+    - '*.gpg'
+    upignore:
+    - '*.gpg'
+  d_msmtp:
+    src: config/msmtp
+    dst: ~/.config/msmtp
 profiles:
   Mail:
     dotfiles:
     - d_mutt
+    - d_isync
+    - d_msmtp
   Desktop:
     dotfiles:
     - d_applications
@@ -189,6 +203,7 @@ profiles:
     - d_aerc
     include:
     - Desktop
+    - Mail
     - Terminal
     - Xorg
 

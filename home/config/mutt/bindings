@@ -23,7 +23,7 @@ macro index,pager S "<pipe-message>ripmime -i - -d ~/Downloads && rm ~/Downloads
 # opening urls with urlscan
 macro index,pager F "<pipe-message>urlscan<enter>" "call urlscan to extract URLs out of a message"
 # Sync all email
-macro index,pager O "<shell-escape>mbsync -a<enter>" "run mbsync to sync all mail"
+macro index,pager O "<shell-escape>mbsync -c $HOME/.config/isync/mbsyncrc -a<enter>" "run mbsync to sync all mail"
 
 # View attachments properly.
 bind attach <return> view-mailcap
