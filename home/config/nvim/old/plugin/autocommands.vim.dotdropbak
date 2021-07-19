@@ -25,19 +25,3 @@ autocmd InsertLeave * set rnu
 
 " Allow comments in json
 autocmd FileType json syntax match Comment +\/\/.\+$+
-
-" Disable fold in commit buffers
-autocmd FileType gitcommit set nofoldenable
-
-{%@@ if profile == "work" @@%}
-" Fix clipboard for WSL
-function! PasteFromWindows()
-    set paste
-    exe 'norm a'.system('/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -Command Get-Clipboard')
-    set nopaste
-endfunction
-
-if system('uname -r') =~ "Microsoft"
-    noremap "+p :call PasteFromWindows()<CR>
-endif
-{%@@ endif @@%}

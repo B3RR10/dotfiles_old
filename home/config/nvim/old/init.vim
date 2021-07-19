@@ -1,5 +1,9 @@
 " init.vim
-scriptencoding utf-8
+sncoding utf-8
+  1
+  2 " runtime! archlinux.vim
+  3
+criptencoding utf-8
 
 " runtime! archlinux.vim
 
@@ -87,11 +91,6 @@ Plug 'matze/vim-tex-fold'
 " Markdown
 Plug 'tpope/vim-markdown'
 
-{%@@ if profile == "work" @@%}
-" PowerShell
-Plug 'PProvost/vim-ps1'
-
-{%@@ endif @@%}
 " Python
 Plug 'tmhedberg/SimpylFold'
 
@@ -99,7 +98,6 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rake', { 'for': 'ruby' }
 Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rbenv', { 'for': 'ruby' }
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'Keithbsmiley/rspec.vim', { 'for': 'ruby' }
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
@@ -182,16 +180,6 @@ Plug 'preservim/nerdtree'
 " Tags
 Plug 'liuchengxu/vista.vim'
 
-" Taskwarrior integration.
-Plug 'tools-life/taskwiki'
-
-" Wiki
-Plug 'vimwiki/vimwiki'
-Plug 'michal-h21/vimwiki-sync'
-
-" Zettelkasten
-Plug 'michal-h21/vim-zettel'
-
 """"""""""
 "  Misc  "
 """"""""""
@@ -201,11 +189,9 @@ Plug 'milkypostman/vim-togglelist'
 
 " Split the selected text in new window (<C-w>gss)
 Plug 'wellle/visual-split.vim'
-{%@@ if profile != "work" @@%}
 
 " Turn off caps when change from insert to normal mode
 Plug 'suxpert/vimcaps'
-{%@@ endif @@%}
 call plug#end()
 " }}} Pluggins "
 

@@ -1,0 +1,5 @@
+require 'settings.autocommands'
+require 'settings.highlights'
+require 'settings.mappings'
+require 'settings.options'
+require 'settings.utils'
