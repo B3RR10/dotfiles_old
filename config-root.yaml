@@ -52,7 +52,7 @@ profiles:
     dotfiles:
     - f_etc_wsl.conf
     - f_etc_pacman.conf
-  arch-xps:
+  laptop:
     dotfiles:
     - f_etc_pacman.conf
     - f_etc_welcomemessage.conf

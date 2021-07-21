@@ -205,7 +205,7 @@ profiles:
     - Terminal
     - Xorg
 
-  arch-xps:
+  laptop:
     dotfiles:
     - f_config_zsh_99-my-env.zsh
     include:

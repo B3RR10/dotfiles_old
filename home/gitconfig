@@ -97,7 +97,7 @@
 [mergetool]
     keepBackup = false
 
-{%@@ if profile == "arch-xps" or profile == "rivendell" @@%}
+{%@@ if profile == "laptop" or profile == "rivendell" @@%}
 [user]
     signingkey = A9FDFA72
     name = Miguel Berrio
@@ -109,7 +109,7 @@
 {%@@ endif @@%}
 
 [commit]
-{%@@ if profile == "arch-xps" or profile == "rivendell" @@%}
+{%@@ if profile == "laptop" or profile == "rivendell" @@%}
     gpgsign = true
 {%@@ else @@%}
     gpgsign = false
