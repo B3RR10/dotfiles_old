@@ -110,7 +110,7 @@ mpv
 mtpfs
 mupdf
 neomutt
-neovim-nightly-bin
+neovim
 nerd-fonts-dejavu-complete
 nerd-fonts-fira-code
 nerd-fonts-inconsolata
@@ -136,6 +136,7 @@ otf-ipamjfont
 p7zip
 pacman
 pacman-contrib
+paru-bin
 pass
 pass-autotype
 pass-otp
@@ -184,7 +185,6 @@ sudo
 sway
 swayidle
 swaylock
-task
 teamviewer
 texinfo
 texlab
@@ -201,7 +201,6 @@ texlive-pictures
 texlive-pstricks
 texlive-publishers
 texlive-science
-tllocalmgr-git
 tlp
 tmate
 tmux
@@ -233,7 +232,6 @@ xdg-user-dirs
 xorg-xev
 xorg-xwayland
 yarn
-yay-bin
 ydotool
 youtube-dl
 zathura
