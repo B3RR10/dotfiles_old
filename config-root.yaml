@@ -7,8 +7,8 @@ config:
   keepdot: false
   link_dotfile_default: nolink
   link_on_import: nolink
-  longkey: false
-  showdiff: false
+  longkey: true
+  showdiff: true
   workdir: ~/.config/sdotdrop
 dotfiles:
   f_etc_wsl.conf:
