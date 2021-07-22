@@ -32,7 +32,7 @@ require('packer').startup {
     { 'airblade/vim-gitgutter' },
 
     -- Show intentation guides
-    { 'mengelbrecht/lightline-bufferline' },
+    { 'nathanaelkane/vim-indent-guides' },
 
     ------------------------
     --  LSP & Completion  --
