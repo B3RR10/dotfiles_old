@@ -44,6 +44,11 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 # }}} History #
 
+# Python virtualenvwrapper {{{ #
+export WORKON_HOME=$HOME/.envs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+# }}} Python virtualenvwrapper #
+
 # Rust {{{ #
 export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 # }}} Rust #
