@@ -29,10 +29,4 @@ if command -v gh > /dev/null; then
 fi
 #  }}} Completions #
 
-# Make Envs dir if does not exist {{{ #
-if [[ ! -d "$WORKON_HOME" ]]; then
-    mkdir -p "$WORKON_HOME"
-fi
-# }}} Make Envs dir if does not exist #
-
 # vim: foldmethod=marker

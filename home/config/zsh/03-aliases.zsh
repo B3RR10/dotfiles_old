@@ -67,12 +67,4 @@ alias dev='. ~/bin/tmux-dev'
 alias rdev='. ~/bin/tmux-rdev'
 #  }}} tmux aliases #
 
-# Vimwiki {{{ #
-alias diary='nvim +VimwikiMakeDiaryNote +Goyo'
-alias idea='nvim ~/vimwiki/Scratchpad.md +Goyo'
-alias todo='nvim ~/vimwiki/Todo.md +Goyo'
-alias vimwiki='nvim +VimwikiIndex'
-alias zettel='nvim ~/vimwiki/Tags.md'
-# }}} Vimwiki #
-
 # vim: foldmethod=marker
