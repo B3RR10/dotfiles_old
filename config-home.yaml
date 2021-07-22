@@ -198,7 +198,7 @@ profiles:
     - f_zshenv
     - f_zshrc
 
-  rivendell:
+  desktop:
     include:
     - Desktop
     - Mail

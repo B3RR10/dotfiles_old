@@ -97,19 +97,20 @@
 [mergetool]
     keepBackup = false
 
-{%@@ if profile == "laptop" or profile == "rivendell" @@%}
 [user]
+{%@@ if profile == "laptop" or profile == "desktop" @@%}
     signingkey = A9FDFA72
-    name = Miguel Berrio
-    email = mail@berrio.dev
-{%@@ elif profile == "work" @@%}
-[user]
+{%@@ endif @@%}
+{%@@ if profile == "work" @@%}
     name = Berrio, Miguel
     email = miguel.berrio@dmi.de
+{%@@ else @@%}
+    name = Miguel Berrio
+    email = mail@berrio.dev
 {%@@ endif @@%}
 
 [commit]
-{%@@ if profile == "laptop" or profile == "rivendell" @@%}
+{%@@ if profile == "laptop" or profile == "desktop" @@%}
     gpgsign = true
 {%@@ else @@%}
     gpgsign = false

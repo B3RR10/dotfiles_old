@@ -64,6 +64,6 @@ profiles:
     - f_99-newkernel.hook
     - f_snapshot-system
     - f_newkernel
-  rivendell:
+  desktop:
     dotfiles:
     - f_sddm.conf
