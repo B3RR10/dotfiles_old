@@ -139,9 +139,11 @@ require('packer').startup {
     ------------
     -- Toggle quickfix with \q and location list with \l
     { 'milkypostman/vim-togglelist' },
+{%@@ if profile == "laptop" or profile == "desktop" @@%}
 
     -- Turn off caps when change from insert to normal mode
     { 'suxpert/vimcaps' },
+{%@@ endif @@%}
   },
   config = {
     display = {
