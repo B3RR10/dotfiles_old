@@ -1,9 +1,8 @@
 " init.vim
-sncoding utf-8
-  1
-  2 " runtime! archlinux.vim
-  3
-criptencoding utf-8
+set encoding utf-8
+" runtime! archlinux.vim
+
+set criptencoding utf-8
 
 " runtime! archlinux.vim
 
