@@ -24,7 +24,6 @@ require('packer').startup {
     { 'dominikduda/vim_current_word' },
     { 'kyazdani42/nvim-web-devicons' },
     { 'hoob3rt/lualine.nvim' },
-    -- { 'bling/vim-bufferline' },
     { 'akinsho/nvim-bufferline.lua' },
 
     -- Git
