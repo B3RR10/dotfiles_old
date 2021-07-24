@@ -48,10 +48,22 @@ dotfiles:
     src: etc/sddm.conf
     dst: /etc/sddm.conf
 profiles:
+  Arch:
+    dotfiles:
+    - f_etc_pacman.conf
+  Btrfs:
+    dotfiles:
+    - f_50-backup-boot.hook
+    - f_50-snapshot-system.hook
+    - f_99-newkernel.hook
+    - f_snapshot-system
+    - f_newkernel
+
   work:
     dotfiles:
     - f_etc_wsl.conf
-    - f_etc_pacman.conf
+    include:
+    - Arch
   laptop:
     dotfiles:
     - f_etc_pacman.conf
@@ -59,11 +71,11 @@ profiles:
     - f_etc_mkinitcpio.conf
     - f_etc_issue
     - d_etc_udev_rules.d
-    - f_50-backup-boot.hook
-    - f_50-snapshot-system.hook
-    - f_99-newkernel.hook
-    - f_snapshot-system
-    - f_newkernel
+    include:
+    - Arch
+    - Btrfs
   desktop:
     dotfiles:
     - f_sddm.conf
+    include:
+    - Arch
