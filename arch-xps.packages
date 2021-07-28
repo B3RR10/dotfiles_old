@@ -11,6 +11,7 @@ anki
 apache-tools
 arc-gtk-theme
 arc-icon-theme
+arch-install-scripts
 atomicparsley
 autoconf
 automake
@@ -30,10 +31,7 @@ cmake
 cronie
 dialog
 diff-so-fancy
-discord
 dmenu
-docker
-docker-compose
 efivar
 entr
 exa
@@ -100,6 +98,10 @@ llvm
 lqsd-bin
 lsb-release
 lsof
+lua-alt-getopt
+lua-filesystem
+lua-language-server
+lxc
 m4
 make
 mako
@@ -111,12 +113,10 @@ mtpfs
 mupdf
 neomutt
 neovim
-nerd-fonts-dejavu-complete
 nerd-fonts-fira-code
 nerd-fonts-inconsolata
 nerd-fonts-inconsolata-go
 nerd-fonts-noto-sans-regular-complete
-nerd-fonts-source-code-pro
 nextcloud-client
 nmap
 nordvpn-bin
@@ -148,6 +148,9 @@ perl-json-xs
 pipewire
 pkgconf
 playerctl
+podman
+podman-compose
+podman-docker
 poppler-glib
 powerline-fonts
 powertop
@@ -157,15 +160,12 @@ pwgen
 python-pip
 python2-pip
 qutebrowser
-rbenv
 redshift-wlr-gamma-control-git
 reflector
 ripgrep
 ristretto
 rsync
 rtmpdump
-ruby-build
-rust-analyzer
 samba
 sddm
 sed
@@ -221,7 +221,6 @@ vim
 vlc
 w3m
 watson
-waybar
 wdisplays
 wget
 which
