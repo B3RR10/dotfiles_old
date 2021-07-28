@@ -24,7 +24,9 @@ bitwarden
 bitwarden-cli-bin
 bleachbit
 btrfs-progs
+buildah
 calibre
+catatonit
 catimg
 chromium
 clang
@@ -32,10 +34,8 @@ cronie
 dante
 diff-so-fancy
 dmenu
-docker
 dosfstools
 dunst
-element-desktop
 entr
 evince
 exa
@@ -99,6 +99,7 @@ linux-headers
 linux-lts
 linux-lts-headers
 lsof
+lua-language-server
 lyriek
 m4
 make
@@ -111,7 +112,7 @@ mpv
 msmtp
 mupdf
 neomutt
-neovim-nightly-bin
+neovim
 nerd-fonts-fira-code
 nerd-fonts-victor-mono
 nextcloud-client
@@ -152,6 +153,8 @@ pigz
 pinta
 pkgconf
 playerctl
+podman
+podman-docker
 pomotroid-bin
 ponymix
 powerline-fonts
