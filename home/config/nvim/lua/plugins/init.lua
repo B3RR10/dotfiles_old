@@ -56,7 +56,7 @@ require('packer').startup {
     { 'mattn/emmet-vim' },
 
     -- Latex plugins
-    --{ 'lervag/vimtex' },
+    { 'lervag/vimtex' },
     --{ 'matze/vim-tex-fold' },
 
     -- Lua
