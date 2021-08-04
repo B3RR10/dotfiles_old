@@ -34,6 +34,9 @@ cronie
 dante
 diff-so-fancy
 dmenu
+docker
+docker-compose
+dockerfile-language-server
 dosfstools
 dunst
 entr
@@ -154,7 +157,7 @@ pinta
 pkgconf
 playerctl
 podman
-podman-docker
+podman-compose
 pomotroid-bin
 ponymix
 powerline-fonts
@@ -162,6 +165,7 @@ pulseaudio
 pulseaudio-alsa
 pwgen
 python
+python-docopt
 python-pandas
 python-pip
 python-pynvim
@@ -229,6 +233,7 @@ v4l2ucp
 vdirsyncer
 vi
 vim
+visual-studio-code-bin
 vlc
 w3m
 watchexec
