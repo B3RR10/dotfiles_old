@@ -24,14 +24,15 @@ require'compe'.setup {
   };
 
   source = {
+    omni = { Filetypes = { 'tex' } };
     path = true;
     buffer = true;
+    spell = { Filetypes = { 'markdown', 'tex' } };
+    emoji = true;
     nvim_lsp = true;
     nvim_lua = true;
-    --treesitter = true;
-    calc = true;
     ultisnips = true;
-    --omni = true;
+    calc = true;
   };
 }
 
