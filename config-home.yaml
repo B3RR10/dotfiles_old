@@ -81,12 +81,15 @@ dotfiles:
     cmpignore:
     - '*/.netrwhist'
     - '**/spell'
+    - 'plugin/packer_compiled.lua'
     instignore:
     - '*/.netrwhist'
     - '**/spell'
+    - 'plugin/packer_compiled.lua'
     upignore:
     - '*/.netrwhist'
     - '**/spell'
+    - 'plugin/packer_compiled.lua'
   d_config_redshift:
     dst: ~/.config/redshift
     src: config/redshift
