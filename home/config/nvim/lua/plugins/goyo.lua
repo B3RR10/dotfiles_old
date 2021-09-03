@@ -7,13 +7,14 @@ vim.g.goyo_height = 100
 vim.g.goyo_linenr = 1
 
 vim.cmd([[
-    function! GoyoBefore()
-      :Limelight
+    function! GoyoEnter()
+      Limelight
     endfunction
 
-    function! GoyoAfter()
-      :Limelight!
+    function! GoyoLeave()
+      Limelight!
     endfunction
+
+    autocmd! User GoyoEnter nested call GoyoEnter()
+    autocmd! User GoyoLeave nested call GoyoLeave()
 ]])
-
-vim.g.goyo_callbacks = { [[function('GoyoBefore')]], [[function('GoyoAfter')]] }
