@@ -6,5 +6,5 @@ require("rest-nvim").setup {
   -- Highlight request on run
   highlight = { enabled = false, timeout = 150 },
   -- Jump to request line on run
-  jump_to_request = false
+  jump_to_request = false,
 }

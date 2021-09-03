@@ -9,4 +9,4 @@ map('n', '<Leader>t', ':Tags<CR>', { noremap = true })
 map('n', '<Leader>w', ':Windows<CR>', { noremap = true })
 
 vim.g.fzf_buffers_jump = 1
---vim.api.nvim_command([[command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)]])
+-- vim.api.nvim_command([[command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)]])

@@ -12,8 +12,8 @@ end
 vim.opt.swapfile = false
 vim.opt.clipboard = 'unnamedplus'
 -- Do I want that?
---vim.opt.cursorcolumn = true
---vim.opt.cursorline = true
+-- vim.opt.cursorcolumn = true
+-- vim.opt.cursorline = true
 --
 vim.opt.encoding = 'utf-8'
 vim.opt.visualbell = true
@@ -34,7 +34,13 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 0
 vim.opt.tabstop = 4
 vim.opt.list = true
-vim.opt.listchars = { tab = '| ', trail = '·', precedes = '«', extends = '»', nbsp = '·', }
+vim.opt.listchars = {
+  tab = '| ',
+  trail = '·',
+  precedes = '«',
+  extends = '»',
+  nbsp = '·',
+}
 
 vim.opt.autoread = true
 vim.opt.hidden = true

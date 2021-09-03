@@ -2,14 +2,15 @@ local exec = vim.api.nvim_command
 local cmd, fn = vim.cmd, vim.fn
 
 -- Auto install packer.nvim if not exists
-local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  exec('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+  exec('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
 
 cmd [[packadd packer.nvim]]
 cmd 'au BufWritePost packages.lua PackerCompile'
 
+-- LuaFormatter off
 require('packer').startup {
   {
     --------------
@@ -17,9 +18,9 @@ require('packer').startup {
     --------------
     { 'wbthomason/packer.nvim', opt = true },
 
-    ------------------
+    ---------------
     --  Visuals  --
-    ------------------
+    ---------------
     { 'romainl/Apprentice', branch = 'fancylines-and-neovim' },
     { 'dominikduda/vim_current_word' },
     { 'kyazdani42/nvim-web-devicons' },
@@ -161,6 +162,7 @@ require('packer').startup {
     }
   }
 }
+-- LuaFormatter on
 
 require 'plugins.ale'
 require 'plugins.autopairs'
