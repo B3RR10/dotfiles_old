@@ -29,6 +29,8 @@ libodb-mssql
 libtool
 lldb
 llvm
+lua
+lua-language-server
 m4
 make
 man-db
