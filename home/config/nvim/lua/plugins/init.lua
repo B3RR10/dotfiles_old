@@ -127,6 +127,17 @@ require('packer').startup {
     { 'junegunn/goyo.vim', },
     { 'junegunn/limelight.vim' },
 
+    -- HTTP Client
+    {
+      'NTBBloodbath/rest.nvim',
+      requires = { 'nvim-lua/plenary.nvim' },
+      -- ft = { 'http' },
+      config = function()
+        -- print 'Execute function!'
+        require 'plugins.rest'
+      end
+    },
+
     -- Neovim tree
     { 'kyazdani42/nvim-tree.lua' },
 
