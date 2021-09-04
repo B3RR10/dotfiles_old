@@ -3,7 +3,7 @@ local map = require('settings.utils').map
 vim.g.ale_linters = {
   cs = { 'OmniSharp' },
   python = { 'pyls' },
-  ruby = { 'solargraph' },
+  ruby = { 'solargraph', 'sorbet', 'rails_best_practices', 'rubocop' },
   rust = { 'analyzer', 'cargo' },
   sh = { 'shellcheck', 'language_server' },
   tex = { 'chktex', 'lacheck', 'vale' },
@@ -14,10 +14,15 @@ vim.g.ale_vim_vimls_executable =
   '$HOME/.local/share/vim-lsp-settings/servers/vim-language-server/vim-language-server'
 
 vim.g.ale_fixers = {
+  html = { 'prettier' },
+  javascript = { 'prettier' },
+  json = { 'prettier' },
   lua = { 'lua-format', 'remove_trailing_lines', 'trim_whitespace' },
   python = { 'isort', 'autopep8', 'yapf', 'remove_trailing_lines' },
+  ruby = { 'prettier', 'rubocop', 'sorbet' },
   rust = { 'rustfmt' },
   sh = { 'shfmt' },
+  typescript = { 'prettier' },
   tex = { 'latexindent' },
 }
 

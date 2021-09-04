@@ -1,0 +1,9 @@
+snippet lsp "New lsp server"
+local lspconfig = require('lspconfig')
+local on_attach = require('lsp.on_attach').on_attach
+
+lspconfig.${1:server}.setup {
+	on_attach = on_attach${2:,
+	${3:options}}
+}
+endsnippet
