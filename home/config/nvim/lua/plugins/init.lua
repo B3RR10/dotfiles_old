@@ -56,6 +56,9 @@ require('packer').startup {
     -- HTML
     { 'mattn/emmet-vim' },
 
+    -- justfile
+    { 'NoahTheDuke/vim-just' },
+
     -- Latex plugins
     { 'lervag/vimtex' },
     --{ 'matze/vim-tex-fold' },
