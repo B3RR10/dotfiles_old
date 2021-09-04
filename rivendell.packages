@@ -85,6 +85,7 @@ imagemagick-doc
 imv
 intel-ucode
 isync
+just
 keybase
 keybase-gui
 khard
@@ -154,6 +155,7 @@ pdftk
 pencil
 pigz
 pinta
+pipewire
 pkgconf
 playerctl
 podman
@@ -198,7 +200,6 @@ subversion
 sudo
 task
 teamviewer
-telegram-desktop
 texinfo
 texlab
 texlive-bibtexextra
@@ -213,6 +214,7 @@ texlive-pictures
 texlive-pstricks
 texlive-publishers
 texlive-science
+thunar
 tmate
 tmux
 tor
@@ -225,6 +227,7 @@ ttf-linux-libertine
 ttf-ms-fonts
 ttf-symbola
 ttf-ubuntu-font-family
+tumbler
 turtl
 ufw
 universal-ctags-git
@@ -237,9 +240,9 @@ visual-studio-code-bin
 vlc
 w3m
 watchexec
-watson
 wget
 which
+wine
 x11-ssh-askpass
 xautolock
 xclip
