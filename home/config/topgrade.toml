@@ -35,7 +35,7 @@
 #set_title = false
 # Commands to run before anything
 [pre_commands]
-"Update Pacman mirrorlist" = "sudo /usr/bin/reflector --protocol https --latest 30 --number 20 --sort rate --save /etc/pacman.d/mirrorlist"
+"Update Pacman mirrorlist" = "sudo /usr/bin/reflector --protocol https --country Germany --latest 30 --number 20 --sort rate --save /etc/pacman.d/mirrorlist"
 
 # Custom commands
 [commands]
