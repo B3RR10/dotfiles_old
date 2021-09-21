@@ -81,9 +81,6 @@ require('packer').startup {
     { 'Shougo/neco-vim' },
     { 'Shougo/neco-syntax' },
 
-    -- Yaml
-    { 'avakhov/vim-yaml' },
-
     --------------
     --  Editor  --
     --------------
