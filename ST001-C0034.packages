@@ -23,6 +23,7 @@ git
 git-delta-bin
 groff
 htop
+jq
 less
 libiodbc
 libodb-mssql
@@ -30,6 +31,7 @@ libtool
 lldb
 llvm
 lua
+lua-format
 lua-language-server
 m4
 make
