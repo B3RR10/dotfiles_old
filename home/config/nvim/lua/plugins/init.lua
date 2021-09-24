@@ -22,7 +22,6 @@ require('packer').startup {
     --  Visuals  --
     ---------------
     { 'romainl/Apprentice', branch = 'fancylines-and-neovim' },
-    { 'dominikduda/vim_current_word' },
     { 'kyazdani42/nvim-web-devicons' },
     { 'hoob3rt/lualine.nvim' },
     { 'akinsho/nvim-bufferline.lua' },
