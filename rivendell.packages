@@ -103,6 +103,7 @@ linux-headers
 linux-lts
 linux-lts-headers
 lsof
+lua-format
 lua-language-server
 lyriek
 m4
@@ -199,6 +200,7 @@ starship-bin
 subversion
 sudo
 task
+teams
 teamviewer
 texinfo
 texlab
@@ -258,5 +260,6 @@ zathura
 zathura-djvu
 zathura-pdf-mupdf
 zenity
+zola
 zsh
 zsh-completions
