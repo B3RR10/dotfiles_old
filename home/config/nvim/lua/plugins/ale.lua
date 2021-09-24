@@ -27,7 +27,7 @@ vim.g.ale_fixers = {
 }
 
 vim.g.ale_lua_lua_format_options =
-  '--indent-width=2 --continuation-indent-width=2 --tab-width=2 --spaces-inside-table-braces --extra-sep-at-table-end'
+  '--column-limit=100 --indent-width=2 --continuation-indent-width=2 --tab-width=2 --spaces-inside-table-braces --extra-sep-at-table-end'
 
 vim.g.ale_rust_cargo_use_check = 1
 vim.g.ale_rust_cargo_check_all_targets = 1
