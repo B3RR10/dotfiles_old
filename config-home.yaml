@@ -132,9 +132,6 @@ dotfiles:
   f_config_zsh_99-my-env.zsh:
     src: config/zsh/99-my-env.zsh
     dst: ~/.config/zsh/99-my-env.zsh
-  d_local_share_applications:
-    src: local/share/applications
-    dst: ~/.local/share/applications
   d_local_share_fonts:
     dst: ~/.local/share/fonts
     src: local/share/fonts
@@ -167,7 +164,6 @@ profiles:
     - d_config_msmtp
   Desktop:
     dotfiles:
-    - d_local_share_applications
     - d_local_share_fonts
     - d_config_kitty
     - d_config_redshift
