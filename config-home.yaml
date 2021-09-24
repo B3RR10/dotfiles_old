@@ -90,6 +90,9 @@ dotfiles:
     - '*/.netrwhist'
     - '**/spell'
     - 'plugin/packer_compiled.lua'
+  d_config_paru:
+    src: config/paru
+    dst: ~/.config/paru
   d_config_redshift:
     dst: ~/.config/redshift
     src: config/redshift
@@ -191,6 +194,7 @@ profiles:
     - d_config_zsh
     - f_gitconfig
     - f_gitignore
+    - d_config_paru
     - f_config_starship
     - f_tmux
     - f_config_topgrade
