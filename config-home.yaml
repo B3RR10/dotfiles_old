@@ -1,5 +1,5 @@
 actions:
-  vim-plug: nvim +PackerCompile +PackerInstall +qall
+  vim-plug: nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 config:
   backup: false
   banner: true
