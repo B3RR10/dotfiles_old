@@ -50,4 +50,23 @@ function M.on_attach(client, bufnr)
   print("'" .. client.name .. "' server attached")
 end
 
+function M.capabilities()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+  -- Code Actions
+  capabilities.textDocument.codeAction = {
+    dynamicRegistration = false,
+    codeActionLiteralSupport = {
+      codeActionKind = {
+        valueSet = {
+          "", "quickfix", "refactor", "refactor.extract", "refactor.inline", "refactor.rewrite",
+          "source", "source.organizeImports",
+        },
+      },
+    },
+  }
+
+  return capabilities
+end
+
 return M
