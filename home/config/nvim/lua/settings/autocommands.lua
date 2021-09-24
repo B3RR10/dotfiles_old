@@ -1,15 +1,5 @@
 local cmd = vim.cmd
 
--- Reload vimrc after any change in the config
-cmd [[
-  augroup reload_vimrc
-    autocmd!
-    autocmd BufWritePost $MYVIMRC nested :source $MYVIMRC
-    autocmd BufWritePost $HOME/.config/nvim/**/*.vim nested :source $MYVIMRC
-    autocmd BufWritePost $HOME/.config/nvim/**/*.lua nested :source $MYVIMRC
-    echo('Reloaded!')
-]]
-
 cmd 'autocmd TextYankPost * lua vim.highlight.on_yank { on_visual = false }'
 
 -- Autoremove trailing white spaces spaces and convert tabs in spaces
