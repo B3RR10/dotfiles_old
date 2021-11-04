@@ -2,7 +2,7 @@
 auto-ls () {
     if [[ -z $BUFFER ]]; then
         zle && echo ""
-        ls
+        exa --color=auto --group-directories-first
         echo ""
         if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == true ]]; then
             git status --column=row --short

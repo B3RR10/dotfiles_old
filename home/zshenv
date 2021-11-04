@@ -7,12 +7,8 @@ export PATH=$PATH:$HOME/.cargo/bin
 # Local bins (mostly python)
 export PATH=$PATH:$HOME/.local/bin
 
-#  Zplugin
-declare -A ZINIT
-export ZINIT_HOME=$HOME/.local/share/zinit
-export ZINIT[HOME_DIR]=$ZINIT_HOME
-export ZINIT[BIN_DIR]=$ZINIT_HOME/bin
-export ZPFX=${ZINIT[HOME_DIR]}/polaris
+# Znap
+export ZNAP_HOME=$HOME/.local/share/znap
 {%@@ if profile == "work" @@%}
 
 umask 022

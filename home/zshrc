@@ -5,7 +5,8 @@ for file in $HOME/.config/zsh/*.zsh; do
 done
 
 {%@@ if profile == "desktop" or profile == "laptop" @@%}
-eval "$(frum init)"
+znap eval frum 'frum init'
 
 {%@@ endif @@%}
-eval "$(starship init zsh)"
+znap eval starship 'starship init zsh --print-full-init'
+znap prompt

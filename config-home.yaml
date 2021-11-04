@@ -126,6 +126,12 @@ dotfiles:
   d_config_zsh:
     dst: ~/.config/zsh
     src: config/zsh
+    cmpignore:
+    - '*.zwc'
+    instignore:
+    - '*.zwc'
+    upignore:
+    - '*.zwc'
   f_config_zathura:
     dst: ~/.config/zathura/zathurarc
     src: config/zathura/zathurarc
