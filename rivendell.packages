@@ -38,6 +38,7 @@ docker
 docker-compose
 dockerfile-language-server
 dosfstools
+drone-cli
 dunst
 entr
 evince
