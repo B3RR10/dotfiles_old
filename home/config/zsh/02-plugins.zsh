@@ -5,7 +5,7 @@ source $ZNAP_HOME/znap.zsh
 
 znap source ohmyzsh/ohmyzsh \
     lib/{git,completion,key-bindings} \
-    plugins/{colored-man-pages,fzf,git}
+    plugins/{colored-man-pages,fzf,git,nvm}
 
 znap source sorin-ionescu/prezto modules/completion
 
