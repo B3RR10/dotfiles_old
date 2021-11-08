@@ -16,12 +16,14 @@ fakeroot-tcp
 fd
 flake8
 flex
+frum-bin
 fzf
 gcc
 gdb
 git
-git-delta-bin
+git-delta
 groff
+hollywood
 htop
 jq
 less
@@ -40,6 +42,7 @@ mdp
 mssql-tools
 nano
 neovim
+noto-fonts-emoji
 npm
 openmp
 openmpi
@@ -48,6 +51,7 @@ p7zip
 paru-bin
 patch
 pkgconf
+powerline-fonts
 pwgen
 python
 python-mccabe
@@ -57,7 +61,7 @@ python2
 python2-pip
 reflector
 ripgrep
-starship-bin
+starship
 subversion
 sudo
 systemd
@@ -70,4 +74,5 @@ vim
 vint
 wget
 which
+yarn
 zsh
