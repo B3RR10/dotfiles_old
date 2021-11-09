@@ -32,6 +32,8 @@ cronie
 dialog
 diff-so-fancy
 dmenu
+docker
+docker-compose
 efivar
 entr
 exa
@@ -46,6 +48,7 @@ file
 findutils
 firefox
 flex
+frum-bin
 fzf
 gawk
 gcc
@@ -80,6 +83,7 @@ java8-openjfx-doc
 jdk-openjdk
 jdk8-openjdk
 jq
+just
 keybase
 keybase-gui
 khard
@@ -150,7 +154,6 @@ pkgconf
 playerctl
 podman
 podman-compose
-podman-docker
 poppler-glib
 powerline-fonts
 powertop
@@ -169,7 +172,7 @@ rtmpdump
 samba
 sddm
 sed
-sequoia
+sequoia-sq
 shfmt
 signal-desktop
 slurp
@@ -220,7 +223,6 @@ vi
 vim
 vlc
 w3m
-watson
 wdisplays
 wget
 which
