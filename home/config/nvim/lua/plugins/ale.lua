@@ -14,6 +14,7 @@ vim.g.ale_vim_vimls_executable =
   '$HOME/.local/share/vim-lsp-settings/servers/vim-language-server/vim-language-server'
 
 vim.g.ale_fixers = {
+  css = { 'prettier' },
   html = { 'prettier' },
   javascript = { 'prettier' },
   json = { 'prettier' },
