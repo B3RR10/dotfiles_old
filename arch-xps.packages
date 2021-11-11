@@ -33,7 +33,6 @@ dialog
 diff-so-fancy
 dmenu
 docker
-docker-compose
 efivar
 entr
 exa
@@ -92,6 +91,9 @@ libgsf
 libnotify
 libopenraw
 libpqxx
+libreoffice-still
+libreoffice-still-de
+libreoffice-still-es
 libtool
 light
 linux
@@ -104,6 +106,7 @@ lsb-release
 lsof
 lua-alt-getopt
 lua-filesystem
+lua-format
 lua-language-server
 lxc
 m4
@@ -131,6 +134,7 @@ noto-fonts-extra
 npm
 ntfs-3g
 ntp
+obs-studio
 openmp
 openssh
 otf-font-awesome
@@ -153,7 +157,6 @@ pipewire
 pkgconf
 playerctl
 podman
-podman-compose
 poppler-glib
 powerline-fonts
 powertop
@@ -183,6 +186,7 @@ speedtest-cli
 spotify
 starship
 strace
+subliminal
 subversion
 sudo
 sway
@@ -204,6 +208,9 @@ texlive-pictures
 texlive-pstricks
 texlive-publishers
 texlive-science
+thunar
+thunar-archive-plugin
+thunar-volman
 tlp
 tmate
 tmux
