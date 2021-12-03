@@ -26,6 +26,7 @@ groff
 hollywood
 htop
 jq
+just
 less
 libiodbc
 libodb-mssql
@@ -44,6 +45,7 @@ nano
 neovim
 noto-fonts-emoji
 npm
+nvm
 openmp
 openmpi
 openssh
