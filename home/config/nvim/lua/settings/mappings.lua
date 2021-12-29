@@ -4,7 +4,6 @@ local map = utils.map
 -- Escape commands
 map('i', 'jk', '<ESC>')
 map('i', 'JK', '<ESC>')
-map('i', 'tn', '<ESC>')
 map('', '<C-q>', '<ESC>')
 
 -- Moving chars
