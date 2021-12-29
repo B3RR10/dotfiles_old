@@ -133,6 +133,7 @@ ntp
 nvidia
 nvidia-settings
 nyx
+obs-studio
 obsidian-appimage
 onlyoffice-bin
 opencl-nvidia
@@ -178,6 +179,7 @@ python2
 python2-neovim-git
 python2-pip
 python2-setuptools
+qmk
 r
 redshift
 reflector
