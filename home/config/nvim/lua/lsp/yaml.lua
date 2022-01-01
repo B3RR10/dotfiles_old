@@ -1,7 +1,7 @@
 local lspconfig = require('lspconfig')
 local on_attach = require('lsp.on_attach').on_attach
 
-lspconfig.yamlls.setup {
+lspconfig.yamlls.setup({
   on_attach = on_attach,
   settings = {
     yaml = {
@@ -10,4 +10,4 @@ lspconfig.yamlls.setup {
       },
     },
   },
-}
+})

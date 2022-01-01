@@ -1,8 +1,9 @@
 local M = {}
 
 function M.on_attach(client, bufnr)
-
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_keymap(...)
+    vim.api.nvim_buf_set_keymap(bufnr, ...)
+  end
 
   -- Mappings
   local opts = { noremap = true, silent = true }
@@ -17,8 +18,7 @@ function M.on_attach(client, bufnr)
 
   buf_set_keymap('n', '<C-l>aw', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<C-l>rw', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<C-l>lw',
-                 '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<C-l>lw', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<C-l>t', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<C-l>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<C-l>rf', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
@@ -35,7 +35,8 @@ function M.on_attach(client, bufnr)
 
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec([[
+    vim.api.nvim_exec(
+      [[
         hi LspReferenceRead cterm=underline gui=underline
         hi LspReferenceText cterm=underline gui=underline
         hi LspReferenceWrite cterm=underline gui=underline
@@ -44,7 +45,9 @@ function M.on_attach(client, bufnr)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
         augroup END
-        ]], false)
+        ]],
+      false
+    )
   end
 
   print("'" .. client.name .. "' server attached")

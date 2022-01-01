@@ -7,7 +7,7 @@ function M.setup()
   ]])
   vim.opt.termguicolors = true
 
-  vim.cmd 'colorscheme apprentice'
+  vim.cmd('colorscheme apprentice')
 end
 
 return M

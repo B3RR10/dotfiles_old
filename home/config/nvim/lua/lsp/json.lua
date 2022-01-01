@@ -1,12 +1,12 @@
 local lspconfig = require('lspconfig')
 local on_attach = require('lsp.on_attach').on_attach
 
-lspconfig.jsonls.setup {
+lspconfig.jsonls.setup({
   on_attach = on_attach,
   commands = {
     Format = {
       function()
-        vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
+        vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line('$'), 0 })
       end,
     },
   },
@@ -21,4 +21,4 @@ lspconfig.jsonls.setup {
       },
     },
   },
-}
+})

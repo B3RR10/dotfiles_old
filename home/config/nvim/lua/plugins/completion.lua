@@ -1,7 +1,7 @@
 vim.opt.completeopt = { 'menuone', 'noselect' }
 vim.opt.shortmess:append('c')
 
-require'compe'.setup {
+require('compe').setup({
   enabled = true,
   autocomplete = true,
   debug = false,
@@ -27,12 +27,32 @@ require'compe'.setup {
     ultisnips = true,
     calc = true,
   },
-}
+})
 
 require('vim.lsp.protocol').CompletionItemKind = {
-  'ﮜ [text]', ' [method]', ' [function]', ' [constructor]', 'ﰠ [field]',
-  ' [variable]', ' [class]', ' [interface]', ' [module]', ' [property]',
-  ' [unit]', ' [value]', ' [enum]', ' [key]', ' [snippet]', ' [color]',
-  ' [file]', ' [reference]', ' [folder]', ' [enum member]', ' [constant]',
-  ' [struct]', '⌘ [event]', ' [operator]', '⌂ [type]',
+  'ﮜ [text]',
+  ' [method]',
+  ' [function]',
+  ' [constructor]',
+  'ﰠ [field]',
+  ' [variable]',
+  ' [class]',
+  ' [interface]',
+  ' [module]',
+  ' [property]',
+  ' [unit]',
+  ' [value]',
+  ' [enum]',
+  ' [key]',
+  ' [snippet]',
+  ' [color]',
+  ' [file]',
+  ' [reference]',
+  ' [folder]',
+  ' [enum member]',
+  ' [constant]',
+  ' [struct]',
+  '⌘ [event]',
+  ' [operator]',
+  '⌂ [type]',
 }

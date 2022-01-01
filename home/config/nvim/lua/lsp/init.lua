@@ -1,14 +1,14 @@
-require 'lsp.on_attach'
-require 'lsp.angular'
-require 'lsp.bash'
-require 'lsp.css'
-require 'lsp.docker'
-require 'lsp.html'
-require 'lsp.json'
-require 'lsp.lua'
-require 'lsp.ruby'
-require 'lsp.rust'
-require 'lsp.tailwindcss'
-require 'lsp.ts'
-require 'lsp.vim'
-require 'lsp.yaml'
+require('lsp.on_attach')
+require('lsp.angular')
+require('lsp.bash')
+require('lsp.css')
+require('lsp.docker')
+require('lsp.html')
+require('lsp.json')
+require('lsp.lua')
+require('lsp.ruby')
+require('lsp.rust')
+require('lsp.tailwindcss')
+require('lsp.ts')
+require('lsp.vim')
+require('lsp.yaml')

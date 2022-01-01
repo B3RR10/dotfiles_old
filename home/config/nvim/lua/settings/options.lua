@@ -1,7 +1,7 @@
 local cmd = vim.cmd
 
-cmd 'syntax enable'
-cmd 'filetype plugin indent on'
+cmd('syntax enable')
+cmd('filetype plugin indent on')
 
 if vim.opt.diff:get() then
   vim.opt.foldopen = ''

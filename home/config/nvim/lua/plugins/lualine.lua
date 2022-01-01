@@ -3,7 +3,7 @@ local M = {}
 function M.setup()
   local apprentice = require('plugins.apprentice')
 
-  require'lualine'.setup {
+  require('lualine').setup({
     options = {
       icons_enabled = true,
       theme = apprentice,
@@ -29,7 +29,7 @@ function M.setup()
     },
     tabline = {},
     extensions = { 'fzf', 'nvim-tree', 'quickfix', 'fugitive' },
-  }
+  })
 end
 
 return M

@@ -168,14 +168,31 @@ require('packer').startup({
     -- Multiple cursors
     { 'terryma/vim-multiple-cursors' },
 
+    -- Smooth scrolling
+    {
+      'karb94/neoscroll.nvim',
+      config = function()
+        require('neoscroll').setup()
+      end,
+    },
+
+    -- See cursor jump
+    {
+      'danilamihailov/beacon.nvim',
+      config = function()
+        require('plugins.beacon').setup()
+      end,
+      event = 'VimEnter',
+    },
+
     -- Snippets
     {
       'SirVer/ultisnips',
+      requires = { 'honza/vim-snippets' },
       config = function()
         require('plugins.ultisnips').setup()
       end,
     },
-    { 'honza/vim-snippets' },
 
     -- Surroundings
     {
@@ -204,7 +221,6 @@ require('packer').startup({
     { 'whiteinge/diffconflicts' },
 
     -- Fuzzy finder
-    --{ '/usr/bin/fzf' },
     {
       'junegunn/fzf.vim',
       config = function()

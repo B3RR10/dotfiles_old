@@ -4,4 +4,4 @@ local on_attach = require('lsp.on_attach').on_attach
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-lspconfig.html.setup { on_attach = on_attach, capabilities = capabilities }
+lspconfig.html.setup({ on_attach = on_attach, capabilities = capabilities })
