@@ -1,56 +1,29 @@
-local map = require('settings.utils').map
+local M = {}
 
-vim.g.nvim_tree_gitignore = 1
-vim.g.nvim_tree_quit_on_open = 1
-vim.g.nvim_tree_highlight_opened_files = 2
-vim.g.nvim_tree_git_hl = 1
+function M.setup()
+  local map = require('settings.utils').map
 
-require'nvim-tree'.setup {
-  disable_netrw       = true,
-  hijack_netrw        = true,
-  open_on_setup       = true,
-  ignore_ft_on_setup  = {},
-  auto_close          = true,
-  open_on_tab         = false,
-  hijack_cursor       = false,
-  update_cwd          = false,
-  update_to_buf_dir   = {
-    enable = true,
-    auto_open = true,
-  },
-  diagnostics = {
-    enable = false,
-    icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
-    }
-  },
-  update_focused_file = {
-    enable      = true,
-    update_cwd  = false,
-    ignore_list = { '.git', 'node_modules', '.cache' }
-  },
-  system_open = {
-    cmd  = nil,
-    args = {}
-  },
-  filters = {
-    dotfiles = false,
-    custom = {}
-  },
-  view = {
-    width = 40,
-    height = 30,
-    hide_root_folder = false,
-    side = 'left',
-    auto_resize = true,
-    mappings = {
-      custom_only = false,
-      list = {}
-    }
-  }
-}
+  vim.g.nvim_tree_quit_on_open = 1
+  vim.g.nvim_tree_highlight_opened_files = 2
+  vim.g.nvim_tree_git_hl = 1
+  vim.g.nvim_tree_group_empty = 1
 
-map('n', '<C-p>', ':NvimTreeToggle<CR>')
+  require('nvim-tree').setup({
+    auto_close = true,
+    update_cwd = true,
+    update_focused_file = {
+      enable = true,
+      ignore_list = { '.git', 'node_modules', '.cache' },
+    },
+    view = {
+      width = '25%',
+      side = 'left',
+      number = true,
+      relativenumber = true,
+    },
+  })
+
+  map('n', '<C-p>', ':NvimTreeToggle<CR>')
+end
+
+return M

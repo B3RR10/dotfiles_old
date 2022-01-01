@@ -24,7 +24,7 @@ vim.opt.smartindent = true
 vim.opt.linebreak = true
 vim.opt.showbreak = '> '
 vim.opt.cpoptions:append('n')
-vim.opt.textwidth = 100
+vim.opt.textwidth = 120
 vim.opt.formatoptions:remove('j')
 vim.opt.lazyredraw = true
 vim.opt.incsearch = true

@@ -7,11 +7,10 @@ if fn.empty(fn.glob(install_path)) > 0 then
   exec('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
 
-cmd [[packadd packer.nvim]]
-cmd 'au BufWritePost packages.lua PackerCompile'
+cmd([[packadd packer.nvim]])
+cmd('au BufWritePost packages.lua PackerCompile')
 
--- LuaFormatter off
-require('packer').startup {
+require('packer').startup({
   {
     --------------
     --  Packer  --
@@ -21,30 +20,95 @@ require('packer').startup {
     ---------------
     --  Visuals  --
     ---------------
-    { 'romainl/Apprentice', branch = 'fancylines-and-neovim' },
+    {
+      'romainl/Apprentice',
+      branch = 'fancylines-and-neovim',
+      config = function()
+        require('plugins.colorscheme').setup()
+      end,
+    },
     { 'kyazdani42/nvim-web-devicons' },
-    { 'hoob3rt/lualine.nvim' },
+    {
+      'hoob3rt/lualine.nvim',
+      config = function()
+        require('plugins.lualine').setup()
+      end,
+    },
     { 'akinsho/nvim-bufferline.lua' },
 
     -- Git
     { 'tpope/vim-fugitive' },
-    { 'airblade/vim-gitgutter' },
+    { 'f-person/git-blame.nvim' },
+    {
+      'lewis6991/gitsigns.nvim',
+      requires = { 'nvim-lua/plenary.nvim' },
+      config = function()
+        require('plugins.gitsigns').setup()
+      end,
+    },
 
     -- Show intentation guides
-    { 'nathanaelkane/vim-indent-guides' },
+    {
+      'nathanaelkane/vim-indent-guides',
+      config = function()
+        require('plugins.indent_guides').setup()
+      end,
+    },
 
     ------------------------
     --  LSP & Completion  --
     ------------------------
     { 'neovim/nvim-lspconfig' },
-    { 'hrsh7th/nvim-compe' },
-    { 'w0rp/ale' },
+    {
+      'hrsh7th/nvim-cmp',
+      requires = {
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-nvim-lsp',
+        'quangnguyen30192/cmp-nvim-ultisnips',
+        -- "hrsh7th/cmp-nvim-lua",
+        -- "octaltree/cmp-look",
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-calc',
+        'f3fora/cmp-spell',
+        'hrsh7th/cmp-emoji',
+        'ray-x/cmp-treesitter',
+        'onsails/lspkind-nvim',
+      },
+      config = function()
+        require('plugins.cmp').setup()
+      end,
+    },
+    {
+      'w0rp/ale',
+      config = function()
+        require('plugins.ale').setup()
+      end,
+    },
+    {
+      'nvim-treesitter/nvim-treesitter',
+      requires = {
+        'romgrk/nvim-treesitter-context',
+        'p00f/nvim-ts-rainbow',
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        'JoosepAlviste/nvim-ts-context-commentstring',
+        'nvim-treesitter/playground',
+      },
+      run = ':TSUpdate',
+      config = function()
+        require('plugins.treesitter').setup()
+      end,
+    },
 
     -----------------
     --  Filetypes  --
     -----------------
     -- C# - .NET
-    { 'OmniSharp/omnisharp-vim' },
+    {
+      'OmniSharp/omnisharp-vim',
+      config = function()
+        require('plugins.omnisharp').setup()
+      end,
+    },
 
     -- Editorconfig
     { 'editorconfig/editorconfig-vim' },
@@ -53,7 +117,12 @@ require('packer').startup {
     { 'tpope/vim-git' },
 
     -- HTML
-    { 'mattn/emmet-vim' },
+    {
+      'mattn/emmet-vim',
+      config = function()
+        require('plugins.emmet').setup()
+      end,
+    },
 
     -- justfile
     { 'NoahTheDuke/vim-just' },
@@ -69,9 +138,8 @@ require('packer').startup {
     --{ 'tpope/vim-markdown' },
 
     -- Rust
-    --{ 'rust-lang/rust.vim' },
-    --{ 'arzg/vim-rust-syntax-ext' },
-    --{ 'racer-rust/vim-racer' },
+    { 'rust-lang/rust.vim' },
+    { 'simrat39/rust-tools.nvim' },
 
     -- Toml
     --{ 'cespare/vim-toml' },
@@ -90,29 +158,45 @@ require('packer').startup {
     { 'tpope/vim-commentary' },
 
     -- Motions
-    { 'easymotion/vim-easymotion' },
+    {
+      'easymotion/vim-easymotion',
+      config = function()
+        require('plugins.easymotion').setup()
+      end,
+    },
 
     -- Multiple cursors
     { 'terryma/vim-multiple-cursors' },
 
     -- Snippets
-    { 'SirVer/ultisnips' },
+    {
+      'SirVer/ultisnips',
+      config = function()
+        require('plugins.ultisnips').setup()
+      end,
+    },
     { 'honza/vim-snippets' },
 
     -- Surroundings
-    { 'jiangmiao/auto-pairs' },
+    {
+      'jiangmiao/auto-pairs',
+      config = function()
+        require('plugins.autopairs').setup()
+      end,
+    },
     { 'tpope/vim-surround' },
-
-    -- Swap arguments in parens
-    { 'machakann/vim-swap' },
 
     -- Add more vim objects
     { 'wellle/targets.vim' },
     { 'tpope/vim-unimpaired' },
 
     -- Save persistent sessions on a workspace
-    { 'thaerkh/vim-workspace' },
-
+    {
+      'thaerkh/vim-workspace',
+      config = function()
+        require('plugins.workspace').setup()
+      end,
+    },
     -------------
     --  Tools  --
     -------------
@@ -121,28 +205,47 @@ require('packer').startup {
 
     -- Fuzzy finder
     --{ '/usr/bin/fzf' },
-    { 'junegunn/fzf.vim' },
+    {
+      'junegunn/fzf.vim',
+      config = function()
+        require('plugins.fzf').setup()
+      end,
+    },
 
-    -- Focus with :Goyo
-    { 'junegunn/goyo.vim', },
-    { 'junegunn/limelight.vim' },
+    -- Zen mode
+    {
+      'folke/zen-mode.nvim',
+      requires = { 'folke/twilight.nvim' },
+      config = function()
+        require('plugins.zen_mode').setup()
+      end,
+    },
 
     -- HTTP Client
     {
       'NTBBloodbath/rest.nvim',
       requires = { 'nvim-lua/plenary.nvim' },
-      -- ft = { 'http' },
+      ft = { 'http' },
       config = function()
-        -- print 'Execute function!'
-        require 'plugins.rest'
-      end
+        require('plugins.rest').setup()
+      end,
     },
 
     -- Neovim tree
-    { 'kyazdani42/nvim-tree.lua' },
+    {
+      'kyazdani42/nvim-tree.lua',
+      config = function()
+        require('plugins.neovim_tree').setup()
+      end,
+    },
 
-    -- Tags
-    { 'liuchengxu/vista.vim' },
+    -- Nvim colorizer #666666
+    {
+      'norcalli/nvim-colorizer.lua',
+      config = function()
+        require('colorizer').setup()
+      end,
+    },
 
     ------------
     --  Misc  --
@@ -157,25 +260,9 @@ require('packer').startup {
   },
   config = {
     display = {
-      open_fn = require "packer.util".float
-    }
-  }
-}
--- LuaFormatter on
-
-require 'plugins.ale'
-require 'plugins.autopairs'
-require 'plugins.colorscheme'
-require 'plugins.completion'
-require 'plugins.easymotion'
-require 'plugins.emmet'
-require 'plugins.fzf'
-require 'plugins.gitgutter'
-require 'plugins.goyo'
-require 'plugins.indent_guides'
-require 'plugins.neovim_tree'
-require 'plugins.omnisharp'
-require 'plugins.ultisnips'
-require 'plugins.workspace'
+      open_fn = require('packer.util').float,
+    },
+  },
+})
 
 -- vim: foldmethod=marker

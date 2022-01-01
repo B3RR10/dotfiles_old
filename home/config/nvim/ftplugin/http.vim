@@ -1,1 +1,0 @@
-nmap <CR> <Plug>RestNvim

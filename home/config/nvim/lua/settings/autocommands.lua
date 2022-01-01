@@ -1,9 +1,9 @@
 local cmd = vim.cmd
 
-cmd 'autocmd TextYankPost * lua vim.highlight.on_yank { on_visual = false }'
+cmd('autocmd TextYankPost * lua vim.highlight.on_yank { on_visual = false }')
 
 -- Autoremove trailing white spaces spaces and convert tabs in spaces
-cmd [[
+cmd([[
   function! StripWhiteSpaces()
       if &ft =~ 'gitcommit\|diff'
       return
@@ -13,27 +13,27 @@ cmd [[
       's
       delmarks s
   endfunction
-]]
+]])
 -- autocmd BufWritePre * silent! %s/\s\+$//ge
-cmd [[
+cmd([[
   augroup before_save
     autocmd!
     autocmd BufWritePre * silent! call StripWhiteSpaces()
     autocmd BufWritePre * %retab!
   augroup END
-]]
+]])
 
 -- Show relative numbers in normal mode
-cmd [[
+cmd([[
   augroup line_nums
     autocmd!
     autocmd InsertEnter * set nornu
     autocmd InsertLeave * set rnu
   augroup END
-]]
+]])
 
 -- Allow comments in json
-cmd [[autocmd FileType json syntax match Comment +\/\/.\+$+]]
+cmd([[autocmd FileType json syntax match Comment +\/\/.\+$+]])
 
 -- Disable fold in commit buffers
-cmd 'autocmd FileType gitcommit set nofoldenable'
+cmd('autocmd FileType gitcommit set nofoldenable')

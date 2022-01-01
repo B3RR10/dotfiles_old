@@ -1,6 +1,0 @@
-# %title
-
-
-Backlink: %backlink
-----
-%footer
