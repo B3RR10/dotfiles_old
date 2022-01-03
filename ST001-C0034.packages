@@ -53,11 +53,13 @@ p7zip
 paru-bin
 patch
 pkgconf
+podman
 powerline-fonts
 pwgen
 python
 python-mccabe
 python-pip
+python-pynvim
 python-rope
 python2
 python2-pip
