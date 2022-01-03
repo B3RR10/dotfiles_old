@@ -116,6 +116,7 @@
 {%@@ else @@%}
     gpgsign = false
 {%@@ endif @@%}
+    template = /home/berriom/.config/git/commit-message
 
 [pull]
     rebase = true

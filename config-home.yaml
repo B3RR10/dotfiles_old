@@ -34,6 +34,9 @@ dotfiles:
   f_config_dunst:
     dst: ~/.config/dunst/dunstrc
     src: config/dunst/dunstrc
+  d_config_git:
+    src: config/git
+    dst: ~/.config/git
   f_config_gtk3:
     dst: ~/.config/gtk-3.0/settings.ini
     src: config/gtk-3.0/settings.ini
@@ -196,6 +199,7 @@ profiles:
   Terminal:
     dotfiles:
     - d_bin
+    - d_config_git
     - d_config_nvim
     - d_config_zsh
     - f_gitconfig
