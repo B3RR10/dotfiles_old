@@ -1,8 +1,8 @@
--- Install plugins
-require('plugins')
-
 -- Settings
 require('settings')
+
+-- Install plugins
+require('plugins')
 
 -- Setup Lua language server using submodule
 require('lsp')

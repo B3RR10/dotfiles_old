@@ -1,5 +1,9 @@
 local M = {}
 
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
 function M.setup()
   local cmp = require('cmp')
   local lspkind = require('lspkind')
@@ -28,15 +32,29 @@ function M.setup()
       }),
     },
     mapping = {
-      ['<C-p>'] = cmp.mapping.select_prev_item(),
+      ['<Tab>'] = cmp.mapping(function(fallback)
+        if vim.fn['UltiSnips#CanJumpForwards']() == 1 then
+          vim.api.nvim_feedkeys(t('<Plug>(ultisnips_jump_forward)'), 'm', true)
+        else
+          fallback()
+        end
+      end, { 'i', 's' }),
+      ['<S-Tab>'] = cmp.mapping(function(fallback)
+        if vim.fn['UltiSnips#CanJumpBackwards']() == 1 then
+          vim.api.nvim_feedkeys(t('<Plug>(ultisnips_jump_backward)'), 'm', true)
+        else
+          fallback()
+        end
+      end, { 'i', 's' }),
       ['<C-n>'] = cmp.mapping.select_next_item(),
+      ['<C-p>'] = cmp.mapping.select_prev_item(),
       ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-e>'] = cmp.mapping.close(),
+      ['<C-u>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.close(),
       ['<CR>'] = cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Insert,
-        select = true,
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = false,
       }),
     },
     sources = cmp.config.sources({
@@ -53,6 +71,18 @@ function M.setup()
       { name = 'buffer' },
     }),
     completion = { completeopt = 'menu,menuone,noinsert' },
+  })
+
+  cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' },
+    },
+  })
+
+  cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+      { name = 'cmdline' },
+    }),
   })
 end
 

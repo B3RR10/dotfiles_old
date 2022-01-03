@@ -65,13 +65,13 @@ require('packer').startup({
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-nvim-lsp',
         'quangnguyen30192/cmp-nvim-ultisnips',
-        -- "hrsh7th/cmp-nvim-lua",
-        -- "octaltree/cmp-look",
+        'hrsh7th/cmp-nvim-lua',
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-calc',
         'f3fora/cmp-spell',
         'hrsh7th/cmp-emoji',
         'ray-x/cmp-treesitter',
+        'hrsh7th/cmp-cmdline',
         'onsails/lspkind-nvim',
       },
       config = function()
@@ -188,7 +188,7 @@ require('packer').startup({
     -- Snippets
     {
       'SirVer/ultisnips',
-      requires = { 'honza/vim-snippets' },
+      requires = { { 'honza/vim-snippets', rtp = '.' } },
       config = function()
         require('plugins.ultisnips').setup()
       end,

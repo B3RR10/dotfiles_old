@@ -3,6 +3,12 @@ local cmd = vim.cmd
 cmd('syntax enable')
 cmd('filetype plugin indent on')
 
+vim.cmd([[
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  ]])
+vim.opt.termguicolors = true
+
 if vim.opt.diff:get() then
   vim.opt.foldopen = ''
 else
@@ -11,10 +17,7 @@ end
 
 vim.opt.swapfile = false
 vim.opt.clipboard = 'unnamedplus'
--- Do I want that?
--- vim.opt.cursorcolumn = true
--- vim.opt.cursorline = true
---
+
 vim.opt.encoding = 'utf-8'
 vim.opt.visualbell = true
 vim.opt.foldcolumn = '0'
@@ -51,5 +54,4 @@ vim.opt.showtabline = 2
 vim.opt.updatetime = 300
 vim.opt.splitbelow = true
 vim.opt.splitright = true
--- TODO: Fix the optRemove function
 vim.opt.sessionoptions:remove('blank')
