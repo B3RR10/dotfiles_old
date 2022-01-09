@@ -49,9 +49,9 @@ require('packer').startup({
 
     -- Show intentation guides
     {
-      'nathanaelkane/vim-indent-guides',
+      'lukas-reineke/indent-blankline.nvim',
       config = function()
-        require('plugins.indent_guides').setup()
+        require('plugins.indent_blankline').setup()
       end,
     },
 
@@ -130,15 +130,12 @@ require('packer').startup({
     -- Lua
     { 'tjdevries/nlua.nvim' },
 
-    -- Markdown
-    --{ 'tpope/vim-markdown' },
-
     -- Rust
     { 'rust-lang/rust.vim' },
     { 'simrat39/rust-tools.nvim' },
 
     -- Toml
-    --{ 'cespare/vim-toml' },
+    { 'cespare/vim-toml' },
 
     -- Vim
     { 'Shougo/neco-vim' },
