@@ -127,10 +127,6 @@ require('packer').startup({
     -- justfile
     { 'NoahTheDuke/vim-just' },
 
-    -- Latex plugins
-    { 'lervag/vimtex' },
-    --{ 'matze/vim-tex-fold' },
-
     -- Lua
     { 'tjdevries/nlua.nvim' },
 
