@@ -38,6 +38,7 @@ docker
 docker-compose
 dockerfile-language-server
 dosfstools
+dotnet-sdk
 drone-cli
 dunst
 entr
@@ -58,7 +59,6 @@ findutils
 firefox
 flex
 freetube
-frum-bin
 fzf
 gawk
 gcc
@@ -200,6 +200,7 @@ speedtest-cli
 spotify
 spotifyd
 starship-bin
+stylua-bin
 subversion
 sudo
 task
