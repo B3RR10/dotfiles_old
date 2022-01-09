@@ -1,6 +1,6 @@
 local lspconfig = require('lspconfig')
-local on_attach = require('lsp.on_attach').on_attach
+local util = require('lsp.util')
 
 lspconfig.angularls.setup({
-  on_attach = on_attach,
+  on_attach = util.on_attach,
 })

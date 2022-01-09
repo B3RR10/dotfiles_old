@@ -1,4 +1,9 @@
 local lspconfig = require('lspconfig')
-local on_attach = require('lsp.on_attach').on_attach
+local util = require('lsp.util')
 
-lspconfig.rust_analyzer.setup({ on_attach = on_attach })
+local workdir = lspconfig.util.root_pattern('Cargo.toml', 'rust-project.json', vim.fn.getcwd())
+
+lspconfig.rust_analyzer.setup({
+  on_attach = util.on_attach,
+  cmd = util.cmd(workdir(vim.fn.getcwd()), 'registry.berrio.dev/rust-analyzer', true),
+})

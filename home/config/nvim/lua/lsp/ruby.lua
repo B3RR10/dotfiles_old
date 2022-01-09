@@ -1,4 +1,9 @@
 local lspconfig = require('lspconfig')
-local on_attach = require('lsp.on_attach').on_attach
+local util = require('lsp.util')
 
-lspconfig.solargraph.setup({ on_attach = on_attach })
+local workdir = lspconfig.util.root_pattern('Gemfile', '.git', vim.fn.getcwd())
+
+lspconfig.solargraph.setup({
+  on_attach = util.on_attach,
+  cmd = util.cmd(workdir(vim.fn.getcwd()), 'registry.berrio.dev/solargraph-language-server'),
+})

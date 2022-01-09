@@ -53,4 +53,24 @@ function M.on_attach(client, bufnr)
   print("'" .. client.name .. "' server attached")
 end
 
+function M.cmd(workdir, image, readable)
+  if workdir and image then
+    local volume = workdir .. ':' .. workdir
+    if not readable then
+      volume = volume .. ':ro'
+    end
+
+    return {
+      'docker',
+      'container',
+      'run',
+      '--interactive',
+      '--rm',
+      '--workdir=' .. workdir,
+      '--volume=' .. volume,
+      image,
+    }
+  end
+end
+
 return M

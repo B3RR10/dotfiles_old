@@ -1,4 +1,3 @@
-require('lsp.on_attach')
 require('lsp.angular')
 require('lsp.bash')
 require('lsp.css')
