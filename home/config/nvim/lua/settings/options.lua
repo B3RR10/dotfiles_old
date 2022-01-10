@@ -28,11 +28,11 @@ vim.opt.linebreak = true
 vim.opt.showbreak = '> '
 vim.opt.cpoptions:append('n')
 vim.opt.textwidth = 120
-vim.opt.formatoptions:remove('j')
+vim.opt.formatoptions:remove('o')
+vim.opt.formatoptions:remove('t')
 vim.opt.lazyredraw = true
 vim.opt.incsearch = true
 vim.opt.shortmess:append('n')
-
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 0
 vim.opt.tabstop = 4

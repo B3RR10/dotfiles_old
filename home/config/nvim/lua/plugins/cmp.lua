@@ -20,6 +20,7 @@ function M.setup()
         menu = {
           buffer = '[Buffer]',
           nvim_lsp = '[LSP]',
+          omni = '[Omni]',
           ultisnips = '[Snippet]',
           nvim_lua = '[Lua]',
           tabnine = '[TabNine]',
@@ -60,6 +61,7 @@ function M.setup()
     sources = cmp.config.sources({
       { name = 'buffer' },
       { name = 'nvim_lsp' },
+      { name = 'omni' },
       { name = 'ultisnips' },
       { name = 'nvim_lua' },
       { name = 'path' },
