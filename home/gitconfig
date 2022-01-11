@@ -24,7 +24,7 @@
     whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
     pager = delta
-    excludeFile = /home/berriom/.gitignore
+    excludeFile = ~/.gitignore
 {%@@ if profile == "work" @@%}
 
     fileMode = false
@@ -116,7 +116,7 @@
 {%@@ else @@%}
     gpgsign = false
 {%@@ endif @@%}
-    template = /home/berriom/.config/git/commit-message
+    template = ~/.config/git/commit-message
 
 [pull]
     rebase = true
