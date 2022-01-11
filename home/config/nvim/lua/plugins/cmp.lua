@@ -27,7 +27,6 @@ function M.setup()
           nvim_lua = '[Lua]',
           tabnine = '[TabNine]',
           path = '[Path]',
-          spell = '[Spell]',
           calc = '[Calc]',
           emoji = '[Emoji]',
           treesitter = '[Treesitter]',
@@ -68,7 +67,6 @@ function M.setup()
       { name = 'nvim_lua' },
       { name = 'path' },
       { name = 'calc' },
-      { name = 'spell' },
       { name = 'emoji' },
       { name = 'treesitter' },
     }, {

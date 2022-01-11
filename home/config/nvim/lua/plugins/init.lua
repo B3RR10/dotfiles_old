@@ -68,7 +68,6 @@ require('packer').startup({
         'hrsh7th/cmp-nvim-lua',
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-calc',
-        'f3fora/cmp-spell',
         'hrsh7th/cmp-emoji',
         'ray-x/cmp-treesitter',
         'hrsh7th/cmp-cmdline',
