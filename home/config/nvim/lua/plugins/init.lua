@@ -257,6 +257,13 @@ require('packer').startup({
       end,
     },
 
+    {
+      'mickael-menu/zk-nvim',
+      config = function()
+        require('plugins.zk').setup()
+      end,
+    },
+
     ------------
     --  Misc  --
     ------------

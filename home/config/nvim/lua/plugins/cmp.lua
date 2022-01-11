@@ -72,7 +72,7 @@ function M.setup()
     }, {
       { name = 'buffer' },
     }),
-    completion = { completeopt = 'menu,menuone,noinsert' },
+    completion = { completeopt = 'menu,menuone,noinsert,noselect' },
   })
 
   cmp.setup.cmdline('/', {
