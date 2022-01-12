@@ -64,7 +64,7 @@ require('packer').startup({
       requires = {
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-nvim-lsp',
-        'quangnguyen30192/cmp-nvim-ultisnips',
+        'dcampos/cmp-snippy',
         'hrsh7th/cmp-nvim-lua',
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-calc',
@@ -181,10 +181,10 @@ require('packer').startup({
 
     -- Snippets
     {
-      'SirVer/ultisnips',
+      'dcampos/nvim-snippy',
       requires = { { 'honza/vim-snippets', rtp = '.' } },
       config = function()
-        require('plugins.ultisnips').setup()
+        require('plugins.snippy').setup()
       end,
     },
 

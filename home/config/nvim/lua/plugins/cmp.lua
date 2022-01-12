@@ -1,17 +1,19 @@
 local M = {}
 
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
 function M.setup()
   local cmp = require('cmp')
   local lspkind = require('lspkind')
+  local snippy = require('snippy')
 
   cmp.setup({
     snippet = {
       expand = function(args)
-        vim.fn['UltiSnips#Anon'](args.body)
+        require('snippy').expand_snippet(args.body) -- For `snippy` users.
       end,
     },
     formatting = {
@@ -21,7 +23,7 @@ function M.setup()
           buffer = '[Buffer]',
           nvim_lsp = '[LSP]',
           omni = '[Omni]',
-          ultisnips = '[Snippet]',
+          snippy = '[Snippet]',
           nvim_lua = '[Lua]',
           tabnine = '[TabNine]',
           path = '[Path]',
@@ -34,15 +36,15 @@ function M.setup()
     },
     mapping = {
       ['<Tab>'] = cmp.mapping(function(fallback)
-        if vim.fn['UltiSnips#CanJumpForwards']() == 1 then
-          vim.api.nvim_feedkeys(t('<Plug>(ultisnips_jump_forward)'), 'm', true)
+        if snippy.can_expand_or_advance() then
+          snippy.expand_or_advance()
         else
           fallback()
         end
       end, { 'i', 's' }),
       ['<S-Tab>'] = cmp.mapping(function(fallback)
-        if vim.fn['UltiSnips#CanJumpBackwards']() == 1 then
-          vim.api.nvim_feedkeys(t('<Plug>(ultisnips_jump_backward)'), 'm', true)
+        if snippy.can_jump(-1) then
+          snippy.previous()
         else
           fallback()
         end
@@ -62,7 +64,7 @@ function M.setup()
       { name = 'buffer' },
       { name = 'nvim_lsp' },
       { name = 'omni' },
-      { name = 'ultisnips' },
+      { name = 'snippy' },
       { name = 'nvim_lua' },
       { name = 'path' },
       { name = 'calc' },
@@ -72,19 +74,7 @@ function M.setup()
     }, {
       { name = 'buffer' },
     }),
-    completion = { completeopt = 'menu,menuone,noinsert,noselect' },
-  })
-
-  cmp.setup.cmdline('/', {
-    sources = {
-      { name = 'buffer' },
-    },
-  })
-
-  cmp.setup.cmdline(':', {
-    sources = cmp.config.sources({
-      { name = 'cmdline' },
-    }),
+    completion = { completeopt = 'menu,menuone,noselect' },
   })
 end
 
