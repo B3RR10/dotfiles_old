@@ -33,6 +33,8 @@ dialog
 diff-so-fancy
 dmenu
 docker
+dotnet-host-bin
+dotnet-sdk-bin
 efivar
 entr
 exa
@@ -135,6 +137,7 @@ npm
 ntfs-3g
 ntp
 obs-studio
+omnisharp-roslyn
 openmp
 openssh
 otf-font-awesome
@@ -164,7 +167,9 @@ pulseaudio
 pulseaudio-alsa
 pwgen
 python-pip
+python-pynvim
 python2-pip
+qmk
 qutebrowser
 redshift-wlr-gamma-control-git
 reflector
@@ -172,6 +177,7 @@ ripgrep
 ristretto
 rsync
 rtmpdump
+rust-analyzer
 samba
 sddm
 sed
@@ -183,9 +189,9 @@ smartmontools
 snap-pac
 snapper
 speedtest-cli
-spotify
 starship
 strace
+stylua-bin
 subliminal
 subversion
 sudo
@@ -234,6 +240,7 @@ wdisplays
 wget
 which
 wl-clipboard
+wpa-cute
 wpa_supplicant
 x86_energy_perf_policy
 xdg-user-dirs
