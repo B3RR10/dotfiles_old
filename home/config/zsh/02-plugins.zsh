@@ -29,10 +29,6 @@ compdef _dotdrop sdot
 znap function _pip_completion pip 'eval "$( pip completion --zsh )"'
 compctl -K    _pip_completion pip
 
-# frum
-znap function _frum frum 'eval "$( frum completions -s zsh )"'
-compdef       _frum frum
-
 # cargo & rustup
 if command -v rustup > /dev/null; then
     znap function _cargo cargo 'eval "$( rustup completions zsh cargo )"'
