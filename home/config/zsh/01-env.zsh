@@ -61,4 +61,8 @@ export _Z_DATA=$HOME/.cache/z
 export _Z_NO_RESOLVE_SYMLINKS=1
 # }}} z #
 
+# zk {{{ #
+export ZK_NOTEBOOK_DIR=$HOME/notes
+# }}} zk #
+
 # vim: foldmethod=marker
