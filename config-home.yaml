@@ -31,6 +31,9 @@ dotfiles:
   f_config_alacritty: # TODO: Remove?
     dst: ~/.config/alacritty/alacritty.yml
     src: config/alacritty/alacritty.yml
+  d_config_asdf:
+    src: config/asdf
+    dst: ~/.config/asdf
   f_config_dunst:
     dst: ~/.config/dunst/dunstrc
     src: config/dunst/dunstrc
@@ -84,15 +87,15 @@ dotfiles:
     cmpignore:
     - '*/.netrwhist'
     - '**/spell'
-    - 'plugin/packer_compiled.lua'
+    - plugin/packer_compiled.lua
     instignore:
     - '*/.netrwhist'
     - '**/spell'
-    - 'plugin/packer_compiled.lua'
+    - plugin/packer_compiled.lua
     upignore:
     - '*/.netrwhist'
     - '**/spell'
-    - 'plugin/packer_compiled.lua'
+    - plugin/packer_compiled.lua
   d_config_paru:
     src: config/paru
     dst: ~/.config/paru
@@ -199,6 +202,7 @@ profiles:
   Terminal:
     dotfiles:
     - d_bin
+    - d_config_asdf
     - d_config_git
     - d_config_nvim
     - d_config_zsh

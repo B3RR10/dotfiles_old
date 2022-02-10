@@ -9,6 +9,11 @@ export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
 # }}} Directories #
 
+# asdf {{{ #
+export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/asdfrc"
+export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
+# }}} asdf #
+
 # dotdrop {{{ #
 export DOTREPO=$HOME/.dotfiles
 # Variable to pass to sdot to get current user
