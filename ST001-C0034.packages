@@ -12,7 +12,6 @@ cronie
 ctags
 diff-so-fancy
 dos2unix
-dotnet-sdk
 entr
 exa
 fakeroot-tcp
@@ -49,7 +48,6 @@ neovim
 noto-fonts-emoji
 npm
 nuget
-nvm
 openmp
 openmpi
 openssh
@@ -66,9 +64,9 @@ python-pip
 python-pynvim
 python-rope
 python2
-python2-pip
 reflector
 ripgrep
+shfmt
 starship
 stylua-bin
 subversion
@@ -84,4 +82,5 @@ vint
 wget
 which
 yarn
+zk
 zsh
