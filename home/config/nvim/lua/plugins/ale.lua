@@ -5,6 +5,7 @@ function M.setup()
 
   vim.g.ale_linters = {
     cs = { 'OmniSharp' },
+    eruby = { 'erblint' },
     python = { 'pyls' },
     ruby = { 'solargraph', 'sorbet', 'rails_best_practices', 'rubocop' },
     rust = { 'analyzer', 'cargo' },
@@ -17,6 +18,7 @@ function M.setup()
 
   vim.g.ale_fixers = {
     css = { 'prettier' },
+    eruby = { 'erblint' },
     html = { 'prettier' },
     javascript = { 'prettier' },
     json = { 'prettier' },
