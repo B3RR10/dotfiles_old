@@ -2,8 +2,8 @@
 #  Account berrio.dev  #
 ########################
 account dev
-host mail.miguelberrio.xyz
-port 587
+host smtp.mailbox.org
+port 465
 protocol smtp
 auth on
 user mail@berrio.dev
@@ -12,18 +12,3 @@ tls on
 tls_starttls on
 tls_trust_file /etc/ssl/certs/ca-certificates.crt
 passwordeval "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/isync/berrio.dev.gpg"
-
-##############################
-#  Account miguelberrio.xyz  #
-##############################
-account xyz
-host mail.miguelberrio.xyz
-port 587
-protocol smtp
-auth on
-user me@miguelberrio.xyz
-from me@miguelberrio.xyz
-tls on
-tls_starttls on
-tls_trust_file /etc/ssl/certs/ca-certificates.crt
-passwordeval "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/isync/miguelberrio.xyz.gpg"
