@@ -66,6 +66,7 @@ gdb
 gettext
 gimp
 git
+git-cliff
 git-secret
 github-cli
 gnome-keyring
@@ -95,7 +96,7 @@ lazygit
 ledger
 libertinus-font
 libpqxx
-libreoffice-fresh
+libreoffice-still
 libtool
 light
 linux
@@ -103,6 +104,7 @@ linux-firmware
 linux-headers
 linux-lts
 linux-lts-headers
+lostfiles
 lsof
 lua-format
 lua-language-server
@@ -137,6 +139,7 @@ obs-studio
 obsidian-appimage
 onlyoffice-bin
 opencl-nvidia
+openoffice-bin
 openssh
 openvpn
 openvpn-nordvpn
@@ -176,8 +179,6 @@ python-pip
 python-pynvim
 python-setuptools
 python2
-python2-neovim-git
-python2-pip
 python2-setuptools
 qmk
 r
@@ -203,7 +204,6 @@ starship-bin
 stylua-bin
 subversion
 sudo
-task
 teams
 teamviewer
 texinfo
@@ -215,6 +215,7 @@ texlive-formatsextra
 texlive-games
 texlive-humanities
 texlive-latexextra
+texlive-latexindent-meta
 texlive-music
 texlive-pictures
 texlive-pstricks
@@ -264,6 +265,7 @@ zathura
 zathura-djvu
 zathura-pdf-mupdf
 zenity
+zk
 zola
 zsh
 zsh-completions
