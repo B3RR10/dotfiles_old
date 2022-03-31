@@ -6,10 +6,12 @@ automake
 base
 bash-language-server
 bat
+bind
 binutils
 bison
 cronie
 ctags
+detox
 diff-so-fancy
 dos2unix
 entr
@@ -27,6 +29,7 @@ git-delta
 groff
 hollywood
 htop
+inetutils
 jq
 just
 less
@@ -45,6 +48,7 @@ mdp
 mssql-tools
 nano
 neovim
+nnn
 noto-fonts-emoji
 npm
 nuget
@@ -52,6 +56,7 @@ openmp
 openmpi
 openssh
 p7zip
+pacutils
 paru-bin
 patch
 pkgconf
@@ -64,6 +69,7 @@ python-pip
 python-pynvim
 python-rope
 python2
+ranger
 reflector
 ripgrep
 shfmt
