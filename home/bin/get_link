@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+[[ ! $# -eq 1 ]] && echo "Wrong number of params" && exit 1
+
+url="$1"
+title=$(curl --silent "$url" | grep -Po '(?<=<title>).+(?=</title>)')
+
+echo "[$title]($url)"
