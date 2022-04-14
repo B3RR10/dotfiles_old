@@ -5,9 +5,12 @@ source $ZNAP_HOME/znap.zsh
 
 znap source ohmyzsh/ohmyzsh \
     lib/{git,completion,key-bindings} \
-    plugins/{asdf,colored-man-pages,fzf,git,rsync}
+    plugins/{colored-man-pages,fzf,git,rsync}
 
 znap source sorin-ionescu/prezto modules/completion
+
+znap source asdf-vm/asdf asdf.sh
+znap fpath _asdf 'cat ~[asdf]/completions/_asdf'
 
 znap source rupa/z
 
