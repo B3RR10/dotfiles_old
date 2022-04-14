@@ -1,73 +1,85 @@
 #!/usr/bin/env bash
 
 # Set the ssh key and config for github and then run:
-# bash <(curl sL https://raw.githubusercontent.com/B3RR10/dotfiles/master/deploy.sh)
+# PROFILE="<PROFILE>" bash <(curl sL https://raw.githubusercontent.com/B3RR10/dotfiles/master/deploy.sh)
 
-export DOTREPO="$HOME/.dotfiles"
+: "${PROFILE:?Set PROFILE with the wished profile for the dotfiles.
+    (See https://github.com/B3RR10/dotfiles/blob/fb43dbc6f03532b99263c1536ed4b925d580984f/config-home.yaml).
+    Aborting.}"
 
-# TODO: Eval hostname...
+DOTREPO="${DOTREPO:-$HOME/.dotfiles}"
 
-# Install yay
-if ! command -v yay > /dev/null; then
-    read -r -p "Install yay? [Y/n] " -i "y" IYAY
-    if [ "$(tr '[:upper:]' ':lower:' "$IYAY")" = "y" ]; then
-        print "Installing yay"
-    fi
-    sudo pacman -Syu --needed --noconfirm git wget base-devel
-    cd "$(mktemp -d)" || exit 1
-    git clone https://aur.archlinux.org/yay-bin.git
-    cd yay-bin || exit 1
-    makepkg -si --noconfirm
-    cd ..
-    rm -rf yay*
+# Check if .ssh key for github exists
+if ! grep -q "github.com" ~/.ssh/config; then
+    echo "Please set up your ssh key for Github."
+    exit 1
 fi
 
-# clone dotfiles
+echo "Installing the basics..."
+sudo pacman -Syu --needed --noconfirm \
+    base-devel \
+    git \
+    neovim \
+    starship \
+    tmux \
+    wget \
+    zsh
+echo "Done."
+
+if ! command -v paru > /dev/null; then
+    echo "Installing an AUR helper (paru)"
+    git clone https://aur.archlinux.org/paru-bin.git
+    pushd paru-bin || exit 1
+    makepkg -si --noconfirm
+    popd
+    rm -rf paru*
+    echo "Done."
+fi
+
+# Clone dotfiles
+echo "Cloning dotfiles repo to $DOTREPO"
 if [[ ! -d "$DOTREPO" ]]; then
     git clone git@github.com:B3RR10/dotfiles.git "$DOTREPO"
 fi
 cd "$DOTREPO" || exit 1
+echo "Done."
 
-# Install packages with yay
-
-# Install rust toolchains and progs
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path -q --profile complete
-rustup set profile default
-rustup toolchain add nightly
-
-# cargo install rust-progs
-# TODO: install rust.packages
-
-RUSTANALYZER="$HOME/src/rust-analyzer"
-if [[ ! -d "$RUSTANALYZER" ]]; then
-    [ -d "$HOME/src" ] || mkdir "$HOME/src"
-    git clone https://github.com/rust-analyzer/rust-analyzer.git "$RUSTANALYZER"
-    cd "$RUSTANALYZER" || exit 1
-    cargo install-ra --server
+# Install packages with paru
+echo "Installing packages..."
+if [[ -f "$DOTREPO/$PROFILE.packages" ]]; then
+    paru -S --needed --noconfirm - < "$DOTREPO/$PROFILE.packages"
+else
+    echo "There is no packages file for this profile."
 fi
+echo "Done."
 
-# Install npm packages
-sudo npm install -g neovim
+# Install rust
+echo "Installing rust and its base packages..."
+paru -S --needed --noconfirm rustup
+rustup set profile default
+rustup toolchain install stable
 
-# Install pip packages
-pip2 install --user pynvim
+# Install cargo packages
+cargo install cargo-update topgrade
+echo "Done"
 
+echo "Installing pip and its base packages..."
+paru -S --needed --noconfirm python python-pip
+pip install pynvim
+echo "Done"
+
+echo "Setting a bin directory and adding pfetch..."
 LOCALBIN="$HOME/.local/bin"
 [ -d "$LOCALBIN" ] || mkdir -p "$LOCALBIN"
 [ -f "$LOCALBIN/pfetch" ] || {
     curl -L https://raw.githubusercontent.com/dylanaraps/pfetch/master/pfetch > "$LOCALBIN/pfetch"
     chmod +x "$LOCALBIN/pfetch"
 }
+echo "Done"
 
 # Deploy dotfiles
 git submodule init
 git submodule update
-pip install --user -r "$DOTREPO/dotdrop/requirements.txt"
-"$DOTREPO/dotdrop/dotdrop.sh" --cfg="$DOTREPO/config-home.yaml" install
+pip install -r "$DOTREPO/dotdrop/requirements.txt"
+"$DOTREPO/dotdrop/dotdrop.sh" --cfg="$DOTREPO/config-home.yaml" --profile="$PROFILE" install
 chsh -s /usr/bin/zsh
-
-# Install pfetch from github
-if [[ ! -f "$HOME/bin/pfetch" ]]; then
-    curl https://raw.githubusercontent.com/dylanaraps/pfetch/master/pfetch >"$HOME/bin/pfetch"
-    chmod +x "$HOME/bin/pfetch"
-fi
