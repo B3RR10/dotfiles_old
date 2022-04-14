@@ -12,6 +12,7 @@ export XDG_STATE_HOME=$HOME/.local/state
 # asdf {{{ #
 export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/asdfrc"
 export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
+export ASDF_GEM_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/default-ruby-gems"
 # }}} asdf #
 
 # dotdrop {{{ #
