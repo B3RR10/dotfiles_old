@@ -24,4 +24,11 @@
 # Check battery level every 5 minutes
 */5 * * * * $HOME/bin/battery
 
+# Sync contacts every 5 minutes
+*/5 * * * * vdirsyncer sync
+
+# Sync email every minute
 * * * * * chronic mbsync -c $HOME/.config/isync/mbsyncrc -a
+
+# Sync notes (zk) every 15 minutes
+*/15 * * * * /usr/bin/zk sync
