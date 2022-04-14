@@ -65,12 +65,6 @@ for_window [instance="__scratchpad"] move scratchpad
 for_window [instance="__scratchpad"] scratchpad show, resize set 1000 600
 for_window [instance="__scratchpad"] move position center
 
-# Floating math terminal
-bindsym $mod+u exec --no-startup-id $i3/math.sh
-for_window [instance="__math"] move scratchpad
-for_window [instance="__math"] scratchpad show, resize set 1000 600
-for_window [instance="__math"] move position center
-
 # kill focused window
 bindsym $mod+Shift+q kill
 
