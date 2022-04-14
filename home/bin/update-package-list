@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PACKAGES="$HOME/.dotfiles/$(uname -n).packages"
+PACKAGES="$HOME/.dotfiles/{{@@ profile @@}}.packages"
 ACTUAL="$(paru -Qqe)"
 if [[ ! -f $PACKAGES ]]; then
     echo "$ACTUAL" > "$PACKAGES"
@@ -9,9 +9,6 @@ if [[ ! -f $PACKAGES ]]; then
 fi
 if ! cmp "$PACKAGES" <(echo "$ACTUAL") > /dev/null; then
     printf "List of packages differ with installed packages.\n"
-    diff -u "$PACKAGES" <(echo "$ACTUAL") | bat
-    read -r -p "Do you want to replace it [Y/n]? " INPUT
-    if [[ ! "$INPUT" =~ [^yY] ]]; then
-        echo "$ACTUAL" > "$PACKAGES"
-    fi
+    diff -u "$PACKAGES" <(echo "$ACTUAL")
+    echo "$ACTUAL" > "$PACKAGES"
 fi
