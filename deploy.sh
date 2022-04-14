@@ -16,10 +16,14 @@ if ! grep -q "github.com" ~/.ssh/config; then
 fi
 
 echo "Installing the basics..."
+sudo pacman -Syu --needed --noconfirm base-devel
 sudo pacman -Syu --needed --noconfirm \
-    base-devel \
+    exa \
+    fzf \
     git \
     neovim \
+    python python-pip python-neovim \
+    reflector \
     starship \
     tmux \
     wget \
@@ -61,11 +65,6 @@ rustup toolchain install stable
 
 # Install cargo packages
 cargo install cargo-update topgrade
-echo "Done"
-
-echo "Installing pip and its base packages..."
-paru -S --needed --noconfirm python python-pip
-pip install pynvim
 echo "Done"
 
 echo "Setting a bin directory and adding pfetch..."
