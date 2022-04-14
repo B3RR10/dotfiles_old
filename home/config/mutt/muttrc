@@ -83,10 +83,10 @@ set sidebar_format = "%D%* %?N?%N/?%S"
 # Mailboxes to show in the sidebar.
 # mailboxes AllMailboxes
 named-mailboxes "berrio.dev ======" "=berrio.dev/Inbox"
-mailboxes =berrio.dev/Archive =berrio.dev/Drafts =berrio.dev/Sent =berrio.dev/Junk =berrio.dev/Trash
+mailboxes =berrio.dev/Archive =berrio.dev/Freelancing =berrio.dev/Drafts =berrio.dev/Sent =berrio.dev/Junk =berrio.dev/Trash
 
-named-mailboxes "miguelberrio.xyz ======" "=miguelberrio.xyz/Inbox"
-mailboxes =miguelberrio.xyz/Archive =miguelberrio.xyz/Drafts =miguelberrio.xyz/Sent =miguelberrio.xyz/Junk =miguelberrio.xyz/Trash
+# named-mailboxes "miguelberrio.xyz ======" "=miguelberrio.xyz/Inbox"
+# mailboxes =miguelberrio.xyz/Archive =miguelberrio.xyz/Drafts =miguelberrio.xyz/Sent =miguelberrio.xyz/Junk =miguelberrio.xyz/Trash
 
 # source colors and keybindings
 source $my_mutt_config/colors
@@ -102,8 +102,8 @@ source $my_mutt_config/devrc
 
 # Folder hooks
 folder-hook berrio.dev/*        source $my_mutt_config/devrc
-folder-hook miguelberrio.xyz/*  source $my_mutt_config/xyzrc
+# folder-hook miguelberrio.xyz/*  source $my_mutt_config/xyzrc
 
 # Macros for switching accounts
-macro index > '<sync-mailbox><enter-command>source $my_mutt_config/xyzrc<enter><change-folder>!<enter>'
-macro index < '<sync-mailbox><enter-command>source $my_mutt_config/devrc<enter><change-folder>!<enter>'
+# macro index > '<sync-mailbox><enter-command>source $my_mutt_config/xyzrc<enter><change-folder>!<enter>'
+# macro index < '<sync-mailbox><enter-command>source $my_mutt_config/devrc<enter><change-folder>!<enter>'

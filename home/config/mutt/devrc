@@ -16,8 +16,6 @@ set signature = $my_mutt_config/signature
 
 color status cyan default
 
-macro index o "<shell-escape>mbsync dev<enter>" "run mbsync to sync mail for this account"
-
 macro index,pager J \
   "<enter-command>set my_old_resolve=\$resolve noresolve<enter>\
   <tag-prefix><clear-flag>n<enter-command>set resolve=\$my_old_resolve<enter>\
@@ -34,7 +32,14 @@ macro index,pager I \
   "<save-message>+berrio.dev/Inbox<enter><exit>"  \
   "move message to the inbox"
 
+macro index,pager F \
+  "<enter-command>set my_old_resolve=\$resolve noresolve<enter>\
+  <tag-prefix><clear-flag>n<enter-command>set resolve=\$my_old_resolve<enter>\
+  <save-message>+berrio.dev/Freelancing<enter>"  \
+  "move message to the archive"
+
 macro index ga "<change-folder> =berrio.dev/Archive<enter>" "Got to Archive"
+macro index gf "<change-folder> =berrio.dev/Freelancing<enter>" "Got to Freelancing"
 macro index gd "<change-folder> =berrio.dev/Drafts<enter>" "Got to Drafts"
 macro index gi "<change-folder> =berrio.dev/Inbox<enter>" "Got to INBOX"
 macro index gj "<change-folder> =berrio.dev/Junk<enter>" "Got to Spam"
