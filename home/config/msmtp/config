@@ -3,7 +3,7 @@
 ########################
 account dev
 host smtp.mailbox.org
-port 465
+port 587
 protocol smtp
 auth on
 user mail@berrio.dev
