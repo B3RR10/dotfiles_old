@@ -18,9 +18,10 @@ fi
 echo "Installing the basics..."
 sudo pacman -Syu --needed --noconfirm base-devel
 sudo pacman -Syu --needed --noconfirm \
+    bat \
     exa \
     fzf \
-    git \
+    git git-delta \
     neovim \
     python python-pip python-neovim \
     reflector \
