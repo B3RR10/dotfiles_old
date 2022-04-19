@@ -215,17 +215,8 @@ profiles:
     - f_zshenv
     - f_zshrc
   WSL:
-    dotfiles:
-    - d_config_git
-    - d_config_nvim
-    - d_config_zsh
-    - f_gitconfig
-    - f_gitignore
-    - f_config_starship
-    - f_tmux
-    - f_config_topgrade
-    - f_zshenv
-    - f_zshrc
+    include:
+    - Terminal
 
   desktop:
     include:
