@@ -4,13 +4,19 @@
 source $ZNAP_HOME/znap.zsh
 
 znap source ohmyzsh/ohmyzsh \
-    lib/{git,completion,key-bindings} \
+    lib/{git,key-bindings} \
     plugins/{colored-man-pages,direnv,fzf,git,rsync}
-
-znap source sorin-ionescu/prezto modules/completion
 
 znap source asdf-vm/asdf asdf.sh
 znap fpath _asdf 'cat ~[asdf]/completions/_asdf'
+
+znap source Aloxaf/fzf-tab
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# preview directory's content with exa when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# switch group using `C-h` and `C-l`
+zstyle ':fzf-tab:*' switch-group 'ctrl-h' 'ctrl-l'
 
 znap source rupa/z
 

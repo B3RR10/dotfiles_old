@@ -1,5 +1,6 @@
 # Misc {{{ #
 export KEYTIMEOUT=1
+export WORDCHARS=''
 # }}} Misc #
 
 # Directories {{{ #
