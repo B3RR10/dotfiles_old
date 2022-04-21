@@ -2,8 +2,8 @@
 alias zsh!='RELOAD=1 source "$HOME/.zshrc"'
 
 # dotdrop {{{ #
-dot() { $DOTREPO/dotdrop/dotdrop.sh --cfg=$DOTREPO/config-home.yaml --profile={{@@ profile @@}} $@ }
-sdot() { sudo -E $DOTREPO/dotdrop/dotdrop.sh --cfg=$DOTREPO/config-root.yaml --profile={{@@ profile @@}} $@ }
+dt() { $DOTREPO/dotdrop/dotdrop.sh --cfg=$DOTREPO/config-home.yaml --profile={{@@ profile @@}} $@ }
+sdt() { sudo -E $DOTREPO/dotdrop/dotdrop.sh --cfg=$DOTREPO/config-root.yaml --profile={{@@ profile @@}} $@ }
 # }}} dotdrop #
 
 #  Editor {{{ #

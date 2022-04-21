@@ -25,8 +25,8 @@ znap source zsh-users/zsh-syntax-highlighting
 # dotdrop
 znap function _dotdrop dot \
     'eval "$( cat $DOTREPO/dotdrop/completion/_dotdrop-completion.zsh )"'
-compdef _dotdrop dot
-compdef _dotdrop sdot
+compdef _dotdrop dt
+compdef _dotdrop sdt
 
 # pip
 znap function _pip_completion pip 'eval "$( pip completion --zsh )"'
