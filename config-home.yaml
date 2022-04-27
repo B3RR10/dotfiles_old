@@ -141,9 +141,6 @@ dotfiles:
   f_config_zathura:
     dst: ~/.config/zathura/zathurarc
     src: config/zathura/zathurarc
-  f_config_zsh_08-wsl.zsh:
-    src: config/zsh/08-wsl.zsh
-    dst: ~/.config/zsh/08-wsl.zsh
   f_config_zsh_99-my-env.zsh:
     src: config/zsh/99-my-env.zsh
     dst: ~/.config/zsh/99-my-env.zsh
@@ -231,10 +228,4 @@ profiles:
     include:
     - Desktop
     - Sway
-    - Terminal
-
-  work:
-    dotfiles:
-    - f_config_zsh_08-wsl.zsh
-    include:
     - Terminal
