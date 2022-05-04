@@ -23,6 +23,7 @@ git-lfs
 groff
 highlight
 htop
+kubectl
 libcaca
 libtool
 m4
@@ -31,8 +32,10 @@ man-db
 mediainfo
 minikube
 nano
+neofetch
 neovim
 odt2txt
+onefetch
 openssh
 p7zip
 paru-bin
