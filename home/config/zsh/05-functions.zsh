@@ -15,6 +15,7 @@ auto-ls () {
         else
             LAST_REPO=""
         fi
+        echo ""
 
         zle && zle redisplay
     else
