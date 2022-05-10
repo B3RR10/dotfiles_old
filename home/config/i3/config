@@ -17,7 +17,7 @@ set $indicator-color     #458588
 set $i3 $HOME/.config/i3
 
 # Set terminal
-set $terminal kitty
+set $terminal alacritty
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
@@ -296,17 +296,10 @@ bindsym Control+Mod1+BackSpace exec $i3exit lock
 ####################
 # Execute on login #
 ####################
-# exec --no-startup-id compton -f
+exec --no-startup-id picom --backend glx --dbus -b
 exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 exec --no-startup-id redshift
 exec --no-startup-id nextcloud
-exec --no-startup-id fcitx5 -d
-# Start programs with `systemctl --user`
-#   dunst
-
-# exec_always --no-startup-id ~/.config/polybar/launch.sh
-#exec_always --no-startup-id xautolock -detectsleep -time 60 -locker '$i3exit lock'
-#exec_always --no-startup-id xss-lock -- $i3exit lock
 
 ####################
 #  Execute always  #
