@@ -93,6 +93,7 @@ keybase-gui
 khard
 kitty
 lazygit
+libappindicator-gtk3
 libertinus-font
 libpqxx
 libreoffice-still
@@ -118,6 +119,7 @@ moreutils
 mplayer
 mpv
 msmtp
+mtpfs
 mupdf
 neomutt
 neovim
@@ -195,6 +197,7 @@ sddm
 sed
 signal-desktop
 skim
+slack-desktop
 solaar
 speedtest-cli
 spotify
