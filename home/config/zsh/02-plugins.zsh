@@ -5,7 +5,7 @@ source $ZNAP_HOME/znap.zsh
 
 znap source ohmyzsh/ohmyzsh \
     lib/{git,key-bindings} \
-    plugins/{colored-man-pages,direnv,fzf,git,rsync}
+    plugins/{colored-man-pages,direnv,fzf,git,git-extras,rsync}
 
 znap source asdf-vm/asdf asdf.sh
 znap fpath _asdf 'cat ~[asdf]/completions/_asdf'
