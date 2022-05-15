@@ -98,6 +98,8 @@ require('packer').startup({
         require('plugins.treesitter').setup()
       end,
     },
+    -- { 'lspcontainers/lspcontainers.nvim' },
+    { 'B3RR10/lspcontainers.nvim' },
 
     -----------------
     --  Filetypes  --

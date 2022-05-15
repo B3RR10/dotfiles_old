@@ -1,15 +1,13 @@
 local lspconfig = require('lspconfig')
 local util = require('lsp.util')
 
-local workdir = lspconfig.util.root_pattern('.git', vim.fn.getcwd())
-
 lspconfig.yamlls.setup({
   on_attach = util.on_attach,
   before_init = function(params)
     params.processId = vim.NIL
   end,
-  cmd = util.cmd(workdir(vim.fn.getcwd()), 'registry.berrio.dev/yaml-language-server'),
-  root_dir = workdir,
+  cmd = require('lspcontainers').command('yamlls', { network = 'bridge' }),
+  root_dir = lspconfig.util.root_pattern('.git', vim.fn.getcwd()),
   settings = {
     yaml = {
       schemas = {

@@ -2,9 +2,9 @@ local lspconfig = require('lspconfig')
 local util = require('lsp.util')
 
 lspconfig.sumneko_lua.setup({
-  cmd = { '/usr/bin/lua-language-server', '-E', '/usr/share/lua-language-server/main.lua' },
   on_attach = util.on_attach,
   -- capabilities = capabilities(),
+  cmd = require('lspcontainers').command('sumneko_lua'),
   settings = {
     Lua = {
       runtime = { version = 'LuaJIT' },
