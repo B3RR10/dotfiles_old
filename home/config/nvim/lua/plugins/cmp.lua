@@ -37,6 +37,8 @@ function M.setup()
       ['<Tab>'] = cmp.mapping(function(fallback)
         if snippy.can_expand_or_advance() then
           snippy.expand_or_advance()
+        elseif cmp.visible() then
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
         else
           fallback()
         end
@@ -44,12 +46,16 @@ function M.setup()
       ['<S-Tab>'] = cmp.mapping(function(fallback)
         if snippy.can_jump(-1) then
           snippy.previous()
+        elseif cmp.visible() then
+          cmp.select_prev_item()
         else
           fallback()
         end
       end, { 'i', 's' }),
       ['<C-n>'] = cmp.mapping.select_next_item(),
+      ['<Down>'] = cmp.mapping.select_next_item(),
       ['<C-p>'] = cmp.mapping.select_prev_item(),
+      ['<Up>'] = cmp.mapping.select_prev_item(),
       ['<C-d>'] = cmp.mapping.scroll_docs(-4),
       ['<C-u>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
