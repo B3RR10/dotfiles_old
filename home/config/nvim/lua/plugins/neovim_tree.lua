@@ -3,13 +3,11 @@ local M = {}
 function M.setup()
   local map = require('settings.utils').map
 
-  vim.g.nvim_tree_quit_on_open = 1
   vim.g.nvim_tree_highlight_opened_files = 2
   vim.g.nvim_tree_git_hl = 1
   vim.g.nvim_tree_group_empty = 1
 
   require('nvim-tree').setup({
-    auto_close = true,
     update_cwd = true,
     update_focused_file = {
       enable = true,
@@ -20,6 +18,11 @@ function M.setup()
       side = 'left',
       number = true,
       relativenumber = true,
+    },
+    actions = {
+      open_file = {
+        quit_on_open = true,
+      },
     },
   })
 
