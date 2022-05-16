@@ -66,7 +66,7 @@ function M.setup()
       }),
     },
     sources = cmp.config.sources({
-      { name = 'buffer' },
+      { name = 'buffer', option = { keyword_pattern = [[\k\+]] } },
       { name = 'nvim_lsp' },
       { name = 'omni' },
       { name = 'snippy' },
@@ -76,7 +76,7 @@ function M.setup()
       { name = 'emoji' },
       { name = 'treesitter' },
     }, {
-      { name = 'buffer' },
+      { name = 'buffer', option = { keyword_pattern = [[\k\+]] } },
     }),
     completion = { completeopt = 'menu,menuone,noselect' },
   })
