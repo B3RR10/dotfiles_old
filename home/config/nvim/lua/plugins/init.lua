@@ -242,11 +242,11 @@ require('packer').startup({
       end,
     },
 
-    -- Use ranger in nvim
+    -- Neovim tree
     {
-      'kevinhwang91/rnvimr',
+      'kyazdani42/nvim-tree.lua',
       config = function()
-        require('plugins.rnvimr').setup()
+        require('plugins.neovim_tree').setup()
       end,
     },
 
