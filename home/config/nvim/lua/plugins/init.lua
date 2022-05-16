@@ -87,11 +87,9 @@ require('packer').startup({
     {
       'nvim-treesitter/nvim-treesitter',
       requires = {
-        'romgrk/nvim-treesitter-context',
         'p00f/nvim-ts-rainbow',
         'nvim-treesitter/nvim-treesitter-textobjects',
         'JoosepAlviste/nvim-ts-context-commentstring',
-        'nvim-treesitter/playground',
       },
       run = ':TSUpdate',
       config = function()
@@ -209,6 +207,7 @@ require('packer').startup({
         require('plugins.workspace').setup()
       end,
     },
+
     -------------
     --  Tools  --
     -------------
