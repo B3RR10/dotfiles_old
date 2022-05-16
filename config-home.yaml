@@ -114,6 +114,9 @@ dotfiles:
   f_config_starship:
     src: config/starship.toml
     dst: ~/.config/starship.toml
+  d_config_stylua:
+    src: config/stylua
+    dst: ~/.config/stylua
   d_config_sway:
     dst: ~/.config/sway
     src: config/sway
@@ -208,6 +211,7 @@ profiles:
     - f_gitignore
     - d_config_paru
     - f_config_starship
+    - d_config_stylua
     - f_tmux
     - f_config_topgrade
     - f_zshenv
