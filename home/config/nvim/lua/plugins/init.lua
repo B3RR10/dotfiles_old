@@ -79,9 +79,9 @@ require('packer').startup({
       end,
     },
     {
-      'w0rp/ale',
+      'mhartington/formatter.nvim',
       config = function()
-        require('plugins.ale').setup()
+        require('plugins.formatter').setup()
       end,
     },
     {
