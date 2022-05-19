@@ -98,6 +98,12 @@ require('packer').startup({
     },
     -- { 'lspcontainers/lspcontainers.nvim' },
     { 'B3RR10/lspcontainers.nvim' },
+    {
+      'liuchengxu/vista.vim',
+      config = function()
+        require('plugins.vista').setup()
+      end,
+    },
 
     -----------------
     --  Filetypes  --
