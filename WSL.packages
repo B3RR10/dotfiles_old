@@ -26,6 +26,7 @@ gitui
 groff
 highlight
 htop
+just
 kubectl
 lazygit
 libcaca
@@ -53,6 +54,7 @@ ranger
 reflector
 ripgrep
 rustup
+shfmt
 starship
 stylua
 sudo
