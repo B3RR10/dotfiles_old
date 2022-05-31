@@ -264,6 +264,13 @@ require('packer').startup({
     },
 
     {
+      'jbyuki/venn.nvim',
+      config = function()
+        require('plugins.venn').setup()
+      end,
+    },
+
+    {
       'mickael-menu/zk-nvim',
       config = function()
         require('plugins.zk').setup()
