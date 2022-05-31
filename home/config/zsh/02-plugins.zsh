@@ -11,6 +11,8 @@ znap source asdf-vm/asdf asdf.sh
 znap fpath _asdf 'cat ~[asdf]/completions/_asdf'
 
 znap source Aloxaf/fzf-tab
+# set case insensitive and partial completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 # set descriptions format to enable group support
 zstyle ':completion:*:descriptions' format '[%d]'
 # preview directory's content with exa when completing cd
