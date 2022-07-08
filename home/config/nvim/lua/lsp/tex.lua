@@ -6,6 +6,7 @@ lspconfig.texlab.setup({
   settings = {
     texlab = {
       build = {
+        args = { '-pdf', '-interaction=nonstopmode', '-synctex=1', "'-shell-escape'", '%f' },
         onSave = true,
       },
       chktex = {
