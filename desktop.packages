@@ -176,6 +176,7 @@ python-docopt
 python-pandas
 python-pip
 python-pynvim
+python-sequoia
 python-setuptools
 python2
 python2-setuptools
@@ -195,6 +196,11 @@ rust-script
 scrot
 sddm
 sed
+sequoia-ffi
+sequoia-keyring-linter
+sequoia-sop
+sequoia-sq
+sequoia-sqv
 signal-desktop
 skim
 slack-desktop
