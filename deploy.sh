@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 # Set the ssh key and config for github and then run:
-# PROFILE="<PROFILE>" bash <(curl sL https://raw.githubusercontent.com/B3RR10/dotfiles/master/deploy.sh)
+# PROFILE="<PROFILE>" bash <(curl -sL https://raw.githubusercontent.com/B3RR10/dotfiles/master/deploy.sh)
+
+set -e
 
 : "${PROFILE:?Set PROFILE with the wished profile for the dotfiles.
     (See https://github.com/B3RR10/dotfiles/blob/fb43dbc6f03532b99263c1536ed4b925d580984f/config-home.yaml).
@@ -23,6 +25,7 @@ sudo pacman -Syu --needed --noconfirm \
     fzf \
     git git-delta \
     neovim \
+    openssh \
     python python-pip python-neovim \
     reflector \
     starship \
@@ -31,7 +34,7 @@ sudo pacman -Syu --needed --noconfirm \
     zsh
 echo "Done."
 
-if ! command -v paru > /dev/null; then
+if ! command -v paru >/dev/null; then
     echo "Installing an AUR helper (paru)"
     git clone https://aur.archlinux.org/paru-bin.git
     pushd paru-bin || exit 1
@@ -52,7 +55,7 @@ echo "Done."
 # Install packages with paru
 echo "Installing packages..."
 if [[ -f "$DOTREPO/$PROFILE.packages" ]]; then
-    paru -S --needed --noconfirm - < "$DOTREPO/$PROFILE.packages"
+    paru -S --needed --noconfirm - <"$DOTREPO/$PROFILE.packages"
 else
     echo "There is no packages file for this profile."
 fi
@@ -72,7 +75,7 @@ echo "Setting a bin directory and adding pfetch..."
 LOCALBIN="$HOME/.local/bin"
 [ -d "$LOCALBIN" ] || mkdir -p "$LOCALBIN"
 [ -f "$LOCALBIN/pfetch" ] || {
-    curl -L https://raw.githubusercontent.com/dylanaraps/pfetch/master/pfetch > "$LOCALBIN/pfetch"
+    curl -L https://raw.githubusercontent.com/dylanaraps/pfetch/master/pfetch >"$LOCALBIN/pfetch"
     chmod +x "$LOCALBIN/pfetch"
 }
 echo "Done"
