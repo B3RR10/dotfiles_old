@@ -127,6 +127,9 @@ require('packer').startup({
     -- Editorconfig
     { 'editorconfig/editorconfig-vim' },
 
+    -- F#
+    { 'ionide/Ionide-vim' },
+
     -- Git
     { 'tpope/vim-git' },
 
