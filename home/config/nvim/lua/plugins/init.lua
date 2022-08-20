@@ -55,6 +55,14 @@ require('packer').startup({
       end,
     },
 
+    -- Highlight word under cursor
+    {
+      'RRethy/vim-illuminate',
+      config = function()
+        require('plugins.illuminate').setup()
+      end,
+    },
+
     ------------------------
     --  LSP & Completion  --
     ------------------------
