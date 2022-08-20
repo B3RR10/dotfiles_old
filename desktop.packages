@@ -20,7 +20,6 @@ bat
 bind
 binutils
 bison
-bitwarden
 bleachbit
 btrfs-progs
 calibre
@@ -66,6 +65,7 @@ gimp
 git
 git-cliff
 git-extras
+git-grab
 git-secret
 github-cli
 gnome-keyring
