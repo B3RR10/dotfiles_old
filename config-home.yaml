@@ -171,6 +171,9 @@ dotfiles:
   f_zshenv:
     src: zshenv
     dst: ~/.zshenv
+  f_mozilla_firefox_by8cmaif.default-release_chrome_userchrome.css:
+    src: mozilla/firefox/by8cmaif.default-release/chrome/userChrome.css
+    dst: ~/.mozilla/firefox/by8cmaif.default-release/chrome/userChrome.css
 profiles:
   Mail:
     dotfiles:
@@ -227,6 +230,8 @@ profiles:
     - Terminal
     - Xorg
 
+    dotfiles:
+    - f_mozilla_firefox_by8cmaif.default-release_chrome_userchrome.css
   laptop:
     dotfiles:
     - f_config_zsh_99-my-env.zsh
