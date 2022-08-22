@@ -12,7 +12,7 @@ detox
 devtools
 entr
 exa
-fakeroot-tcp
+fakeroot
 fd
 flex
 fzf
@@ -21,6 +21,7 @@ git
 git-cliff
 git-delta
 git-extras
+git-grab
 git-lfs
 gitui
 groff
@@ -48,6 +49,7 @@ paru-bin
 patch
 pkgconf
 poppler
+python
 python-pip
 python-pynvim
 ranger
