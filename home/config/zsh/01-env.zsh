@@ -47,6 +47,10 @@ export FZF_ALT_C_COMMAND='command cat <(fd -t d --exclude .git --exclude .wine) 
 export FZF_ALT_C_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 #  }}} fzf settings #
 
+# git grab {{{ #
+export GRAB_HOME=$HOME/src
+#  }}} git grab #
+
 # History {{{ #
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.cache/zsh/history"
 [ ! -d $(dirname $HISTFILE) ] && mkdir -p $(dirname $HISTFILE)
