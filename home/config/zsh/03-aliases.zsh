@@ -49,7 +49,7 @@ function gmv() {
     git mv "${2}-" $2
 }
 
-alias gprune='git remote prune origin && git fetch -p && git branch -vv | awk '"'"'/: gone]/{print $1}'"'"' | xargs git branch -D'
+alias gprune='git remote prune origin && git fetch -p && git branch -vv | awk '"'"'/: gone]/{print $1}'"'"' | xargs -r git branch -D'
 #  }}} Git aliases #
 
 {%@@ if profile == "desktop" @@%}
