@@ -6,6 +6,18 @@ function M.setup()
   require('formatter').setup({
     filetype = {
       css = { require('formatter.filetypes.css').prettier },
+      fsharp = {
+        function()
+          return {
+            exe = 'fantomas',
+            args = {
+              '--stdout',
+              util.escape_path(util.get_current_buffer_file_path()),
+            },
+            stdin = true,
+          }
+        end,
+      },
       html = { require('formatter.filetypes.html').prettier },
       javascript = { require('formatter.filetypes.javascript').prettier },
       json = { require('formatter.filetypes.json').prettier },
