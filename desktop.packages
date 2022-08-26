@@ -10,6 +10,7 @@ arandr
 arc-gtk-theme
 arc-icon-theme
 archlinux-themes-sddm
+aspnet-targeting-pack
 ausweisapp2
 autoconf
 automake
@@ -37,6 +38,7 @@ docker
 docker-compose
 dockerfile-language-server
 dosfstools
+dotnet-sdk
 drone-cli
 dunst
 entr
