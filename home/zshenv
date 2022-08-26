@@ -7,6 +7,9 @@ export PATH=$PATH:$HOME/.cargo/bin
 # Local bins (mostly python)
 export PATH=$PATH:$HOME/.local/bin
 
+# Dotnet tools
+export PATH=$PATH:$HOME/.dotnet/tools
+
 # Znap
 export ZNAP_HOME=$HOME/.local/share/znap
 {%@@ if profile == "work" @@%}
