@@ -177,6 +177,7 @@ dotfiles:
 profiles:
   Mail:
     dotfiles:
+    - d_config_aerc
     - d_config_mutt
     - d_config_isync
     - d_config_msmtp
