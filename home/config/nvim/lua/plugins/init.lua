@@ -8,7 +8,13 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 cmd([[packadd packer.nvim]])
-cmd('au BufWritePost packages.lua PackerCompile')
+
+local packerGrp = vim.api.nvim_create_augroup('PackerAutoCompile', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePost', {
+  pattern = '*/lua/plugins/init.lua',
+  command = [[source <afile> | PackerCompile]],
+  group = packerGrp,
+})
 
 require('packer').startup({
   {
