@@ -47,14 +47,6 @@ require('packer').startup({
       end,
     },
 
-    -- Show intentation guides
-    {
-      'lukas-reineke/indent-blankline.nvim',
-      config = function()
-        require('plugins.indent_blankline').setup()
-      end,
-    },
-
     -- Highlight word under cursor
     {
       'RRethy/vim-illuminate',
@@ -164,17 +156,6 @@ require('packer').startup({
     -- Alignment tool
     { 'godlygeek/tabular' },
 
-    -- Comments
-    { 'tpope/vim-commentary' },
-
-    -- Motions
-    {
-      'easymotion/vim-easymotion',
-      config = function()
-        require('plugins.easymotion').setup()
-      end,
-    },
-
     -- Multiple cursors
     { 'terryma/vim-multiple-cursors' },
 
@@ -204,6 +185,14 @@ require('packer').startup({
       end,
     },
 
+    -- mini.nvim
+    {
+      'echasnovski/mini.nvim',
+      config = function()
+        require('plugins.mini').setup()
+      end,
+    },
+
     -- Surroundings
     {
       'jiangmiao/auto-pairs',
@@ -211,11 +200,6 @@ require('packer').startup({
         require('plugins.autopairs').setup()
       end,
     },
-    { 'tpope/vim-surround' },
-
-    -- Add more vim objects
-    { 'wellle/targets.vim' },
-    { 'tpope/vim-unimpaired' },
 
     -- Save persistent sessions on a workspace
     {
