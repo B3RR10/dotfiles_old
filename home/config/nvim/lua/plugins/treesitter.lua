@@ -17,6 +17,7 @@ function M.setup()
       'lua',
       'make',
       'markdown',
+      'markdown_inline',
       'python',
       'regex',
       'rst',
@@ -32,7 +33,7 @@ function M.setup()
     sync_installed = false,
     highlight = {
       enable = true,
-      disable = {},
+      disable = { 'html' },
     },
     incremental_selection = {
       enable = true,
@@ -104,8 +105,7 @@ function M.setup()
     },
   })
 
-  vim.opt.foldmethod = 'expr'
-  vim.opt.foldexpr = vim.fn['nvim_treesitter#foldexpr']()
+  vim.cmd('setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()')
 end
 
 return M

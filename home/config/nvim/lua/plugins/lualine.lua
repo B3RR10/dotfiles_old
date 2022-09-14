@@ -7,8 +7,8 @@ function M.setup()
     options = {
       icons_enabled = true,
       theme = apprentice,
-      component_separators = { '|', '|' },
-      section_separators = { '', '' },
+      component_separators = '',
+      section_separators = '',
       disabled_filetypes = {},
     },
     sections = {
