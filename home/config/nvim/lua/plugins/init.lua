@@ -61,56 +61,6 @@ require('packer').startup({
       end,
     },
 
-    ------------------------
-    --  LSP & Completion  --
-    ------------------------
-    { 'neovim/nvim-lspconfig' },
-    {
-      'hrsh7th/nvim-cmp',
-      requires = {
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-nvim-lsp',
-        'dcampos/cmp-snippy',
-        'hrsh7th/cmp-nvim-lua',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-calc',
-        'hrsh7th/cmp-emoji',
-        'ray-x/cmp-treesitter',
-        'hrsh7th/cmp-cmdline',
-        'hrsh7th/cmp-omni',
-        'onsails/lspkind-nvim',
-      },
-      config = function()
-        require('plugins.cmp').setup()
-      end,
-    },
-    {
-      'mhartington/formatter.nvim',
-      config = function()
-        require('plugins.formatter').setup()
-      end,
-    },
-    {
-      'nvim-treesitter/nvim-treesitter',
-      requires = {
-        'p00f/nvim-ts-rainbow',
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        'JoosepAlviste/nvim-ts-context-commentstring',
-      },
-      run = ':TSUpdate',
-      config = function()
-        require('plugins.treesitter').setup()
-      end,
-    },
-    -- { 'lspcontainers/lspcontainers.nvim' },
-    { 'B3RR10/lspcontainers.nvim' },
-    {
-      'liuchengxu/vista.vim',
-      config = function()
-        require('plugins.vista').setup()
-      end,
-    },
-
     -----------------
     --  Filetypes  --
     -----------------
@@ -155,6 +105,63 @@ require('packer').startup({
     -- Vim
     { 'Shougo/neco-vim' },
     { 'Shougo/neco-syntax' },
+
+    ------------------------
+    --  LSP & Completion  --
+    ------------------------
+    {
+      'neovim/nvim-lspconfig',
+      after = { 'Ionide-vim' },
+      config = function()
+        require('plugins.lsp').setup()
+      end,
+      requires = {
+        'b0o/schemastore.nvim',
+      },
+    },
+    {
+      'hrsh7th/nvim-cmp',
+      requires = {
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-nvim-lsp',
+        'dcampos/cmp-snippy',
+        'hrsh7th/cmp-nvim-lua',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-calc',
+        'hrsh7th/cmp-emoji',
+        'ray-x/cmp-treesitter',
+        'hrsh7th/cmp-cmdline',
+        'hrsh7th/cmp-omni',
+        'onsails/lspkind-nvim',
+      },
+      config = function()
+        require('plugins.cmp').setup()
+      end,
+    },
+    {
+      'mhartington/formatter.nvim',
+      config = function()
+        require('plugins.formatter').setup()
+      end,
+    },
+    {
+      'nvim-treesitter/nvim-treesitter',
+      requires = {
+        'p00f/nvim-ts-rainbow',
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        'JoosepAlviste/nvim-ts-context-commentstring',
+      },
+      run = ':TSUpdate',
+      config = function()
+        require('plugins.treesitter').setup()
+      end,
+    },
+    {
+      'liuchengxu/vista.vim',
+      config = function()
+        require('plugins.vista').setup()
+      end,
+    },
 
     --------------
     --  Editor  --
