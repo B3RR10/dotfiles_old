@@ -110,8 +110,19 @@ require('packer').startup({
     --  LSP & Completion  --
     ------------------------
     {
+      'williamboman/mason.nvim',
+      requires = {
+        'williamboman/mason-lspconfig.nvim',
+        'neovim/nvim-lspconfig',
+        'WhoIsSethDaniel/mason-tool-installer.nvim',
+      },
+      config = function()
+        require('plugins.mason').setup()
+      end,
+    },
+    {
       'neovim/nvim-lspconfig',
-      after = { 'Ionide-vim' },
+      after = { 'mason.nvim', 'Ionide-vim' },
       config = function()
         require('plugins.lsp').setup()
       end,
