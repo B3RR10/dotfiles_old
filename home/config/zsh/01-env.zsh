@@ -10,6 +10,10 @@ export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
 # }}} Directories #
 
+# dotnet {{{ #
+export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
+# }}} dotnet #
+
 # asdf {{{ #
 export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/asdfrc"
 export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"

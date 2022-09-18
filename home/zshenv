@@ -7,7 +7,9 @@ export PATH=$PATH:$HOME/.cargo/bin
 # Local bins (mostly python)
 export PATH=$PATH:$HOME/.local/bin
 
-# Dotnet tools
+# Dotnet
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT
 export PATH=$PATH:$HOME/.dotnet/tools
 
 # Znap
