@@ -8,12 +8,12 @@ end
 function M.setup()
   local cmp = require('cmp')
   local lspkind = require('lspkind')
-  local snippy = require('snippy')
+  local luasnip = require('luasnip')
 
   cmp.setup({
     snippet = {
       expand = function(args)
-        require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        luasnip.lsp_expand(args.body)
       end,
     },
     formatting = {
@@ -23,7 +23,7 @@ function M.setup()
           buffer = '[Buffer]',
           nvim_lsp = '[LSP]',
           omni = '[Omni]',
-          snippy = '[Snippet]',
+          luasnip = '[Snippet]',
           nvim_lua = '[Lua]',
           tabnine = '[TabNine]',
           path = '[Path]',
@@ -35,8 +35,8 @@ function M.setup()
     },
     mapping = {
       ['<Tab>'] = cmp.mapping(function(fallback)
-        if snippy.can_expand_or_advance() then
-          snippy.expand_or_advance()
+        if luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
         elseif cmp.visible() then
           cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
         else
@@ -44,8 +44,8 @@ function M.setup()
         end
       end, { 'i', 's' }),
       ['<S-Tab>'] = cmp.mapping(function(fallback)
-        if snippy.can_jump(-1) then
-          snippy.previous()
+        if luasnip.jumpable(-1) then
+          luasnip.jump(-1)
         elseif cmp.visible() then
           cmp.select_prev_item()
         else
@@ -69,7 +69,7 @@ function M.setup()
       { name = 'buffer', option = { keyword_pattern = [[\k\+]] } },
       { name = 'nvim_lsp' },
       { name = 'omni' },
-      { name = 'snippy' },
+      { name = 'luasnip' },
       { name = 'nvim_lua' },
       { name = 'path' },
       { name = 'calc' },
