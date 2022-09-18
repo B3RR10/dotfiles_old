@@ -10,7 +10,6 @@ arandr
 arc-gtk-theme
 arc-icon-theme
 archlinux-themes-sddm
-aspnet-targeting-pack
 ausweisapp2
 autoconf
 automake
@@ -28,6 +27,8 @@ catatonit
 catimg
 chromium
 clang
+code
+colordiff
 cronie
 dante
 detox
@@ -38,7 +39,6 @@ docker
 docker-compose
 dockerfile-language-server
 dosfstools
-dotnet-sdk
 drone-cli
 dunst
 entr
@@ -251,7 +251,6 @@ v4l2ucp
 vdirsyncer
 vi
 vim
-visual-studio-code-bin
 vlc
 w3m
 watchexec
