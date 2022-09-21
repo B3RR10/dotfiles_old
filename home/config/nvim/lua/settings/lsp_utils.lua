@@ -16,7 +16,7 @@ function M.on_attach(client, bufnr)
 
   bufmap('n', 'gd', vim.lsp.buf.definition)
   bufmap('n', 'gD', vim.lsp.buf.declaration)
-  bufmap('n', 'gi', vim.lsp.buf.implementation)
+  bufmap('n', 'gI', vim.lsp.buf.implementation)
   bufmap('n', 'K', vim.lsp.buf.hover)
   bufmap('n', '<C-k>', vim.lsp.buf.signature_help)
 
