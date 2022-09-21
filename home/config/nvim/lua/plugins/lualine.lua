@@ -1,12 +1,11 @@
 local M = {}
 
 function M.setup()
-  local apprentice = require('plugins.apprentice')
 
   require('lualine').setup({
     options = {
       icons_enabled = true,
-      theme = apprentice,
+      theme = 'kanagawa',
       component_separators = '',
       section_separators = '',
       disabled_filetypes = {},

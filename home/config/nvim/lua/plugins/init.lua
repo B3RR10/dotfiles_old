@@ -27,8 +27,7 @@ require('packer').startup({
     --  Visuals  --
     ---------------
     {
-      'romainl/Apprentice',
-      branch = 'fancylines-and-neovim',
+      'rebelot/kanagawa.nvim',
       config = function()
         require('plugins.colorscheme').setup()
       end,
