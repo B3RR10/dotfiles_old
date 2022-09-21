@@ -183,14 +183,6 @@ require('packer').startup({
     -- Multiple cursors
     { 'terryma/vim-multiple-cursors' },
 
-    -- Smooth scrolling
-    {
-      'karb94/neoscroll.nvim',
-      config = function()
-        require('neoscroll').setup()
-      end,
-    },
-
     -- See cursor jump
     {
       'danilamihailov/beacon.nvim',
