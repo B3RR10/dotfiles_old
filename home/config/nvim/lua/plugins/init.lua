@@ -229,6 +229,14 @@ require('packer').startup({
       end,
     },
 
+    -- Enhance vim.ui interface
+    {
+      'stevearc/dressing.nvim',
+      config = function()
+        require('dressing').setup()
+      end,
+    },
+
     -------------
     --  Tools  --
     -------------
