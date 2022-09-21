@@ -221,11 +221,11 @@ require('packer').startup({
       end,
     },
 
-    -- Save persistent sessions on a workspace
+    -- Save persistent sessions
     {
-      'thaerkh/vim-workspace',
+      'rmagatti/auto-session',
       config = function()
-        require('plugins.workspace').setup()
+        require('plugins.auto-session').setup()
       end,
     },
 
