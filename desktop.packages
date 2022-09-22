@@ -41,6 +41,7 @@ dockerfile-language-server
 dosfstools
 drone-cli
 dunst
+electron16-bin
 entr
 evince
 exa
@@ -148,7 +149,7 @@ p7zip
 pacman
 pacman-contrib
 pacutils
-pandoc
+pandoc-bin
 paru-bin
 pass
 pass-autotype
