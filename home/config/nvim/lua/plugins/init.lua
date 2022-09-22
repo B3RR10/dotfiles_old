@@ -236,6 +236,18 @@ require('packer').startup({
       end,
     },
 
+    -- Auto shriks windows when not enough space
+    {
+      'anuvyklack/windows.nvim',
+      requires = {
+        'anuvyklack/middleclass',
+        'anuvyklack/animation.nvim',
+      },
+      config = function()
+        require('plugins.windows').setup()
+      end,
+    },
+
     -------------
     --  Tools  --
     -------------
