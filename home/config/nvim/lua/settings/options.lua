@@ -55,3 +55,4 @@ vim.opt.updatetime = 300
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.sessionoptions:remove('blank')
+vim.opt.timeoutlen = 500

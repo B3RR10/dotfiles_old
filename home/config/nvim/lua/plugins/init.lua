@@ -248,6 +248,14 @@ require('packer').startup({
       end,
     },
 
+    -- Display possible keybindings
+    {
+      'folke/which-key.nvim',
+      config = function()
+        require('which-key').setup()
+      end,
+    },
+
     -------------
     --  Tools  --
     -------------
