@@ -256,6 +256,13 @@ require('packer').startup({
       end,
     },
 
+    -- Smooth scrolling
+    {
+      'declancm/cinnamon.nvim',
+      config = function()
+        require('plugins.cinnamon').setup()
+      end,
+    },
     -------------
     --  Tools  --
     -------------
