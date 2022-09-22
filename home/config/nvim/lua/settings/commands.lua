@@ -5,7 +5,13 @@ local function CloseHiddenBuffers()
     non_hidden_bufs[vim.api.nvim_win_get_buf(win)] = true
   end
 
-  for _, buffer in ipairs(vim.api.nvim_list_bufs()) do
+  local buffers = vim.api.nvim_list_bufs()
+
+  if #buffers == #non_hidden_bufs then
+    return
+  end
+
+  for _, buffer in ipairs(buffers) do
     if not vim.api.nvim_buf_get_option(buffer, 'modified') and non_hidden_bufs[buffer] == nil then
       vim.cmd('bdelete ' .. buffer)
     end
