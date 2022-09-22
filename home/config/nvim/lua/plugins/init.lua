@@ -157,7 +157,6 @@ require('packer').startup({
     {
       'nvim-treesitter/nvim-treesitter',
       requires = {
-        'p00f/nvim-ts-rainbow',
         'nvim-treesitter/nvim-treesitter-textobjects',
         'JoosepAlviste/nvim-ts-context-commentstring',
       },

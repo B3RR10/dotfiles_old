@@ -33,7 +33,6 @@ function M.setup()
     sync_installed = false,
     highlight = {
       enable = true,
-      disable = { 'html' },
     },
     incremental_selection = {
       enable = true,
@@ -46,10 +45,6 @@ function M.setup()
     },
     indent = {
       enable = true,
-    },
-    rainbow = {
-      enable = true,
-      extended_mode = true,
     },
     textobjects = {
       select = {
@@ -95,8 +90,8 @@ function M.setup()
         enable = true,
         border = 'none',
         peek_definition_code = {
-          ['<leader>df'] = '@function.outer',
-          ['<leader>dF'] = '@class.outer',
+          ['<space>df'] = '@function.outer',
+          ['<space>dF'] = '@class.outer',
         },
       },
     },
