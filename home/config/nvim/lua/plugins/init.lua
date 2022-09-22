@@ -236,7 +236,7 @@ require('packer').startup({
       end,
     },
 
-    -- Auto shriks windows when not enough space
+    -- Auto shrinks windows when not enough space
     {
       'anuvyklack/windows.nvim',
       requires = {
