@@ -8,9 +8,11 @@ function M.setup()
       -- LSP
       'angular-language-server',
       'bash-language-server',
+      'csharp-language-server',
       'css-lsp',
       'dockerfile-language-server',
       'eslint-lsp',
+      'fantomas',
       'fsautocomplete',
       'html-lsp',
       'json-lsp',

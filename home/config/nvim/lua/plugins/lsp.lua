@@ -22,6 +22,7 @@ function M.setup()
 
   lspconfig.angularls.setup({})
   lspconfig.bashls.setup({})
+  lspconfig.csharp_ls.setup({})
   lspconfig.cssls.setup({})
   lspconfig.dockerls.setup({})
   lspconfig.html.setup({})
