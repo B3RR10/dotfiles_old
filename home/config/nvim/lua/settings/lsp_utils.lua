@@ -1,20 +1,23 @@
 local M = {}
 
 function M.on_attach(client, bufnr)
-  local opts = { buffer = bufnr }
-  local function bufmap(mode, lhs, rhs)
+  local function bufmap(mode, lhs, rhs, custom_opts)
+    local opts = { buffer = bufnr }
+    if custom_opts ~= nil then
+      opts = vim.tbl_extend('keep', opts, custom_opts)
+    end
     vim.keymap.set(mode, lhs, rhs, opts)
   end
 
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings
-  bufmap('n', '<space>e', vim.diagnostic.open_float)
+  bufmap('n', '<space>e', vim.diagnostic.open_float, { desc = 'Show diagnostics in a floating window.' })
   bufmap('n', '[d', vim.diagnostic.goto_prev)
   bufmap('n', ']d', vim.diagnostic.goto_next)
   bufmap('n', '<space>q', vim.diagnostic.setloclist)
 
-  bufmap('n', 'gd', vim.lsp.buf.definition)
+  bufmap('n', 'gd', vim.lsp.buf.definition, { desc = 'Jumps to the definition of the symbol under the cursor.' })
   bufmap('n', 'gD', vim.lsp.buf.declaration)
   bufmap('n', 'gI', vim.lsp.buf.implementation)
   bufmap('n', 'K', vim.lsp.buf.hover)
