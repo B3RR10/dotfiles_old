@@ -13,7 +13,7 @@ local function CloseHiddenBuffers()
 
   for _, buffer in ipairs(buffers) do
     if not vim.api.nvim_buf_get_option(buffer, 'modified') and non_hidden_bufs[buffer] == nil then
-      vim.cmd('bdelete ' .. buffer)
+      vim.cmd('bdelete! ' .. buffer)
     end
   end
 end

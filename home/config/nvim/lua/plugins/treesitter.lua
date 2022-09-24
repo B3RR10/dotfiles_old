@@ -30,7 +30,6 @@ function M.setup()
       'vue',
       'yaml',
     },
-    sync_installed = false,
     highlight = {
       enable = true,
     },
