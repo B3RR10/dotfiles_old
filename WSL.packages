@@ -7,10 +7,10 @@ base
 bat
 binutils
 bison
+chezmoi
 ctags
 detox
 devtools
-dotnet-sdk
 entr
 exa
 fakeroot
@@ -64,6 +64,7 @@ sudo
 texinfo
 tmux
 tree
+unzip
 vi
 vim
 w3m
