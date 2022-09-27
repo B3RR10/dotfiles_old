@@ -1,6 +1,7 @@
 local M = {}
 
 function M.setup()
+  require('mini.align').setup()
   require('mini.comment').setup()
   require('mini.indentscope').setup()
   require('mini.jump').setup()

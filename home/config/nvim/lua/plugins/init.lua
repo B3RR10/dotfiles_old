@@ -176,9 +176,6 @@ require('packer').startup({
     --------------
     --  Editor  --
     --------------
-    -- Alignment tool
-    { 'godlygeek/tabular' },
-
     -- Multiple cursors
     { 'terryma/vim-multiple-cursors' },
 
