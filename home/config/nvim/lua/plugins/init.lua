@@ -83,9 +83,10 @@ require('packer').startup({
     -- HTML
     {
       'mattn/emmet-vim',
-      config = function()
+      setup = function()
         require('plugins.emmet').setup()
       end,
+      ft = { 'html', 'css' },
     },
 
     -- justfile
