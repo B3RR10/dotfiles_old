@@ -60,6 +60,18 @@ function M.setup()
   vim.api.nvim_set_keymap('n', '<leader>zf', "<Cmd>ZkNotes { match = vim.fn.input('Search: ') }<CR>", opts)
   -- Search for the notes matching the current visual selection.
   vim.api.nvim_set_keymap('v', '<leader>zf', ":'<,'>ZkMatch<CR>", opts)
+
+  -- Add custom commands
+  local commands = require('zk.commands')
+  local function make_edit_fn(defaults, picker_options)
+    local zk = require('zk')
+    return function(options)
+      options = vim.tbl_extend('force', defaults, options or {})
+      zk.edit(options, picker_options)
+    end
+  end
+
+  commands.add('ZkOrphans', make_edit_fn({ orphan = true }, { title = 'Zk Orphans' }))
 end
 
 return M
