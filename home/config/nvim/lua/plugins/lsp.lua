@@ -88,12 +88,19 @@ function M.setup()
     },
   })
 
-  lspconfig.yamlls.setup({
+  -- Set schemas for yaml
+  local json_schemas = require('schemastore').json.schemas({})
+  local yaml_schemas = {}
+  vim.tbl_map(function(schema)
+    yaml_schemas[schema.url] = schema.fileMatch
+  end, json_schemas)
+
+  require('lspconfig').yamlls.setup({
     settings = {
       yaml = {
-        schemas = {
-          ['https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json'] = '**/docker-compose*.{yml,yaml}',
-          ['https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json'] = '/*.k8s.yaml',
+        schemas = yaml_schemas,
+        schemaStore = {
+          enable = true,
         },
       },
     },
