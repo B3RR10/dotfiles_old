@@ -11,6 +11,7 @@ function M.setup()
       'csharp-language-server',
       'css-lsp',
       'dockerfile-language-server',
+      'emmet-ls',
       'eslint-lsp',
       'fantomas',
       'fsautocomplete',

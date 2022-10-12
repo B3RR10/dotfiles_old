@@ -80,15 +80,6 @@ require('packer').startup({
     -- Git
     { 'tpope/vim-git' },
 
-    -- HTML
-    {
-      'mattn/emmet-vim',
-      setup = function()
-        require('plugins.emmet').setup()
-      end,
-      ft = { 'html', 'css' },
-    },
-
     -- justfile
     { 'NoahTheDuke/vim-just' },
 
