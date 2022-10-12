@@ -12,14 +12,23 @@ local function CloseHiddenBuffers()
   end
 
   for _, buffer in ipairs(buffers) do
-    if not vim.api.nvim_buf_get_option(buffer, 'modified') and non_hidden_bufs[buffer] == nil then
-      vim.cmd('bdelete! ' .. buffer)
+    if
+      -- Only close hidden bufs
+      non_hidden_bufs[buffer] == nil
+      -- that have not being modified
+      and not vim.api.nvim_buf_get_option(buffer, 'modified')
+      -- and that are not scratch bufs, since LSP and nvim-tree would stop working.
+      -- Scratch buffer is defined here: `:h special-buffers`
+      and not vim.api.nvim_buf_get_option(buffer, 'buftype') == 'nofile'
+      and not vim.api.nvim_buf_get_option(buffer, 'bufhidden') == 'hide'
+    then
+      vim.cmd('bwipe ' .. buffer)
     end
   end
 end
 
 vim.api.nvim_create_user_command('CloseHiddenBuffers', CloseHiddenBuffers, {})
-vim.keymap.set('n', '<Leader>C', CloseHiddenBuffers, { desc = 'CloseHiddenBuffers' })
+vim.keymap.set('n', '<Leader>c', CloseHiddenBuffers, { desc = 'CloseHiddenBuffers' })
 
 -- CloseCurrentBuffer
 local function CloseCurrentBuffer()
@@ -54,8 +63,6 @@ local function CloseCurrentBuffer()
 
   local bufnr = vim.api.nvim_get_current_buf()
   preserve_window_layout(bufnr)
-  vim.cmd('bdelete ' .. bufnr)
+  vim.cmd('bwipe ' .. bufnr)
 end
-vim.api.nvim_create_user_command('CloseCurrentBuffer', CloseCurrentBuffer, {})
-vim.keymap.set('n', '<Leader>c', CloseCurrentBuffer, { desc = 'CloseCurrentBuffer' })
-vim.cmd([[cnoreabbrev <expr> bd getcmdtype() == ':' && getcmdline() == 'bd' ? 'CloseCurrentBuffer' : 'bd']])
+vim.api.nvim_create_user_command('Bd', CloseCurrentBuffer, {})
