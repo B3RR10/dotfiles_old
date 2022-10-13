@@ -19,8 +19,10 @@ local function CloseHiddenBuffers()
       and not vim.api.nvim_buf_get_option(buffer, 'modified')
       -- and that are not scratch bufs, since LSP and nvim-tree would stop working.
       -- Scratch buffer is defined here: `:h special-buffers`
-      and not vim.api.nvim_buf_get_option(buffer, 'buftype') == 'nofile'
-      and not vim.api.nvim_buf_get_option(buffer, 'bufhidden') == 'hide'
+      and not (
+        vim.api.nvim_buf_get_option(buffer, 'buftype') == 'nofile'
+        and vim.api.nvim_buf_get_option(buffer, 'bufhidden') == 'hide'
+      )
     then
       vim.cmd('bwipe ' .. buffer)
     end
