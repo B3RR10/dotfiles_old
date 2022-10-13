@@ -176,6 +176,10 @@ require('packer').startup({
     --------------
     --  Editor  --
     --------------
+
+    -- Additional text-objects
+    { 'wellle/targets.vim' },
+
     -- Multiple cursors
     { 'terryma/vim-multiple-cursors' },
 
