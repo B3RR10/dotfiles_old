@@ -77,6 +77,7 @@ grep
 groff
 gtk-theme-united-archers-git
 gtk4
+gvfs-afc
 gzip
 highlight
 htop
@@ -85,6 +86,7 @@ i3blocks
 i3lock
 i3status
 i3status-rust
+ifuse
 imagemagick
 imagemagick-doc
 imv
@@ -98,6 +100,7 @@ kitty
 lazygit
 libappindicator-gtk3
 libertinus-font
+libimobiledevice-git
 libpqxx
 libreoffice-still
 libtool
@@ -124,8 +127,10 @@ mpv
 msmtp
 mtpfs
 mupdf
+neofetch
 neomutt
 neovim
+nerd-fonts-cascadia-code
 nerd-fonts-fira-code
 nextcloud-client
 nmap
@@ -181,8 +186,6 @@ python-pip
 python-pynvim
 python-sequoia
 python-setuptools
-python2
-python2-setuptools
 qmk
 qutebrowser
 ranger
@@ -245,7 +248,6 @@ ttf-ubuntu-font-family
 tumbler
 ueberzug
 ufw
-universal-ctags-git
 urlscan
 v4l2loopback-dkms
 v4l2ucp
