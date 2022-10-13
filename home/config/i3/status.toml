@@ -6,13 +6,6 @@ name = "plain"
 separator = "  |  "
 
 [[block]]
-block = "maildir"
-inboxes = ["/home/miguel/.mail/berrio.dev/Inbox", "/home/miguel/.mail/miguelberrio.xyz/Inbox"]
-
-[[block]]
-block = "speedtest"
-
-[[block]]
 block = "net"
 device = "enp5s0"
 format = "{ssid} {signal_strength} {ip} {speed_down} {graph_down}"
