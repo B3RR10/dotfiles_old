@@ -33,6 +33,7 @@ kubectl
 lazygit
 libcaca
 libtool
+lostfiles
 m4
 make
 man-db
@@ -46,6 +47,7 @@ odt2txt
 onefetch
 openssh
 p7zip
+pacutils
 paru-bin
 patch
 pkgconf
@@ -66,6 +68,7 @@ tmux
 tree
 unzip
 vi
+vifm
 vim
 w3m
 wget
