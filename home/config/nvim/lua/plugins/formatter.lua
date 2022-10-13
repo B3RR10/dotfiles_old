@@ -52,6 +52,15 @@ function M.setup()
           }
         end,
       },
+      vue = {
+        function()
+          return {
+            exe = './node_modules/.bin/prettier',
+            args = { '--stdin-filepath', vim.api.nvim_buf_get_name(0), '--parser', 'vue' },
+            stdin = true,
+          }
+        end,
+      },
     },
   })
 
