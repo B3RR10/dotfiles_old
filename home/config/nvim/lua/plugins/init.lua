@@ -264,6 +264,7 @@ require('packer').startup({
         require('plugins.cinnamon').setup()
       end,
     },
+
     -------------
     --  Tools  --
     -------------
@@ -324,6 +325,14 @@ require('packer').startup({
       'mickael-menu/zk-nvim',
       config = function()
         require('plugins.zk').setup()
+      end,
+    },
+
+    'kdheepak/lazygit.nvim',
+    {
+      'rhysd/committia.vim',
+      config = function()
+        require('plugins.commitia').setup()
       end,
     },
 
