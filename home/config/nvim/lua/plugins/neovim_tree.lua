@@ -10,7 +10,7 @@ function M.setup()
       ignore_list = { '.git', 'node_modules', '.cache' },
     },
     view = {
-      width = '20%',
+      width = '25%',
       number = true,
       relativenumber = true,
     },
