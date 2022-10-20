@@ -273,7 +273,8 @@ require('packer').startup({
 
     -- Fuzzy finder
     {
-      'junegunn/fzf.vim',
+      'ibhagwan/fzf-lua',
+      requires = { 'kyazdani42/nvim-web-devicons' },
       config = function()
         require('plugins.fzf').setup()
       end,
