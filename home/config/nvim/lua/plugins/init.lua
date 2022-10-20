@@ -51,6 +51,12 @@ require('packer').startup({
         require('plugins.gitsigns').setup()
       end,
     },
+    {
+      'rhysd/committia.vim',
+      config = function()
+        require('plugins.commitia').setup()
+      end,
+    },
 
     -- Highlight word under cursor
     {
@@ -329,11 +335,11 @@ require('packer').startup({
       end,
     },
 
-    'kdheepak/lazygit.nvim',
+    -- LazyGit as Git UI
     {
-      'rhysd/committia.vim',
+      'kdheepak/lazygit.nvim',
       config = function()
-        require('plugins.commitia').setup()
+        require('plugins.lazygit').setup()
       end,
     },
 
