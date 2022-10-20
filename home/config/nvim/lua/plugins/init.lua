@@ -343,6 +343,11 @@ require('packer').startup({
       end,
     },
 
+    -- Render markdown files
+    {
+      'ellisonleao/glow.nvim',
+    },
+
     ------------
     --  Misc  --
     ------------
