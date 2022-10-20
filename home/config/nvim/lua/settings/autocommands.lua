@@ -51,3 +51,14 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = 'gitcommit',
   command = 'set nofoldenable',
 })
+
+-- Show only cursorline in active buffer
+local cursorlineGrp = vim.api.nvim_create_augroup('CursorlineShow', { clear = true })
+vim.api.nvim_create_autocmd('WinEnter', {
+  command = 'set cursorline',
+  group = cursorlineGrp,
+})
+vim.api.nvim_create_autocmd('WinLeave', {
+  command = 'set nocursorline',
+  group = cursorlineGrp,
+})

@@ -20,6 +20,8 @@ vim.opt.autoread = true
 vim.opt.breakindent = true
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.cpoptions:append('n')
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = 'number'
 vim.opt.encoding = 'utf-8'
 vim.opt.expandtab = true
 vim.opt.foldcolumn = '0'
