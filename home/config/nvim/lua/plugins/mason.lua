@@ -27,6 +27,7 @@ function M.setup()
       'vue-language-server',
       'yaml-language-server',
     },
+    auto_update = true,
   })
 end
 
