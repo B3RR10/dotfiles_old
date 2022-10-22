@@ -79,7 +79,8 @@ function M.setup()
     settings = {
       texlab = {
         build = {
-          args = { '-pdf', '-interaction=nonstopmode', '-synctex=1', "'-shell-escape'", '%f' },
+          args = { '-pdf', '-interaction=nonstopmode', '-synctex=1', '-shell-escape', '%f' },
+          executable = 'latexmk',
           onSave = true,
         },
         chktex = {
