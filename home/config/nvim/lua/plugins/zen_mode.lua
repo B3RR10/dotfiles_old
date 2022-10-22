@@ -30,7 +30,7 @@ function M.setup()
   })
 
   local map = require('settings.utils').map
-  map('n', '<Leader>z', ':ZenMode<CR>', { noremap = true })
+  map('n', '<Leader>zz', ':ZenMode<CR>', { noremap = true })
 end
 
 return M

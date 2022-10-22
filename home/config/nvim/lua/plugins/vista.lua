@@ -14,7 +14,7 @@ function M.setup()
 
   vim.g.vista_fzf_preview = { 'right:50%' }
 
-  map('n', '<C-t>', ':Vista!!<CR>')
+  map('n', '<Leader>t', ':Vista!!<CR>')
 end
 
 return M
