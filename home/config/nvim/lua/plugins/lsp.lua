@@ -32,9 +32,7 @@ function M.setup()
   lspconfig.tailwindcss.setup({})
   lspconfig.tsserver.setup({})
   lspconfig.vimls.setup({})
-  lspconfig.volar.setup({
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
-  })
+  lspconfig.volar.setup({})
 
   vim.g['fsharp#lsp_auto_setup'] = 0
   require('ionide').setup({
