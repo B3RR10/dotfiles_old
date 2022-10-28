@@ -40,6 +40,8 @@ alias .....='cd ../../../../'
 #  }}} cd aliases #
 
 #  Git aliases {{{ #
+alias g='git rev-parse --is-inside-work-tree > /dev/null && lazygit || git'
+
 alias gs='git status'
 
 # A simple git rename file function
