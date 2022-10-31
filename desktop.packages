@@ -10,7 +10,6 @@ arandr
 arc-gtk-theme
 arc-icon-theme
 archlinux-themes-sddm
-ausweisapp2
 autoconf
 automake
 avahi
@@ -71,6 +70,7 @@ git-extras
 git-grab
 git-secret
 github-cli
+glow
 gnome-keyring
 gnu-free-fonts
 grep
@@ -132,6 +132,8 @@ neomutt
 neovim
 nerd-fonts-cascadia-code
 nerd-fonts-fira-code
+nerd-fonts-jetbrains-mono
+nerd-fonts-victor-mono
 nextcloud-client
 nmap
 noto-fonts
