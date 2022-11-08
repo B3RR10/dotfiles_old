@@ -42,7 +42,6 @@ require('packer').startup({
     { 'akinsho/nvim-bufferline.lua' },
 
     -- Git
-    { 'tpope/vim-fugitive' },
     { 'f-person/git-blame.nvim' },
     {
       'lewis6991/gitsigns.nvim',
