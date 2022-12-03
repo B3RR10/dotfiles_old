@@ -131,9 +131,7 @@ neofetch
 neomutt
 neovim
 nerd-fonts-cascadia-code
-nerd-fonts-fira-code
 nerd-fonts-jetbrains-mono
-nerd-fonts-victor-mono
 nextcloud-client
 nmap
 noto-fonts
@@ -216,6 +214,7 @@ solaar
 speedtest-cli
 spotify
 spotifyd
+sshfs
 sshpass
 starship
 stylua
