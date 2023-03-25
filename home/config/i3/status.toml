@@ -1,14 +1,12 @@
-icons = "none"
-
 [theme]
-name = "plain"
+theme = "plain"
 [theme.overrides]
 separator = "  |  "
 
 [[block]]
 block = "net"
 device = "enp5s0"
-format = "{ssid} {signal_strength} {ip} {speed_down} {graph_down}"
+format = "$icon {$ssid $signal_strength|Wired} {$ip} {$speed_down.eng(prefix:K)} {$graph_down}"
 interval = 2
 
 [[block]]
@@ -16,25 +14,29 @@ block = "nvidia_gpu"
 
 [[block]]
 block = "disk_space"
-format = "{icon} {used}/{total} ({available} free)"
+format = "{$icon} {$used}/{$total} ({$available} free)"
 
 [[block]]
 block = "memory"
-format_mem = "{mem_used} ({mem_used_percents})"
+format = "$icon {$mem_used} ({$mem_used_percents})"
 
 [[block]]
 block = "uptime"
 
 [[block]]
 block = "cpu"
-format = "{barchart} {utilization} {frequency}"
-on_click = "st -e btm"
+format = "$icon {$barchart} {$utilization} {$frequency}"
+[[block.click]]
+button = "left"
+cmd = "st -e btm"
 
 [[block]]
 block = "sound"
-on_click = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+[[block.click]]
+button = "left"
+cmd = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 
 [[block]]
 block = "time"
 interval = 30
-format = "%V - %F %R "
+format = "$timestamp.datetime(f:'%V - %F %R') "
