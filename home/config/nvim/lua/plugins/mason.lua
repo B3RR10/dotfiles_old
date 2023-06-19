@@ -6,28 +6,25 @@ function M.setup()
   require('mason-tool-installer').setup({
     ensure_installed = {
       -- LSP
-      'angular-language-server',
       'bash-language-server',
-      'csharp-language-server',
+      -- 'csharp-language-server',
       'css-lsp',
       'dockerfile-language-server',
       'eslint-lsp',
-      'fantomas',
-      'fsautocomplete',
+      -- 'fantomas',
+      -- 'fsautocomplete',
       'html-lsp',
       'json-lsp',
       'lua-language-server',
       'pyright',
       'rust-analyzer',
-      'solargraph',
       'tailwindcss-language-server',
       'texlab',
       'typescript-language-server',
       'vim-language-server',
-      'vue-language-server',
+      -- 'vue-language-server',
       'yaml-language-server',
     },
-    auto_update = true,
   })
 end
 

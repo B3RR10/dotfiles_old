@@ -1,28 +1,36 @@
-local exec = vim.api.nvim_command
-local cmd, fn = vim.cmd, vim.fn
+local fn = vim.fn
+
+-- Install lazy.nvim
+local lazypath = fn.stdpath('data') .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
 -- Auto install packer.nvim if not exists
-local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  exec('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
-end
+-- local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
+-- if fn.empty(fn.glob(install_path)) > 0 then
+--   exec('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+-- end
+--
+-- cmd([[packadd packer.nvim]])
 
-cmd([[packadd packer.nvim]])
+-- local packerGrp = vim.api.nvim_create_augroup('PackerAutoCompile', { clear = true })
+-- vim.api.nvim_create_autocmd('BufWritePost', {
+--   pattern = '*/lua/plugins/init.lua',
+--   command = [[source <afile> | PackerCompile]],
+--   group = packerGrp,
+-- })
 
-local packerGrp = vim.api.nvim_create_augroup('PackerAutoCompile', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', {
-  pattern = '*/lua/plugins/init.lua',
-  command = [[source <afile> | PackerCompile]],
-  group = packerGrp,
-})
-
-require('packer').startup({
+require('lazy').setup({
   {
-    --------------
-    --  Packer  --
-    --------------
-    { 'wbthomason/packer.nvim', opt = true },
-
     ---------------
     --  Visuals  --
     ---------------
@@ -45,7 +53,7 @@ require('packer').startup({
     { 'f-person/git-blame.nvim' },
     {
       'lewis6991/gitsigns.nvim',
-      requires = { 'nvim-lua/plenary.nvim' },
+      dependencies = { 'nvim-lua/plenary.nvim' },
       config = function()
         require('plugins.gitsigns').setup()
       end,
@@ -69,18 +77,18 @@ require('packer').startup({
     --  Filetypes  --
     -----------------
     -- C# - .NET
-    {
-      'OmniSharp/omnisharp-vim',
-      config = function()
-        require('plugins.omnisharp').setup()
-      end,
-    },
+    -- {
+    --   'OmniSharp/omnisharp-vim',
+    --   config = function()
+    --     require('plugins.omnisharp').setup()
+    --   end,
+    -- },
 
     -- Editorconfig
     { 'editorconfig/editorconfig-vim' },
 
     -- F#
-    { 'ionide/Ionide-vim' },
+    -- { 'ionide/Ionide-vim' },
 
     -- Git
     { 'tpope/vim-git' },
@@ -88,7 +96,7 @@ require('packer').startup({
     -- HTML
     {
       'mattn/emmet-vim',
-      setup = function()
+      init = function()
         require('plugins.emmet').setup()
       end,
       ft = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'vue' },
@@ -116,7 +124,7 @@ require('packer').startup({
     ------------------------
     {
       'williamboman/mason.nvim',
-      requires = {
+      dependencies = {
         'williamboman/mason-lspconfig.nvim',
         'neovim/nvim-lspconfig',
         'WhoIsSethDaniel/mason-tool-installer.nvim',
@@ -124,20 +132,21 @@ require('packer').startup({
       config = function()
         require('plugins.mason').setup()
       end,
+      build = ":MasonUpdate"
     },
     {
       'neovim/nvim-lspconfig',
-      after = { 'mason.nvim', 'Ionide-vim' },
       config = function()
         require('plugins.lsp').setup()
       end,
-      requires = {
+      dependencies = {
         'b0o/schemastore.nvim',
+        'mason.nvim'
       },
     },
     {
       'hrsh7th/nvim-cmp',
-      requires = {
+      dependencies = {
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-nvim-lsp',
         'saadparwaiz1/cmp_luasnip',
@@ -162,11 +171,11 @@ require('packer').startup({
     },
     {
       'nvim-treesitter/nvim-treesitter',
-      requires = {
+      dependencies = {
         'nvim-treesitter/nvim-treesitter-textobjects',
         'JoosepAlviste/nvim-ts-context-commentstring',
       },
-      run = ':TSUpdate',
+      build = ':TSUpdate',
       config = function()
         require('plugins.treesitter').setup()
       end,
@@ -201,7 +210,7 @@ require('packer').startup({
     {
       'L3MON4D3/LuaSnip',
       tag = 'v1.*',
-      requires = {
+      dependencies = {
         'honza/vim-snippets',
         'rafamadriz/friendly-snippets',
       },
@@ -245,7 +254,7 @@ require('packer').startup({
     -- Auto shrinks windows when not enough space
     {
       'anuvyklack/windows.nvim',
-      requires = {
+      dependencies = {
         'anuvyklack/middleclass',
         'anuvyklack/animation.nvim',
       },
@@ -257,9 +266,7 @@ require('packer').startup({
     -- Display possible keybindings
     {
       'folke/which-key.nvim',
-      config = function()
-        require('which-key').setup()
-      end,
+      config = true,
     },
 
     -------------
@@ -271,7 +278,7 @@ require('packer').startup({
     -- Fuzzy finder
     {
       'ibhagwan/fzf-lua',
-      requires = { 'kyazdani42/nvim-web-devicons' },
+      dependencies = { 'kyazdani42/nvim-web-devicons' },
       config = function()
         require('plugins.fzf').setup()
       end,
@@ -280,7 +287,7 @@ require('packer').startup({
     -- Zen mode
     {
       'folke/zen-mode.nvim',
-      requires = { 'folke/twilight.nvim' },
+      dependencies = { 'folke/twilight.nvim' },
       config = function()
         require('plugins.zen_mode').setup()
       end,
@@ -289,7 +296,7 @@ require('packer').startup({
     -- HTTP Client
     {
       'NTBBloodbath/rest.nvim',
-      requires = { 'nvim-lua/plenary.nvim' },
+      dependencies = { 'nvim-lua/plenary.nvim' },
       ft = { 'http' },
       config = function()
         require('plugins.rest').setup()
@@ -307,9 +314,7 @@ require('packer').startup({
     -- Nvim colorizer #666666
     {
       'norcalli/nvim-colorizer.lua',
-      config = function()
-        require('colorizer').setup()
-      end,
+      config = true,
     },
 
     {
@@ -344,16 +349,6 @@ require('packer').startup({
     ------------
     -- Toggle quickfix with \q and location list with \l
     { 'milkypostman/vim-togglelist' },
-{%@@ if profile == "laptop" or profile == "desktop" @@%}
-
-    -- Turn off caps when change from insert to normal mode
-    { 'suxpert/vimcaps' },
-{%@@ endif @@%}
-  },
-  config = {
-    display = {
-      open_fn = require('packer.util').float,
-    },
   },
 })
 

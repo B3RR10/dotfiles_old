@@ -19,27 +19,26 @@ function M.setup()
   ---
   -- LSP Servers
   ---
-
-  lspconfig.angularls.setup({})
   lspconfig.bashls.setup({})
-  lspconfig.csharp_ls.setup({})
-  lspconfig.cssls.setup({})
+  -- lspconfig.csharp_ls.setup({})
+  -- lspconfig.cssls.setup({})
+  lspconfig.docker_compose_language_service.setup({})
   lspconfig.dockerls.setup({})
   lspconfig.html.setup({})
-  lspconfig.pyright.setup({})
-  lspconfig.solargraph.setup({})
+  -- lspconfig.pyright.setup({})
+  -- lspconfig.solargraph.setup({})
   lspconfig.rust_analyzer.setup({})
-  lspconfig.tailwindcss.setup({})
-  lspconfig.tsserver.setup({})
+  -- lspconfig.tailwindcss.setup({})
+  -- lspconfig.tsserver.setup({})
   lspconfig.vimls.setup({})
-  lspconfig.volar.setup({})
+  -- lspconfig.volar.setup({})
 
   vim.g['fsharp#lsp_auto_setup'] = 0
-  require('ionide').setup({
-    on_attach = lsp_defaults.on_attach,
-    capabilities = lsp_defaults.capabilities,
-    flags = lsp_defaults.flags,
-  })
+  -- require('ionide').setup({
+  --   on_attach = lsp_defaults.on_attach,
+  --   capabilities = lsp_defaults.capabilities,
+  --   flags = lsp_defaults.flags,
+  -- })
 
   lspconfig.jsonls.setup({
     user_commands = {
@@ -52,21 +51,29 @@ function M.setup()
     },
     settings = {
       json = {
-        schemas = require('schemastore').json.schemas(),
+        -- schemas = require('schemastore').json.schemas(),
         validate = { enable = true },
       },
     },
   })
 
-  lspconfig.sumneko_lua.setup({
+  lspconfig.lua_ls.setup({
     settings = {
       Lua = {
         runtime = { version = 'LuaJIT' },
-        diagnostics = { enable = true, globals = { 'vim', 'use', 'lua' } },
+        diagnostics = { globals = { 'vim' } },
         workspace = {
-          library = {
-            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+          library = vim.api.nvim_get_runtime_file("", true),
+          checkThirdParty = false,
+        },
+        telemetry = { enable = false },
+        format = {
+          defaultConfig = {
+            indent_style = "space",
+            indent_size = 2,
+            quote_style = 'single',
+            trailing_table_separator = 'smart',
+            insert_final_newline = true,
           },
         },
       },
@@ -89,16 +96,16 @@ function M.setup()
   })
 
   -- Set schemas for yaml
-  local json_schemas = require('schemastore').json.schemas({})
-  local yaml_schemas = {}
-  vim.tbl_map(function(schema)
-    yaml_schemas[schema.url] = schema.fileMatch
-  end, json_schemas)
+  -- local json_schemas = require('schemastore').json.schemas({})
+  -- local yaml_schemas = {}
+  -- vim.tbl_map(function(schema)
+  --   yaml_schemas[schema.url] = schema.fileMatch
+  -- end, json_schemas)
 
   require('lspconfig').yamlls.setup({
     settings = {
       yaml = {
-        schemas = yaml_schemas,
+        -- schemas = yaml_schemas,
         schemaStore = {
           enable = true,
         },
