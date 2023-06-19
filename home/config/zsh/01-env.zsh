@@ -1,7 +1,14 @@
-# Misc {{{ #
-export KEYTIMEOUT=1
-export WORDCHARS=''
-# }}} Misc #
+# bat {{{ #
+export BAT_THEME="Solarized (dark)"
+export BAT_STYLE="full"
+# }}} bat #
+
+# bin dirs {{{ #
+# scripts from ~/bin
+export PATH=$PATH:$HOME/bin
+# Local bins (mostly python)
+export PATH=$PATH:$HOME/.local/bin
+# }}} bin dirs #
 
 # Directories {{{ #
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
@@ -10,21 +17,12 @@ export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
 # }}} Directories #
 
-# dotnet {{{ #
+# Dotnet {{{ #
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT
+export PATH=$PATH:$HOME/.dotnet/tools
 export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
-# }}} dotnet #
-
-# asdf {{{ #
-export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/asdfrc"
-export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
-export ASDF_GEM_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/default-ruby-gems"
-# }}} asdf #
-
-# dotdrop {{{ #
-export DOTREPO=$HOME/.dotfiles
-# Variable to pass to sdot to get current user
-export USRNAME=$USER
-# }}} dotdrop #
+# }}} Dotnet #
 
 #  Env Programs {{{ #
 export EDITOR=nvim
@@ -32,6 +30,7 @@ export BROWSER=/usr/bin/firefox
 export GIT_EDITOR=nvim
 export VISUAL=nvim
 export LESSCHARSET=UTF-8
+export TERMINAL=alacritty
 #  }}} Env Programs #
 
 #  fzf settings {{{ #
@@ -56,23 +55,52 @@ export GRAB_HOME=$HOME/src
 #  }}} git grab #
 
 # History {{{ #
-[ -z "$HISTFILE" ] && HISTFILE="$HOME/.cache/zsh/history"
+[ -z "$HISTFILE" ] && HISTFILE="$XDG_CACHE_HOME/zsh/history"
 [ ! -d $(dirname $HISTFILE) ] && mkdir -p $(dirname $HISTFILE)
 export HISTSIZE=10000
 export SAVEHIST=10000
 # }}} History #
 
+# pass {{{ #
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
+# }}} pass #
+
 # Rust {{{ #
+export PATH=$PATH:$HOME/.cargo/bin
 export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 # }}} Rust #
 
+# Wayland {{{ #
+export _JAVA_AWT_WM_NONREPARENTING=1
+# }}} Wayland
+
 # z {{{ #
-export _Z_DATA=$HOME/.cache/z
+export _Z_DATA=$XDG_CACHE_HOME/z
 export _Z_NO_RESOLVE_SYMLINKS=1
 # }}} z #
 
 # zk {{{ #
-export ZK_NOTEBOOK_DIR=$HOME/notes
+export ZK_NOTEBOOK_DIR=$HOME/Notes
 # }}} zk #
+
+# Znap {{{ #
+export ZNAP_HOME=$XDG_DATA_HOME/znap/znap
+# }}} Znap #
+
+# ZSH config {{{ #
+export KEYTIMEOUT=1
+export WORDCHARS=''
+# }}} ZSH config #
+
+# ZSH options {{{ #
+setopt HIST_EXPIRE_DUPS_FIRST # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt HIST_IGNORE_DUPS       # ignore duplicated commands history list
+setopt HIST_IGNORE_SPACE      # ignore commands that start with space
+setopt INC_APPEND_HISTORY     # add commands to HISTFILE in order of execution
+setopt autocd
+setopt auto_pushd
+
+unsetopt SHARE_HISTORY
+# }}} ZSH options #
 
 # vim: foldmethod=marker

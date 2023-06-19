@@ -1,10 +1,10 @@
 # reload zsh config
 alias zsh!='RELOAD=1 source "$HOME/.zshrc"'
 
-# dotdrop {{{ #
-dt() { $DOTREPO/dotdrop/dotdrop.sh --cfg=$DOTREPO/config-home.yaml --profile={{@@ profile @@}} $@ }
-sdt() { sudo -E $DOTREPO/dotdrop/dotdrop.sh --cfg=$DOTREPO/config-root.yaml --profile={{@@ profile @@}} $@ }
-# }}} dotdrop #
+# chezmoi {{{ #
+alias cm='chezmoi'
+alias cme='chezmoi edit --apply'
+# }}} chezmoi #
 
 #  Editor {{{ #
 alias vim='nvim'
@@ -13,20 +13,20 @@ alias edit='nvim'
 #  }}} Editor #
 
 #  ls aliases {{{ #
-alias ls='exa --color=auto --group-directories-first'
-alias l='exa -a --color=auto --group-directories-first'
-alias ll='exa -l --git --color=auto --group-directories-first'
-alias la='exa -la --git --color=auto --group-directories-first'
-alias lt='exa -lT --git-ignore --git --color=auto --group-directories-first'
+alias exa='exa --color=auto --icons --git --group-directories-first'
+alias ls='exa'
+alias la='exa -a'
+alias ll='exa -l'
+alias lla='exa -la'
+alias lt='exa -lT --git-ignore'
+alias tree='exa --tree'
 #  }}} ls aliases #
 
 #  Open file {{{ #
 function o() {
-    for i in "$@"
-        do
+    for i in "$@"; do
         xdg-open "$i" > /dev/null 2>&1 &
     done
-    i3 scratchpad show > /dev/null 2>&1
 }
 #  }}} Open file #
 
@@ -41,32 +41,11 @@ alias .....='cd ../../../../'
 
 #  Git aliases {{{ #
 alias g='git rev-parse --is-inside-work-tree > /dev/null && lazygit || git'
-
 alias gs='git status'
 
-# A simple git rename file function
-# git does not track case-sensitive changes to a filename.
-function gmv() {
-    git mv $1 "${2}-"
-    git mv "${2}-" $2
-}
-
 alias gprune='git remote prune origin && git fetch -p && git branch -vv | awk '"'"'/: gone]/{print $1}'"'"' | xargs -r git branch -D'
+
+alias vimdiff='nvim -d'
 #  }}} Git aliases #
-
-{%@@ if profile == "desktop" @@%}
-# mbsync {{{ #
-alias mbsync="mbsync -c \"$XDG_CONFIG_HOME/isync/mbsyncrc\""
-# }}} mbsync #
-
-{%@@ endif @@%}
-#  tmux aliases {{{ #
-alias ta='tmux attach'
-alias tls='tmux ls'
-alias tat='tmux attach -t'
-alias tns='tmux new-session -s'
-alias dev='. ~/bin/tmux-dev'
-alias rdev='. ~/bin/tmux-rdev'
-#  }}} tmux aliases #
 
 # vim: foldmethod=marker
