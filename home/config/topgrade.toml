@@ -1,4 +1,0 @@
-cleanup = true
-
-[commands]
-"Nix strore garbage collection" = "nix-collect-garbage"
