@@ -70,5 +70,5 @@
     enable = true
 
 [user]
-    email = mail@berrio.dev
+    email = <GIT_EMAIL>
     name = "Miguel Berrio"
