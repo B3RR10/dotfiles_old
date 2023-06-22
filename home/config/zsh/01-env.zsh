@@ -21,7 +21,6 @@ export XDG_STATE_HOME=$HOME/.local/state
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT
 export PATH=$PATH:$HOME/.dotnet/tools
-export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 # }}} Dotnet #
 
 #  Env Programs {{{ #
