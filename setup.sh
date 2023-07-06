@@ -48,6 +48,6 @@ cp -r ./home/config/zsh $HOME/.config/
     curl -L https://dot.net/v1/dotnet-install.sh | bash -s -- --channel STS
     curl -L https://aka.ms/install-artifacts-credprovider.sh | bash
 
-    dotnet tool install --global dotnet-ef
-    dotnet tool install --global csharp-ls
+    $HOME/.dotnet/dotnet tool install --global dotnet-ef
+    $HOME/.dotnet/dotnet tool install --global csharp-ls
 }
