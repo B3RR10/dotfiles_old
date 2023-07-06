@@ -43,7 +43,7 @@ cp ./home/zshrc $HOME/.zshrc
 cp -r ./home/config/zsh $HOME/.config/
 
 # Dotnet
-[[ $INSTALL_DOTNET == "true" ]] && {
+[[ $INSTALL_DOTNET == "true" && ! -f $HOME/.dotnet/dotnet ]] && {
     curl -L https://dot.net/v1/dotnet-install.sh | bash -s -- --channel LTS
     curl -L https://dot.net/v1/dotnet-install.sh | bash -s -- --channel STS
     curl -L https://aka.ms/install-artifacts-credprovider.sh | bash
