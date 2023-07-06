@@ -20,7 +20,7 @@ function M.setup()
   -- LSP Servers
   ---
   lspconfig.bashls.setup({})
-  -- lspconfig.csharp_ls.setup({})
+  lspconfig.csharp_ls.setup({})
   -- lspconfig.cssls.setup({})
   lspconfig.docker_compose_language_service.setup({})
   lspconfig.dockerls.setup({})
