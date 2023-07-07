@@ -5,8 +5,8 @@ config:
   showdiff: true
 dotfiles:
   d_bin:
-    dst: ~/bin
     src: bin
+    dst: ~/bin
     chmod: '755'
   f_gtkrc-2.0:
     src: gtkrc-2.0
@@ -26,6 +26,9 @@ dotfiles:
   d_config_alacritty:
     src: config/alacritty
     dst: ~/.config/alacritty
+  d_config_environment.d:
+    src: config/environment.d
+    dst: ~/.config/environment.d
   d_config_fuzzel:
     src: config/fuzzel
     dst: ~/.config/fuzzel
@@ -56,6 +59,13 @@ dotfiles:
   d_config_nvim:
     src: config/nvim
     dst: ~/.config/nvim
+  d_config_systemd:
+    src: config/systemd
+    dst: ~/.config/systemd
+    cmpignore:
+    - '*.wants'
+    upignore:
+    - '*.wants'
   d_config_stylua:
     src: config/stylua
     dst: ~/.config/stylua
@@ -84,11 +94,13 @@ profiles:
     dotfiles:
     - f_gtkrc-2.0
     - d_config_alacritty
+    - d_config_environment.d
     - d_config_fuzzel
     - d_config_gammastep
     - d_config_gtk-3.0
     - d_config_gtk-4.0
     - f_config_mimeapps.list
+    - d_config_systemd
     - f_config_wallpaper_arch-linux-dark.png
     - d_config_zathura
   mail:
