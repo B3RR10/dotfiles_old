@@ -1,0 +1,51 @@
+[[block]]
+block = "net"
+format = "$icon {$ssid $signal_strength|Wired} {$ip} {$speed_down.eng(prefix:K)} {$graph_down}"
+interval = 2
+
+[[block]]
+block = "disk_space"
+format = "{$icon} {$used}/{$total} ({$available} free)"
+
+[[block]]
+block = "memory"
+format = "$icon {$mem_used} ({$mem_used_percents})"
+
+[[block]]
+block = "uptime"
+
+[[block]]
+block = "cpu"
+format = "$icon {$barchart} {$utilization} {$frequency}"
+
+[[block]]
+block = "sound"
+
+[[block.click]]
+button = "left"
+cmd = "/nix/store/d8lqhx90v9wqjix0xsyfshrlrvf83dms-pamixer-1.6/bin/pamixer --toggle-mute"
+
+[[block.click]]
+button = "right"
+cmd = "pavucontrol"
+
+[[block]]
+block = "backlight"
+
+[[block]]
+block = "battery"
+format = " $icon $percentage {$time |}"
+
+[[block]]
+block = "time"
+format = "$timestamp.datetime(f:'%V - %F %R') "
+interval = 30
+
+[icons]
+icons = "none"
+
+[theme]
+theme = "plain"
+
+[theme.overrides]
+separator = "  |  "
