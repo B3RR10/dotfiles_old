@@ -128,3 +128,12 @@ profiles:
     - mail
     - sway
     - terminal
+
+  server:
+    include:
+    - terminal
+    variables:
+      git:
+        email: "{{@@ env['GIT_EMAIL'] @@}}"
+        signingkey:
+        gpgsign: false
