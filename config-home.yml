@@ -7,6 +7,9 @@ dotfiles:
   d_bin:
     dst: ~/bin
     src: bin
+  f_gtkrc-2.0:
+    src: gtkrc-2.0
+    dst: ~/.gtkrc-2.0
   f_zshrc:
     dst: ~/.zshrc
     src: zshrc
@@ -31,6 +34,12 @@ dotfiles:
   d_config_git:
     src: config/git
     dst: ~/.config/git
+  d_config_gtk-3.0:
+    src: config/gtk-3.0
+    dst: ~/.config/gtk-3.0
+  d_config_gtk-4.0:
+    src: config/gtk-4.0
+    dst: ~/.config/gtk-4.0
   d_config_i3status-rust:
     src: config/i3status-rust
     dst: ~/.config/i3status-rust
@@ -69,9 +78,12 @@ variables:
 profiles:
   desktop:
     dotfiles:
+    - f_gtkrc-2.0
     - d_config_alacritty
     - d_config_fuzzel
     - d_config_gammastep
+    - d_config_gtk-3.0
+    - d_config_gtk-4.0
     - f_config_wallpaper_arch-linux-dark.png
     - d_config_zathura
   mail:
