@@ -10,9 +10,6 @@ dotfiles:
   f_zshrc:
     dst: ~/.zshrc
     src: zshrc
-  d_config_zsh:
-    dst: ~/.config/zsh
-    src: config/zsh
   d_config_aerc:
     src: config/aerc
     dst: ~/.config/aerc
@@ -22,21 +19,27 @@ dotfiles:
     - accounts.conf
     upignore:
     - accounts.conf
-  d_config_mako:
-    src: config/mako
-    dst: ~/.config/mako
-  d_config_sway:
-    src: config/sway
-    dst: ~/.config/sway
-  d_config_kanshi:
-    src: config/kanshi
-    dst: ~/.config/kanshi
   d_config_fuzzel:
     src: config/fuzzel
     dst: ~/.config/fuzzel
   d_config_i3status-rust:
     src: config/i3status-rust
     dst: ~/.config/i3status-rust
+  d_config_kanshi:
+    src: config/kanshi
+    dst: ~/.config/kanshi
+  d_config_mako:
+    src: config/mako
+    dst: ~/.config/mako
+  d_config_stylua:
+    src: config/stylua
+    dst: ~/.config/stylua
+  d_config_sway:
+    src: config/sway
+    dst: ~/.config/sway
+  d_config_zsh:
+    dst: ~/.config/zsh
+    src: config/zsh
 variables:
   git:
     email: mail@berrio.dev
@@ -57,6 +60,7 @@ profiles:
     dotfiles:
     - d_bin
     - f_zshrc
+    - d_config_stylua
     - d_config_zsh
 
   willow:
