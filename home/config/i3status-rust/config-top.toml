@@ -23,7 +23,7 @@ block = "sound"
 
 [[block.click]]
 button = "left"
-cmd = "/nix/store/d8lqhx90v9wqjix0xsyfshrlrvf83dms-pamixer-1.6/bin/pamixer --toggle-mute"
+cmd = "pamixer --toggle-mute"
 
 [[block.click]]
 button = "right"
