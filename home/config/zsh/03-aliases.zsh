@@ -1,10 +1,9 @@
 # reload zsh config
 alias zsh!='RELOAD=1 source "$HOME/.zshrc"'
 
-# chezmoi {{{ #
-alias cm='chezmoi'
-alias cme='chezmoi edit --apply'
-# }}} chezmoi #
+# Dotdrop {{{ #
+dt() { dotdrop --cfg=$DOTFILES/config-home.yml --profile={{@@ profile @@}} $@ }
+# }}} Dotdrop #
 
 #  Editor {{{ #
 alias vim='nvim'

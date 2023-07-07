@@ -23,3 +23,6 @@ znap source zsh-users/zsh-completions
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=( main brackets )
 znap source zsh-users/zsh-syntax-highlighting
+
+znap fpath _dotdrop 'cat /usr/share/zsh/site-functions/_dotdrop'
+compdef _dotdrop dt

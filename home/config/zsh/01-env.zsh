@@ -17,10 +17,13 @@ export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
 # }}} Directories #
 
+# Dordrop {{{ #
+export DOTFILES=$HOME/dotfiles
+# }}} Dotdrop #
+
 # Dotnet {{{ #
 export DOTNET_ROOT=$HOME/.dotnet
-export PATH=$PATH:$DOTNET_ROOT
-export PATH=$PATH:$HOME/.dotnet/tools
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 # }}} Dotnet #
 
 #  Env Programs {{{ #
