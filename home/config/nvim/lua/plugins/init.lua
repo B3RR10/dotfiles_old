@@ -1,14 +1,14 @@
 local fn = vim.fn
 
 -- Install lazy.nvim
-local lazypath = fn.stdpath('data') .. "/lazy/lazy.nvim"
+local lazypath = fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
     lazypath,
   })
 end
@@ -50,7 +50,7 @@ require('lazy').setup({
     { 'akinsho/nvim-bufferline.lua' },
 
     -- Git
-    { 'f-person/git-blame.nvim' },
+    -- { 'f-person/git-blame.nvim' },
     {
       'lewis6991/gitsigns.nvim',
       dependencies = { 'nvim-lua/plenary.nvim' },
@@ -132,7 +132,7 @@ require('lazy').setup({
       config = function()
         require('plugins.mason').setup()
       end,
-      build = ":MasonUpdate"
+      build = ':MasonUpdate',
     },
     {
       'neovim/nvim-lspconfig',
@@ -141,7 +141,7 @@ require('lazy').setup({
       end,
       dependencies = {
         'b0o/schemastore.nvim',
-        'mason.nvim'
+        'mason.nvim',
       },
     },
     {
@@ -152,11 +152,11 @@ require('lazy').setup({
         'saadparwaiz1/cmp_luasnip',
         'hrsh7th/cmp-nvim-lua',
         'hrsh7th/cmp-path',
-        'hrsh7th/cmp-calc',
-        'hrsh7th/cmp-emoji',
+        -- 'hrsh7th/cmp-calc',
+        -- 'hrsh7th/cmp-emoji',
         'ray-x/cmp-treesitter',
-        'hrsh7th/cmp-cmdline',
-        'hrsh7th/cmp-omni',
+        -- 'hrsh7th/cmp-cmdline',
+        -- 'hrsh7th/cmp-omni',
         'onsails/lspkind-nvim',
       },
       config = function()

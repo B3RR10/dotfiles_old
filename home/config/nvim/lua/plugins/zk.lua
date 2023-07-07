@@ -1,8 +1,10 @@
+local mapbuf = require('settings.utils').mapbuf
+
 local M = {}
 
 local function on_attach(client, bufnr)
   local function map(...)
-    vim.api.nvim_buf_set_keymap(bufnr, ...)
+    mapbuf(bufnr, ...)
   end
 
   local opts = { noremap = true, silent = false }
@@ -43,6 +45,10 @@ function M.setup()
     lsp = {
       config = {
         on_attach = on_attach,
+      },
+      auto_attach = {
+        enabled = true,
+        filetypes = { 'markdown' },
       },
     },
   })

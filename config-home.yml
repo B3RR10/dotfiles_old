@@ -40,6 +40,9 @@ dotfiles:
   d_config_mako:
     src: config/mako
     dst: ~/.config/mako
+  d_config_nvim:
+    src: config/nvim
+    dst: ~/.config/nvim
   d_config_stylua:
     src: config/stylua
     dst: ~/.config/stylua
@@ -78,6 +81,7 @@ profiles:
     dotfiles:
     - d_bin
     - f_zshrc
+    - d_config_nvim
     - d_config_stylua
     - d_config_zsh
 

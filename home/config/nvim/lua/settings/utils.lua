@@ -15,4 +15,10 @@ function utils.map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+function utils.mapbuf(bufnr, mode, l, r, opts)
+  opts = opts or {}
+  opts.buffer = bufnr
+  vim.keymap.set(mode, l, r, opts)
+end
+
 return utils

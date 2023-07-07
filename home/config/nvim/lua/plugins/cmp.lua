@@ -1,6 +1,7 @@
 local M = {}
 
 local has_words_before = function()
+  unpack = unpack or table.unpack
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
@@ -68,12 +69,12 @@ function M.setup()
     sources = cmp.config.sources({
       { name = 'buffer', option = { keyword_pattern = [[\k\+]] } },
       { name = 'nvim_lsp' },
-      { name = 'omni' },
+      -- { name = 'omni' },
       { name = 'luasnip' },
       { name = 'nvim_lua' },
       { name = 'path' },
-      { name = 'calc' },
-      { name = 'emoji' },
+      -- { name = 'calc' },
+      -- { name = 'emoji' },
       { name = 'treesitter' },
     }, {
       { name = 'buffer', option = { keyword_pattern = [[\k\+]] } },

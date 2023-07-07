@@ -20,14 +20,14 @@ function M.setup()
   -- LSP Servers
   ---
   lspconfig.bashls.setup({})
-  lspconfig.csharp_ls.setup({})
+  -- lspconfig.csharp_ls.setup({})
   -- lspconfig.cssls.setup({})
   lspconfig.docker_compose_language_service.setup({})
   lspconfig.dockerls.setup({})
   lspconfig.html.setup({})
   -- lspconfig.pyright.setup({})
   -- lspconfig.solargraph.setup({})
-  lspconfig.rust_analyzer.setup({})
+  -- lspconfig.rust_analyzer.setup({})
   -- lspconfig.tailwindcss.setup({})
   -- lspconfig.tsserver.setup({})
   lspconfig.vimls.setup({})
@@ -63,13 +63,13 @@ function M.setup()
         runtime = { version = 'LuaJIT' },
         diagnostics = { globals = { 'vim' } },
         workspace = {
-          library = vim.api.nvim_get_runtime_file("", true),
+          library = vim.api.nvim_get_runtime_file('', true),
           checkThirdParty = false,
         },
         telemetry = { enable = false },
         format = {
           defaultConfig = {
-            indent_style = "space",
+            indent_style = 'space',
             indent_size = 2,
             quote_style = 'single',
             trailing_table_separator = 'smart',
@@ -84,7 +84,14 @@ function M.setup()
     settings = {
       texlab = {
         build = {
-          args = { '-pdf', '-interaction=nonstopmode', '-synctex=1', '-shell-escape', '%f' },
+          args = {
+            '-pdf',
+            '-interaction=nonstopmode',
+            '-output-directory=build',
+            '-synctex=1',
+            '-shell-escape',
+            '%f',
+          },
           executable = 'latexmk',
           onSave = true,
         },
