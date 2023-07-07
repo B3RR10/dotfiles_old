@@ -25,6 +25,9 @@ dotfiles:
   d_config_fuzzel:
     src: config/fuzzel
     dst: ~/.config/fuzzel
+  d_config_gammastep:
+    src: config/gammastep
+    dst: ~/.config/gammastep
   d_config_git:
     src: config/git
     dst: ~/.config/git
@@ -59,6 +62,7 @@ profiles:
     dotfiles:
     - d_config_alacritty
     - d_config_fuzzel
+    - d_config_gammastep
     - f_config_wallpaper_arch-linux-dark.png
   mail:
     dotfiles:
