@@ -31,10 +31,16 @@ dotfiles:
   d_config_kanshi:
     src: config/kanshi
     dst: ~/.config/kanshi
+  d_config_fuzzel:
+    src: config/fuzzel
+    dst: ~/.config/fuzzel
 variables:
   git:
     email: mail@berrio.dev
 profiles:
+  desktop:
+    dotfiles:
+    - d_config_fuzzel
   mail:
     dotfiles:
     - d_config_aerc
@@ -51,7 +57,7 @@ profiles:
 
   willow:
     include:
-    # - desktop
+    - desktop
     - mail
     - sway
     - terminal
