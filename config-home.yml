@@ -22,6 +22,9 @@ dotfiles:
   d_config_fuzzel:
     src: config/fuzzel
     dst: ~/.config/fuzzel
+  d_config_git:
+    src: config/git
+    dst: ~/.config/git
   d_config_i3status-rust:
     src: config/i3status-rust
     dst: ~/.config/i3status-rust
@@ -43,6 +46,8 @@ dotfiles:
 variables:
   git:
     email: mail@berrio.dev
+    signingkey: A9FDFA72
+    gpgsign: true
 profiles:
   desktop:
     dotfiles:
@@ -52,6 +57,7 @@ profiles:
     - d_config_aerc
   sway:
     dotfiles:
+    - d_config_git
     - d_config_i3status-rust
     - d_config_kanshi
     - d_config_mako

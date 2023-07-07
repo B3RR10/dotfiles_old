@@ -6,6 +6,7 @@
     whitespace = fix
 
 [commit]
+    gpgsign = {{@@ git.gpgsign @@}}
     template = ~/.config/git/commit-message
 
 [core]
@@ -70,5 +71,6 @@
     enable = true
 
 [user]
-    email = <GIT_EMAIL>
+    email = {{@@ git.email @@}}
     name = "Miguel Berrio"
+    signingkey = {{@@ git.signingkey @@}}
