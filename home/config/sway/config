@@ -10,10 +10,10 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term kitty
+set $term alacritty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu fuzzel | xargs swaymsg exec --
 
 # Define colors
 set $border-color          #4C7899
@@ -76,7 +76,7 @@ exec swayidle -w \
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-input "2:17:CyPS/2_Cypress_Trackpad" {
+input "type:touchpad" {
     dwt enabled
     tap enabled
     natural_scroll disabled
@@ -101,15 +101,15 @@ input type:keyboard {
 
     # Start your launcher
     bindsym $mod+d exec $menu
-    bindsym $mod+p exec pass-autotype
+    bindsym $mod+p exec PASSWORD_STORE_DIR=$HOME/.local/share/password-store pass-autotype
 
     bindsym $mod+x exec firefox
-    bindsym $mod+m exec open-mail
+    # bindsym $mod+m exec open-mail
 
     # Take a screenshot of an area
-    bindsym --release Print exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/$(date +'%s_grim.png')
+    bindsym --release Print exec grim -g "$(slurp -d)" - | wl-copy -t image/png
     # Take a screenshot of the active window
-    # bindsym --release Shift+Print exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible? and .focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" $(xdg-user-dir PICTURES)/$(date +'%s_grim.png')
+    # bindsym $mod+z exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible? and .focused?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"')" - | wl-copy -t image/png
 
     # Volume settings
     bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -139,7 +139,7 @@ input type:keyboard {
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
@@ -197,6 +197,9 @@ input type:keyboard {
 
     bindsym $mod+period workspace next
     bindsym $mod+comma workspace prev
+
+    bindsym $mod+Shift+period move workspace to output right
+    bindsym $mod+Shift+comma move workspace to output left
 
 #
 # Layout stuff:
@@ -265,16 +268,15 @@ bindsym $mod+r mode "resize"
 # }}} Resize #
 
 # Power menu {{{ #
+set $lock "swaylock --screenshots --clock --datestr '%a, %d.%m.%Y' --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 2 --fade-in 0.2"
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 
 mode "$mode_system" {
-    bindsym l exec --no-startup-id swayexit lock, mode "default"
-    bindsym e exec --no-startup-id swayexit logout, mode "default"
-    bindsym s exec --no-startup-id swayexit suspend, mode "default"
-    bindsym $mod+Escape exec --no-startup-id swayexit suspend, mode "default"
-    # bindsym h exec --no-startup-id swayexit hibernate, mode "default"
-    bindsym r exec --no-startup-id swayexit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id swayexit shutdown, mode "default"
+    bindsym l exec --no-startup-id $lock, mode "default"
+    bindsym e exec --no-startup-id swaymsg exit, mode "default"
+    bindsym s exec --no-startup-id $lock && systemctl suspend, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
 
 # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -291,7 +293,7 @@ bar {
     font pango:Noto Sans, Material Icons 10
     position top
     gaps 1 0 0 0
-    status_command i3status-rs ~/.config/i3status-rs/status.toml
+    status_command i3status-rs ~/.config/i3status-rust/config-top.toml
     colors {
         separator #000000
         statusline #dddddd
@@ -311,10 +313,8 @@ client.urgent             $urgent-border-color     $urgent-bg-color     $text-co
 # }}} Window colors #
 
 # Startup programs {{{ #
-exec gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
-exec redshift
+exec kanshi
 exec mako
-exec ydotoold
 exec nextcloud
 # }}} Startup programs #
 

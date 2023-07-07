@@ -22,6 +22,15 @@ dotfiles:
     - accounts.conf
     upignore:
     - accounts.conf
+  d_config_mako:
+    src: config/mako
+    dst: ~/.config/mako
+  d_config_sway:
+    src: config/sway
+    dst: ~/.config/sway
+  d_config_kanshi:
+    src: config/kanshi
+    dst: ~/.config/kanshi
 variables:
   git:
     email: mail@berrio.dev
@@ -29,6 +38,11 @@ profiles:
   mail:
     dotfiles:
     - d_config_aerc
+  sway:
+    dotfiles:
+    - d_config_kanshi
+    - d_config_mako
+    - d_config_sway
   terminal:
     dotfiles:
     - d_bin
@@ -39,5 +53,5 @@ profiles:
     include:
     # - desktop
     - mail
-    # - sway
+    - sway
     - terminal
