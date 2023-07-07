@@ -19,6 +19,9 @@ dotfiles:
     - accounts.conf
     upignore:
     - accounts.conf
+  d_config_alacritty:
+    src: config/alacritty
+    dst: ~/.config/alacritty
   d_config_fuzzel:
     src: config/fuzzel
     dst: ~/.config/fuzzel
@@ -54,6 +57,7 @@ variables:
 profiles:
   desktop:
     dotfiles:
+    - d_config_alacritty
     - d_config_fuzzel
     - f_config_wallpaper_arch-linux-dark.png
   mail:
