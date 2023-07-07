@@ -40,6 +40,9 @@ dotfiles:
   d_config_sway:
     src: config/sway
     dst: ~/.config/sway
+  f_config_wallpaper_arch-linux-dark.png:
+    src: config/wallpaper/arch-linux-dark.png
+    dst: ~/.config/wallpaper/arch-linux-dark.png
   d_config_zsh:
     dst: ~/.config/zsh
     src: config/zsh
@@ -52,6 +55,7 @@ profiles:
   desktop:
     dotfiles:
     - d_config_fuzzel
+    - f_config_wallpaper_arch-linux-dark.png
   mail:
     dotfiles:
     - d_config_aerc
