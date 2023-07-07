@@ -1,0 +1,43 @@
+config:
+  backup: false
+  dotpath: home
+  longkey: true
+  showdiff: true
+dotfiles:
+  d_bin:
+    dst: ~/bin
+    src: bin
+  f_zshrc:
+    dst: ~/.zshrc
+    src: zshrc
+  d_config_zsh:
+    dst: ~/.config/zsh
+    src: config/zsh
+  d_config_aerc:
+    src: config/aerc
+    dst: ~/.config/aerc
+    cmpignore:
+    - accounts.conf
+    instignore:
+    - accounts.conf
+    upignore:
+    - accounts.conf
+variables:
+  git:
+    email: mail@berrio.dev
+profiles:
+  mail:
+    dotfiles:
+    - d_config_aerc
+  terminal:
+    dotfiles:
+    - d_bin
+    - f_zshrc
+    - d_config_zsh
+
+  willow:
+    include:
+    # - desktop
+    - mail
+    # - sway
+    - terminal
