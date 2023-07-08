@@ -7,10 +7,15 @@ export PATH=$PATH:$LOCAL_BIN
 
 mkdir -p $LOCAL_BIN
 
-git_email=${GIT_EMAIL:-mail@berrio.dev}
+# Install dotdrop and dotfiles
+echo "Installing dofiles..."
+echo "Git email: ${GIT_EMAIL}"
 
-echo "Git email: $git_email"
-echo "Install dotnet: $INSTALL_DOTNET"
+sudo dnf install python3-pip -y
+sudo pip install dotdrop
+
+dotdrop install -c "$(pwd)/config-home.yml" -p server
+echo "Done."
 
 # starship
 [[ -f $LOCAL_BIN/starship ]] || \
@@ -29,30 +34,13 @@ echo "Install dotnet: $INSTALL_DOTNET"
         tar -xvz -C $LOCAL_BIN lazygit
 }
 
-[[ ! -d $HOME/.config ]] && mkdir -p $HOME/.config
-
-# Git
-cp -r ./home/config/git $HOME/.config/
-sed -i "s/<GIT_EMAIL>/$git_email/" $HOME/.config/git/config
-
-# Nvim
-cp -r ./home/config/nvim $HOME/.config/
-
-# Tmux
-cp -r ./home/config/tmux $HOME/.config/
-
-# ZSH
-cp ./home/zshrc $HOME/.zshrc
-cp -r ./home/config/zsh $HOME/.config/
-
 # Dotnet
-[[ -f $HOME/.dotnet/dotnet ]] || {
-    [[ $INSTALL_DOTNET == "true" ]] && {
-        curl -L https://dot.net/v1/dotnet-install.sh | bash -s -- --channel LTS
-        curl -L https://dot.net/v1/dotnet-install.sh | bash -s -- --channel STS
-        curl -L https://aka.ms/install-artifacts-credprovider.sh | bash
+echo "Install dotnet: $INSTALL_DOTNET"
+if [[ $INSTALL_DOTNET == "true" && ! -f $HOME/.dotnet/dotnet ]]; then
+    curl -L https://dot.net/v1/dotnet-install.sh | bash -s -- --channel LTS
+    curl -L https://dot.net/v1/dotnet-install.sh | bash -s -- --channel STS
+    curl -L https://aka.ms/install-artifacts-credprovider.sh | bash
 
-        $HOME/.dotnet/dotnet tool install --global dotnet-ef
-        $HOME/.dotnet/dotnet tool install --global csharp-ls
-    }
-}
+    $HOME/.dotnet/dotnet tool install --global dotnet-ef
+    $HOME/.dotnet/dotnet tool install --global csharp-ls
+fi
