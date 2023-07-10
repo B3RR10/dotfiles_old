@@ -14,7 +14,7 @@ echo "Git email: ${GIT_EMAIL}"
 sudo dnf install python3-pip -y
 sudo pip install dotdrop
 
-dotdrop install -c "$(pwd)/config-home.yml" -p server
+dotdrop install -f -c "$(pwd)/config-home.yml" -p server
 echo "Done."
 
 # starship
