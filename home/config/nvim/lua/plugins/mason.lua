@@ -7,7 +7,7 @@ function M.setup()
     ensure_installed = {
       -- LSP
       'bash-language-server',
-      -- 'csharp-language-server',
+      'csharp-language-server',
       'css-lsp',
       'dockerfile-language-server',
       'eslint-lsp',
