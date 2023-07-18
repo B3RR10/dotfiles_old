@@ -209,7 +209,7 @@ require('lazy').setup({
     -- Snippets
     {
       'L3MON4D3/LuaSnip',
-      tag = 'v1.*',
+      version = '1.*',
       dependencies = {
         'honza/vim-snippets',
         'rafamadriz/friendly-snippets',
@@ -217,6 +217,7 @@ require('lazy').setup({
       config = function()
         require('plugins.luasnip').setup()
       end,
+      run = 'make install_jsregexp',
     },
 
     -- mini.nvim
