@@ -59,6 +59,9 @@ dotfiles:
   d_config_nvim:
     src: config/nvim
     dst: ~/.config/nvim
+  d_config_rbw:
+    src: config/rbw
+    dst: ~/.config/rbw
   d_config_systemd:
     src: config/systemd
     dst: ~/.config/systemd
@@ -100,6 +103,7 @@ profiles:
     - d_config_gtk-3.0
     - d_config_gtk-4.0
     - f_config_mimeapps.list
+    - d_config_rbw
     - d_config_systemd
     - f_config_wallpaper_arch-linux-dark.png
     - d_config_zathura
@@ -135,5 +139,4 @@ profiles:
     variables:
       git:
         email: "{{@@ env['GIT_EMAIL'] @@}}"
-        signingkey:
         gpgsign: false

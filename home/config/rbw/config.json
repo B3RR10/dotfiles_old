@@ -1,0 +1,9 @@
+{
+  "email":"mail@berrio.dev",
+  "base_url":"https://bw.berrio.dev",
+  "identity_url":null,
+  "lock_timeout":36000,
+  "sync_interval":3600,
+  "pinentry":"pinentry",
+  "client_cert_path":null
+}
