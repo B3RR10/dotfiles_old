@@ -1,4 +1,9 @@
 [[block]]
+block = "keyboard_layout"
+format = " $layout ($variant)"
+driver = "sway"
+
+[[block]]
 block = "net"
 format = "$icon {$ssid $signal_strength|Wired} {$ip} {$speed_down.eng(prefix:K)} {$graph_down}"
 interval = 2
