@@ -6,25 +6,52 @@ function M.setup()
   require('mason-tool-installer').setup({
     ensure_installed = {
       -- LSP
+      'ansible-language-server',
       'bash-language-server',
       'csharp-language-server',
       'css-lsp',
+      'docker-compose-language-service',
       'dockerfile-language-server',
-      'eslint-lsp',
-      -- 'fantomas',
-      -- 'fsautocomplete',
+      'fsautocomplete',
       'html-lsp',
       'json-lsp',
       'lua-language-server',
+      'omnisharp',
+      'pkgbuild-language-server',
       'pyright',
       'rust-analyzer',
-      'stylua',
       'tailwindcss-language-server',
+      'terraform-ls',
       'texlab',
+      'tflint',
       'typescript-language-server',
+      'unocss-language-server',
       'vim-language-server',
-      -- 'vue-language-server',
       'yaml-language-server',
+
+      -- Linter
+      'ansible-lint',
+      'flake8',
+      'markdownlint',
+      'shellcheck',
+      'tfsec',
+      'vint',
+      'yamllint',
+
+      -- Formatter
+      'autopep8',
+      'csharpier',
+      'fantomas',
+      'isort',
+      'prettier',
+      'shfmt',
+      'stylua',
+      'taplo',
+      'yamlfmt',
+      'yapf',
+
+      -- Debugger
+      'netcoredbg',
     },
   })
 end

@@ -14,49 +14,29 @@ function M.setup()
   -- Global config
   ---
 
+  lsp_defaults.capabilities.textDocument.completion.completionItem.snippetSupport = true
+
   lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, lsp_defaults)
 
   ---
   -- LSP Servers
   ---
+  lspconfig.ansiblels.setup({})
   lspconfig.bashls.setup({})
-  lspconfig.csharp_ls.setup({})
-  -- lspconfig.cssls.setup({})
+  -- lspconfig.csharp_ls.setup({})
+  lspconfig.cssls.setup({})
   lspconfig.docker_compose_language_service.setup({})
   lspconfig.dockerls.setup({})
+  lspconfig.fsautocomplete.setup({})
   lspconfig.html.setup({})
-  -- lspconfig.pyright.setup({})
-  -- lspconfig.solargraph.setup({})
-  -- lspconfig.rust_analyzer.setup({})
-  -- lspconfig.tailwindcss.setup({})
-  -- lspconfig.tsserver.setup({})
-  lspconfig.vimls.setup({})
-  -- lspconfig.volar.setup({})
-
-  vim.g['fsharp#lsp_auto_setup'] = 0
-  -- require('ionide').setup({
-  --   on_attach = lsp_defaults.on_attach,
-  --   capabilities = lsp_defaults.capabilities,
-  --   flags = lsp_defaults.flags,
-  -- })
-
   lspconfig.jsonls.setup({
-    user_commands = {
-      {
-        name = 'Format',
-        command = function()
-          vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line('$'), 0 })
-        end,
-      },
-    },
     settings = {
       json = {
-        -- schemas = require('schemastore').json.schemas(),
+        schemas = require('schemastore').json.schemas(),
         validate = { enable = true },
       },
     },
   })
-
   lspconfig.lua_ls.setup({
     settings = {
       Lua = {
@@ -79,7 +59,23 @@ function M.setup()
       },
     },
   })
-
+  local omnisharp_bin = require('mason.settings').current.install_root_dir .. '/packages/omnisharp/omnisharp'
+  local pid = vim.fn.getpid()
+  lspconfig.omnisharp.setup({
+    handlers = {
+      ['textDocument/definition'] = require('omnisharp_extended').handler,
+    },
+    cmd = { omnisharp_bin, '--languageserver', '--hostPID', tostring(pid) },
+    enable_ms_build_load_projects_on_demand = false,
+    enable_roslin_analyzers = true,
+    enable_import_completion = false,
+    organize_imports_on_format = true,
+  })
+  lspconfig.pkgbuild_language_server.setup({})
+  lspconfig.pyright.setup({})
+  lspconfig.rust_analyzer.setup({})
+  lspconfig.tailwindcss.setup({})
+  lspconfig.terraformls.setup({})
   lspconfig.texlab.setup({
     settings = {
       texlab = {
@@ -101,21 +97,18 @@ function M.setup()
       },
     },
   })
-
-  -- Set schemas for yaml
-  -- local json_schemas = require('schemastore').json.schemas({})
-  -- local yaml_schemas = {}
-  -- vim.tbl_map(function(schema)
-  --   yaml_schemas[schema.url] = schema.fileMatch
-  -- end, json_schemas)
-
-  require('lspconfig').yamlls.setup({
+  lspconfig.tflint.setup({})
+  lspconfig.tsserver.setup({})
+  lspconfig.unocss.setup({})
+  lspconfig.vimls.setup({})
+  lspconfig.yamlls.setup({
     settings = {
       yaml = {
-        -- schemas = yaml_schemas,
         schemaStore = {
-          enable = true,
+          enable = false,
+          url = '',
         },
+        schemas = require('schemastore').yaml.schemas(),
       },
     },
   })

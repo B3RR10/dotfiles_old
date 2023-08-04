@@ -142,6 +142,7 @@ require('lazy').setup({
       dependencies = {
         'b0o/schemastore.nvim',
         'mason.nvim',
+        'Hoffs/omnisharp-extended-lsp.nvim',
       },
     },
     {
@@ -152,11 +153,7 @@ require('lazy').setup({
         'saadparwaiz1/cmp_luasnip',
         'hrsh7th/cmp-nvim-lua',
         'hrsh7th/cmp-path',
-        -- 'hrsh7th/cmp-calc',
-        -- 'hrsh7th/cmp-emoji',
         'ray-x/cmp-treesitter',
-        -- 'hrsh7th/cmp-cmdline',
-        -- 'hrsh7th/cmp-omni',
         'onsails/lspkind-nvim',
       },
       config = function()
@@ -164,10 +161,26 @@ require('lazy').setup({
       end,
     },
     {
+      'mfussenegger/nvim-lint',
+      config = function()
+        vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+          callback = function()
+            require('lint').try_lint()
+          end,
+        })
+      end,
+      dependencies = {
+        'mason.nvim',
+      },
+    },
+    {
       'mhartington/formatter.nvim',
       config = function()
         require('plugins.formatter').setup()
       end,
+      dependencies = {
+        'mason.nvim',
+      },
     },
     {
       'nvim-treesitter/nvim-treesitter',
