@@ -11,6 +11,9 @@ dotfiles:
   f_gtkrc-2.0:
     src: gtkrc-2.0
     dst: ~/.gtkrc-2.0
+  f_zshenv:
+    src: zshenv
+    dst: ~/.zshenv
   f_zshrc:
     dst: ~/.zshrc
     src: zshrc
@@ -120,6 +123,7 @@ profiles:
   terminal:
     dotfiles:
     - d_bin
+    - f_zshenv
     - f_zshrc
     - d_config_nvim
     - d_config_stylua
