@@ -84,8 +84,9 @@ input "type:touchpad" {
 }
 
 input type:keyboard {
-    xkb_layout us
-    xkb_variant altgr-intl
+    xkb_layout us,us
+    xkb_variant altgr-intl,colemak_dh
+    xkb_options grp:menu_toggle
 }
 # }}} Input configuration #
 
@@ -101,7 +102,7 @@ input type:keyboard {
 
     # Start your launcher
     bindsym $mod+d exec $menu
-    bindsym $mod+p exec PASSWORD_STORE_DIR=$HOME/.local/share/password-store pass-autotype
+    bindsym $mod+p exec pass-autotype
 
     bindsym $mod+x exec firefox
     # bindsym $mod+m exec open-mail
@@ -313,7 +314,7 @@ client.urgent             $urgent-border-color     $urgent-bg-color     $text-co
 # }}} Window colors #
 
 # Startup programs {{{ #
-exec kanshi
+exec_always kanshi
 exec mako
 exec nextcloud
 # }}} Startup programs #
