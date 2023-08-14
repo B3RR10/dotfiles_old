@@ -7,7 +7,7 @@ dotfiles:
   d_bin:
     src: bin
     dst: ~/bin
-    chmod: '755'
+    chmod: "755"
   f_gtkrc-2.0:
     src: gtkrc-2.0
     dst: ~/.gtkrc-2.0
@@ -21,11 +21,11 @@ dotfiles:
     src: config/aerc
     dst: ~/.config/aerc
     cmpignore:
-    - accounts.conf
+      - accounts.conf
     instignore:
-    - accounts.conf
+      - accounts.conf
     upignore:
-    - accounts.conf
+      - accounts.conf
   d_config_alacritty:
     src: config/alacritty
     dst: ~/.config/alacritty
@@ -69,9 +69,9 @@ dotfiles:
     src: config/systemd
     dst: ~/.config/systemd
     cmpignore:
-    - '*.wants'
+      - "*.wants"
     upignore:
-    - '*.wants'
+      - "*.wants"
   d_config_stylua:
     src: config/stylua
     dst: ~/.config/stylua
@@ -98,48 +98,46 @@ variables:
 profiles:
   desktop:
     dotfiles:
-    - f_gtkrc-2.0
-    - d_config_alacritty
-    - d_config_environment.d
-    - d_config_fuzzel
-    - d_config_gammastep
-    - d_config_gtk-3.0
-    - d_config_gtk-4.0
-    - f_config_mimeapps.list
-    - d_config_rbw
-    - d_config_systemd
-    - f_config_wallpaper_arch-linux-dark.png
-    - d_config_zathura
+      - f_gtkrc-2.0
+      - d_config_alacritty
+      - d_config_environment.d
+      - d_config_fuzzel
+      - d_config_gammastep
+      - d_config_gtk-3.0
+      - d_config_gtk-4.0
+      - f_config_mimeapps.list
+      - d_config_rbw
+      - d_config_systemd
+      - f_config_wallpaper_arch-linux-dark.png
+      - d_config_zathura
   mail:
     dotfiles:
-    - d_config_aerc
+      - d_config_aerc
   sway:
     dotfiles:
-    - d_config_git
-    - d_config_i3status-rust
-    - d_config_kanshi
-    - d_config_mako
-    - d_config_sway
+      - d_config_git
+      - d_config_i3status-rust
+      - d_config_kanshi
+      - d_config_mako
+      - d_config_sway
   terminal:
     dotfiles:
-    - d_bin
-    - f_zshenv
-    - f_zshrc
-    - d_config_nvim
-    - d_config_stylua
-    - d_config_tmux
-    - d_config_zsh
-
+      - d_bin
+      - f_zshenv
+      - f_zshrc
+      - d_config_nvim
+      - d_config_stylua
+      - d_config_tmux
+      - d_config_zsh
   willow:
     include:
-    - desktop
-    - mail
-    - sway
-    - terminal
-
+      - desktop
+      - mail
+      - sway
+      - terminal
   server:
     include:
-    - terminal
+      - terminal
     variables:
       git:
         email: "{{@@ env['GIT_EMAIL'] @@}}"
