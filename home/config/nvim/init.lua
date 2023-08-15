@@ -1,5 +1,6 @@
--- Settings
-require('settings')
+require('config.options')
+require('config.lazy')
+require('config.commands')
 
--- Install plugins
-require('plugins')
+require('config.autocmds')
+require('config.keymaps')

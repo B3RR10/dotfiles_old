@@ -34,23 +34,28 @@ require('lazy').setup({
     ---------------
     --  Visuals  --
     ---------------
+    -- DONE
     {
       'rebelot/kanagawa.nvim',
       config = function()
         require('plugins.colorscheme').setup()
       end,
     },
+    -- DONE
     { 'kyazdani42/nvim-web-devicons' },
     {
+      -- DONE
       'hoob3rt/lualine.nvim',
       config = function()
         require('plugins.lualine').setup()
       end,
     },
+    -- DONE
     { 'akinsho/nvim-bufferline.lua' },
 
     -- Git
     -- { 'f-person/git-blame.nvim' },
+    -- DONE
     {
       'lewis6991/gitsigns.nvim',
       dependencies = { 'nvim-lua/plenary.nvim' },
@@ -58,6 +63,7 @@ require('lazy').setup({
         require('plugins.gitsigns').setup()
       end,
     },
+    -- DONE
     {
       'rhysd/committia.vim',
       config = function()
@@ -66,6 +72,7 @@ require('lazy').setup({
     },
 
     -- Highlight word under cursor
+    -- DONE
     {
       'RRethy/vim-illuminate',
       config = function()
@@ -145,6 +152,7 @@ require('lazy').setup({
         'Hoffs/omnisharp-extended-lsp.nvim',
       },
     },
+    -- DONE
     {
       'hrsh7th/nvim-cmp',
       dependencies = {
@@ -182,6 +190,7 @@ require('lazy').setup({
         'mason.nvim',
       },
     },
+    -- DONE
     {
       'nvim-treesitter/nvim-treesitter',
       dependencies = {
@@ -193,6 +202,7 @@ require('lazy').setup({
         require('plugins.treesitter').setup()
       end,
     },
+    -- NOOP
     {
       'liuchengxu/vista.vim',
       config = function()
@@ -205,9 +215,11 @@ require('lazy').setup({
     --------------
 
     -- Additional text-objects
+    -- DONE
     { 'wellle/targets.vim' },
 
     -- Multiple cursors
+    -- NOOP
     { 'terryma/vim-multiple-cursors' },
 
     -- See cursor jump
@@ -220,6 +232,7 @@ require('lazy').setup({
     },
 
     -- Snippets
+    -- DONE
     {
       'L3MON4D3/LuaSnip',
       version = '1.*',
@@ -234,6 +247,7 @@ require('lazy').setup({
     },
 
     -- mini.nvim
+    -- DONE
     {
       'echasnovski/mini.nvim',
       config = function()
@@ -242,6 +256,7 @@ require('lazy').setup({
     },
 
     -- Surroundings
+    -- DONE
     {
       'jiangmiao/auto-pairs',
       config = function()
@@ -250,6 +265,7 @@ require('lazy').setup({
     },
 
     -- Save persistent sessions
+    -- DONE
     {
       'rmagatti/auto-session',
       config = function()
@@ -258,6 +274,7 @@ require('lazy').setup({
     },
 
     -- Enhance vim.ui interface
+    -- DONE
     {
       'stevearc/dressing.nvim',
       config = function()
@@ -266,6 +283,7 @@ require('lazy').setup({
     },
 
     -- Auto shrinks windows when not enough space
+    -- DONE: Replaced by focus.nvim
     {
       'anuvyklack/windows.nvim',
       dependencies = {
@@ -278,6 +296,7 @@ require('lazy').setup({
     },
 
     -- Display possible keybindings
+    -- DONE
     {
       'folke/which-key.nvim',
       config = true,
@@ -287,9 +306,11 @@ require('lazy').setup({
     --  Tools  --
     -------------
     -- Git mergetool
+    -- DONE
     { 'whiteinge/diffconflicts' },
 
     -- Fuzzy finder
+    -- DONE: Replaced with Telescope
     {
       'ibhagwan/fzf-lua',
       dependencies = { 'kyazdani42/nvim-web-devicons' },
@@ -299,6 +320,7 @@ require('lazy').setup({
     },
 
     -- Zen mode
+    -- DONE
     {
       'folke/zen-mode.nvim',
       dependencies = { 'folke/twilight.nvim' },
@@ -318,6 +340,7 @@ require('lazy').setup({
     },
 
     -- Neovim tree
+    -- DONE: Replace with mini.files
     {
       'kyazdani42/nvim-tree.lua',
       config = function()
@@ -326,11 +349,13 @@ require('lazy').setup({
     },
 
     -- Nvim colorizer #666666
+    -- DONE
     {
       'norcalli/nvim-colorizer.lua',
       config = true,
     },
 
+    -- Noop
     {
       'jbyuki/venn.nvim',
       config = function()
@@ -346,6 +371,7 @@ require('lazy').setup({
     },
 
     -- LazyGit as Git UI
+    -- DONE
     {
       'kdheepak/lazygit.nvim',
       config = function()
