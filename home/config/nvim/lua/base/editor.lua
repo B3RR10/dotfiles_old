@@ -86,6 +86,11 @@ return {
     },
   },
   {
+    'sindrets/diffview.nvim',
+    cmd = { 'DiffviewFileHistory', 'DiffviewOpen' },
+    opts = {},
+  },
+  {
     'rhysd/committia.vim',
     event = 'BufReadPre',
     ft = 'gitcommit',
