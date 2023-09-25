@@ -22,13 +22,6 @@ return {
         path = '[Path]',
         treesitter = '[Treesitter]',
       }
-      local duplicates = {
-        buffer = 1,
-        luasnip = 1,
-        nvim_lsp = 0,
-        path = 1,
-        treesitter = 0,
-      }
 
       return {
         completion = {
@@ -57,7 +50,7 @@ return {
           ['<C-u>'] = cmp.mapping.scroll_docs(4),
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-e>'] = cmp.mapping.close(),
-          ['<CR>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false, }),
+          ['<CR>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
 
           ['<C-n>'] = cmp.mapping.select_next_item(),
           ['<Down>'] = cmp.mapping.select_next_item(),
@@ -84,10 +77,10 @@ return {
           end, { 'i', 's' }),
         },
         sources = cmp.config.sources({
-          { name = 'nvim_lsp',   group_index = 1 },
-          { name = 'luasnip',    group_index = 1 },
-          { name = 'buffer',     group_index = 2, option = { keyword_pattern = [[\k\+]] } },
-          { name = 'path',       group_index = 2 },
+          { name = 'nvim_lsp', group_index = 1 },
+          { name = 'luasnip', group_index = 1 },
+          { name = 'buffer', group_index = 2, option = { keyword_pattern = [[\k\+]] } },
+          { name = 'path', group_index = 2 },
           { name = 'treesitter', group_index = 2 },
         }),
         formatting = {
@@ -207,7 +200,7 @@ return {
   {
     'echasnovski/mini.comment',
     event = 'BufReadPost',
-    config = true,
+    opts = {},
   },
   {
     'folke/which-key.nvim',
@@ -333,17 +326,17 @@ return {
   {
     'stevearc/overseer.nvim',
     keys = {
-      { '<leader>ttR', '<cmd>OverseerRunCmd<cr>',       desc = 'Run Command' },
-      { '<leader>tta', '<cmd>OverseerTaskAction<cr>',   desc = 'Task Action' },
-      { '<leader>ttb', '<cmd>OverseerBuild<cr>',        desc = 'Build' },
-      { '<leader>ttc', '<cmd>OverseerClose<cr>',        desc = 'Close' },
+      { '<leader>ttR', '<cmd>OverseerRunCmd<cr>', desc = 'Run Command' },
+      { '<leader>tta', '<cmd>OverseerTaskAction<cr>', desc = 'Task Action' },
+      { '<leader>ttb', '<cmd>OverseerBuild<cr>', desc = 'Build' },
+      { '<leader>ttc', '<cmd>OverseerClose<cr>', desc = 'Close' },
       { '<leader>ttd', '<cmd>OverseerDeleteBundle<cr>', desc = 'Delete Bundle' },
-      { '<leader>ttl', '<cmd>OverseerLoadBundle<cr>',   desc = 'Load Bundle' },
-      { '<leader>tto', '<cmd>OverseerOpen<cr>',         desc = 'Open' },
-      { '<leader>ttq', '<cmd>OverseerQuickAction<cr>',  desc = 'Quick Action' },
-      { '<leader>ttr', '<cmd>OverseerRun<cr>',          desc = 'Run' },
-      { '<leader>tts', '<cmd>OverseerSaveBundle<cr>',   desc = 'Save Bundle' },
-      { '<leader>ttt', '<cmd>OverseerToggle<cr>',       desc = 'Toggle' },
+      { '<leader>ttl', '<cmd>OverseerLoadBundle<cr>', desc = 'Load Bundle' },
+      { '<leader>tto', '<cmd>OverseerOpen<cr>', desc = 'Open' },
+      { '<leader>ttq', '<cmd>OverseerQuickAction<cr>', desc = 'Quick Action' },
+      { '<leader>ttr', '<cmd>OverseerRun<cr>', desc = 'Run' },
+      { '<leader>tts', '<cmd>OverseerSaveBundle<cr>', desc = 'Save Bundle' },
+      { '<leader>ttt', '<cmd>OverseerToggle<cr>', desc = 'Toggle' },
     },
     opts = {},
   },
@@ -386,26 +379,30 @@ return {
             mode = 'n',
             body = '<A-t>',
             heads = {
-              { 'F', cmd("w|lua require('neotest').run.run(vim.loop.cwd())"),          desc = 'All Files' },
+              { 'F', cmd("w|lua require('neotest').run.run(vim.loop.cwd())"), desc = 'All Files' },
               { 'L', cmd("w|lua require('neotest').run.run_last({strategy = 'dap'})"), desc = 'Debug Last' },
-              { 'N', cmd("w|lua require('neotest').run.run({strategy = 'dap'})"),      desc = 'Debug Nearest' },
-              { 'S', cmd("w|lua require('neotest').summary.toggle()"),                 desc = 'Summary' },
-              { 'a', cmd("w|lua require('neotest').run.attach()"),                     desc = 'Attach' },
+              { 'N', cmd("w|lua require('neotest').run.run({strategy = 'dap'})"), desc = 'Debug Nearest' },
+              { 'S', cmd("w|lua require('neotest').summary.toggle()"), desc = 'Summary' },
+              { 'a', cmd("w|lua require('neotest').run.attach()"), desc = 'Attach' },
               {
                 'd',
                 cmd("w|lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'}"),
                 desc = 'Debug File',
               },
-              { 'f', cmd("w|lua require('neotest').run.run(vim.fn.expand('%'))"),   desc = 'File' },
-              { 'l', cmd("w|lua require('neotest').run.run_last()"),                desc = 'Last' },
-              { 'n', cmd("w|lua require('neotest').run.run()"),                     desc = 'Nearest' },
+              { 'f', cmd("w|lua require('neotest').run.run(vim.fn.expand('%'))"), desc = 'File' },
+              { 'l', cmd("w|lua require('neotest').run.run_last()"), desc = 'Last' },
+              { 'n', cmd("w|lua require('neotest').run.run()"), desc = 'Nearest' },
               { 'o', cmd("w|lua require('neotest').output.open({ enter = true })"), desc = 'Output' },
-              { 's', cmd("w|lua require('neotest').run.stop()"),                    desc = 'Stop' },
-              { 'q', nil, {
-                exit = true,
-                nowait = true,
-                desc = 'Exit'
-              } },
+              { 's', cmd("w|lua require('neotest').run.stop()"), desc = 'Stop' },
+              {
+                'q',
+                nil,
+                {
+                  exit = true,
+                  nowait = true,
+                  desc = 'Exit',
+                },
+              },
             },
           }
         end,
