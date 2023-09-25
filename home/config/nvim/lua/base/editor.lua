@@ -183,11 +183,6 @@ return {
     },
   },
   {
-    'echasnovski/mini.trailspace',
-    event = 'BufWritePre',
-    config = true,
-  },
-  {
     'folke/zen-mode.nvim',
     dependencies = { 'folke/twilight.nvim' },
     opts = {
