@@ -7,6 +7,7 @@ return {
     lua = true,
     sh = true,
     rust = true,
+    terraform = true,
     yaml = true,
   },
 }
