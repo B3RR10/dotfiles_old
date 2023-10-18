@@ -5,6 +5,7 @@ return {
     json = true,
     lua = true,
     sh = true,
+    rust = true,
     yaml = true,
   },
 }
