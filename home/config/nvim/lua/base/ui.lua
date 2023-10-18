@@ -30,7 +30,7 @@ return {
     opts = function()
       local function isSession()
         if vim.v.this_session ~= '' then
-          return ''
+          return '▣ '
         else
           return ''
         end
@@ -50,7 +50,13 @@ return {
           lualine_c = {
             'filename',
           },
-          lualine_x = { 'encoding', 'fileformat', 'filetype' },
+          lualine_x = {
+            { require('lazy.status').updates, cond = require('lazy.status').has_updates, color = { fg = 'ff9e64' } },
+            'searchcount',
+            'encoding',
+            'fileformat',
+            'filetype',
+          },
           lualine_y = { 'progress' },
           lualine_z = { 'location' },
         },

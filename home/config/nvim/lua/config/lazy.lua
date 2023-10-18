@@ -20,7 +20,7 @@ require('lazy').setup({
   },
   defaults = { lazy = true, version = nil },
   install = { missing = true, colorscheme = { 'kanagawa-dragon' } },
-  checker = { enabled = true, notify = true },
+  checker = { enabled = true, notify = false },
   change_detection = {
     enabled = true,
     notify = false,
