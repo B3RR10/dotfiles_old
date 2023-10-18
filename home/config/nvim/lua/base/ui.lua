@@ -46,10 +46,9 @@ return {
         },
         sections = {
           lualine_a = { 'mode', isSession },
-          lualine_b = { 'branch' },
+          lualine_b = { 'branch', 'diff', { 'diagnostics', sources = { 'nvim_lsp' } } },
           lualine_c = {
             'filename',
-            { 'diagnostic', sources = { 'nvim_lsp' } },
           },
           lualine_x = { 'encoding', 'fileformat', 'filetype' },
           lualine_y = { 'progress' },
