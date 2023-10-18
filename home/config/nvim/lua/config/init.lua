@@ -8,6 +8,7 @@ return {
     sh = true,
     rust = true,
     terraform = true,
+    tex = true,
     yaml = true,
   },
 }
