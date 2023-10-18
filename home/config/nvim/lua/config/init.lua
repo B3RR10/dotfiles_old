@@ -3,5 +3,6 @@ return {
     csharp = true,
     docker = true,
     lua = true,
+    sh = true,
   },
 }
