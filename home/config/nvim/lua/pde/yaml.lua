@@ -44,7 +44,9 @@ return {
       if type(opts.sources) == 'table' then
         local null_ls = require('null-ls')
         vim.list_extend(opts.sources, {
-          null_ls.builtins.formatting.yamlfmt,
+          null_ls.builtins.formatting.yamlfmt.with({
+            extra_args = { '-formatter', 'include_document_start=true,retain_line_breaks=true' },
+          }),
           null_ls.builtins.diagnostics.yamllint,
         })
       end
