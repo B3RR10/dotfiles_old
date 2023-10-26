@@ -12,7 +12,10 @@ return {
   {
     'williamboman/mason.nvim',
     opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { 'netcoredbg', 'csharp-language-server', 'omnisharp' })
+      vim.list_extend(opts.ensure_installed, {
+        'netcoredbg',
+        'omnisharp',
+      })
     end,
   },
   {
@@ -23,7 +26,6 @@ return {
         local pid = vim.fn.getpid()
 
         return {
-          csharp_ls = {},
           omnisharp = {
             handlers = {
               ['textDocument/definition'] = require('omnisharp_extended').handler,
