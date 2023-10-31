@@ -1,16 +1,24 @@
 [[block]]
+block = "pomodoro"
+format = " $icon  {$message |}"
+notify_cmd = "swaynag -m '{msg}'"
+blocking_cmd = true
+
+[[block]]
 block = "keyboard_layout"
-format = " $layout ($variant)"
 driver = "sway"
+[block.mappings]
+"English (intl., with AltGr dead keys)" = "EN-US"
+"English (Colemak-DH)" = "Colemak-DH"
 
 [[block]]
 block = "net"
-format = "$icon {$ssid $signal_strength|Wired} {$ip} {$speed_down.eng(prefix:K)} {$graph_down}"
+format = "$icon  {$ssid $signal_strength|Wired} {$ip} {$speed_down.eng(prefix:K)} {$graph_down}"
 interval = 2
 
 [[block]]
 block = "disk_space"
-format = "{$icon} {$used}/{$total} ({$available} free)"
+format = "{$icon} {$used}/{$total} ({$percentage} free)"
 
 [[block]]
 block = "memory"
@@ -18,10 +26,15 @@ format = "$icon {$mem_used} ({$mem_used_percents})"
 
 [[block]]
 block = "uptime"
+format = " $icon   $text "
 
 [[block]]
 block = "cpu"
-format = "$icon {$barchart} {$utilization} {$frequency}"
+format = "$icon {$utilization} {$frequency}"
+
+[[block]]
+block = "amd_gpu"
+format = " $icon   $utilization "
 
 [[block]]
 block = "sound"
@@ -36,21 +49,22 @@ cmd = "pavucontrol"
 
 [[block]]
 block = "backlight"
+format = " $icon   $brightness "
 
 [[block]]
 block = "battery"
-format = " $icon $percentage {$time |}"
+format = " $icon   $percentage {$time |} "
 
 [[block]]
 block = "time"
-format = "$timestamp.datetime(f:'%V - %F %R') "
+format = " $icon   $timestamp.datetime(f:'%V - %F %R') "
 interval = 30
 
 [icons]
-icons = "none"
+icons = "material-nf"
 
 [theme]
-theme = "plain"
+theme = "semi-native"
 
 [theme.overrides]
-separator = "  |  "
+separator = "    "
