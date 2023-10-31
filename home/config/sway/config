@@ -96,6 +96,7 @@ input type:keyboard {
 #
     # Start a terminal
     bindsym $mod+Return exec $term -e tmux -u
+    bindsym $mod+Shift+Return exec $term
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -317,6 +318,7 @@ client.urgent             $urgent-border-color     $urgent-bg-color     $text-co
 exec_always kanshi
 exec mako
 exec nextcloud
+# exec gammastep-indicator
 # }}} Startup programs #
 
 include /etc/sway/config.d/*
