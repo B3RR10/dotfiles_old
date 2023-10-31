@@ -1,0 +1,9 @@
+[Unit]
+Description=Reminder to go to bed
+
+[Timer]
+OnCalendar=Mon..Thu,Sun 20:10
+OnCalendar=Fri,Sat 22:00
+
+[Install]
+WantedBy=timers.target

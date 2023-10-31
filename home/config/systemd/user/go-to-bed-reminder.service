@@ -1,0 +1,6 @@
+[Unit]
+Description=Reminder to go to bed
+After=systemd-user-sessions.service
+
+[Service]
+ExecStart=notify-send -u critical -t 0 "Bed reminder" "It's time to go to bed!"
