@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [ $# -ne 1 ]; then
+	echo "Usage:"
+	echo "  decode-jwt-token TOKEN"
+	exit 1
+fi
+
+token="$1"
+
+jq -R 'gsub("-";"+") | gsub("_";"/") | split(".") | .[1] | @base64d | fromjson' < <(echo "$token")
