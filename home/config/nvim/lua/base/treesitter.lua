@@ -3,7 +3,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
-      'JoosepAlviste/nvim-ts-context-commentstring',
+      { 'JoosepAlviste/nvim-ts-context-commentstring', opts = {} },
     },
     build = ':TSUpdate',
     event = { 'BufReadPost', 'BufNewFile' },
@@ -75,9 +75,6 @@ return {
             ['g<'] = '@parameter.inner',
           },
         },
-      },
-      context_commentstring = {
-        enable = true,
       },
     },
     config = function(_, opts)
