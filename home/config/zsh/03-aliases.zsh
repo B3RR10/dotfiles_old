@@ -12,13 +12,13 @@ alias edit='nvim'
 #  }}} Editor #
 
 #  ls aliases {{{ #
-alias exa='exa --color=auto --icons --git --group-directories-first'
-alias ls='exa'
-alias la='exa -a'
-alias ll='exa -l'
-alias lla='exa -la'
-alias lt='exa -lT --git-ignore'
-alias tree='exa --tree'
+alias eza='eza --color=auto --icons --git --group-directories-first'
+alias ls='eza'
+alias la='eza -a'
+alias ll='eza -l'
+alias lla='eza -la'
+alias lt='eza -lT --git-ignore'
+alias tree='eza --tree'
 #  }}} ls aliases #
 
 #  Open file {{{ #
